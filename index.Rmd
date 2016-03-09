@@ -40,7 +40,7 @@ Chapter 1 is a descriptive paper exploring the policy of improving health and fo
 
 [dufb]: http://www.doubleupfoodbucks.org/
 
-Chapter 2 is a proposed evaluation of the effectiveness of the DUFB program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within grocery stores that implement DUFB (treatment group). The control group would be other stores within census tracks or zip codes where surrounding populations have similar demographic composition. A difference-in-difference between stores using DUFB (treatment) and those without (control) will be used to measure the size of the effect. While an actual experiment is being designed and implemented by
+Chapter 2 is a proposed evaluation of the effectiveness of the DUFB program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within grocery stores that implement DUFB (treatment group). The control group would be other stores within census tracks or zip codes where surrounding populations have similar demographic composition. A difference-in-difference between stores using DUFB (treatment) and those without (control) will be used to measure the size of the effect. While an actual experiment is being designed for FFN by researchers at NYU, the experiment will span through 2016, making analysis of the data in the short-term difficult. My research will serve as an initial benchmark to help ground expectations and results---with full knowledge that results may be biased---before data from the RCT becomes available.
 
 
 ## Ideas
