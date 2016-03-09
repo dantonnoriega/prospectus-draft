@@ -1,0 +1,59 @@
+---
+title: "Prospectus"
+author: "Danton Noriega"
+date: '`r format(Sys.Date(), "%B %d %Y")`'
+knit: "bookdown::render_book"
+output:
+    bookdown::gitbook:
+        css: style.css
+        keep_md: yes
+        config:
+            toolbar:
+                position: fixed
+            toc:
+                collapse: no
+                before: |
+                    <li><a href="./">Noriega Prospectus</a></li>
+    bookdown::pdf_book:
+        keep_tex: yes
+        includes:
+            in_header: preamble.tex
+        latex_engine: xelatex
+        citation_package: natbib
+documentclass: book
+mainfont: Minion Pro
+sansfont: Source Sans Pro
+monofont: Consolas
+fontsize: 11pt
+geometry: margin=1in
+papersize: letterpaper
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+---
+
+# Overview {#index}
+
+This document contains drafts and ideas for my prospectus.
+
+Chapter 1 is a descriptive paper exploring the policy of improving health and food equity of SNAP participants through targeted fruit and vegetables subsidies. The focal point will be on the [*Double Up Food Bucks*][dufb] (DUFB) program run by the non-profit *Fair Foods Network* based out of Michigan. A comparison will be made with another subsidy program called the *Healthy Incentives Pilot* (HIP). I will argue how and why the DUFB is a more scalable program and better policy if the aim is increase fruit and vegetable consumption. I will remain neutral on whether subsidizing fruit and vegetable purchases lead to improved health outcomes. The paper will conclude with a preview of results from recently acquired point-of-sale data from a recent pilot of DUFB in 3 independent Michigan grocery stores.
+
+[dufb]: http://www.doubleupfoodbucks.org/
+
+Chapter 2 is a proposed evaluation of the effectiveness of the DUFB program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within grocery stores that implement DUFB (treatment group). The control group would be other stores within census tracks or zip codes where surrounding populations have similar demographic composition. A difference-in-difference between stores using DUFB (treatment) and those without (control) will be used to measure the size of the effect. While an actual experiment is being designed and implemented by
+
+
+## Ideas
+
+1. **What product purchases correlate (predict) abnormally fast increases in the BMI of young children?**
+    - Clearly, must control for the fact that BMI for kids increases over time naturally; expect variation effect will be driven mostly by outliers
+    - quick and dirty analysis will be to run L1 or L2 penalized regression on BMI to see which product purchases seem to predict abnormally high BMI increases
+2. **What is the redemption rate of DUFB coupons?**
+    - DUFB coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
+    - under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table
+    - this is unlikely to be the case but the question is, *just how high (or low) is the redemption rate?* Do most coupons go unredeemed?
+    - This will be a technically difficult problem as we do not have panel data but the data could still be used to attempt to answer this question
+3. **What purchasing behavior distinguishes DUFB participants from non-DUFB participants?**
+    - households have already self-selected into DUFB and non-DUFB. do their purchasing patterns differ substantially?
+    - Is it possible to identify a DUFB purchase if we remove Michigan Produce?
+    - This will depend a lot on how frequently Michigan produce is purchased without DUFB; otherwise, MI produce purchases will be a perfect predictor of DUFB transaction
