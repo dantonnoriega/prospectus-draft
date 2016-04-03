@@ -17,14 +17,22 @@ require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
     });
 
     var down = config.download;
-    if (down) if (down.length === 1 && /[.]pdf$/.test(down[0])) {
+    var normalizeDownload = function() {
+      if (!down || !(down instanceof Array) || down.length === 0) return;
+      if (down[0] instanceof Array) return down;
+      return $.map(down, function(file, i) {
+        return [[file, file.replace(/.*[.]/g, '').toUpperCase()]];
+      });
+    };
+    down = normalizeDownload(down);
+    if (down) if (down.length === 1 && /[.]pdf$/.test(down[0][0])) {
       gitbook.toolbar.createButton({
         icon: 'fa fa-file-pdf-o',
-        label: 'PDF',
+        label: down[0][1],
         position: 'left',
         onClick: function(e) {
           e.preventDefault();
-          window.open(down[0]);
+          window.open(down[0][0]);
         }
       });
     } else {
@@ -32,12 +40,12 @@ require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
         icon: 'fa fa-download',
         label: 'Download',
         position: 'left',
-        dropdown: $.map(down, function(link, i) {
+        dropdown: $.map(down, function(item, i) {
           return {
-            text: link.replace(/.*[.]/g, '').toUpperCase(),
+            text: item[1],
             onClick: function(e) {
               e.preventDefault();
-              window.open(link);
+              window.open(item[0]);
             }
           };
         })
@@ -49,8 +57,9 @@ require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
     href = href.substr(href.lastIndexOf('/') + 1);
     if (href === '') href = 'index.html';
     var li = $('a[href^="' + href + location.hash + '"]').parent('li.chapter').first();
-    li.addClass('active');
     var summary = $('ul.summary'), chaps = summary.find('li.chapter');
+    if (li.length === 0) li = chaps.first();
+    li.addClass('active');
     chaps.on('click', function(e) {
       chaps.removeClass('active');
       $(this).addClass('active');
@@ -103,6 +112,10 @@ require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
       // current chapter TOC items
       var items = $('a[href^="' + href + '"]').parent('li.chapter'),
           m = items.length;
+      if (m === 0) {
+        items = summary.find('li.chapter');
+        m = items.length;
+      }
       if (m === 0) return;
       // all section titles on current page
       var hs = bookInner.find('.page-inner').find('h1,h2,h3'), n = hs.length,
@@ -137,6 +150,7 @@ require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
     $('a[href="' + href + '"]').parent('li.chapter').children('a')
       .on('click', function(e) {
         bookInner.scrollTop(0);
+        bookBody.scrollTop(0);
         return false;
       });
 
@@ -161,16 +175,34 @@ require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
   });
 
   var bookBody = $('.book-body'), bookInner = bookBody.find('.body-inner');
-  $(document).on('servr:reload', function(e) {
-    // save scroll position before page is reloaded via servr
-    gs.set('bookInnerScrollTop', bookInner.scrollTop());
-  });
+  var saveScrollPos = function(e) {
+    // save scroll position before page is reloaded
+    gs.set('bodyScrollTop', {
+      body: bookBody.scrollTop(),
+      inner: bookInner.scrollTop(),
+      title: bookInner.find('.page-inner').find('h1,h2').first().text()
+    });
+  };
+  $(document).on('servr:reload', saveScrollPos);
+
+  // check if the page is loaded in the RStudio preview window
+  var inRStudio = function() {
+    var inIframe = true;
+    try { inIframe = window.self !== window.top; } catch (e) {}
+    if (!inIframe) return false;
+    return /^\/rmd_output\/[0-9]+\/.*$/.test(window.location.pathname);
+  };
+  if (inRStudio()) $(window).on('blur', saveScrollPos);
+  if (inRStudio()) $(window).on('unload', saveScrollPos);
 
   $(document).ready(function(e) {
-    var pos = gs.get('bookInnerScrollTop');
-    if (pos) bookInner.scrollTop(pos);
+    var pos = gs.get('bodyScrollTop');
+    if (pos && pos.title === bookInner.find('.page-inner').find('h1,h2').first().text()) {
+      if (pos.body !== 0) bookBody.scrollTop(pos.body);
+      if (pos.inner !== 0) bookInner.scrollTop(pos.inner);
+    }
     // clear book body scroll position
-    gs.remove('bookInnerScrollTop');
+    gs.remove('bodyScrollTop');
   });
 
 });

@@ -10,7 +10,7 @@ Chapter 1 is a descriptive paper exploring the policy of improving health and fo
 
 [dufb]: http://www.doubleupfoodbucks.org/
 
-Chapter 2 is a proposed evaluation of the effectiveness of the DUFB program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within grocery stores that implement DUFB (treatment group). The control group would be other stores within census tracks or zip codes where surrounding populations have similar demographic composition. A difference-in-difference between stores using DUFB (treatment) and those without (control) will be used to measure the size of the effect. While an actual experiment is being designed and implemented by 
+Chapter 2 is a proposed evaluation of the effectiveness of the DUFB program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within grocery stores that implement DUFB (treatment group). The control group would be other stores within census tracks or zip codes where surrounding populations have similar demographic composition. A difference-in-difference between stores using DUFB (treatment) and those without (control) will be used to measure the size of the effect. While an actual experiment is being designed for FFN by researchers at NYU, the experiment will span through 2016, making analysis of the data in the short-term difficult. My research will serve as an initial benchmark to help ground expectations and results---with full knowledge that results may be biased---before data from the RCT becomes available.
 
 
 ## Ideas
@@ -40,28 +40,43 @@ knit: bookdown::preview_chapter
 
 **Problem**
 
-SNAP recipients, compared to higher income groups, tend to purchase more unhealthy foods and fewer fruits and vegetables. This is known as the "Nutrition Gap". These individual choices, in aggregate, produces a negative externality: poor diet---one consisting of processed foods and other products high in sugar, salts, and fats---is closely linked to adverse health outcomes e.g. obesity, heart disease, and type 2 diabetes. But the health care costs of these diet-related conditions are not paid for by SNAP recipients but by taxpayers. Policymakers, therefore, should be looking for cost-effective was to incentivize SNAP recipients towards making healthier food choices.
+SNAP participants, compared to higher income groups, tend to purchase more unhealthy foods and fewer fruits and vegetables. This is known as the "Nutrition Gap". These individual choices, in aggregate, produces a negative externality: poor diet---one consisting of processed foods and other products high in sugar, salts, and fats---is closely linked to adverse health outcomes e.g. obesity, heart disease, and type 2 diabetes. But the health care costs of these diet-related conditions are not paid for by SNAP participants but by taxpayers. Policymakers, therefore, should be looking for cost-effective was to incentivize SNAP participants towards making healthier food choices.
 
 **Question(s)**
 
-How effective would a targeted subsidy aimed be at reducing the nutrition gap? Specifically, could a subsidy aimed at increasing the fruit and vegetables purchases of SNAP recipients make a significant impact on overall diet? And would the costs of the subsidy justify the health care savings---assuming there are any?
+How effective would a targeted subsidy aimed be at reducing the nutrition gap? Specifically, could a subsidy aimed at increasing the fruit and vegetables purchases of SNAP participants make a significant impact on overall diet? And would the costs of the subsidy justify the health care savings---assuming there are any?
 
 **Case Study**
 
-A recently successful fruit and vegetable subsidy program for SNAP recipients has been the [**Double Up Food Bucks**][dufb] program. The program initially began as way to encourage more SNAP recipients to visits local farmer's markets. DUFB grew dramatically across Michigan farmer's market from 2009 to 2014. To make the DUFB more accessible, the USDA provided funding via that 2014 Farm Bill for the program to be piloted in grocery stores. Four months of point-of-sale data have collected but **a rigorous analysis of the point-of-sale data has yet to be completed**.
+A recently successful fruit and vegetable subsidy program for SNAP participants has been the [**Double Up Food Bucks**][dufb] program. The program initially began as way to encourage more SNAP participants to visits local farmer's markets. DUFB grew dramatically across Michigan farmer's market from 2009 to 2014. To make the DUFB more accessible, the USDA provided funding via that 2014 Farm Bill for the program to be piloted in grocery stores. Four months of point-of-sale data have collected but **a rigorous analysis of the point-of-sale data has yet to be completed**.
 
 
 ## Introduction
 
-The Supplemental Nutrition Assistance Program (SNAP)---know as "Food Stamps" before to 2008---was created to help mitigate food insecurity in the US. The intention of policymakers was to ensure a basic, minimal level of food security for low-income families. Other than obvious vices, like alcohol and cigarettes, there are no restrictions on what food items (excluding pet food) can be purchased with SNAP. Consumer are free to purchase unhealthy and/or healthy food. But in the last few years, these light restrictions on what can and cannot be purchases with SNAP have fallen under scrutiny.
+The Supplemental Nutrition Assistance Program (SNAP)---know as "Food Stamps" before to 2008---was created to help mitigate food insecurity in the US. The intention of policymakers was to ensure a basic, minimal level of food security for low-income families [@usda_short_2014]. Other than obvious vices, like alcohol and cigarettes, there are no restrictions on what food items (excluding pet food) can be purchased with SNAP. Consumer are free to purchase unhealthy and/or healthy food. But in the last few years, these light restrictions on what can and cannot be purchases with SNAP have fallen under scrutiny.
 
-Most dollars being spent by SNAP recipients are being used to purchase unhealthy food products. Within the context of US obesity epidemic, alarmingly high rates of diet-related illnesses (e.g. type 2 diabetes, heart disease), and accelerating government health care cost, some policy makers have suggested making SNAP more like the Woman, Infants, and Children (WIC) program. The WIC program provides food vouchers which limit beneficiaries to a select group of products. These products are specifically selected to be healthy to ensure women and their children receive nutritious, healthy foods. This is in contrast to SNAP, where there are few restrictions and beneficiaries are free to purchase cookies, chips, soda, and any other assortment of process foods that have no WIC voucher equivalent.
+### Purchasing Patterns of SNAP Beneficiaries
 
-The purchase of unhealthy foods by SNAP recipients is considered problematic because SNAP recipients also tend to receive some form of government subsidized health care (e.g. Medicaid). The government is therefore providing a benefit transfer to individuals who generally tend to spend those benefits on a largely unhealthy diets, which are closely linked to higher morbidity rates. But the financial cost of treating diet-related illness are not borne by the recipients of government subsidized health care. The government is therefore helping fund, and then pay for, a negative externality produced by the individual consumption choices of most SNAP recipients. Ideally, given the strong link between diet and morbidity, the government would prefer SNAP recipients make, on the whole, healthier food choices when using SNAP benefits [STK]. It would lower health care costs and save the government money.
+Research has found that SNAP participants, at best, consume same amount of unhealthy foods (e.g. sugar-sweetened beverages, baked goods, snacks, candy) compared to non-participants and ineligible households [@todd_caloric_2014; @hoynes_snap_2014]. This is not a positive results. The average US household, regardless of income, fails to meet the USDA's dietary guidelines [@usda_scientific_2015]. Most US households purchase and consume far too much meat and foods rich in sugars and fats, and far too few fruits, vegetables and whole grains [@frazao_americas_1999]. Far more research has found that SNAP participants are significantly *less* likely to meet USDA dietary guidelines than the average US household and much *more* likely to consume unhealthy foods [@andreyeva_dietary_2015; @leung_dietary_2012; @nguyen_supplemental_2015; @wolfson_fruit_2015].
 
-These unhealthy food choices, some have argued, are a function of limited *budget constraints* [STK]. That is, folks purchase unhealthy foods because they are cheaper, per calorie, then healthy foods [STK]. Therefore, while not optimal for health, it is optimal/rational given a small food budget. But SNAP recipients, like any and all other consumers, do not entirely optimizing on price. All consumers optimize across many dimensions (e.g. habit, taste, price, convenience etc). It is not entirely clear that if SNAP recipients did receive more money that they would necessarily eat better [STK].
+### Poor Diet and Metabolic Risk Factors
 
-If SNAP recipients desire fruits and vegetables but they lie beyond their limited means, then increasing their purchasing power *overall* would be sufficient to make fruits and vegetables more accessible. This would imply that the most "straightforward" solution---if one ignores the political challenges---would be to increase benefit transfers to SNAP recipients. This of course is not what happens when low-income households receive marginal boosts of income; a dislike for fruits and vegetables is endemic across all income groups in the United States [STK]. While proclivity to purchase for fruits and veggies does rise with income and education, the increases are not dramatic. SNAP recipients, when they to receive a marginal increase in SNAP benefits, do not suddenly begin purchasing more fruits and vegetables [@hayden_income_2003]. Concern for eating healthy is a luxury; it becomes a priority only after incomes rise enough to alleivate more pressing concerns---like hunger or buying enough food to last until the next benefit transfer.
+Frequent and continuous consumption of unhealthy foods---as is captured by "unhealthy" part of "unhealthy foods"---is worrisome to health experts and policy makers. There is a direct and well-established link between poor diet, metabolic risk factors (e.g. obesity, high blood pressure, type 2 diabetes), and cardiovascular disease and strokes [@who_global_2014]. Metabolic risk factors (MRFs) lead to deaths that are considered "avoidable" by the World Health Organization (WHO) and the Centers for Disease Control and Prevention (CDC). Governments and individuals, therefore, have a role in reducing the incidence rates of MRFs because both can help reduce the consumption of unhealthy foods and increase the consumption healthy foods. The US, in particular, given it has the highest per capita health care costs in the world, could greatly benefit economically from policy interventions aimed at promoting better diet quality and reducing the rate (and cost) of MRFs.
+
+### The Economic Costs of Chronic Diseases
+
+
+
+
+### SNAP and Medicaid
+
+Within the context of US obesity epidemic, alarmingly high rates of MFRs, and accelerating government health care cost, some policy makers have suggested making SNAP more like the Woman, Infants, and Children (WIC) program. The WIC program provides food vouchers which limit participants to a select group of products. These products are specifically selected to be healthy to ensure women and their children receive nutritious, healthy foods. This is in contrast to SNAP, where there are few restrictions and participants are free to purchase cookies, chips, soda, and any other assortment of process foods that have no WIC voucher equivalent.
+
+The purchase of unhealthy foods by SNAP participants is considered problematic because SNAP participants also tend to receive some form of government subsidized health care (e.g. Medicaid). The government is therefore providing a benefit transfer to individuals who generally tend to spend those benefits on a largely unhealthy diets, which are closely linked to higher morbidity rates. But the financial cost of treating MFRs are not borne by the participants of government subsidized health care. The government is therefore helping fund, and then pay for, a negative externality produced by the individual consumption choices of most SNAP participants. Ideally, given the strong link between diet and morbidity, the government would prefer SNAP participants make, on the whole, healthier food choices when using SNAP benefits [STK]. It would lower health care costs and save the government money.
+
+These unhealthy food choices, some have argued, are a function of limited *budget constraints* [STK]. That is, folks purchase unhealthy foods because they are cheaper, per calorie, then healthy foods [STK]. Therefore, while not optimal for health, it is optimal/rational given a small food budget. But SNAP participants, like any and all other consumers, do not entirely optimizing on price. All consumers optimize across many dimensions (e.g. habit, taste, price, convenience etc). It is not entirely clear that if SNAP participants did receive more money that they would necessarily eat better [STK].
+
+If SNAP participants desire fruits and vegetables but they lie beyond their limited means, then increasing their purchasing power *overall* would be sufficient to make fruits and vegetables more accessible. This would imply that the most "straightforward" solution---if one ignores the political challenges---would be to increase benefit transfers to SNAP participants. This of course is not what happens when low-income households receive marginal boosts of income; a dislike for fruits and vegetables is endemic across all income groups in the United States [STK]. While proclivity to purchase for fruits and veggies does rise with income and education, the increases are not dramatic. SNAP participants, when they to receive a marginal increase in SNAP benefits, do not suddenly begin purchasing more fruits and vegetables [@hayden_income_2003]. Concern for eating healthy is a luxury; it becomes a priority only after incomes rise enough to alleivate more pressing concerns---like hunger or buying enough food to last until the next benefit transfer.
 
 [**Add more about how target subsidies like dufb can provide a better incentive for households to purchase more fruits & veggies provide**]
 
@@ -84,10 +99,7 @@ Double Up Food Bucks are observed as items purchased for zero dollars.
 ### Why is this interesting and why should we care?
 
 * As a Society
-    - There are potentially fairness/equity issues here.
-        * Yes, some SNAP recipients buy unhealthy foods because they taste better and likely not substitute if provided cheaper and healthier alternatives. But these individuals exists across all income groups.
-        * There will also exists households that are forced to make choices between *healthy but less quantity* and *less healthy but more quantity*. Is that fair?
-    - There are societal costs (externalities) to having SNAP recipients eat unhealthy foods.
+    - There are societal costs (externalities) to having SNAP participants eat unhealthy foods.
         * Increases the costs of Medicaid and Medicare (more heart disease, type 2 diabetes)
         * Reduces productivity (poor diet, poor health results in worse labor market participation)
 * As policymakers
@@ -130,6 +142,7 @@ Double Up Food Bucks are observed as items purchased for zero dollars.
 * Problems
     - Do no have access to data prior to DUFB implementation
     - Not panel data; cannot uniquely identify individuals across time
+    - need to find a way to distinguish sub transactions
 
 <!--chapter:end:01-dufb-desc.Rmd-->
 
