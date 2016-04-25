@@ -1,0 +1,11 @@
+---
+knit: bookdown::preview_chapter
+---
+
+# Modeling of SNAP Consumption Cycle under MI benefits schedule {#snap-consumption}
+
+- Introduction
+- Data
+- Methods
+- Results
+- Conclusion
