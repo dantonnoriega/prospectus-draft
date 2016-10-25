@@ -1,5 +1,5 @@
 ---
-title: "Prospectus"
+title: "Dissertation Prospectus"
 author: "Danton Noriega"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
 knit: "bookdown::render_book"
@@ -14,6 +14,9 @@ output:
                 before: |
                     <li><a href="./">Noriega Prospectus</a></li>
     bookdown::pdf_book:
+        fig_caption: true
+        fig_width: 6.4
+        fig_height: 4
         keep_tex: yes
         includes:
             in_header: preamble.tex
@@ -31,35 +34,32 @@ biblio-style: apalike
 link-citations: yes
 ---
 
+
 # Overview {-}
 
-This document contains drafts and ideas for my prospectus. Currently outlining ideas.
+Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks (Double Up) program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A difference-in-difference between stores using Double Up (treatment) and those without (control) will be used to measure the size of the effect.
 
-Chapter 2 is a proposed evaluation of the effectiveness of the DUFB program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within grocery stores that implement DUFB (treatment group). The control group would be other stores within census tracks or zip codes where surrounding populations have similar demographic composition. A difference-in-difference between stores using DUFB (treatment) and those without (control) will be used to measure the size of the effect. While an actual experiment is being designed for FFN by researchers at NYU, the experiment will span through 2016, making analysis of the data in the short-term difficult. My research will serve as an initial benchmark to help ground expectations and results---with full knowledge that results may be biased---before data from the RCT becomes available.
+The broader policy concern is that of of improving health and food equity of SNAP participants through targeted fruit and vegetables subsidies. The focal point will be on the [*Double Up Food Bucks*][Double Up] program run by the non-profit *Fair Food Network* based out of Michigan. A comparison will be made with another subsidy program called the *Healthy Incentives Pilot* (HIP). I will argue how and why my results from the Double Up program are more realistic and dependable than those from HIP. However, I will remain neutral on whether subsidizing fruit and vegetable purchases lead to improved health outcomes.
 
-The broader policy concern is that of of improving health and food equity of SNAP participants through targeted fruit and vegetables subsidies. The focal point will be on the [*Double Up Food Bucks*][dufb] (DUFB) program run by the non-profit *Fair Foods Network* based out of Michigan. A comparison will be made with another subsidy program called the *Healthy Incentives Pilot* (HIP). I will argue how and why the DUFB is a more scalable program but cannot conclude whether it is a better policy if the aim is increase fruit and vegetable consumption. I will remain neutral on whether subsidizing fruit and vegetable purchases lead to improved health outcomes. The paper will conclude with a preview of results from recently acquired point-of-sale data from a recent pilot of DUFB in 3 independent Michigan grocery stores.
+[Double Up]: http://www.doubleupfoodbucks.org/
 
-[dufb]: http://www.doubleupfoodbucks.org/
+Chapter 2 is a comparison of 3 different mechanisms for distributing Double Up: paper coupon, Loyalty card, and automatic discount. [TK need to write more].
 
 Chapter 3 is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
 
-Chapter 4 is about testing the demand response to local tax changes for specific food product categories. Price variation in the IRI data is lower than the prices actually observed by consumers due to the way IRI inputs pricing data. Variation in IRI is largely driven by the "net price", which is the price less the coupon or discount, if used. But variation in prices due to local tax policies provides variations not reflected in the RMA-average prices inputed by IRI. The question then about tax salience and if these changes in local tax policy affect demand.
-
 ## Other Ideas
 
-1. **What is the impact on consumption for low-income households affected by increases in unemployment insurace?**
-    - Some states trigger increases in unemployment benefits if the unemployment rate reaches a certain threshold.
-    - These policy changes create a positive income shock for households receiving unemployment insurance.
-    - Difficulty will be identifying these households in the Nielsen data. And if we cannot identify these households, will aggregating total consumption for an "event" like study be sufficient?
-1. **What product purchases correlate (predict) abnormally fast increases in the BMI of young children?**
-    - Clearly, must control for the fact that BMI for kids increases over time naturally; expect variation effect will be driven mostly by outliers
-    - quick and dirty analysis will be to run L1 or L2 penalized regression on BMI to see which product purchases seem to predict abnormally high BMI increases
-2. **What is the redemption rate of DUFB coupons?**
-    - DUFB coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
-    - under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table
-    - this is unlikely to be the case but the question is, *just how high (or low) is the redemption rate?* Do most coupons go unredeemed?
+1. **What is the redemption rate of Double Up coupons?**
+    - Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
+    - Under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table
+    - This is unlikely to be the case but the question is, *just how high (or low) is the redemption rate?* Do most coupons go unredeemed?
     - This will be a technically difficult problem as we do not have panel data but the data could still be used to attempt to answer this question
-3. **What purchasing behavior distinguishes DUFB participants from non-DUFB participants?**
-    - households have already self-selected into DUFB and non-DUFB. do their purchasing patterns differ substantially?
-    - Is it possible to identify a DUFB purchase if we remove Michigan Produce?
-    - This will depend a lot on how frequently Michigan produce is purchased without DUFB; otherwise, MI produce purchases will be a perfect predictor of DUFB transaction
+2. **What purchasing behavior distinguishes Double Up participants from non-Double Up participants?**
+    - Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?
+    - Is it possible to identify a Double Up purchase if we remove Michigan Produce?
+    - This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.
+
+# Literature Review {-}
+
+
+

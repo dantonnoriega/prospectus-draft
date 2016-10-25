@@ -1,0 +1,173 @@
+---
+title: Spartan Nash - Data and Matching
+author: Danton Noriega
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+    html_document:
+      standalone: true
+    pdf_document:
+      fig_caption: true
+      fig_width: 7
+      latex_engine: xelatex
+mainfont: Minion Pro
+sansfont: Source Sans Pro
+monofont: Consolas
+fontsize: 11pt
+geometry: margin=1in
+papersize: letterpaper
+bibliography: /Users/dnoriega/Dropbox/Scrivener/ZoteroLib.bib
+biblio-style: apalike
+link-citations: yes
+---
+
+```{r setup, echo=FALSE, eval=TRUE, message = FALSE, warning = FALSE, results='hide'}
+invisible((source('~/Github/spartannash/beta/sn-cem.R')))
+knitr::opts_chunk$set(comment = '#>', cache = FALSE)
+```
+
+# Summary of Store Data Preferences
+
+1. **Sales data from 2014 - 2016 for all available Family Fare Supermarket stores (aka "First-Best")**. One large data pull that includes the entire universe of Family Fare store transaction data is the *best*, most straight-forward way to ensure an accurate analysis. Maximizing the full set of available data will also maximize the arsenal analytical tools at our disposal. Furthermore, this eliminates the uncertainty produced by having to match on only a few observable variables. Matching---if still considered necessary---can instead be done using customer- and store-specific data, producing better estimates. Lastly, having more stores increases the overall power of any statistical tests.
+
+2. **Sales data for `r 17 + 15` (17 Treated, 15 Control) stores (aka "Second-Best").** This is the *second-best* (and status-quo) strategy. Even with a careful matching strategy, the lack of observable store-specific data when attempting to make matches produces uncertainty about any subset of 15 stores of a possible `r 62 - (17)`. This uncertainty, in turn, increases the likelihood of biased results, obscuring the ability to measure the effect of the Double Up program. That said, matches have been made---with full effort but reasonable hesitation---given the limited data collected (more details about these data can be found in the [Data section](#data)).
+
+Here are the store IDs, store names, and address of the 15 stores selected:
+
+```{r matches, eval = TRUE, echo = FALSE, warning = FALSE}
+env1 <- run_match()
+env1$ctrl_df %>%
+  dplyr::select(id, store, address) %>%
+  knitr::kable()
+
+nT <- env1$df4 %>% na.omit() %>% dplyr::filter(treated == 1) %>% dim %>% '['(1)
+nC <- env1$df4 %>% na.omit() %>% dplyr::filter(treated == 0) %>% dim %>% '['(1)
+```
+
+The motivation, data, methods, and algorithm used to select these 15 stores are outlined below.
+
+# Motivation for Matching
+
+SpartanNash expanded Double Up Food Bucks (DUFB or Double Up) to 17 Family Fare stores in 2016. These 17 "treated" stores were not randomly selected. Given the small sample size of stores, "control" stores should be matched to the treated stores to ensure relatively similar distributions between the two groups. There is an allotment of 15 stores to be selected as controls from a remaining `r dim(dufb_ff_sn_df[dufb_ff_sn_df$dufb_2016==0,])[1]` Family Fare stores.
+
+Not all treated stores will be matched to a control. This is due to the nature of how the 17 treated stores were selected. SpartanNash intentionally selected stores with some of the highest EBT (aka SNAP Electronic Benefit Transfer (EBT) Card) sales that were also within relatively similar geographic locations. This reduced the burden of advertising and implementing DUFB for SpartanNash. The unfortunate downside of this implementation is that it effectively removed any likely matches for treated stores located in the most Urban areas (e.g. Grand Rapids and Battle Creek).
+
+Here is an example to illustrate why it is infeasible to matching all treated stores. If we calculate the percentage of the population by *zip code* that is African American then split the data into treatment and control groups, we get the following:
+
+```{r ex-pct-black, echo=FALSE, eval=TRUE, message=FALSE}
+library(spartannash)
+library(tidyverse)
+
+dt1 <- dufb_ff_sn_df %>%
+  dplyr::left_join(mi_acs %>% dplyr::select(-lat, -long), by = 'postal_code') %>%
+  dplyr::mutate(pct_black = 100*pop_black/pop_total) %>%
+  dplyr::mutate(treated = dufb_2016) %>%
+  dplyr::select(-starts_with('dufb'), -ebt_rank) %>%
+  dplyr::filter(!is.na(pct_black)) %>%
+  data.frame()
+
+x <- mean(dt1$pct_black[dt1$treated == 1]) - mean(dt1$pct_black[dt1$treated == 0])
+sprintf("Difference in Means (Treated - Control) = %f\n", x) %>% cat
+
+cat("\nPopulation, % Black (Treated, Top 10):\n")
+sort(dt1$pct_black[dt1$treated == 1], decreasing = TRUE) %>% head(10)
+
+cat("\nPopulation, % Black (Control, Top 10):\n")
+sort(dt1$pct_black[dt1$treated == 0], decreasing = TRUE) %>% head(10)
+```
+
+What these results tell us is how potentially distinct the populations are within the zip codes containing the treated stores. Sorting population percentages in descending order, no good match exists within the control stores for the top 7 treated stores. One variable is the simplest case; matching only gets more difficult as one brings in more variables to match.
+
+Considering the separation between some of the treated stores and all of the control stores, it was prudent to rethink the experimental design and matching strategy. This is outlined in more detail in the [Matching](#matching) section.
+
+It must be noted that matching is not a necessary step during every design phase. It is, in large part, a way to hedge against the possibility that merely selecting the next top 15 stores by EBT sales could sour the estimates. Matching a smaller set of treatment stores against a larger pool of controls can often produce estimates less sensitive to even the smallest changes in some model specifications [@imbens_causal_2015]. However, other models and tools (like regression) are in relatively unperturbed by a lack of design-phase matching, but still benefit from having a larger sample size [@angrist_mostly_2008].
+
+# Data
+
+The final data set was built from merging 4 different data sources. The core data came from SpartanNash directly, which provided a list of stores participating in DUFB from 2014 - 2016. SpartanNash also provided a list of stores ranked by EBT sales as a fraction of total store sales and the size (square footage) of each store. Demographic and socioeconomic data came from the [Data Science Toolkit API](http://www.datasciencetoolkit.org/) (DSTK) and the [American Communities Survey API](http://www.census.gov/data/developers/data-sets/acs-survey-5-year-data.html) (ACS). The DSTK API provides access to US Census data from 2000 at the *census block* level and the ACS API provides data spanning 2010 - 2014 at the *zip code* level. Lastly, data was extract by mining the [Family Fare](https://www.shopfamilyfare.com/store-locator) website.
+
+Ideally, prior to matching, demographic data from the neighborhoods surrounding the store, who shopped at the store, and how the store was performing, its size, and goods made available would be known. Unfortunately, most of the publicly available data was not store-specific. The only store-specific data came either from SpartanNash directly or from mining the website.
+
+# Selection Algorithm
+
+1. Match on the full universe of treatment and control stores.
+    - For details, see the [Matching section](#matching).
+2. Take two closest matches by driving distance.
+    - Final result is `r nC` matched controls to `r nT` treatment stores.
+3. Allocated the remaining `r 15 - nC` control stores by EBT rank.
+    - Emulates the same selection process used by SpartanNash.
+
+# Matching
+
+There are two main parts to the matching strategy, the second being dependent on the first:
+
+#### (1) No matches are made for the "Urban Core" (stores mostly in Grand Rapids and Battle Creek).
+
+The "Urban Core" (see the map below) comprises clusters of stores with high EBT sales rates but no suitable matches (i.e. they have been in the program too long, have distinctly high EBT sales rates, or come from urban, mostly African American communities). Instead of trying to match these stores, the strategy is to do within-store comparison. That is, stores that only participated in 2016 will be compared to themselves (within) using data from 2014 and 2015. Likewise, stores that participated only in 2015 and 2016 will be compared to data in 2014. The 2 stores which participated since 2014 will be dropped.
+
+It goes without saying that results will depend on data from prior years. From prior conversations, it was understood that all data, going back to 2014, will be made available for treatment and control stores, so this should not be an issue.
+
+#### (2) Over-sampling of matchable non-Grand Rapids and non-Battle Creek stores (i.e. the more "rural" stores).
+
+There is a much larger pool of "rural" stores (40 of 45 have a density less than 1000 people per square mile). The aim is 2-to-1 / control-to-treatment but only for stores where feasible matches exist. Stores will be matched using *Coarsened Exact Matching*, which only produces matches between treatment and control stores with a relatively similar common support [@iacus_causal_2011]. Treatment values that cannot be coarsened to match are left unmatched.
+
+```{r urban, messages = FALSE, warning= FALSE, eval = TRUE, echo=FALSE}
+suppressMessages(map_year(2016)) %>%
+  leaflet::setView(lat = 42.98546, lng = -85.63900, zoom = 8)
+```
+
+## Matching Details
+
+Like most data-dependent endeavors, the most tedious part of matching the stores was obtaining enough variables. Once enough data were obtained, variables were selected on how best they captured data from the following dimensions:
+
+- Demographics (e.g. race)
+- Income/wealth
+- Population density (e.g. urban vs rural)
+- Store attributes
+- Store EBT sales
+
+One may assume that more variables makes matching easier. This is only true insofar as it provides one with a large pool of options. It is still necessary to carefully select how many variables one is using because matching becomes more and more difficult with each added variable used. This is especially true with a small sample size.
+
+The matching covariates that were finally selected are:
+
+- `pct_black` : Percentage of population that is black (zip code level)
+- `dens_pop` : The population density (people per square mile, zip code level)
+- `income_p50_snap_yes` : Median income for people who have received SNAP or similar assistance (zip code level)
+- `store_n_associates` : The number of associates employed in each store.
+- `ebt_sales_pct` : Percentage of total stores sales attributed to EBT/SNAP.
+
+&nbsp;
+
+#### Results of Match
+
+```{r match-results, echo = FALSE, eval=TRUE}
+env1$mat1a$tab %>% knitr::kable()
+```
+
+`G0` represents the "control" group and `G1` represents the "treated" group. One can observe that `r env1$mat1a$tab[2,2]` "treated" stores were matched to `r env1$mat1a$tab[2,1]` "control" stores. That came out to `r nT` stores with 2 matches each.
+
+
+# Appendix
+
+#### Covariate Cut-points
+
+The CEM procedure depends heavily on the "cut-points" selected for each variable. This is akin to setting the cut-off points when turning a continuous variable into a categorical variable. For example, when converting income values from dollars into `low-` `middle-` and `high-income` groups, at least 4 cut-points are required (2 of which are the maximum and minimum). What the other 2 cut-points are will greatly affect the match. This leads to the question, for example, should the cut-points be `25000` and `100000` or perhaps the median and the top 10%?
+
+For the matches produced, the following cut-points were created.
+
+```{r, echo = FALSE, eval = TRUE}
+env1$mat1a$breaks
+```
+
+Understanding why is best explained using a visualization. Below are graphs of the variables `pct_black` and `income_p50_snap_yes` with their corresponding cut-points. The aim of each cut-point is to balance the creation of reasonably sized partitions while still marking obvious shifts in the underlying distribution.
+
+For example, in the first plot (`pct_black`), there are clearly points where the slope dramatically increases --- and then spikes --- in the percentage of African Americans. But in the second plot, the slope is more gradual, so the partitioning is aimed more at getting relatively balanced groups.
+
+```{r, echo = FALSE, eval = TRUE, screenshot.opts = list(delay = 3, cliprect = 'viewport')}
+env1$plt1
+```
+
+```{r, echo = FALSE, eval = TRUE, screenshot.opts = list(delay = 3, cliprect = 'viewport')}
+env1$plt2
+```
+
+# References
