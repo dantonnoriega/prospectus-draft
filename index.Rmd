@@ -47,7 +47,7 @@ Chapter 2 is a comparison of 3 different mechanisms for distributing Double Up: 
 
 Chapter 3 is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
 
-## Other Ideas
+## Other Ideas {-}
 
 1. **What is the redemption rate of Double Up coupons?**
     - Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
