@@ -18,6 +18,7 @@ output:
         fig_width: 6.4
         fig_height: 4
         keep_tex: yes
+        md_extensions: +raw_tex
         includes:
             in_header: preamble.tex
         latex_engine: xelatex

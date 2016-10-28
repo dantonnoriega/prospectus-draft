@@ -38,20 +38,49 @@ These data come from a large grocery distributor and retailer serving multiple g
 
 Double Up implementation was considered for a single grocery chain. The chain has more than 60 stores, 17 of which were selected as "treatment" stores (with Double Up). Of the remaining stores, data is being made available from an addition 15 to serve as "controls". The quotes here signify that these terms will be used as shorthand, but the terminology is somewhat misleading. The use of "treatment" and "control" could lead one to think store assignment was random. It was not.
 
-### Store Selection Overview
+### Store Selection Overview {-}
 
-How the 17 "treatment" stores and 15 "control" stores were selected in 2016 is important. First and foremost, selection was *not* random. Stores were either selected strategically (13 of 17) or self-selected (4 of 17). Second, the 15 control stores were selected *after* the selection of the 17 treatment stores. Data from all remaining stores was requested but the request was denied; only 15 stores had been approved by the company's management. Finally, and most importantly, the selection criteria for the 17 treatment stores is known and *observable*. The implications of this will be covered in more detail in the [Methods](#methods) section.
+How the 17 "treatment" stores and 15 "control" stores were selected in 2016 is important. First and foremost, selection was *not* random. Stores were either selected by the company (13 of 17) or self-selected into Double Up (4 of 17). Second, the 15 control stores were selected *after* the selection of the 17 treatment stores. Data from all remaining stores was requested but the request was denied; only 15 stores had been approved by the company's management. Finally, and most importantly, the selection criteria for the 17 treatment stores is *observable*. The implications of this will be covered in more detail in the [Methods](#methods) section.
 
-### Selection Progression of Double Up Stores
-
-[TK add diagram with shapes, colors, and use them in description.]
+### Selection Progression of Double Up Stores {-}
 
 The first 2 stores were piloted with Double Up in 2014. Both were in geographically distinct areas (these will be referred to as "Node 0" and "Node 1"). There was a small expansion adding 3 more stores in 2015. The 3 stores were selected because they were geographically close to the 2 original pilot stores (1 close to Node 0, 2 close to Node 1). The 5 stores are referred to as the "core". These location of these 5 stores, separated in two clusters, established the geographic constraints that were then used to determine most of the additional stores in 2016.
 
-Double Up was expanded to 12 more stores in 2016, totaling 17. Of those 12, 6 were selected due to their proximity to the 5 core stores, their SNAP EBT[^Electronic Benefit Transfer] sales figures, and similar demographics (high population density, more African-American). In other words, 9 of the 17 stores—excluding the initial 2 pilot stores—were selected on a set of known and observable characteristics. The remaining 6 stores were not.
+Double Up was expanded to 12 more stores in 2016, totaling 17. Of those 12, 6 were selected due to their proximity to the 5 core stores, their SNAP EBT[^Electronic Benefit Transfer] sales figures, and similarity in surrounding demographics (high population density, more African-American). See \@ref(fig:expansion). In other words, 9 of the 17 stores---excluding the initial 2 pilot stores—--were selected on a set of *observable* characteristics. The remaining 6 stores were not.
 
-Of the remaining 6 stores, 4 asked if they could be included in the program. In other words, these stores *self-selected* into Double Up, making these stores fundamentally distinct. They were considered and included because they fell within the "Top 50". (All stores within the chain were ranked by SNAP EBT sales as a percentage of total sales.)
 
+Of the remaining 6 stores, 4 asked if they could be included in the program. In other words, these stores *self-selected* into Double Up, making these stores fundamentally distinct. They were considered, and then included, because they fell within the "Top 50". (All stores within the chain were ranked by SNAP EBT sales as a percentage of total sales.) The final 2 stores were selected by the company for "strategic business decision". The best interpretation of this is that the company thought that Double Up would provide a competitive edge to the 2 included stores given some internal calculus. How the company came to this decision is *unknown* and therefore *unobserved*.
+
+
+```{r fig1-setup, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+
+if(getOutputFormat() == "latex") pdf_yes = TRUE else pdf_yes = FALSE
+
+# set up text
+raw <- function(x) knitr::asis_output(x)
+
+a <- list()
+
+a[[1]] <- ("```{r expansion, fig.width=8, fig.height=3, fig.cap = 'Expansion over time, 2014 to 2016 (left to right). Gray sectors denote higher population density.', fig.align='center', echo=FALSE}")
+a[[2]] <- ("knitr::include_graphics('figures/expansion.pdf')")
+if(!pdf_yes) a[[2]] <- gsub('pdf', 'png', a[[2]])
+a[[3]] <- ("```")
+
+out <- paste(a, collapse = '\n')
+```
+
+```{r fig1-output-pdf, warning=FALSE, message=FALSE, eval=pdf_yes, echo=FALSE}
+raw("\\newpage")
+raw("\\blandscape")
+raw("\\centering")
+# MUST paste the output. cannot just knit!
+raw(paste(knitr::knit(text = paste(out), quiet = TRUE)))
+raw("\\elandscape")
+```
+
+```{r fig1-output-html, warning=FALSE, message=FALSE, eval=!pdf_yes, echo=FALSE}
+raw(paste(knitr::knit(text = paste(out), quiet = TRUE)))
+```
 <!-- ![TK stores-2014]() -->
 
 

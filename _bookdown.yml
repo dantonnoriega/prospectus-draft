@@ -1,3 +1,4 @@
 book_filename: "noriega-prospectus-draft.Rmd"
 chapter_name: ""
+before_chapter_script: "helpers.R"
 output_dir: 'book-output'
