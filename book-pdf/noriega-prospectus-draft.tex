@@ -87,10 +87,13 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{October 28 2016}
+  \date{October 31 2016}
 
 \usepackage{booktabs}
 \usepackage{lscape}
+\usepackage{bm}
+\usepackage{isomath}
+\newcommand{\matr}[1]{\mathbf{#1}}
 \newcommand{\blandscape}{\begin{landscape}}
 \newcommand{\elandscape}{\end{landscape}}
 
@@ -326,8 +329,29 @@ terminology is somewhat misleading. The use of ``treatment'' and
 ``control'' could lead one to think store assignment was random. It was
 not.
 
-\subsection*{Store Selection Overview}\label{store-selection-overview}
-\addcontentsline{toc}{subsection}{Store Selection Overview}
+{[}TK real specific details about the data e.g.~total transactions
+observed etc.{]}
+
+One important variable that will not be made available is a variable for
+loyalty card numbers. The company's use of loyalty cards across its many
+chains was an exciting prospect. Previous transaction data from smaller
+independent grocery chains had no way linking purchases to a single
+unique identifier over time because these smaller chains did not have
+advanced point-of-sale systems.
+
+In earlier conversations with the company, it was understood that
+loyalty cards would be made available. However, months into working with
+the company, we were informed that this was no longer possible.
+According to the company's legal department, the company cannot share
+any personal information about their customers. Unfortunately for us, in
+the loyalty card contract signed by customers, the loyalty card number
+itself is considered personal information, meaning loyalty card numbers
+fall under the same legal category as phone numbers and home addresses.
+
+\subsection*{Overview of Store Selection and
+Expansion}\label{overview-of-store-selection-and-expansion}
+\addcontentsline{toc}{subsection}{Overview of Store Selection and
+Expansion}
 
 How the 17 ``treatment'' stores and 15 ``control'' stores were selected
 in 2016 is important. First and foremost, selection was \emph{not}
@@ -340,9 +364,9 @@ and most importantly, the selection criteria for the 17 treatment stores
 is \emph{observable}. The implications of this will be covered in more
 detail in the \protect\hyperlink{methods}{Methods} section.
 
-\subsection*{Selection Progression of Double Up
-Stores}\label{selection-progression-of-double-up-stores}
-\addcontentsline{toc}{subsection}{Selection Progression of Double Up
+\subsection*{Selection and Expansion of Double Up
+Stores}\label{selection-and-expansion-of-double-up-stores}
+\addcontentsline{toc}{subsection}{Selection and Expansion of Double Up
 Stores}
 
 The first 2 stores were piloted with Double Up in 2014. Both were in
@@ -373,36 +397,74 @@ provide a competitive edge to the 2 included stores given some internal
 calculus. How the company came to this decision is \emph{unknown} and
 therefore \emph{unobserved}.
 
+Table \ref{tab:store-class} helps understand the year by year expansion
+of Double Up. Stores are classified as either \texttt{assigned},
+\texttt{self-selected}, or \texttt{unobserved}. To be \texttt{assigned}
+means a stores participation in Double Up was determined (assigned) by
+the company; \texttt{self-selected} means the store asked the company to
+participate; \texttt{unobserved} means that the company selected the
+store to participate in Double Up but for unknown and unobserved
+reasons. Capital letters (i.e.~A, B, C) were assigned to each store for
+easy reference but otherwise have no meaningful interpretation.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rllll}
+  \hline
+ & Store & 2014 & 2015 & 2016 \\ 
+  \hline
+1 & A & assigned & assigned & assigned \\ 
+  2 & B & assigned & assigned & assigned \\ 
+  3 & C &  & assigned & assigned \\ 
+  4 & D &  & assigned & assigned \\ 
+  5 & E &  & assigned & assigned \\ 
+  6 & F &  &  & assigned \\ 
+  7 & G &  &  & assigned \\ 
+  8 & H &  &  & assigned \\ 
+  9 & I &  &  & assigned \\ 
+  10 & J &  &  & assigned \\ 
+  11 & K &  &  & assigned \\ 
+  12 & L &  &  & self-selected \\ 
+  13 & M &  &  & self-selected \\ 
+  14 & N &  &  & self-selected \\ 
+  15 & O &  &  & self-selected \\ 
+  16 & P &  &  & unobserved \\ 
+  17 & Q &  &  & unobserved \\ 
+   \hline
+\end{tabular}
+\caption{Year by Year Store Selection. Stores A and B represent the initial 2014 pilot stores.} 
+\end{table}
+
 \subsection*{Expansion on Observables}\label{expansion-on-observables}
 \addcontentsline{toc}{subsection}{Expansion on Observables}
 
-An example expansion (using fake data) can be seen in Figure
-\ref{fig:dufb-expansion}. In the top frame, one can see two blue dots.
-These blue dots simulate the first two pilot stores in 2014. The left
-blue dot is \texttt{Node\ 0} and the right blue dot is \texttt{Node\ 1}.
-The gray zones represents areas of higher population density. Dark gray
-is considered \emph{urban}, defined as having a population density of
-1500 persons or more per square mile. The light gray are small towns and
-cities, more densely populated than very rural areas, but could not be
-considered \emph{urban}. The expansion in 2015 (middle frame) proceeds
-to the stores closest to the original pilot stores. The expansion
-continues to 6 more stores in 2016 (bottom frame) away from the nodes
-but also along areas of higher population density.
+An example expansion on \emph{observables} (using fake data) can be seen
+in Figure \ref{fig:dufb-expansion}. In the top frame, one can see two
+blue dots. These blue dots simulate the first two pilot stores in 2014.
+The left blue dot is \texttt{Node\ 0} and the right blue dot is
+\texttt{Node\ 1}. The gray zones represents areas of higher population
+density. Dark gray is considered \emph{urban}, defined as having a
+population density of 1500 persons or more per square mile. The light
+gray are small towns and cities, more densely populated than very rural
+areas, but could not be considered \emph{urban}. The expansion in 2015
+(middle frame) proceeds to the stores closest to the original pilot
+stores. The expansion continues to 6 more stores in 2016 (bottom frame)
+away from the nodes but also along areas of higher population density.
 
 Not conveyed in Figure \ref{fig:dufb-expansion} is that the 2015 and
-2016 expansion also moves through stores that happen to be ``highly
+2016 expansions also move through stores that happen to be ``highly
 ranked''---that is, have relatively higher SNAP EBT sales.\footnote{All
   stores within the chain were ranked by SNAP EBT sales as a percentage
   of total sales.} Also not conveyed is the fact that there is a strong
 correlation between geography, population density, racial composition,
-and SNAP EBT sales. The 2015 expansion to the most nearby stores
-unsurprisingly overlapped with an expansion to stores with high SNAP EBT
-sales and into more densely populated, African-American communities. The
-2016 Double Up expansion was more explicit given that set of feasible
-stores dramatically increases as one moves away from each node. Double
-Up stores were thus specifically selected not just by geographic
-proximity, but also by SNAP EBT sales ranking and demographic
-compositions similar to the initial 2014 stores.
+and SNAP EBT sales. The 2015 expansion to the most nearby stores also
+meant that it was an expansion to stores with high SNAP EBT sales in
+densely populated, African-American neighborhoods. The 2016 Double Up
+expansion was more explicit given that set of feasible stores
+substantially increases as one moves away from each node. Double Up
+stores were thus specifically selected not just by geographic proximity,
+but also by SNAP EBT sales ranking and demographic compositions similar
+to the initial 2014 stores.
 
 \begin{figure}
 
@@ -413,7 +475,77 @@ compositions similar to the initial 2014 stores.
 \caption{Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with Double Up, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame.}\label{fig:dufb-expansion}
 \end{figure}
 
+\subsection*{Selection of Control
+Stores}\label{selection-of-control-stores}
+\addcontentsline{toc}{subsection}{Selection of Control Stores}
+
+Ideally, all remaining stores would have been available to use as a
+control group but the company only approved that data be released for 15
+stores. This left the added---and incredibly important---step of
+selecting the control stores since the company approved, but did not
+explicitly select, the 15 stores.
+
+Selecting the control stores proceeded in two steps. First, stores that
+either self-selected or were selected using some unobservable criteria
+were matched using \emph{Coarsened Exact Matching} (CEM)
+\citep{iacus_causal_2011}. Second, stores assigned Double Up were pooled
+with nearby control stores and then scored using a linear probability
+model. Each step is explained in detail.
+
+\subsubsection*{Step 1: Coarsened Exact
+Matching}\label{step-1-coarsened-exact-matching}
+\addcontentsline{toc}{subsubsection}{Step 1: Coarsened Exact Matching}
+
+The 6 stores classified as \texttt{self-selected} or \texttt{unobserved}
+(store \texttt{L} through \texttt{Q}; see Table \ref{tab:store-class})
+were compared against all possible control stores for matches. Matching
+was done across 5 dimensions: race, income, population density, store
+attributes, store EBT sales. One variable per dimension was selected:
+percentage of population that is African-American (zip code level);
+people per square mile (zip code level); median income for people who
+have received SNAP or similar assistance (zip code level); the number of
+associates employed in each store; and the percentage of total stores
+sales attributed to EBT/SNAP.
+
+Of the 6 stores (\texttt{L\ -\ Q}), only 3 produced viable matches.
+However, each of the 3 matched stores had matched to more than one
+control stores. The closest stores, by driving distance, were selected
+as the tie-breaker for each matched store. Stores were sufficiently far
+apart, with very sparsely populated areas between, that ``spill-over''
+was considered unlikely. That is, it is considered unlikely that a
+shopper near a store without Double Up would opt to drive 30 or more
+minutes to shop at the store \emph{with} Double Up.
+
+This left 12 stores to be allotted to the control group and 3 treatment
+stores to be effectively discarded.
+
+\subsubsection*{Step 2: Scoring via Linear Probability
+Model}\label{step-2-scoring-via-linear-probability-model}
+\addcontentsline{toc}{subsubsection}{Step 2: Scoring via Linear
+Probability Model}
+
+Assignment to treatment and control can be perfectly determined since we
+know and observe the criteria used for assignment: geographic distance
+from an initial store (node), SNAP EBT sales rank, and
+demographics---specifically population density and percentage
+African-American. A scoring function was created by fitting a linear
+probability model to all stores within 140 kilometers of the two initial
+pilot stores.
+
+\[
+\begin{aligned}
+     D  &= f(\matr{X}) +  \epsilon \\
+            &= \matr{X}  \beta +  \epsilon \\
+     \text{ where }s  &= \matr{X} \hat{ \beta}
+\end{aligned}
+\]
+
+The fitted values of the model were used as the score and the top 12
+scoring control stores were then selected
+
 \hypertarget{methods}{\section{Methods}\label{methods}}
+
+Empirical methods will vary by groups of stores.
 
 \chapter{Modeling of SNAP Consumption Cycle under MI benefits
 schedule}\label{snap-consumption}

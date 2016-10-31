@@ -38,11 +38,18 @@ These data come from a large grocery distributor and retailer serving multiple g
 
 Double Up implementation was considered for a single grocery chain. The chain has more than 60 stores, 17 of which were selected as "treatment" stores (with Double Up). Of the remaining stores, data is being made available from an addition 15 to serve as "controls". The quotes here signify that these terms will be used as shorthand, but the terminology is somewhat misleading. The use of "treatment" and "control" could lead one to think store assignment was random. It was not.
 
-### Store Selection Overview {-}
+[TK real specific details about the data e.g. total transactions observed etc.]
+
+One important variable that will not be made available is a variable for loyalty card numbers. The company's use of loyalty cards across its many chains was an exciting prospect. Previous transaction data from smaller independent grocery chains had no way linking purchases to a single unique identifier over time because these smaller chains did not have advanced point-of-sale systems.
+
+In earlier conversations with the company, it was understood that loyalty cards would be made available. However, months into working with the company, we were informed that this was no longer possible. According to the company's legal department, the company cannot share any personal information about their customers. Unfortunately for us, in the loyalty card contract signed by customers, the loyalty card number itself is considered personal information, meaning loyalty card numbers fall under the same legal category as phone numbers and home addresses.
+
+
+### Overview of Store Selection and Expansion {-}
 
 How the 17 "treatment" stores and 15 "control" stores were selected in 2016 is important. First and foremost, selection was *not* random. Stores were either selected by the company (13 of 17) or self-selected into Double Up (4 of 17). Second, the 15 control stores were selected *after* the selection of the 17 treatment stores. Data from all remaining stores was requested but the request was denied; only 15 stores had been approved by the company's management. Finally, and most importantly, the selection criteria for the 17 treatment stores is *observable*. The implications of this will be covered in more detail in the [Methods](#methods) section.
 
-### Selection Progression of Double Up Stores {-}
+### Selection and Expansion of Double Up Stores {-}
 
 The first 2 stores were piloted with Double Up in 2014. Both were in geographically distinct areas (these will be referred to as "`Node 0`" and "`Node 1`"). There was a small expansion adding 3 more stores in 2015. The 3 stores were selected because they were geographically close to the 2 original pilot stores (2 close to `Node 0`, 1 close to `Node 1`). The 5 stores are referred to as the "core". These location of these 5 stores, separated in two clusters, established the geographic constraints that were then used to determine most of the additional stores in 2016.
 
@@ -50,12 +57,41 @@ Double Up was expanded to 12 more stores in 2016, totaling 17. Of those 12, 6 we
 
 Of the remaining 6 stores, 4 asked if they could be included in the program. These stores *self-selected* into Double Up, making these stores fundamentally distinct. They were considered, and then included, only because they fell within the "Top 50". The final 2 stores were selected by the company for "strategic business decision". The best interpretation of this is that the company thought that Double Up would provide a competitive edge to the 2 included stores given some internal calculus. How the company came to this decision is *unknown* and therefore *unobserved*.
 
+Table \@ref(tab:store-class) helps understand the year by year expansion of Double Up. Stores are classified as either `assigned`, `self-selected`, or `unobserved`. To be `assigned` means a stores participation in Double Up was determined (assigned) by the company; `self-selected` means the store asked the company to participate; `unobserved` means that the company selected the store to participate in Double Up but for unknown and unobserved reasons. Capital letters (i.e. A, B, C) were assigned to each store for easy reference but otherwise have no meaningful interpretation.
+
+
+```{r store-class, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, results = 'asis'}
+
+tbl_df <- dufb_sn_df %>%
+  dplyr::arrange(-dufb_2014, -dufb_2015, -dufb_2016, unknown) %>%
+  dplyr::mutate(store_id = LETTERS[1:length(store)]) %>%
+  dplyr::select(store, store_id, c(4:10)) %>%
+  dplyr::mutate(type = if_else(self_selected == 1,
+    'self-selected',
+    'assigned')) %>%
+  dplyr::mutate(type = if_else(unknown == 1, 'unobserved', type)) %>%
+  dplyr::select(store_id, type, dplyr::contains('dufb'))
+
+tbl <- tbl_df %>%
+  dplyr::mutate(`2014` = if_else(dufb_2014 == 1, type, '')) %>%
+  dplyr::mutate(`2015` = if_else(dufb_2015 == 1, type, '')) %>%
+  dplyr::mutate(`2016` = if_else(dufb_2016 == 1, type, '')) %>%
+  dplyr::select(store_id, `2014`:`2016`) %>%
+  dplyr::rename(Store = store_id) %>%
+  xtable(., caption = 'Year by Year Store Selection. Stores A and B represent the initial 2014 pilot stores.')
+
+printTable(tbl)
+```
+
+
+
+
+
 ### Expansion on Observables {-}
 
-An example expansion (using fake data) can be seen in Figure \@ref(fig:dufb-expansion). In the top frame, one can see two blue dots. These blue dots simulate the first two pilot stores in 2014. The left blue dot is `Node 0` and the right blue dot is `Node 1`. The gray zones represents areas of higher population density. Dark gray is considered *urban*, defined as having a population density of 1500 persons or more per square mile. The light gray are small towns and cities, more densely populated than very rural areas, but could not be considered *urban*. The expansion in 2015 (middle frame) proceeds to the stores closest to the original pilot stores. The expansion continues to 6 more stores in 2016 (bottom frame) away from the nodes but also along areas of higher population density.
+An example expansion on *observables* (using fake data) can be seen in Figure \@ref(fig:dufb-expansion). In the top frame, one can see two blue dots. These blue dots simulate the first two pilot stores in 2014. The left blue dot is `Node 0` and the right blue dot is `Node 1`. The gray zones represents areas of higher population density. Dark gray is considered *urban*, defined as having a population density of 1500 persons or more per square mile. The light gray are small towns and cities, more densely populated than very rural areas, but could not be considered *urban*. The expansion in 2015 (middle frame) proceeds to the stores closest to the original pilot stores. The expansion continues to 6 more stores in 2016 (bottom frame) away from the nodes but also along areas of higher population density.
 
-Not conveyed in Figure \@ref(fig:dufb-expansion) is that the 2015 and 2016 expansion also moves through stores that happen to be "highly ranked"---that is, have relatively higher SNAP EBT sales.^[All stores within the chain were ranked by SNAP EBT sales as a percentage of total sales.] Also not conveyed is the fact that there is a strong correlation between geography, population density, racial composition, and SNAP EBT sales. The 2015 expansion to the most nearby stores unsurprisingly overlapped with an expansion to stores with high SNAP EBT sales and into more densely populated, African-American communities. The 2016 Double Up expansion was more explicit given that set of feasible stores dramatically increases as one moves away from each node. Double Up stores were thus specifically selected not just by geographic proximity, but also by SNAP EBT sales ranking and demographic compositions similar to the initial 2014 stores.
-
+Not conveyed in Figure \@ref(fig:dufb-expansion) is that the 2015 and 2016 expansions also move through stores that happen to be "highly ranked"---that is, have relatively higher SNAP EBT sales.^[All stores within the chain were ranked by SNAP EBT sales as a percentage of total sales.] Also not conveyed is the fact that there is a strong correlation between geography, population density, racial composition, and SNAP EBT sales. The 2015 expansion to the most nearby stores also meant that it was an expansion to stores with high SNAP EBT sales in densely populated, African-American neighborhoods. The 2016 Double Up expansion was more explicit given that set of feasible stores substantially increases as one moves away from each node. Double Up stores were thus specifically selected not just by geographic proximity, but also by SNAP EBT sales ranking and demographic compositions similar to the initial 2014 stores.
 
 ```{r fig-dufb-expansion-setup, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
 
@@ -79,11 +115,43 @@ out <- paste(a, collapse = '\n')
 raw(paste(knitr::knit(text = paste(out), quiet = TRUE)))
 ```
 
-<!-- ![TK stores-2014]() -->
 
 
+
+
+### Selection of Control Stores {-}
+
+Ideally, all remaining stores would have been available to use as a control group but the company only approved that data be released for 15 stores. This left the added---and incredibly important---step of selecting the control stores since the company approved, but did not explicitly select, the 15 stores.
+
+Selecting the control stores proceeded in two steps. First, stores that either self-selected or were selected using some unobservable criteria were matched using *Coarsened Exact Matching* (CEM) [@iacus_causal_2011]. Second, stores assigned Double Up were pooled with nearby control stores and then scored using a linear probability model. Each step is explained in detail.
+
+#### Step 1: Coarsened Exact Matching {-}
+
+The 6 stores classified as `self-selected` or `unobserved` (store `L` through `Q`; see Table \@ref(tab:store-class)) were compared against all possible control stores for matches. Matching was done across 5 dimensions: race, income, population density, store attributes, store EBT sales. One variable per dimension was selected: percentage of population that is African-American (zip code level); people per square mile (zip code level); median income for people who have received SNAP or similar assistance (zip code level); the number of associates employed in each store; and the percentage of total stores sales attributed to EBT/SNAP.
+
+Of the 6 stores (`L - Q`), only 3 produced viable matches. However, each of the 3 matched stores had matched to more than one control stores. The closest stores, by driving distance, were selected as the tie-breaker for each matched store. Stores were sufficiently far apart, with very sparsely populated areas between, that "spill-over" was considered unlikely. That is, it is considered unlikely that a shopper near a store without Double Up would opt to drive 30 or more minutes to shop at the store *with* Double Up.
+
+This left 12 stores to be allotted to the control group and 3 treatment stores to be effectively discarded.
+
+
+#### Step 2: Scoring via Linear Probability Model {-}
+
+Assignment to treatment and control can be perfectly determined since we know and observe the criteria used for assignment: geographic distance from an initial store (node), SNAP EBT sales rank, and demographics---specifically population density and percentage African-American. A scoring function was created by fitting a linear probability model to all stores within 140 kilometers of the two initial pilot stores.
+
+$$
+\begin{aligned}
+     \mathbf{D}  &= f(\mathbf{X}, \mathbf{I}) +  \mathbf{\epsilon} \\
+            &= \alpha \mathbf{I} + \mathbf{X \beta} + \mathbf{X \odot I \gamma} + \mathbf{\epsilon} \\
+\end{aligned}
+$$
+
+$\mathbf{D} \in \{0,1 \}$ is a $n \times 1$ vector of store assignments to Double Up; $\mathbf{X}$ is an $n \times k$ vector of observable covariates
+
+The fitted values of the model were used as the score and the top 12 scoring control stores were then selected
 
 ## Methods {#methods}
+
+Empirical methods will vary by groups of stores.
 
 
 

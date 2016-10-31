@@ -26,6 +26,11 @@
 <meta name="author" content="Danton Noriega">
 
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -75,9 +80,10 @@
 <li class="chapter" data-level="1.1.1" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#the-double-up-food-bucks-program"><i class="fa fa-check"></i><b>1.1.1</b> The Double Up Food Bucks Program</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#data"><i class="fa fa-check"></i><b>1.2</b> Data</a><ul>
-<li class="chapter" data-level="" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#store-selection-overview"><i class="fa fa-check"></i>Store Selection Overview</a></li>
-<li class="chapter" data-level="" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#selection-progression-of-double-up-stores"><i class="fa fa-check"></i>Selection Progression of Double Up Stores</a></li>
+<li class="chapter" data-level="" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#overview-of-store-selection-and-expansion"><i class="fa fa-check"></i>Overview of Store Selection and Expansion</a></li>
+<li class="chapter" data-level="" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#selection-and-expansion-of-double-up-stores"><i class="fa fa-check"></i>Selection and Expansion of Double Up Stores</a></li>
 <li class="chapter" data-level="" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#expansion-on-observables"><i class="fa fa-check"></i>Expansion on Observables</a></li>
+<li class="chapter" data-level="" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#selection-of-control-stores"><i class="fa fa-check"></i>Selection of Control Stores</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#methods"><i class="fa fa-check"></i><b>1.3</b> Methods</a></li>
 </ul></li>
@@ -123,31 +129,172 @@
 <h2><span class="header-section-number">1.2</span> Data</h2>
 <p>These data come from a large grocery distributor and retailer serving multiple grocery chains. Three years of data will be made available, 2014 through 2016. These data are transaction level and will include (at least) store number, register, transaction ID, date and time of purchase, payment type, item, dollars, and quantity.</p>
 <p>Double Up implementation was considered for a single grocery chain. The chain has more than 60 stores, 17 of which were selected as “treatment” stores (with Double Up). Of the remaining stores, data is being made available from an addition 15 to serve as “controls”. The quotes here signify that these terms will be used as shorthand, but the terminology is somewhat misleading. The use of “treatment” and “control” could lead one to think store assignment was random. It was not.</p>
-<div id="store-selection-overview" class="section level3 unnumbered">
-<h3>Store Selection Overview</h3>
+<p>[TK real specific details about the data e.g. total transactions observed etc.]</p>
+<p>One important variable that will not be made available is a variable for loyalty card numbers. The company’s use of loyalty cards across its many chains was an exciting prospect. Previous transaction data from smaller independent grocery chains had no way linking purchases to a single unique identifier over time because these smaller chains did not have advanced point-of-sale systems.</p>
+<p>In earlier conversations with the company, it was understood that loyalty cards would be made available. However, months into working with the company, we were informed that this was no longer possible. According to the company’s legal department, the company cannot share any personal information about their customers. Unfortunately for us, in the loyalty card contract signed by customers, the loyalty card number itself is considered personal information, meaning loyalty card numbers fall under the same legal category as phone numbers and home addresses.</p>
+<div id="overview-of-store-selection-and-expansion" class="section level3 unnumbered">
+<h3>Overview of Store Selection and Expansion</h3>
 <p>How the 17 “treatment” stores and 15 “control” stores were selected in 2016 is important. First and foremost, selection was <em>not</em> random. Stores were either selected by the company (13 of 17) or self-selected into Double Up (4 of 17). Second, the 15 control stores were selected <em>after</em> the selection of the 17 treatment stores. Data from all remaining stores was requested but the request was denied; only 15 stores had been approved by the company’s management. Finally, and most importantly, the selection criteria for the 17 treatment stores is <em>observable</em>. The implications of this will be covered in more detail in the <a href="an-evaluation-of-the-double-up-food-bucks-program.html#methods">Methods</a> section.</p>
 </div>
-<div id="selection-progression-of-double-up-stores" class="section level3 unnumbered">
-<h3>Selection Progression of Double Up Stores</h3>
+<div id="selection-and-expansion-of-double-up-stores" class="section level3 unnumbered">
+<h3>Selection and Expansion of Double Up Stores</h3>
 <p>The first 2 stores were piloted with Double Up in 2014. Both were in geographically distinct areas (these will be referred to as “<code>Node 0</code>” and “<code>Node 1</code>”). There was a small expansion adding 3 more stores in 2015. The 3 stores were selected because they were geographically close to the 2 original pilot stores (2 close to <code>Node 0</code>, 1 close to <code>Node 1</code>). The 5 stores are referred to as the “core”. These location of these 5 stores, separated in two clusters, established the geographic constraints that were then used to determine most of the additional stores in 2016.</p>
 <p>Double Up was expanded to 12 more stores in 2016, totaling 17. Of those 12, 6 were selected due to their proximity to the 5 core stores, their SNAP EBT<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> sales figures, and similarity in surrounding demographics (high population density, more African-American). In other words, 9 of the 17 stores—excluding the initial 2 pilot stores—–were selected on a set of <em>observable</em> characteristics. The remaining 6 stores were not.</p>
 <p>Of the remaining 6 stores, 4 asked if they could be included in the program. These stores <em>self-selected</em> into Double Up, making these stores fundamentally distinct. They were considered, and then included, only because they fell within the “Top 50”. The final 2 stores were selected by the company for “strategic business decision”. The best interpretation of this is that the company thought that Double Up would provide a competitive edge to the 2 included stores given some internal calculus. How the company came to this decision is <em>unknown</em> and therefore <em>unobserved</em>.</p>
+<p>Table <a href="an-evaluation-of-the-double-up-food-bucks-program.html#tab:store-class">1.1</a> helps understand the year by year expansion of Double Up. Stores are classified as either <code>assigned</code>, <code>self-selected</code>, or <code>unobserved</code>. To be <code>assigned</code> means a stores participation in Double Up was determined (assigned) by the company; <code>self-selected</code> means the store asked the company to participate; <code>unobserved</code> means that the company selected the store to participate in Double Up but for unknown and unobserved reasons. Capital letters (i.e. A, B, C) were assigned to each store for easy reference but otherwise have no meaningful interpretation.</p>
+<table>
+<caption><span id="tab:store-class">Table 1.1: </span>Year by Year Store Selection. Stores A and B represent the initial 2014 pilot stores.</caption>
+<thead>
+<tr class="header">
+<th align="left">Store</th>
+<th align="left">2014</th>
+<th align="left">2015</th>
+<th align="left">2016</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">assigned</td>
+<td align="left">assigned</td>
+<td align="left">assigned</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">assigned</td>
+<td align="left">assigned</td>
+<td align="left">assigned</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left"></td>
+<td align="left">assigned</td>
+<td align="left">assigned</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="left"></td>
+<td align="left">assigned</td>
+<td align="left">assigned</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="left"></td>
+<td align="left">assigned</td>
+<td align="left">assigned</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">assigned</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">assigned</td>
+</tr>
+<tr class="even">
+<td align="left">H</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">assigned</td>
+</tr>
+<tr class="odd">
+<td align="left">I</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">assigned</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">assigned</td>
+</tr>
+<tr class="odd">
+<td align="left">K</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">assigned</td>
+</tr>
+<tr class="even">
+<td align="left">L</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">self-selected</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">self-selected</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">self-selected</td>
+</tr>
+<tr class="odd">
+<td align="left">O</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">self-selected</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">unobserved</td>
+</tr>
+<tr class="odd">
+<td align="left">Q</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">unobserved</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="expansion-on-observables" class="section level3 unnumbered">
 <h3>Expansion on Observables</h3>
-<p>An example expansion (using fake data) can be seen in Figure <a href="an-evaluation-of-the-double-up-food-bucks-program.html#fig:dufb-expansion">1.1</a>. In the top frame, one can see two blue dots. These blue dots simulate the first two pilot stores in 2014. The left blue dot is <code>Node 0</code> and the right blue dot is <code>Node 1</code>. The gray zones represents areas of higher population density. Dark gray is considered <em>urban</em>, defined as having a population density of 1500 persons or more per square mile. The light gray are small towns and cities, more densely populated than very rural areas, but could not be considered <em>urban</em>. The expansion in 2015 (middle frame) proceeds to the stores closest to the original pilot stores. The expansion continues to 6 more stores in 2016 (bottom frame) away from the nodes but also along areas of higher population density.</p>
-<p>Not conveyed in Figure <a href="an-evaluation-of-the-double-up-food-bucks-program.html#fig:dufb-expansion">1.1</a> is that the 2015 and 2016 expansion also moves through stores that happen to be “highly ranked”—that is, have relatively higher SNAP EBT sales.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> Also not conveyed is the fact that there is a strong correlation between geography, population density, racial composition, and SNAP EBT sales. The 2015 expansion to the most nearby stores unsurprisingly overlapped with an expansion to stores with high SNAP EBT sales and into more densely populated, African-American communities. The 2016 Double Up expansion was more explicit given that set of feasible stores dramatically increases as one moves away from each node. Double Up stores were thus specifically selected not just by geographic proximity, but also by SNAP EBT sales ranking and demographic compositions similar to the initial 2014 stores.</p>
+<p>An example expansion on <em>observables</em> (using fake data) can be seen in Figure <a href="an-evaluation-of-the-double-up-food-bucks-program.html#fig:dufb-expansion">1.1</a>. In the top frame, one can see two blue dots. These blue dots simulate the first two pilot stores in 2014. The left blue dot is <code>Node 0</code> and the right blue dot is <code>Node 1</code>. The gray zones represents areas of higher population density. Dark gray is considered <em>urban</em>, defined as having a population density of 1500 persons or more per square mile. The light gray are small towns and cities, more densely populated than very rural areas, but could not be considered <em>urban</em>. The expansion in 2015 (middle frame) proceeds to the stores closest to the original pilot stores. The expansion continues to 6 more stores in 2016 (bottom frame) away from the nodes but also along areas of higher population density.</p>
+<p>Not conveyed in Figure <a href="an-evaluation-of-the-double-up-food-bucks-program.html#fig:dufb-expansion">1.1</a> is that the 2015 and 2016 expansions also move through stores that happen to be “highly ranked”—that is, have relatively higher SNAP EBT sales.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> Also not conveyed is the fact that there is a strong correlation between geography, population density, racial composition, and SNAP EBT sales. The 2015 expansion to the most nearby stores also meant that it was an expansion to stores with high SNAP EBT sales in densely populated, African-American neighborhoods. The 2016 Double Up expansion was more explicit given that set of feasible stores substantially increases as one moves away from each node. Double Up stores were thus specifically selected not just by geographic proximity, but also by SNAP EBT sales ranking and demographic compositions similar to the initial 2014 stores.</p>
 <div class="figure" style="text-align: center"><span id="fig:dufb-expansion"></span>
 <img src="figures/expansion-v.png" alt="Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with Double Up, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame." width="1080" />
 <p class="caption">
 Figure 1.1: Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with Double Up, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame.
 </p>
 </div>
-<!-- ![TK stores-2014]() -->
+</div>
+<div id="selection-of-control-stores" class="section level3 unnumbered">
+<h3>Selection of Control Stores</h3>
+<p>Ideally, all remaining stores would have been available to use as “control” stores versus the allotted 15 stores. This was not possible. This left the added—and incredibly important—step of selecting the best set of 15 control stores.</p>
+<p>Selecting the control stores proceeded in two steps. First, stores that either self-selected or were selected using some unobservable criteria were matched using <em>Coarsened Exact Matching</em> (CEM) <span class="citation">(Iacus, King, and Porro <a href="#ref-iacus_causal_2011">2011</a>)</span>. Second, stores assigned Double Up were pooled with nearby control stores and then scored using a linear probability model. Each step is explained in detail.</p>
+<div id="step-1-coarsened-exact-matching" class="section level4 unnumbered">
+<h4>Step 1: Coarsened Exact Matching</h4>
+<p>The 6 stores classified as <code>self-selected</code> or <code>unobserved</code> (store <code>L</code> through <code>Q</code>; see Table <a href="an-evaluation-of-the-double-up-food-bucks-program.html#tab:store-class">1.1</a>) were compared against all possible control stores for matches. Matching was done across 5 dimensions: race, income, population density, store attributes, store EBT sales. One variable per dimension was selected: percentage of population that is African-American (zip code level); people per square mile (zip code level); median income for people who have received SNAP or similar assistance (zip code level); the number of associates employed in each store; and the percentage of total stores sales attributed to EBT/SNAP.</p>
+<p>Of the 6 stores (<code>L - Q</code>), only 3 produced viable matches. However, each of the 3 matched stores had matched to more than one control stores. The closest stores, by driving distance, were selected as the tie-breaker for each matched store. Stores were sufficiently far apart, with very sparsely populated areas between, that “spill-over” was considered unlikely. That is, it is considered unlikely that a shopper near a store without Double Up would opt to drive 30 or more minutes to shop at the store <em>with</em> Double Up.</p>
+<p>This left 12 stores to be allotted to the control group and 3 treatment stores to be effectively discarded.</p>
+</div>
+<div id="step-2-scoring-via-linear-probability-model" class="section level4 unnumbered">
+<h4>Step 2: Scoring via Linear Probability Model</h4>
+<p>Assignment to treatment and control can be perfectly determined since we know and observe the criteria used for assignment: geographic distance from an initial store (node), SNAP EBT sales rank, and demographics—specifically population density and percentage African-American. A scoring function was created by fitting a linear probability model to all stores within 140 kilometers of the two initial pilot stores.</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \matr{D}    &amp;= f(\matr{X}) + \matr{\epsilon} \\
+                &amp;= \matr{X} \vec \beta
+\end{aligned}
+\]</span></p>
+<p>The fitted values of the model were used as the score and the top 12 scoring control stores were then selected</p>
+</div>
 </div>
 </div>
 <div id="methods" class="section level2">
 <h2><span class="header-section-number">1.3</span> Methods</h2>
+<p>Empirical methods will vary by groups of stores.</p>
 
 </div>
 </div>
@@ -176,6 +323,9 @@ Figure 1.1: Example expansion over time from 2014 to 2016 (top to bottom) using 
 </div>
 <div id="ref-usda_nifa_usda_2015">
 <p>USDA NIFA. 2015. “USDA Awards $31 Million in Grants to Help SNAP Participants Afford Healthy Foods.” <em>USDA National Institute of Food and Agriculture</em>. <a href="https://nifa.usda.gov/resource/usda-awards-31-million-grants-help-snap-participants-afford-healthy-foods" class="uri">https://nifa.usda.gov/resource/usda-awards-31-million-grants-help-snap-participants-afford-healthy-foods</a>.</p>
+</div>
+<div id="ref-iacus_causal_2011">
+<p>Iacus, Stefano M., Gary King, and Giuseppe Porro. 2011. “Causal Inference Without Balance Checking: Coarsened Exact Matching.” <em>Political Analysis</em>, mpr013.</p>
 </div>
 </div>
 <div class="footnotes">
@@ -232,6 +382,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
