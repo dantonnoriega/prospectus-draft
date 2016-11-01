@@ -1,6 +1,8 @@
 RMD_FILES := $(filter-out _%, $(wildcard *.Rmd))
 
-all: $(RMD_FILES) pdf
+all: pdf html
+
+html:
 	rmtrash ./book-output ;\
 	cp ~/Dropbox/Scrivener/ZoteroLib.bib ./book.bib ;\
 	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')";\

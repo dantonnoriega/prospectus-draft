@@ -1,0 +1,28 @@
+
+### Expansion on Observables {-}
+
+An example expansion on *observables* (using fake data) can be seen in Figure \@ref(fig:dufb-expansion). In the top frame, one can see two blue dots. These blue dots simulate the first two pilot stores in 2014. The left blue dot is `Node 0` and the right blue dot is `Node 1`. The gray zones represents areas of higher population density. Dark gray is considered *urban*, defined as having a population density of 1500 persons or more per square mile. The light gray are small towns and cities, more densely populated than very rural areas, but could not be considered *urban*. The expansion in 2015 (middle frame) proceeds to the stores closest to the original pilot stores. The expansion continues to 6 more stores in 2016 (bottom frame) away from the nodes but also along areas of higher population density.
+
+Not conveyed in Figure \@ref(fig:dufb-expansion) is that the 2015 and 2016 expansions also move through stores that happen to be "highly ranked"---that is, have relatively higher SNAP EBT sales.^[All stores within the chain were ranked by SNAP EBT sales as a percentage of total sales.] Also not conveyed is the fact that there is a strong correlation between geography, population density, racial composition, and SNAP EBT sales. The 2015 expansion to the most nearby stores also meant that it was an expansion to stores with high SNAP EBT sales in densely populated, African-American neighborhoods. The 2016 Double Up expansion was more explicit given that set of feasible stores substantially increases as one moves away from each node. Double Up stores were thus specifically selected not just by geographic proximity, but also by SNAP EBT sales ranking and demographic compositions similar to the initial 2014 stores.
+
+```{r fig-dufb-expansion-setup, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+
+if(getOutputFormat() == "latex") pdf_yes = TRUE else pdf_yes = FALSE
+
+# set up text
+raw <- function(x) knitr::asis_output(x)
+
+a <- list()
+
+a[[1]] <- ("```{r dufb-expansion, fig.cap = 'Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with Double Up, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame.', fig.align='center', echo=FALSE}")
+a[[2]] <- ("knitr::include_graphics('figures/expansion-v.pdf')")
+if(!pdf_yes) a[[2]] <- gsub('pdf', 'png', a[[2]])
+a[[3]] <- ("```")
+
+out <- paste(a, collapse = '\n')
+```
+
+```{r fig-dufb-expansion-output, warning=FALSE, message=FALSE, eval=TRUE, echo=FALSE}
+# MUST paste the output. cannot just knit!
+raw(paste(knitr::knit(text = paste(out), quiet = TRUE)))
+```

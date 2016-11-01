@@ -1,0 +1,55 @@
+---
+knit: bookdown::preview_chapter
+---
+
+## Data
+
+These data come from a large grocery distributor and retailer serving multiple grocery chains. Three years of data will be made available, 2014 through 2016. These data are transaction level and will include (at least) store number, register, transaction ID, date and time of purchase, payment type, item, dollars, and quantity.
+
+Double Up implementation was considered for a single grocery chain. The chain has more than 60 stores, 17 of which were selected as "treatment" stores (with Double Up). Of the remaining stores, data is being made available from an addition 15 to serve as "controls". The quotes here signify that these terms will be used as shorthand, but the terminology is somewhat misleading. The use of "treatment" and "control" could lead one to think store assignment was random. It was not.
+
+[TK real specific details about the data e.g. total transactions observed etc.]
+
+One important variable that will not be made available is a variable for loyalty card numbers. The company's use of loyalty cards across its many chains was an exciting prospect. Previous transaction data from smaller independent grocery chains had no way linking purchases to a single unique identifier over time because these smaller chains did not have advanced point-of-sale systems.
+
+In earlier conversations with the company, it was understood that loyalty cards would be made available. However, months into working with the company, we were informed that this was no longer possible. According to the company's legal department, the company cannot share any personal information about their customers. Unfortunately for us, in the loyalty card contract signed by customers, the loyalty card number itself is considered personal information, meaning loyalty card numbers fall under the same legal category as phone numbers and home addresses.
+
+
+### Overview of Store Selection and Expansion {-}
+
+How the 17 "treatment" stores and 15 "control" stores were selected in 2016 is important. First and foremost, selection was *not* random. Stores were either selected by the company (13 of 17) or self-selected into Double Up (4 of 17). Second, the 15 control stores were selected *after* the selection of the 17 treatment stores. Data from all remaining stores was requested but the request was denied; only 15 stores had been approved by the company's management. Finally, and most importantly, the selection criteria for the 17 treatment stores is *observable*. The implications of this will be covered in more detail in the [Methods](#methods) section.
+
+### Selection and Expansion of Double Up Stores {-}
+
+The first 2 stores were piloted with Double Up in 2014. Both were in geographically distinct areas (these will be referred to as "`Node 0`" and "`Node 1`"). There was a small expansion adding 3 more stores in 2015. The 3 stores were selected because they were geographically close to the 2 original pilot stores (2 close to `Node 0`, 1 close to `Node 1`). The 5 stores are referred to as the "core". These location of these 5 stores, separated in two clusters, established the geographic constraints that were then used to determine most of the additional stores in 2016.
+
+Double Up was expanded to 12 more stores in 2016, totaling 17. Of those 12, 6 were selected due to their proximity to the 5 core stores, their SNAP EBT^[Electronic Benefit Transfer.] sales figures, and similarity in surrounding demographics (high population density, more African-American). In other words, 9 of the 17 stores---excluding the initial 2 pilot stores—--were selected on a set of *observable* characteristics. The remaining 6 stores were not.
+
+Of the remaining 6 stores, 4 asked if they could be included in the program. These stores *self-selected* into Double Up, making these stores fundamentally distinct. They were considered, and then included, only because they fell within the "Top 50". The final 2 stores were selected by the company for "strategic business decision". The best interpretation of this is that the company thought that Double Up would provide a competitive edge to the 2 included stores given some internal calculus. How the company came to this decision is *unknown* and therefore *unobserved*.
+
+Table \@ref(tab:store-class) helps understand the year by year expansion of Double Up. Stores are classified as either `assigned`, `self-selected`, or `unobserved`. To be `assigned` means a stores participation in Double Up was determined (assigned) by the company; `self-selected` means the store asked the company to participate; `unobserved` means that the company selected the store to participate in Double Up but for unknown and unobserved reasons. Capital letters (i.e. A, B, C) were assigned to each store for easy reference but otherwise have no meaningful interpretation.
+
+
+```{r store-class, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+
+tbl_df <- dufb_sn_df %>%
+  dplyr::arrange(-dufb_2014, -dufb_2015, -dufb_2016, unknown) %>%
+  dplyr::mutate(store_id = 1:length(store)) %>%
+  dplyr::select(store, store_id, c(4:10)) %>%
+  dplyr::mutate(type = if_else(self_selected == 1,
+    'self-selected',
+    'assigned')) %>%
+  dplyr::mutate(type = if_else(unknown == 1, 'unobserved', type)) %>%
+  dplyr::select(store_id, type, dplyr::contains('dufb'))
+
+tbl <- tbl_df %>%
+  dplyr::mutate(`2014` = if_else(dufb_2014 == 1, type, '')) %>%
+  dplyr::mutate(`2015` = if_else(dufb_2015 == 1, type, '')) %>%
+  dplyr::mutate(`2016` = if_else(dufb_2016 == 1, type, '')) %>%
+  dplyr::select(store_id, `2014`:`2016`) %>%
+  dplyr::rename(Store = store_id) %>%
+  knitr::kable(., caption = 'Year by Year Store Selection. Stores 1 and 2 represent the initial 2014 pilot stores.', booktabs = TRUE)
+tbl
+```
+
+
