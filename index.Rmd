@@ -6,6 +6,8 @@ knit: "bookdown::render_book"
 output:
     bookdown::gitbook:
         css: style.css
+        includes:
+            before_body: preamble-mathjax.tex
         config:
             toolbar:
                 position: fixed
@@ -24,16 +26,17 @@ output:
         latex_engine: xelatex
         citation_package: natbib
 documentclass: book
-mainfont: Minion Pro
-sansfont: Source Sans Pro
-monofont: Consolas
-fontsize: 11pt
-geometry: margin=1in
+fontsize: 12pt
+geometry: margin=1.2in
 papersize: letterpaper
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 ---
+
+```{r setup-all, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+knitr::opts_chunk$set(cache = TRUE)
+```
 
 
 # Overview {-}
@@ -48,7 +51,7 @@ Chapter 2 is a comparison of 3 different mechanisms for distributing Double Up: 
 
 Chapter 3 is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
 
-## Other Ideas {-}
+<!-- ## Other Ideas {-}
 
 1. **What is the redemption rate of Double Up coupons?**
     - Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
@@ -59,8 +62,9 @@ Chapter 3 is an attempt to model the consumption cycle of SNAP participants who 
     - Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?
     - Is it possible to identify a Double Up purchase if we remove Michigan Produce?
     - This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.
+ -->
 
-# Literature Review {-}
+<!-- # Literature Review {-} -->
 
 
 

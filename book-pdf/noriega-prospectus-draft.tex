@@ -1,4 +1,4 @@
-\documentclass[11pt,letterpaperpaper,]{book}
+\documentclass[12pt,letterpaperpaper,]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -13,9 +13,6 @@
     \usepackage{fontspec}
   \fi
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-    \setmainfont[]{Minion Pro}
-    \setsansfont[]{Source Sans Pro}
-    \setmonofont[Mapping=tex-ansi]{Consolas}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -24,7 +21,7 @@
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.2in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Dissertation Prospectus},
@@ -87,7 +84,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{October 31 2016}
+  \date{November 01 2016}
 
 \usepackage{booktabs}
 \usepackage{lscape}
@@ -96,6 +93,10 @@
 \newcommand{\matr}[1]{\mathbf{#1}}
 \newcommand{\blandscape}{\begin{landscape}}
 \newcommand{\elandscape}{\end{landscape}}
+
+\setromanfont[Mapping=tex-text]{Minion Pro}
+\setsansfont[Mapping=tex-text]{Source Sans Pro}
+\setmonofont[Mapping=tex-text,Scale=0.8]{Source Code Pro}
 
 \begin{document}
 \maketitle
@@ -139,55 +140,6 @@ being consumed at a high rate soon after being received. The two
 models---neoclassical and hyperbolic---will be constructed then
 calibrated using transaction data from 3 independent stores in MI where
 we can identify SNAP transactions.
-
-\section*{Other Ideas}\label{other-ideas}
-\addcontentsline{toc}{section}{Other Ideas}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{What is the redemption rate of Double Up coupons?}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Double Up coupons are, in effect, free money that can be used on ANY
-    produce conditional on the prior purchase of Michigan produce
-  \item
-    Under the assumption that consumers are rational and utility
-    maximizing, we would predict a relatively high redemption rate;
-    consumers would not leave free money on the table
-  \item
-    This is unlikely to be the case but the question is, \emph{just how
-    high (or low) is the redemption rate?} Do most coupons go
-    unredeemed?
-  \item
-    This will be a technically difficult problem as we do not have panel
-    data but the data could still be used to attempt to answer this
-    question
-  \end{itemize}
-\item
-  \textbf{What purchasing behavior distinguishes Double Up participants
-  from non-Double Up participants?}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Households have already self-selected into Double Up and non-Double
-    Up. do their purchasing patterns differ substantially?
-  \item
-    Is it possible to identify a Double Up purchase if we remove
-    Michigan Produce?
-  \item
-    This will depend a lot on how frequently Michigan produce is
-    purchased without Double Up; otherwise, MI produce purchases will be
-    a perfect predictor of Double Up transaction.
-  \end{itemize}
-\end{enumerate}
-
-\chapter*{Literature Review}\label{literature-review}
-\addcontentsline{toc}{chapter}{Literature Review}
 
 \chapter{An Evaluation of the Double Up Food Bucks
 program}\label{an-evaluation-of-the-double-up-food-bucks-program}
@@ -407,32 +359,36 @@ store to participate in Double Up but for unknown and unobserved
 reasons. Capital letters (i.e.~A, B, C) were assigned to each store for
 easy reference but otherwise have no meaningful interpretation.
 
-\begin{table}[ht]
+\begin{table}
+
+\caption{\label{tab:store-class}Year by Year Store Selection. Stores 1 and 2 represent the initial 2014 pilot stores.}
 \centering
-\begin{tabular}{rllll}
-  \hline
- & Store & 2014 & 2015 & 2016 \\ 
-  \hline
-1 & A & assigned & assigned & assigned \\ 
-  2 & B & assigned & assigned & assigned \\ 
-  3 & C &  & assigned & assigned \\ 
-  4 & D &  & assigned & assigned \\ 
-  5 & E &  & assigned & assigned \\ 
-  6 & F &  &  & assigned \\ 
-  7 & G &  &  & assigned \\ 
-  8 & H &  &  & assigned \\ 
-  9 & I &  &  & assigned \\ 
-  10 & J &  &  & assigned \\ 
-  11 & K &  &  & assigned \\ 
-  12 & L &  &  & self-selected \\ 
-  13 & M &  &  & self-selected \\ 
-  14 & N &  &  & self-selected \\ 
-  15 & O &  &  & self-selected \\ 
-  16 & P &  &  & unobserved \\ 
-  17 & Q &  &  & unobserved \\ 
-   \hline
+\begin{tabular}[t]{rlll}
+\toprule
+Store & 2014 & 2015 & 2016\\
+\midrule
+1 & assigned & assigned & assigned\\
+2 & assigned & assigned & assigned\\
+3 &  & assigned & assigned\\
+4 &  & assigned & assigned\\
+5 &  & assigned & assigned\\
+\addlinespace
+6 &  &  & assigned\\
+7 &  &  & assigned\\
+8 &  &  & assigned\\
+9 &  &  & assigned\\
+10 &  &  & assigned\\
+\addlinespace
+11 &  &  & assigned\\
+12 &  &  & self-selected\\
+13 &  &  & self-selected\\
+14 &  &  & self-selected\\
+15 &  &  & self-selected\\
+\addlinespace
+16 &  &  & unobserved\\
+17 &  &  & unobserved\\
+\bottomrule
 \end{tabular}
-\caption{Year by Year Store Selection. Stores A and B represent the initial 2014 pilot stores.} 
 \end{table}
 
 \subsection*{Expansion on Observables}\label{expansion-on-observables}
@@ -497,24 +453,24 @@ Matching}\label{step-1-coarsened-exact-matching}
 \addcontentsline{toc}{subsubsection}{Step 1: Coarsened Exact Matching}
 
 The 6 stores classified as \texttt{self-selected} or \texttt{unobserved}
-(store \texttt{L} through \texttt{Q}; see Table \ref{tab:store-class})
-were compared against all possible control stores for matches. Matching
-was done across 5 dimensions: race, income, population density, store
-attributes, store EBT sales. One variable per dimension was selected:
-percentage of population that is African-American (zip code level);
-people per square mile (zip code level); median income for people who
-have received SNAP or similar assistance (zip code level); the number of
-associates employed in each store; and the percentage of total stores
-sales attributed to EBT/SNAP.
+(stores \texttt{12} through \texttt{17}; see Table
+\ref{tab:store-class}) were compared against all possible control stores
+for matches. Matching was done across 5 dimensions: race, income,
+population density, store attributes, store EBT sales. One variable per
+dimension was selected: percentage of population that is
+African-American (zip code level); people per square mile (zip code
+level); median income for people who have received SNAP or similar
+assistance (zip code level); the number of associates employed in each
+store; and the percentage of total stores sales attributed to EBT/SNAP.
 
-Of the 6 stores (\texttt{L\ -\ Q}), only 3 produced viable matches.
-However, each of the 3 matched stores had matched to more than one
-control stores. The closest stores, by driving distance, were selected
-as the tie-breaker for each matched store. Stores were sufficiently far
-apart, with very sparsely populated areas between, that ``spill-over''
-was considered unlikely. That is, it is considered unlikely that a
-shopper near a store without Double Up would opt to drive 30 or more
-minutes to shop at the store \emph{with} Double Up.
+Of the 6 stores (stores \texttt{12} - \texttt{17}), only 3 produced
+viable matches. However, each of the 3 matched stores had matched to
+more than one control stores. The closest stores, by driving distance,
+were selected as the tie-breaker for each matched store. Stores were
+sufficiently far apart, with very sparsely populated areas between, that
+``spill-over'' was considered unlikely. That is, it is considered
+unlikely that a shopper near a store without Double Up would opt to
+drive 30 or more minutes to shop at the store \emph{with} Double Up.
 
 This left 12 stores to be allotted to the control group and 3 treatment
 stores to be effectively discarded.
@@ -534,35 +490,35 @@ pilot stores.
 
 \[
 \begin{aligned}
-     D  &= f(\matr{X}) +  \epsilon \\
-            &= \matr{X}  \beta +  \epsilon \\
-     \text{ where }s  &= \matr{X} \hat{ \beta}
+  \bm{s}  &= \widehat{P(\mathbf{D} = 1 | \bm{X}, \bm{N})} \\
+          &= \mathbf{X} \bm{\hat \beta} + \hat \alpha \mathbf{N} + \left (\mathbf{X} \odot \mathbf{N} \right ) \bm{\hat \gamma}
 \end{aligned}
 \]
 
-The fitted values of the model were used as the score and the top 12
-scoring control stores were then selected
+\(\bm{s}\) are the fitted values of the estimated linear probability
+model; \(\mathbf{D} \in \{0,1 \}\) is a \(n \times 1\) vector of store
+assignments to Double Up; \(\mathbf{X}\) is an \(n \times k\) matrix of
+normalized observable covariates that determine assignment;
+\(\mathbf{N} \in \{0, 1 \}\) is an \(n \times 1\) dummy vector denoting
+the closest pilot store aka ``Node'', where \(0\) is \texttt{Node\ 0}
+and \(1\) is \texttt{Node\ 1}. \(\odot\) represents element-wise
+multiplication aka ``Hadamard product''.
+
+Stores were sorted by the fitted values of the model, \(\bm{s}\). There
+is perfect separation between Double Up stores and those without (see
+Figure \ref{fig:score-plot}). Therefore, the top 11 stores by score
+value are all Double Up stores. The next 12 stores by score value are
+then allotted to the control group.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{noriega-prospectus-draft_files/figure-latex/score-plot-1.pdf}
+\caption{\label{fig:score-plot}Store Score vs Double Up Assignment}
+\end{figure}
 
 \hypertarget{methods}{\section{Methods}\label{methods}}
 
 Empirical methods will vary by groups of stores.
-
-\chapter{Modeling of SNAP Consumption Cycle under MI benefits
-schedule}\label{snap-consumption}
-
-\begin{itemize}
-\tightlist
-\item
-  Introduction
-\item
-  Data
-\item
-  Methods
-\item
-  Results
-\item
-  Conclusion
-\end{itemize}
 
 \bibliography{packages.bib,book.bib}
 

@@ -38,7 +38,7 @@ MathJax.Hub.Config({
   
   
 
-<link rel="next" href="literature-review.html">
+<link rel="next" href="an-evaluation-of-the-double-up-food-bucks-program.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -61,6 +61,9 @@ MathJax.Hub.Config({
 
 <body>
 
+\(
+\newcommand{\bm}[1]{\boldsymbol{\mathbf{#1}}}
+\)
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
@@ -71,10 +74,7 @@ MathJax.Hub.Config({
 <li><a href="./">Noriega Prospectus</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-ideas"><i class="fa fa-check"></i>Other Ideas</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="literature-review.html"><a href="literature-review.html"><i class="fa fa-check"></i>Literature Review</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
 <li class="chapter" data-level="1" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html"><i class="fa fa-check"></i><b>1</b> An Evaluation of the Double Up Food Bucks program</a><ul>
 <li class="chapter" data-level="1.1" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1.1" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#the-double-up-food-bucks-program"><i class="fa fa-check"></i><b>1.1.1</b> The Double Up Food Bucks Program</a></li>
@@ -87,8 +87,7 @@ MathJax.Hub.Config({
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="an-evaluation-of-the-double-up-food-bucks-program.html"><a href="an-evaluation-of-the-double-up-food-bucks-program.html#methods"><i class="fa fa-check"></i><b>1.3</b> Methods</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="snap-consumption.html"><a href="snap-consumption.html"><i class="fa fa-check"></i><b>2</b> Modeling of SNAP Consumption Cycle under MI benefits schedule</a></li>
-<li class="chapter" data-level="3" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>3</b> References</a></li>
+<li class="chapter" data-level="2" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>2</b> References</a></li>
 </ul>
 
       </nav>
@@ -109,7 +108,7 @@ MathJax.Hub.Config({
 <div id="header">
 <h1 class="title">Dissertation Prospectus</h1>
 <h4 class="author"><em>Danton Noriega</em></h4>
-<h4 class="date"><em>October 30 2016</em></h4>
+<h4 class="date"><em>November 01 2016</em></h4>
 </div>
 <div id="overview" class="section level1 unnumbered">
 <h1>Overview</h1>
@@ -117,24 +116,20 @@ MathJax.Hub.Config({
 <p>The broader policy concern is that of of improving health and food equity of SNAP participants through targeted fruit and vegetables subsidies. The focal point will be on the <a href="http://www.doubleupfoodbucks.org/"><em>Double Up Food Bucks</em></a> program run by the non-profit <em>Fair Food Network</em> based out of Michigan. A comparison will be made with another subsidy program called the <em>Healthy Incentives Pilot</em> (HIP). I will argue how and why my results from the Double Up program are more realistic and dependable than those from HIP. However, I will remain neutral on whether subsidizing fruit and vegetable purchases lead to improved health outcomes.</p>
 <p>Chapter 2 is a comparison of 3 different mechanisms for distributing Double Up: paper coupon, Loyalty card, and automatic discount. [TK need to write more].</p>
 <p>Chapter 3 is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is <em>consumption smoothing</em>. The data displays different behavior—something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models—neoclassical and hyperbolic—will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.</p>
-<div id="other-ideas" class="section level2 unnumbered">
-<h2>Other Ideas</h2>
-<ol style="list-style-type: decimal">
-<li><strong>What is the redemption rate of Double Up coupons?</strong>
-<ul>
-<li>Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce</li>
-<li>Under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table</li>
-<li>This is unlikely to be the case but the question is, <em>just how high (or low) is the redemption rate?</em> Do most coupons go unredeemed?</li>
-<li>This will be a technically difficult problem as we do not have panel data but the data could still be used to attempt to answer this question</li>
-</ul></li>
-<li><strong>What purchasing behavior distinguishes Double Up participants from non-Double Up participants?</strong>
-<ul>
-<li>Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?</li>
-<li>Is it possible to identify a Double Up purchase if we remove Michigan Produce?</li>
-<li>This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.</li>
-</ul></li>
-</ol>
-</div>
+<!-- ## Other Ideas {-}
+
+1. **What is the redemption rate of Double Up coupons?**
+    - Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
+    - Under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table
+    - This is unlikely to be the case but the question is, *just how high (or low) is the redemption rate?* Do most coupons go unredeemed?
+    - This will be a technically difficult problem as we do not have panel data but the data could still be used to attempt to answer this question
+2. **What purchasing behavior distinguishes Double Up participants from non-Double Up participants?**
+    - Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?
+    - Is it possible to identify a Double Up purchase if we remove Michigan Produce?
+    - This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.
+ -->
+<!-- # Literature Review {-} -->
+
 </div>
             </section>
 
@@ -142,7 +137,7 @@ MathJax.Hub.Config({
         </div>
       </div>
 
-<a href="literature-review.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="an-evaluation-of-the-double-up-food-bucks-program.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

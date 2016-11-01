@@ -19,7 +19,7 @@ In the past few years, some non-profit programs have started testing financial i
 Initially only available at farmer's markets, Double Up began expanding into supermarkets in 2013. This expansion accelerated in 2014 with a 5 million dollar grant from the Food Insecurity Nutrition Incentive (FINI). Double Up is now being implemented across numerous stores in the Michigan area, with similar programs being launched and funded in numerous other states. The success of the program---whether it increases the volume of fresh fruits and vegetables purchased by SNAP shoppers---depends heavily on the collection of transaction data from stores implementing (and not implementing) Double Up. These data are slowly becoming available to researchers, providing an exciting and unprecedented opportunity to better understand how financial incentives work as a public health and policy tool.
 
 
-### The Double Up Food Bucks Program
+### The Double Up Food Bucks Program {-}
 
 The non-profit organization Fair Food Networks (FFN) launched the Double Up Food Bucks program in 2009 in Detroit, Michigan. The intention of the program was to get more low-income families visiting and participating in local Detroit farmers markets. The mechanism for increasing participation was a financial incentive: a dollar-for-dollar matching subsidy for fruits and vegetables. This subsidy was accessible only to low-income families receiving SNAP benefits, who could exchange up to $20 of their benefits for a wooden token that could be used on up to $40 worth of locally grown, fresh produce.
 
@@ -60,11 +60,11 @@ Of the remaining 6 stores, 4 asked if they could be included in the program. The
 Table \@ref(tab:store-class) helps understand the year by year expansion of Double Up. Stores are classified as either `assigned`, `self-selected`, or `unobserved`. To be `assigned` means a stores participation in Double Up was determined (assigned) by the company; `self-selected` means the store asked the company to participate; `unobserved` means that the company selected the store to participate in Double Up but for unknown and unobserved reasons. Capital letters (i.e. A, B, C) were assigned to each store for easy reference but otherwise have no meaningful interpretation.
 
 
-```{r store-class, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, results = 'asis'}
+```{r store-class, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
 
 tbl_df <- dufb_sn_df %>%
   dplyr::arrange(-dufb_2014, -dufb_2015, -dufb_2016, unknown) %>%
-  dplyr::mutate(store_id = LETTERS[1:length(store)]) %>%
+  dplyr::mutate(store_id = 1:length(store)) %>%
   dplyr::select(store, store_id, c(4:10)) %>%
   dplyr::mutate(type = if_else(self_selected == 1,
     'self-selected',
@@ -78,9 +78,8 @@ tbl <- tbl_df %>%
   dplyr::mutate(`2016` = if_else(dufb_2016 == 1, type, '')) %>%
   dplyr::select(store_id, `2014`:`2016`) %>%
   dplyr::rename(Store = store_id) %>%
-  xtable(., caption = 'Year by Year Store Selection. Stores A and B represent the initial 2014 pilot stores.')
-
-printTable(tbl)
+  knitr::kable(., caption = 'Year by Year Store Selection. Stores 1 and 2 represent the initial 2014 pilot stores.', booktabs = TRUE)
+tbl
 ```
 
 
@@ -127,9 +126,9 @@ Selecting the control stores proceeded in two steps. First, stores that either s
 
 #### Step 1: Coarsened Exact Matching {-}
 
-The 6 stores classified as `self-selected` or `unobserved` (store `L` through `Q`; see Table \@ref(tab:store-class)) were compared against all possible control stores for matches. Matching was done across 5 dimensions: race, income, population density, store attributes, store EBT sales. One variable per dimension was selected: percentage of population that is African-American (zip code level); people per square mile (zip code level); median income for people who have received SNAP or similar assistance (zip code level); the number of associates employed in each store; and the percentage of total stores sales attributed to EBT/SNAP.
+The 6 stores classified as `self-selected` or `unobserved` (stores `12` through `17`; see Table \@ref(tab:store-class)) were compared against all possible control stores for matches. Matching was done across 5 dimensions: race, income, population density, store attributes, store EBT sales. One variable per dimension was selected: percentage of population that is African-American (zip code level); people per square mile (zip code level); median income for people who have received SNAP or similar assistance (zip code level); the number of associates employed in each store; and the percentage of total stores sales attributed to EBT/SNAP.
 
-Of the 6 stores (`L - Q`), only 3 produced viable matches. However, each of the 3 matched stores had matched to more than one control stores. The closest stores, by driving distance, were selected as the tie-breaker for each matched store. Stores were sufficiently far apart, with very sparsely populated areas between, that "spill-over" was considered unlikely. That is, it is considered unlikely that a shopper near a store without Double Up would opt to drive 30 or more minutes to shop at the store *with* Double Up.
+Of the 6 stores (stores `12` - `17`), only 3 produced viable matches. However, each of the 3 matched stores had matched to more than one control stores. The closest stores, by driving distance, were selected as the tie-breaker for each matched store. Stores were sufficiently far apart, with very sparsely populated areas between, that "spill-over" was considered unlikely. That is, it is considered unlikely that a shopper near a store without Double Up would opt to drive 30 or more minutes to shop at the store *with* Double Up.
 
 This left 12 stores to be allotted to the control group and 3 treatment stores to be effectively discarded.
 
@@ -140,14 +139,28 @@ Assignment to treatment and control can be perfectly determined since we know an
 
 $$
 \begin{aligned}
-     \mathbf{D}  &= f(\mathbf{X}, \mathbf{I}) +  \mathbf{\epsilon} \\
-            &= \alpha \mathbf{I} + \mathbf{X \beta} + \mathbf{X \odot I \gamma} + \mathbf{\epsilon} \\
+  \bm{s}  &= \widehat{P(\mathbf{D} = 1 | \bm{X}, \bm{N})} \\
+          &= \mathbf{X} \bm{\hat \beta} + \hat \alpha \mathbf{N} + \left (\mathbf{X} \odot \mathbf{N} \right ) \bm{\hat \gamma}
 \end{aligned}
 $$
 
-$\mathbf{D} \in \{0,1 \}$ is a $n \times 1$ vector of store assignments to Double Up; $\mathbf{X}$ is an $n \times k$ vector of observable covariates
+$\bm{s}$ are the fitted values of the estimated linear probability model; $\mathbf{D} \in \{0,1 \}$ is a $n \times 1$ vector of store assignments to Double Up; $\mathbf{X}$ is an $n \times k$ matrix of normalized observable covariates that determine assignment; $\mathbf{N} \in \{0, 1 \}$ is an $n \times 1$ dummy vector denoting the closest pilot store aka "Node", where $0$ is `Node 0` and $1$ is `Node 1`. $\odot$ represents element-wise multiplication aka "Hadamard product".
 
-The fitted values of the model were used as the score and the top 12 scoring control stores were then selected
+Stores were sorted by the fitted values of the model, $\bm{s}$. There is perfect separation between Double Up stores and those without (see Figure \@ref(fig:score-plot)). Therefore, the top 11 stores by score value are all Double Up stores. The next 12 stores by score value are then allotted to the control group.
+
+```{r score-plot, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=3, fig.cap = "Store Score vs Double Up Assignment"}
+d <- score_controls(metric='geo')
+dd <- d %>%
+  dplyr::slice(1:23) %>%
+  dplyr::mutate(assignment = 1 - control) %>%
+  dplyr::select(score, assignment) %>%
+  dplyr::mutate(`Double Up` = if_else(assignment == 1, 'Yes', 'No'))
+
+ggplot2::qplot(x = score, y = assignment, data = dd, colour = `Double Up`) +
+  theme_clean() +
+  geom_vline(aes(xintercept = .57), color = 'blue', linetype = 'dashed')
+
+```
 
 ## Methods {#methods}
 
