@@ -1,0 +1,31 @@
+bookdown::gitbook:
+  css: style.css
+  includes:
+    before_body: preamble-mathjax.tex
+  split_by: section
+  config:
+    toolbar:
+      position: fixed
+    toc:
+      collapse: subsection
+      before: |
+        <li><a href="./">Noriega Prospectus</a></li>
+    download: [pdf, epub, mobi]
+bookdown::html_chapters:
+  css: [style.css, toc.css]
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  keep_tex: yes
+  dev: "cairo_pdf"
+  latex_engine: xelatex
+  citation_package: natbib
+  template: null
+  pandoc_args: --chapters
+  toc_depth: 2
+  toc_unnumbered: no
+  toc_appendix: yes
+  fig_caption: true
+  fig_width: 6.4
+  fig_height: 4
+  quote_footer: ["\\VA{", "}{}"]
