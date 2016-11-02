@@ -1,4 +1,10 @@
-book_filename: "noriega-prospectus-draft.Rmd"
+book_filename: noriega-prospectus-draft
+repo: https://github.com/ultinomics/prospectus-draft/
+clean: [packages.bib, bookdown.bbl]
+language:
+  label:
+    fig: "FIGURE "
+    tab: "TABLE "
 chapter_name: ""
 before_chapter_script: "helpers.R"
-output_dir: 'book-output'
+output_dir: 'docs'

@@ -29,16 +29,19 @@ $\bm{s}$ are the fitted values of the estimated linear probability model; $\math
 
 Stores were sorted by the fitted values of the model, $\bm{s}$. There is perfect separation between Double Up stores and those without (see Figure \@ref(fig:score-plot)). Therefore, the top 11 stores by score value are all Double Up stores. The next 12 stores by score value are then allotted to the control group.
 
-```{r score-plot, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=3, fig.cap = "Store Score vs Double Up Assignment"}
-d <- score_controls(metric='geo')
+```{r score-plot, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=4, fig.cap = "Store Score vs Double Up Assignment"}
+# d <- score_controls(metric='drive')
+# saveRDS(d, 'data/score-metric-driving.rds')
+d <- readRDS('data/score-metric-driving.rds')
 dd <- d %>%
   dplyr::slice(1:23) %>%
   dplyr::mutate(assignment = 1 - control) %>%
   dplyr::select(score, assignment) %>%
-  dplyr::mutate(`Double Up` = if_else(assignment == 1, 'Yes', 'No'))
+  dplyr::mutate(`Double Up` = dplyr::if_else(assignment == 1, 'Yes', 'No'))
 
-ggplot2::qplot(x = score, y = assignment, data = dd, colour = `Double Up`) +
-  theme_clean() +
-  geom_vline(aes(xintercept = .57), color = 'blue', linetype = 'dashed')
+ggplot2::ggplot(data = dd) + 
+    ggplot2::geom_point(aes(x = score, y = assignment, colour = `Double Up`), size = 3) +
+    theme_clean() +
+    geom_vline(aes(xintercept = .57), color = 'blue', linetype = 'dashed')
 
 ```

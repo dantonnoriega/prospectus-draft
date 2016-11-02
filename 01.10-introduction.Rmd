@@ -1,10 +1,6 @@
----
-knit: bookdown::preview_chapter
----
+# An Evaluation of the Double Up Food Bucks program {#chapter-1}
 
-# An Evaluation of the Double Up Food Bucks program
-
-## Introduction
+## Introduction {#intro-1}
 
 Unhealthy eating is expensive. Obesity, heart disease, and other metabolic risk factors (stroke, type II diabetes, etc) are chronic conditions that account for more than `r round((276.2 + 1226 - (78 + 425.9))/3, digits=2)` billion dollars annually in health care expenditures [@chatterjee_checkup_2014]. More importantly, diseases linked to poor diet account for hundreds of thousands of death each year. Heart disease alone is the leading cause of death for all persons in the US, with stroke fifth and diabetes seventh [@national_center_for_health_statistics_health_2015]. Improving dietary health of American households has therefore become an ever-increasing priority for the United States.
 

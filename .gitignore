@@ -1,2 +1,7 @@
 .gitignore
 _bookdown_files/*
+_book_serve/*
+_noriega-prospectus-draft_cache/*
+_book-pdf/*
+
+

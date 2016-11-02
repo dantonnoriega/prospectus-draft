@@ -3,39 +3,17 @@ title: "Dissertation Prospectus"
 author: "Danton Noriega"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
 knit: "bookdown::render_book"
-output:
-    bookdown::gitbook:
-        css: style.css
-        includes:
-            before_body: preamble-mathjax.tex
-        config:
-            toolbar:
-                position: fixed
-            toc:
-                collapse: no
-                before: |
-                    <li><a href="./">Noriega Prospectus</a></li>
-    bookdown::pdf_book:
-        fig_caption: true
-        fig_width: 6.4
-        fig_height: 4
-        keep_tex: yes
-        md_extensions: +raw_tex
-        includes:
-            in_header: preamble.tex
-        latex_engine: xelatex
-        citation_package: natbib
-documentclass: book
+documentclass: krantz
 fontsize: 12pt
 geometry: margin=1.2in
 papersize: letterpaper
-bibliography: [book.bib, packages.bib]
+bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
 ---
 
 ```{r setup-all, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
-knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(cache = FALSE)
 ```
 
 
