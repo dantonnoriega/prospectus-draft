@@ -1,5 +1,6 @@
 bookdown::gitbook:
   css: style.css
+  keep_md: yes
   includes:
     before_body: preamble-mathjax.tex
   split_by: section
