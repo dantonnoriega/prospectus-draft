@@ -6,7 +6,7 @@ Danton Noriega
 
 
 
-# Overview {-}
+# Overview
 
 Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks (Double Up) program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A difference-in-difference between stores using Double Up (treatment) and those without (control) will be used to measure the size of the effect.
 
@@ -43,13 +43,17 @@ Chapter 3 is a descriptive paper on how Durham Social Services spends TANF dolla
 
 # An Evaluation of the Double Up Food Bucks program {#chapter-1}
 
-## Introduction {#intro-1}
+## Introduction {#intro-1 -}
 
-Unhealthy eating is expensive. Chronic diet-related conditions like obesity, heart disease, and other metabolic risk factors (stroke, type II diabetes, etc) are estimated to cost the US health care system between 200 to 400 billion dollars annually [@cawley_medical_2012; @chatterjee_checkup_2014]. More importantly, diseases linked to poor diet account for hundreds of thousands of death each year. Heart disease alone is the leading cause of death for all persons in the US, with stroke fifth and diabetes seventh [@national_center_for_health_statistics_health_2015]. Improving dietary health of American households has therefore become an increasing priority for the United States. 
+**Part 1**
 
-Obesity and heart disease rates vary by income, affecting more low-income families than middle- and high-income families. Poverty and poor health outcomes, in turn, correlate with food insecurity and poor diet. Research on the dietary patterns of households receiving Supplemental Nutrition Assistance (SNAP) benefits has found that they are significantly *less* likely to meet USDA dietary guidelines than the average US household and much *more* likely to consume unhealthy foods [@andreyeva_dietary_2015; @nguyen_supplemental_2015; @wolfson_fruit_2015]. A smaller set of research has found that SNAP households, at best, consume same amount of unhealthy foods (e.g. sugar-sweetened beverages, baked goods, snacks, candy, etc) compared to non-households and ineligible households [@todd_caloric_2014; @hoynes_snap_2014]. In other words, SNAP households consume foods that are less healthy or about the same as ineligible SNAP households. This is a concerning result. Most US households purchase and consume far too much meat and foods rich in sugars and fats, and far too few fruits, vegetables and whole grains [@usda_scientific_2015; @frazao_high_1999]. 
+Unhealthy eating is expensive. Chronic diet-related conditions like obesity, heart disease, and other metabolic risk factors (stroke, type II diabetes, etc) are estimated to cost the US health care system between 200 to 400 billion dollars annually [@cawley_medical_2012; @chatterjee_checkup_2014]. More importantly, diseases linked to poor diet account for hundreds of thousands of death each year. Heart disease alone is the leading cause of death for all persons in the US, with stroke fifth and diabetes seventh [@national_center_for_health_statistics_health_2015]. Improving the diet of Americans has therefore become an increasing priority for the United States, especially for struggling families.
 
-To qualify for SNAP, a household must be sufficiently budget constrained that hunger is considered likely without cash assistance. SNAP is first and foremost an anti-hunger program, not health and nutrition program. As a consequence, SNAP beneficiaries can often not afford the luxury of substituting healthy foods for unhealthy foods when unhealthy foods can be cheaper, more accessible, and take less time to prepare. It is a costly trade-off between hunger and health. 
+Obesity and heart disease rates vary by income, affecting more low-income families than middle- and high-income families. Poverty and poor health outcomes, in turn, correlate with food insecurity and poor diet. Research on the dietary patterns of households receiving Supplemental Nutrition Assistance (SNAP) benefits has found that they are significantly *less* likely to meet USDA dietary guidelines than the average US household and much *more* likely to consume unhealthy foods [@andreyeva_dietary_2015; @nguyen_supplemental_2015; @wolfson_fruit_2015]. A smaller set of research has found that SNAP households, at best, consume same amount of unhealthy foods (e.g. sugar-sweetened beverages, baked goods, snacks, candy, etc) compared to non-households and ineligible households [@todd_caloric_2014; @hoynes_snap_2014]. In other words, SNAP households consume foods that are less healthy or about the same as ineligible SNAP households. This is a concerning result given that most US households already purchase and consume far too much meat and foods rich in sugars and fats, and far too few fruits, vegetables and whole grains [@usda_scientific_2015; @frazao_high_1999].
+
+However, SNAP is first and foremost an anti-hunger program, not health and nutrition program. To qualify for SNAP, a household must be sufficiently budget constrained that **hunger** is considered likely without cash assistance. Eligibility, is therefore, only a function of income.
+
+There has been extensive research on the role that SNAP does, can, or should play in helping improve the health of a struggling families. As a consequence, SNAP beneficiaries can often not afford the luxury of substituting healthy foods for unhealthy foods when unhealthy foods can be cheaper, more accessible, and take less time to prepare. It is a costly trade-off between hunger and health. 
 
 **Note**: I need to find a better way to include @blumenthal_strategies_2014; @leung_qualitative_2013; @cawley_economy_2015. All combined, they provide a solid review of what experts see as barriers for healthy food for SNAP beneficiaries as well as the recommendations to improve their diets.
 
@@ -86,10 +90,10 @@ The availability of these data will provide an unprecedented look into how SNAP 
 
 This paper aims to evaluate the effectiveness of the Double Up Food Bucks.
 
-<!--chapter:end:01.10-introduction.Rmd-->
+<!--chapter:end:01.11-introduction.Rmd-->
 
 
-## Data {#data-1}
+## Data {#data-1 -}
 
 These data come from a large grocery distributor and retailer serving multiple grocery chains. Three years of data will be made available, 2014 through 2016. These data are transaction level and will include (at least) store number, register, transaction ID, date and time of purchase, payment type, item, dollars, and quantity.
 
@@ -201,7 +205,7 @@ Stores were sorted by the fitted values of the model, $\bm{s}$. There is perfect
 <!--chapter:end:01.32-store-selection.Rmd-->
 
 
-## Methods {#methods-1}
+## Methods {#methods-1 -}
 
 ### Part 1: Mixed Methods {-}
 

@@ -3,11 +3,11 @@ title: "Dissertation Prospectus"
 author: "Danton Noriega"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
 knit: "bookdown::render_book"
-documentclass: krantz
+documentclass: book
 fontsize: 12pt
 geometry: margin=1.2in
 papersize: letterpaper
-bibliography: [book.bib]
+bibliography: [bib/book.bib]
 biblio-style: apalike
 link-citations: yes
 ---
@@ -17,7 +17,7 @@ knitr::opts_chunk$set(cache = FALSE)
 ```
 
 
-# Overview {-}
+# Overview
 
 Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks (Double Up) program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A difference-in-difference between stores using Double Up (treatment) and those without (control) will be used to measure the size of the effect.
 

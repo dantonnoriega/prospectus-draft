@@ -4,7 +4,7 @@ all: pdf html
 
 html:
 	rmtrash ./docs ;\
-	cp ~/Dropbox/Scrivener/ZoteroLib.bib ./book.bib ;\
+	cp ~/Dropbox/Scrivener/ZoteroLib.bib ./latex/book.bib ;\
 	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
 
 pdf: $(RMD_FILES)

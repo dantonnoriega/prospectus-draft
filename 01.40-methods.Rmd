@@ -1,4 +1,4 @@
-## Methods {#methods-1}
+## Methods {#methods-1 -}
 
 ### Part 1: Mixed Methods {-}
 

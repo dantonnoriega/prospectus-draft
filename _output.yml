@@ -2,7 +2,7 @@ bookdown::gitbook:
   css: style.css
   keep_md: yes
   includes:
-    before_body: preamble-mathjax.tex
+    before_body: latex/preamble-mathjax.tex
   split_by: section
   config:
     toolbar:
@@ -16,17 +16,17 @@ bookdown::html_chapters:
   css: [style.css, toc.css]
 bookdown::pdf_book:
   includes:
-    in_header: preamble.tex
+    in_header: latex/preamble.tex
+    before_body: latex/before_body.tex
+    after_body: latex/after_body.tex
   keep_tex: yes
   dev: "cairo_pdf"
   latex_engine: xelatex
   citation_package: natbib
   template: null
-  pandoc_args: --chapters
-  toc_depth: 2
-  toc_unnumbered: no
-  toc_appendix: yes
+  pandoc_args: --top-level-division=chapter
+  toc: yes
+  toc_depth: 3
   fig_caption: true
   fig_width: 6.4
   fig_height: 4
-  quote_footer: ["\\VA{", "}{}"]
