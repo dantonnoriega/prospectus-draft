@@ -1,3 +1,30 @@
 ## Methods {#methods-1}
 
-Empirical methods will vary by groups of stores.
+### Part 1: Mixed Methods {-}
+
+A mixture of methods will be used. This is a consequence of the store selection issue outline in the data section.
+
+### Part 2: Methods for Selection on Observables {-}
+
+Analysis of stores selected using *known* and *observable* criteria.  
+
+2. **Sample**: 11 Treated stores, 12 Control Stores across 3 years, weekly values
+    3. Within-group and between-group variation
+        4. We lose some within-group variation as the 2 pilot stores are only ever observed as treated stores.
+    4. Stores enter in waves. The staggering is used to produce extra variation between groups.
+    5. T is 58 x 3 (weeks)
+        6. Weeks is important because of MI SNAP schedule
+    7. N is the same across time but the staggering shifts N for treated and control.
+        8. **Table**: Create table showing the change in N subsample.   
+4. **Method 1**: Difference in Differences with FE
+    5. DinD seems appropriate.
+    6. FE should remove any store-specific time-invariant attributes.
+3. **Method 2**: Regression Discontinuity
+    4. **Fear 1:** using a running variable that is a function of other variables. Only seen one paper reference anything beyond one running variable [@papay_extending_2011]. Never seen a running variable that is score function.
+    5.  **Fear 2**:  sample size here is small. RD performs better with large sample size.
+### Part 3: DinD with matching
+
+Tiny analysis of the 3 stores that self-selected and were matched to 3 other stores.
+
+3. **Method:** Difference in difference been years 2015 and 2016
+    3. Power here will be small. Total N will be 6. Nothing will be significant. But need to be transparent.
