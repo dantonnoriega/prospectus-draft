@@ -41,9 +41,9 @@ Chapter 3 is a descriptive paper on how Durham Social Services spends TANF dolla
 <!--chapter:end:index.Rmd-->
 
 
-## An Evaluation of the Double Up Food Bucks program {#chapter-1}
+# An Evaluation of the Double Up Food Bucks program {#chapter-1}
 
-### Introduction {#intro-1}
+## Introduction {#intro-1}
 
 Unhealthy eating is expensive. Chronic diet-related conditions like obesity, heart disease, and other metabolic risk factors (stroke, type II diabetes, etc) are estimated to cost the US health care system between 200 to 400 billion dollars annually [@cawley_medical_2012; @chatterjee_checkup_2014]. More importantly, diseases linked to poor diet account for hundreds of thousands of death each year. Heart disease alone is the leading cause of death for all persons in the US, with stroke fifth and diabetes seventh [@national_center_for_health_statistics_health_2015]. Improving dietary health of American households has therefore become an increasing priority for the United States. 
 
@@ -55,24 +55,24 @@ To qualify for SNAP, a household must be sufficiently budget constrained that hu
 
 ||But SNAP is also federal aid program. In response to seeing federal dollars being spent on unhealthy foods, some policy makers have suggested making SNAP more like the Woman, Infants, and Children (WIC) program [@scott_wisconsin_2013]. The WIC program provides food vouchers which limit households to a select group of products. These products are specifically selected to be healthy to ensure women and their children receive nutritious, healthy foods. The use of WIC benefits, by design, places restrictions on food choices. This is in contrast to SNAP where there are few restrictions and households are free to purchase cookies, chips, soda, and any other assortment of processed foods that have no WIC voucher equivalent.||
 
-For many SNAP beneficiaries, freedom of product choice is what makes the SNAP program popular and easy to use [@anne-marie_lindsey_wic_2013; @edin_snap_2013]. Rather than change SNAP and make it more restrictive like WIC, the USDA's Food and Nutrition Services (FNS) has instead renewed its efforts to combat obesity by providing educational materials and "toolkits" to states [@multiple_supplemental_2017]. But of greater interest is how the USDA is also beginning to test out financial incentives as a way to improve the diet of SNAP beneficiaries.
+For many SNAP beneficiaries, freedom of product choice is what makes the SNAP program popular and easy to use [@lindsey_wic_2013; @edin_snap_2013]. Rather than change SNAP and make it more restrictive like WIC, the USDA's Food and Nutrition Services (FNS) has instead renewed its efforts to combat obesity by providing educational materials and "toolkits" to states [@multiple_supplemental_2017]. But of greater interest is how the USDA is also beginning to test out financial incentives as a way to improve the diet of SNAP beneficiaries.
 
-### Financial Incentives to Encourage Healthy Food Purchases
+### Financial Incentives to Encourage Healthy Food Purchases {-}
 
 Section 4208.(b) of the Agricultural Act of 2014 established the Food Insecurity Nutrition Initiative (FINI). The allocation of $100 million dollars to FINI suggests that the federal government has started to recognize that ineffectiveness of past policies to change the purchasing habits of SNAP participating households. Moving forward, the federal and state governments may play a more active role to increasing the quality and healthiness of foods accessible to SNAP households. For the moment, the federal government appears unwilling to change purchasing patterns by restricting food choice. Instead, the government is opting to pilot incentives-based programs.
 
 The incentive programs piloted by FINI grants aim to make it easier and more affordable for SNAP households to purchase (and hopefully consume) healthier foods without restricting choice.  However, not enough evidence exists yet to know whether, in practice, incentives-based programs are more effective than restriction-based ones---or if effective at all. This is why all programs funded through FINI grants must agree to be properly evaluated. 
 
-Of specific interest is Double Up Food Bucks (Double Up), an incentives-based program funded by FINI. Double Up, launched in 2009 by the non-profit organization Fair Food Networks (FFN), doubles the purchasing power of SNAP recipients buying produce. Dollars spent on Michigan produce are match up to $20 dollars, but the matching funds can only be used to purchase more fruits and vegetables at a later date. The program is considered by FFN to be a "three-fold" win: it helps local low-income families buy more fresh produce, provides new customers for local farmers, and stimulates the local food economy [@fairfoodnetwork_double_2014].
+Of specific interest is Double Up Food Bucks (Double Up), an incentives-based program funded by FINI. Double Up, launched in 2009 by the non-profit organization Fair Food Networks (FFN), doubles the purchasing power of SNAP recipients buying produce. Dollars spent on Michigan produce are match up to $20 dollars, but the matching funds can only be used to purchase more fruits and vegetables at a later date. The program is considered by FFN to be a "three-fold" win: it helps local low-income families buy more fresh produce, provides new customers for local farmers, and stimulates the local food economy [@fair_food_network_double_2014].
 
 
-# The Double Up Food Bucks Program
+### The Double Up Food Bucks Program {-}
 
 The non-profit organization Fair Food Networks (FFN) launched the Double Up Food Bucks (Double Up) program in 2009 in Detroit, Michigan. The intention of the program was to get more low-income families visiting and participating in local Detroit farmers markets. The mechanism for increasing participation was a financial incentive: a dollar-for-dollar match for every for fruits and vegetables. This subsidy was accessible only to low-income families receiving SNAP benefits, who could exchange up to $20 of their benefits for a wooden token that could be used on up to $40 worth of locally grown, fresh produce. 
 
-The Double Up program was considered successful given it had expanded to more than 150 farmers markets in 2014 from just 5 farmers markets in 2009. SNAP benefits have been used more than 200,000 times to purchase fresh produce, with more than 10,000 first time SNAP customers visiting farmers markets in 2013 alone [@fairfoodnetwork_double_2014]. The program is considered by Fair Food Network to be a "three-fold" win given that the program helps local low-income families buy more fresh produce, provides new customers for local farmers, and stimulates the local food economy. Relative to farmers markets in other states, Double Up did seem to be bringing in substantially more SNAP dollars ($1.7 million in Michigan versus $307,000 in Illinois, the second largest). 
+The Double Up program was considered successful given it had expanded to more than 150 farmers markets in 2014 from just 5 farmers markets in 2009. SNAP benefits have been used more than 200,000 times to purchase fresh produce, with more than 10,000 first time SNAP customers visiting farmers markets in 2013 alone [@fair_food_network_double_2014]. The program is considered by Fair Food Network to be a "three-fold" win given that the program helps local low-income families buy more fresh produce, provides new customers for local farmers, and stimulates the local food economy. Relative to farmers markets in other states, Double Up did seem to be bringing in substantially more SNAP dollars ($1.7 million in Michigan versus $307,000 in Illinois, the second largest). 
 
-### From Farmers Markets to Grocery Stores
+### From Farmers Markets to Grocery Stores {-}
 
 By successfully expanding the program over 5 years into many different communities, FFN established itself as a consistent and reliable partner in numerous local farmers markets across many diverse communities. In short, it proved that Double Up was scalable. The problem, however, is that while FFN was able to prove they could successfully scale Double Up across other farmers markets, FFN had not yet proven they could expand Double Up into local supermarkets and grocery stores.
 
@@ -203,7 +203,34 @@ Stores were sorted by the fitted values of the model, $\bm{s}$. There is perfect
 
 ## Methods {#methods-1}
 
-Empirical methods will vary by groups of stores.
+### Part 1: Mixed Methods {-}
+
+A mixture of methods will be used. This is a consequence of the store selection issue outline in the data section.
+
+### Part 2: Methods for Selection on Observables {-}
+
+Analysis of stores selected using *known* and *observable* criteria.  
+
+2. **Sample**: 11 Treated stores, 12 Control Stores across 3 years, weekly values
+    3. Within-group and between-group variation
+        4. We lose some within-group variation as the 2 pilot stores are only ever observed as treated stores.
+    4. Stores enter in waves. The staggering is used to produce extra variation between groups.
+    5. T is 58 x 3 (weeks)
+        6. Weeks is important because of MI SNAP schedule
+    7. N is the same across time but the staggering shifts N for treated and control.
+        8. **Table**: Create table showing the change in N subsample.   
+4. **Method 1**: Difference in Differences with FE
+    5. DinD seems appropriate.
+    6. FE should remove any store-specific time-invariant attributes.
+3. **Method 2**: Regression Discontinuity
+    4. **Fear 1:** using a running variable that is a function of other variables. Only seen one paper reference anything beyond one running variable [@papay_extending_2011]. Never seen a running variable that is score function.
+    5.  **Fear 2**:  sample size here is small. RD performs better with large sample size.
+### Part 3: DinD with matching
+
+Tiny analysis of the 3 stores that self-selected and were matched to 3 other stores.
+
+3. **Method:** Difference in difference been years 2015 and 2016
+    3. Power here will be small. Total N will be 6. Nothing will be significant. But need to be transparent.
 
 <!--chapter:end:01.40-methods.Rmd-->
 
