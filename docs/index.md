@@ -14,9 +14,9 @@ The broader policy concern is that of of improving health and food equity of SNA
 
 [Double Up]: http://www.doubleupfoodbucks.org/
 
-Chapter 2 is a comparison of 3 different mechanisms for distributing Double Up: paper coupon, Loyalty card, and automatic discount. [TK need to write more].
+Chapter 2 is an exploration of how the basket of products purchased by SNAP shoppers changes after the introduction of DUFB. This will use a few different sets of data where one is able to link purchases to individuals.
 
-Chapter 3 is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
+Chapter 3 is a descriptive paper on how Durham Social Services spends TANF dollars. There is no uniformity between how different states and local governments use TANF funds. There is also little published data research.
 
 <!-- ## Other Ideas {-}
 
@@ -29,6 +29,8 @@ Chapter 3 is an attempt to model the consumption cycle of SNAP participants who 
     - Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?
     - Is it possible to identify a Double Up purchase if we remove Michigan Produce?
     - This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.
+3. **How does the snap benefit cycle affect purchasing patters.** 
+    - This is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
  -->
 
 <!-- # Literature Review {-} -->
