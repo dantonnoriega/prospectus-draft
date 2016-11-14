@@ -159,7 +159,7 @@ Not conveyed in Figure \@ref(fig:dufb-expansion) is that the 2015 and 2016 expan
 
 
 <div class="figure" style="text-align: center">
-<img src="figures/expansion-v.png" alt="Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with Double Up, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame." width="2160" />
+<img src="figures/expansion-v.png" alt="Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with Double Up, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame." width="691" />
 <p class="caption">(\#fig:dufb-expansion)Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with Double Up, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame.</p>
 </div>
 
