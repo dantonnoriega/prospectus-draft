@@ -5,7 +5,7 @@ date: '`r format(Sys.Date(), "%B %d, %Y")`'
 knit: "bookdown::render_book"
 documentclass: book
 fontsize: 12pt
-geometry: margin=1.25in
+geometry: margin=1in
 papersize: letterpaper
 bibliography: [bib/book.bib]
 biblio-style: apalike
@@ -19,16 +19,14 @@ knitr::opts_chunk$set(cache = FALSE, dpi = 300)
 
 # Overview
 
-Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks (Double Up) program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
+Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
 
-Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is financial incentive designed to increase fruit and vegetables consumption. The focal point will be on the [*Double Up Food Bucks*][Double Up] program run by the non-profit *Fair Food Network* based out of Michigan. A comparison will be made with another financial incentive program called the *Healthy Incentives Pilot* (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.
+Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is a financial incentive---Double Up Food Bucks---designed to increase fruit and vegetables consumption. A comparison will be made with another financial incentive program called the *Healthy Incentives Pilot* (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.
 
-[Double Up]: http://www.doubleupfoodbucks.org/
-
-
+<!-- 
 Chapter 2 is an exploration of how the basket of products purchased by SNAP shoppers changes after the introduction of DUFB. This will use a few different sets of data where one is able to link purchases to individuals.
 
-Chapter 3 is a descriptive paper on how Durham Social Services spends TANF dollars. There is no uniformity between how different states and local governments use TANF funds. There is also little published data research.
+Chapter 3 is a descriptive paper on how Durham Social Services spends emergency assistance dollars, such as Temporary Assistance for Needy Families (TANF). There is no uniformity between how different states and local governments use TANF funds. There is also little published data research. -->
 
 <!-- ## Other Ideas {-}
 
