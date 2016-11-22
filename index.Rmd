@@ -1,11 +1,11 @@
 ---
-title: "Dissertation Prospectus"
+title: "DRAFT Dissertation Prospectus"
 author: "Danton Noriega"
-date: '`r format(Sys.Date(), "%B %d %Y")`'
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
 knit: "bookdown::render_book"
 documentclass: book
 fontsize: 12pt
-geometry: margin=1.2in
+geometry: margin=1.25in
 papersize: letterpaper
 bibliography: [bib/book.bib]
 biblio-style: apalike
@@ -19,11 +19,12 @@ knitr::opts_chunk$set(cache = FALSE, dpi = 300)
 
 # Overview
 
-Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks (Double Up) program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A difference-in-difference between stores using Double Up (treatment) and those without (control) will be used to measure the size of the effect.
+Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks (Double Up) program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
 
-The broader policy concern is that of of improving health and food equity of SNAP participants through targeted fruit and vegetables subsidies. The focal point will be on the [*Double Up Food Bucks*][Double Up] program run by the non-profit *Fair Food Network* based out of Michigan. A comparison will be made with another subsidy program called the *Healthy Incentives Pilot* (HIP). I will argue how and why my results from the Double Up program are more realistic and dependable than those from HIP. However, I will remain neutral on whether subsidizing fruit and vegetable purchases lead to improved health outcomes.
+Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is financial incentive designed to increase fruit and vegetables consumption. The focal point will be on the [*Double Up Food Bucks*][Double Up] program run by the non-profit *Fair Food Network* based out of Michigan. A comparison will be made with another financial incentive program called the *Healthy Incentives Pilot* (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.
 
 [Double Up]: http://www.doubleupfoodbucks.org/
+
 
 Chapter 2 is an exploration of how the basket of products purchased by SNAP shoppers changes after the introduction of DUFB. This will use a few different sets of data where one is able to link purchases to individuals.
 
