@@ -17,7 +17,7 @@ knitr::opts_chunk$set(cache = FALSE, dpi = 300)
 ```
 
 
-# Overview
+# Overview {-}
 
 Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
 
