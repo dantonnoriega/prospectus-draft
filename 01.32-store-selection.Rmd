@@ -5,7 +5,7 @@ Ideally, all remaining stores would have been available to use as a control grou
 
 Selecting the control stores proceeded in two steps. First, stores that either self-selected or were selected using some unobservable criteria were matched using *Coarsened Exact Matching* (CEM) [@iacus_causal_2011]. Second, stores assigned Double Up were pooled with nearby control stores and then scored using a linear probability model. Each step is explained in detail.
 
-#### Step 1: Coarsened Exact Matching {-}
+*Step 1: Coarsened Exact Matching*
 
 The 6 stores classified as `self-selected` or `unobserved` (stores `12` through `17`; see Table \@ref(tab:store-class)) were compared against all possible control stores for matches. Matching was done across 5 dimensions: race, income, population density, store attributes, store EBT sales. One variable per dimension was selected: percentage of population that is African-American (zip code level); people per square mile (zip code level); median income for people who have received SNAP or similar assistance (zip code level); the number of associates employed in each store; and the percentage of total stores sales attributed to EBT/SNAP.
 
@@ -14,7 +14,7 @@ Of the 6 stores (stores `12` - `17`), only 3 produced viable matches. However, e
 This left 12 stores to be allotted to the control group and 3 treatment stores to be effectively discarded.
 
 
-#### Step 2: Scoring via Linear Probability Model {-}
+*Step 2: Scoring via Linear Probability Model*
 
 Assignment to treatment and control can be perfectly determined since we know and observe the criteria used for assignment: geographic distance from an initial store (node), SNAP EBT sales rank, and demographics---specifically population density and percentage African-American. A scoring function was created by fitting a linear probability model to all stores within 140 kilometers of the two initial pilot stores.
 

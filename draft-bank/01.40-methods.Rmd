@@ -1,8 +1,57 @@
-## Methods {#methods-1 -}
+## Overview of Proposed Methods {#methods-1 -}
 
-A mixture of methods will be used. This is a consequence of the store selection issue outline in the data section. The main analysis will comprise the stores where we have been made aware of how and why they were selected. A smaller analysis, in attempts to make use of as much data as possible, will be done using the 3 “self-selected” stores that were then matched using CEM.
+I will perform two separate analyses. This is a consequence of the store selection issue outline in the data section. The main analysis will be performed on the 9 *assigned* stores and 12 *control* stores.^[I'm excluding the 2 pilot store because they are never observed without DUFB.] In attempts to make use of as much data as possible, I will also perform a smaller analysis with the 3 *self-selected* stores matched using CEM. (Please see the [Data]{#data-1} Section and Table \@ref(tab:store-class)) for more about *assigned* and *self-selected* stores.)
 
-### Part 1: Methods for Selection on Observables {-}
+Difference-in-Differences (DD) and Regression Discontinuity (RD) will comprise the main analysis. DD will be the only method for the second smaller analysis. I outline each analysis and its methods in the next section.
+
+The unit of analysis will be the store, not the individual; the data cannot be linked to individuals. I assume the DUFB incentive, if effective, will have a store-level effect. That is, if a store's implementation of DUFB affects individual behavior, the effect should be measurable after aggregating over all observed transactions. My proposed analyses depend on this assumption but I am confident the effect will be measurable.
+
+Time will be broken into weeks. The week of one year will be compared to the same week in the following year. This is for three main reasons. First, there is enough data per store to make precise estimates at the weekly level. Given the small sample since ("small N"), expanding the amount of observations along time ("bigger T") will benefit the panel models. Second, SNAP spending is cyclical, peeking in the 2nd week. This is due to the state's monthly SNAP benefits transfer schedule. Benefits are distributed every odd day of the month between the 3rd and 21st. Each day maps to the digits `0` through `9`. SNAP participants receive their benefits once a month on the day corresponding to the last digit of their SNAP ID number. For example, ID numbers that end in `0` receive their benefits on the 3rd of each month. SNAP EBT benefits are spent quickly. As a result, there are always fewer SNAP purchases during the 4th week of the month. And fewer SNAP benefits means fewer transaction capable of receiving the DUFB incentive. I believe it is better to capture this behavior in a model versus smoothing it out by aggregating at the monthly level. Third, it captures seasonal spikes that would also be smoothed out if aggregated to the monthly level. I think it will be useful comparing, say, the the week leading up the Thanksgiving between stores with and without DUFB.
+
+The week-to-week cyclical pattern of SNAP EBT spending can be observed in Figure \@ref(fig:trx-cycle). (Note that these are from a different data source and different store chain, but from the same US state.) At the start of the each month, SNAP EBT transactions (red line) increase until peeking at the second week. The count then declines steadily through the 4th week before once again spiking during the 1st week of the following month. (Ignore the green line; these are DUFB counts from a different data set.)
+
+
+```{r trx-cycle, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.cap = 'Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line.', fig.align='center'}
+
+if(getOutputFormat() == "latex") {
+    fig <- 'figures/trx_counts.pdf'
+} else {
+    fig <- 'figures/trx_counts.png'
+}
+
+knitr::include_graphics(fig)
+
+```
+
+I propose two outcome variables. The first is the proportion of SNAP EBT dollars being spent or redeemed on fresh produce. If the incentive is working, then I should see in increase in SNAP EBT dollars spending on fresh produce. I'm certain this outcome variable will be available. I'm not so certain about the second outcome variable, the total quantity of fresh produce purchased. This depends on whether weight or quantity is included in the data. This will depend on UPC matching. UPCs will be possible, but matching to UPC databases is not always precise. Should matching be poor, discerning what a product is, its weight, etcetera, will be difficult, making the second outcome variable unreliable.
+
+**Past Experience with Similar Data**
+
+This is not my first experience working with transaction data. At this point, I have more than 3 years working with transaction data. Furthermore, this is not my first experience with transaction data where (1) DUFB was implemented and (2) transactions were not linked to individuals.
+
+I performed an analysis in April of 2016 for FFN using 5 months of transaction data from 3 small Detroit-area grocery stores. Figure \@ref(fig:trx-cycle) was produced with those data. It was easy to distinguish when SNAP benefits were being used in those data. Likewise, it was easy to tell when transaction made use of the DUFB incentive (either an issuing of DUFB or a redemption). A simple aggregation could determine the total amount of dollars spent per some unit time (*day* was the smallest possible unit of time). I expected data for my prospectus will be very similar. The empirical models in the next section were developed under these expectations of the data.
+
+
+### Difference-in-Differences {-}
+
+Difference-in-Differences (DD) models will be used in the main and secondary analyses. The models will be identical but the data will differ.
+
+#### The DD model {-}
+
+The proposed model is as follows
+
+$$
+\begin{aligned}
+  y_{ist}  &= \alpha_i + \beta_0 DUFB_{s} + \beta_1 POST_{t} + \delta (DUFB_{s} \cdot POST_{t}) + \sum_{j=1}^4 \theta_{j} I_{j}(t) + \epsilon_{ist}
+\end{aligned}
+$$
+ 
+where $y_{ist}$ is the outcome variable for store $i$ in state $s$ during week $t$. $\alpha_i$ captures any time-invariant store-specific effects. $DUFB_{s}$ indicates whether store $i$ has or will be part of the DUFB incentive. $POST_{t}$ indicates if week $t$ for store $i$ lands in a post- or pre-DUFB year. Recall, there are 3 years of data (2014 - 2016) and DUFB implementation is staggered across stores.  $I_{j}(t)$ captures any cyclical effects due to the monthly SNAP benefit transfer schedule. $I_{j}(t) = 1$ if week $t$ is the $j$th week of the month, where $j = 1,2,3,4$. 
+
+There are a total of $156$ ($52 \times 3$) weeks in these data. However, recall that the DUFB program is only live from August 1 to Dec 31 of each year. In other words, DUFB is being implemented for only $60$ of the $156$ months. Things are further complicated by the way the DUFB incentive worked between 2016 and years 2014 and 2015.
+
+Here is where I'm not sure what the best approach is.
+
 
 Analysis of stores selected using *known* and *observable* criteria.  
 
