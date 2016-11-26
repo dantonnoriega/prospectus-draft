@@ -1,0 +1,17 @@
+# Data {#data-2 -}
+
+## Source
+
+- comes from DSS
+- includes emergency assistance only
+- this does not fall under basic assistance. therefore, under TANF, does not need to be reported.
+- The type of services included can be found on the DSS website under [Description of Services](http://dconc.gov/home/showdocument?id=7815)
+
+
+## Preliminary Descriptions
+
+- clean dataset contains 173654 records
+- includes data from 2011 to 2016 (by year of service)
+- DSS uses fiscal year. there are 5 complete fiscal years of data, 2012 - 2016
+- in this subset, there are 93,409 unique records
+- there can be repeat

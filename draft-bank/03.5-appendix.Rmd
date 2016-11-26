@@ -1,0 +1,44 @@
+# Appendix {#appendix-3 -}
+
+Below are tables of demographic data by fiscal year.
+
+
+```{r demographics, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, results='asis'}
+
+library(magrittr)
+
+files <- list.files("/Users/dnoriega/Dropbox/noriega-dissertation/data/03-tanf/demo", full.names = TRUE)
+
+make_tbls <- function(x) {
+  df <- haven::read_dta(x)
+  yr <- unique(df$fiscal_year)
+  
+  vars <- c('race', 'sex', 'ethnicity')
+  tabs <- lapply(vars, function(v) {
+    tbl <- table(df[[v]])
+    prop <- prop.table(tbl)
+    tbl <- cbind(as.data.frame(tbl), p = round(as.vector(prop) * 100, 2))
+    setNames(tbl, c(v, 'n', '%'))
+  })
+  
+  vars <- c('race', 'sex', 'ethnicity', 'age')
+  dtl <- Hmisc::describe(df[['age']])$count %>%
+    as.data.frame() %>%
+    dplyr::add_rownames(.) %>%
+    setNames(c('stat', 'value')) %>%
+    dplyr::mutate(value = as.numeric(as.character(value))) %>%
+    dplyr::filter(!stat %in% c('Info', "Gmd"))
+    
+  tabs <- append(tabs, list(dtl))
+  
+  lapply(seq_along(tabs), function(i) knitr::kable(tabs[[i]], caption = paste(vars[i], yr)))
+    
+}
+
+tbls <- purrr::map(files, make_tbls)
+for(i in seq_along(tbls)) {
+  for(j in seq_along(tbls[[i]])) {
+    print(tbls[[i]][[j]])
+  }
+}
+```

@@ -1,0 +1,113 @@
+# outline
+
+OVERVIEW
+
+States determine how TANF monies are spent. Leads to heterogeneity in how monies are spent. Most states have shifted monies to non basic assistance.
+    - why? 
+        - for all states, there is a disincentive to do so, which is detailed reporting requirements if monies are given out as basic assistance.
+        - TANF money is flexible. possible to get block grant and spend money on assistance that doesn't require large caseloads or detailed reporting.
+    - result?
+        - without access to admin data, we know little about where monies go
+            - nonrecurring short-term, emergency assistance falls under this area
+        - the addition of work requirement created a power dynamic between local gov and recipients
+            - case workers receive a lot of discretion about how funds are used and who got sanction for failing to meet requirements
+            - created a condition where implicit racial biases and cultural narratives about who was more or less deserving of welfare inevitably lead to nonwhites being sanctioned more often, especially black women with children
+                - true even when case workers were also nonwhite
+    - what i'm doing?
+        - paper provides an opportunity to verify observed discrimination in data that otherwise goes unreported.
+        - the data I have is short-term, emergency assistance where people must apply in person. caseworkers have a lot of discretion on who is approved or declined.
+    
+# Introduction
+
+
+The Personal Responsibility and Work Opportunity Reconciliation Act of 1996 (aka "welfare reform") replaced the old welfare program, Aid to Families with Dependent Children (AFDC), with Temporary Assistance for Needy Families (TANF). TANF profoundly changed how states prioritize and spend government welfare dollars. The result has been a gutting of traditional cash assistance programs over the last 20 year. Cash assistance used to accounted for 70% of AFDC spending. Under TANF, cash assistance accounts for 26%, with ten states spending below 10% [@schott_how_2015]. Fewer and fewer dollars now reach families in poverty with each passing year [@cbpp_chart_2016].
+
+The literature on the history and consequences of TANF over the past 20 years is vast.^[For a more detailed history of TANF, see @ziliak_temporary_2015. @blank_what_2007 provides a great overview of what has been learned 20 year on.] However, for this paper, I will spotlight the consequences of two welfare reform changes:
+
+1. The transfer of administrative authority to county and city governments.
+2. The reporting requirement for basic assistance. 
+
+The first change created opportunities for local governments to discriminate against nonwhite welfare recipients. Caseworkers
+
+- state and local governments attitudes about the poor and those most need of assistance. this can result in discriminatory distribution of benefits.
+    + [@keiser_race_2004] investigate sanction rates for people receiving TANF benefits in Missouri. Sanctioning is decided by case workers at the local level. They find that nonwhites are sanction at higher rates compare than white TANF recipients in every local area. 
+
+
+However, before doing so, it is important to understand how welfare was financed under AFDC and how it changed under TANF. I do so in the next two sections.
+
+**Welfare Financing under the AFDC Program**
+
+The AFDC entitlement program was financed by a federal-state matching grant system where the federal government split the marginal cost of every dollar spent by the states [@ziliak_temporary_2015]. State spending on entitlements was matched by the federal government at the Federal Medical Assistance Percentage (FMAP), which ranged between 50% and 83% [@falk_temporary_2016]. The FMAP matching rate was a function of a state's economy. This assisted and encouraged poorer states to spend money towards AFDC entitlements, even during an economic downturn.
+
+The federal government, aside from helping fund AFDC, also determined eligibility requirements. Even though the states did have the option to extend some eligibility requirements, generally any impoverished mother caring for a child was eligible to receive AFDC benefits. Benefits, which came in the form of monthly cash assistance, had no work requirement between 1935 and 1967. In 1967, a small work requirement was added to received AFDC benefits, but beneficiaries were rarely sanction for failing to meet the requirement. Federal requirements shifted with passage of the Family Support Act of 1988 (FSA). FSA required mothers with children over the age of 3 to participate in an education, work, or training program to encourage a shift from welfare to work. States soon began requesting waivers to try their own welfare-to-work programs in place of AFDC [@blank_what_2007]. By 1996, waivers were approved for 43 states. Welfare reform, which ended the AFDC program, occurred soon after.
+
+**Welfare Financing under TANF**
+
+TANF ended federal-state matching grant financing, replacing it with federal fixed block-grant financing. Federal TANF spending for block-grants is fixed at $16.5 billion and has been since 1996.
+
+Block-grant welfare financing profoundly changed how states prioritize their spending. To receive a block-grant, states are required to spend their own funds on programs supporting one of four TANF purposes:
+
+> C.F.R §§ 260.20 - What is the purpose of the TANF program?
+> 
+> The TANF program has the following four purposes:
+> 
+> (a) Provide assistance to needy families so that children may be cared for in their own homes or in the homes of relatives;
+> 
+> (b) End the dependence of needy parents on government benefits by promoting job preparation, work, and marriage;
+> 
+> (c) Prevent and reduce the incidence of out-of-wedlock pregnancies and establish annual numerical goals for preventing and reducing the incidence of these pregnancies; and
+> 
+> (d) Encourage the formation and maintenance of two-parent families.
+
+
+The amount spent by each state must equal to 75% of its FY1994 entitlement outlays. This is known as "maintenance-of-effort" (MOE) spending. 
+
+Under the TANF block-grant financing, states have one true spending incentive: to *hit* the MOE level. Failure to meet the 75% MOE threshold results in an increases to 80% the following year. States are also penalized with a dollar-for-dollar reduction equal to the shortfall between spending and the MOE threshold. However, unlike with AFDC, there is no incentive in place to encourage states to spend their TANF block-grants and no incentive to spend beyond. Under AFDC, every additional dollar was matched by the federal government. That rate would also increase if a state's economy hit a downturn. But under TANF, the state pays the full marginal cost of every dollar spent *beyond* the TANF block-grant. Further discouraging spending is the fact that states can roll-over any unspent TANF dollars to the following year, without penalty. 
+
+However, it is not difficult for a state to hit its MOE. The flexibility of the four TANF purposes, particularly the 3rd and 4th (c and d), means practically any state spending is also MOE spending. There is also no requirement for states to show how spending for a program satisfies one of the four TANF purposes. The state need only outline how funds are intended to be used and the purpose it falls under.
+
+This is a much easier, more desirable way to spend funds compared to the requirements when providing "assistance". "Assistance" is defined by the US Department of Health and Human Services as any ongoing payment to families to help meet basic needs [@falk_temporary_2016]. Any spending that falls under this definition of assistance must be reported, in detail, to the federal government. Detailed reporting of who is receiving cash assistance, aka "caseload", is a bureaucratic burden relative to the nonexistent reporting requirement for non-cash assistance.
+
+TANF is working as intended. TANF's block-grant financing, which replaced AFDC's federal-state matching grant financing, was supposed to provided greater spending flexibility and authority to the states. Additionally, the reporting requirement ensure states were imposing TANF work requirements and time limits for cash assistance. But it is important to remember that welfare reform and TANF reflects the general attitudes towards welfare in the late 1990s. There were too many people were being rewarded for "non-work" and "single parenthood" [@rector_continuing_2003]. The reforms were needed to reduce government dependency, child poverty, and illegitimacy, whilst also encouraging work and strengthening two-parent families. 
+
+**TANF and Race**
+
+This is coded language aimed against black
+
+
+
+
+
+
+
+
+
+    
+- TANF in NC
+    + NC gets 302.2m with an MOE of 154.2m (75%)
+        * [@falk_temporary_2016]
+    - where money is spent reflects state governments view on welfare and the poor
+    - Basic assistance is not a TANF priority for NC.
+        - in FY2015, NC spent 9.2% of TANF dollars on Basic Assistance (44th in the nation) [@us_dhhs_tanf_2015, @schott_how_2015]        
+    - in recent past, has a rather restrictive approach to providing assistance
+    - imposed stronger work and saving requirements on beneficiaries in order to receive TANF dollars. reform occurred in 2013 known as "Work First"
+        + imposes requirements beyond those in AFDC
+        + families must sign a "Mutual Responsibility Agreement"
+        + must work 20 hours a week
+    - work requirements don't appear to pay off in the longterm when compared to intensive training and education programs [@pavetti_work_2016]
+    - access to cash assistance is affected by the overall conditions of how a state views welfare
+    - cultural narratives of dependency and "undeserving poor" lead to discrimination against minorities, especially of black women with children [@mannix_tanf_2013]
+    - implicit biases of caseworkers have been found to lead to lower average benefit payments and higher probability and severity of sanctions for black women with children versus white women [@soss_disciplining_2011]
+    
+### Nonrecurring Short-term Benefits
+
+Non-recurrent short-term benefits^[See [C.F.R. §§ 260.31.b](https://www.govregs.com/regulations/title45_chapterII_part260_subpartA_section260.31):
+
+1. are designed to deal with a specific crisis situation or episode of need;   
+2. are not intended to meet recurrent or ongoing needs; and 
+3. will not extend beyond four months
+
+Non-recurrent short-term benefits do not count as basic assistance (C.F.R. §§ 260.31.a). Therefore, these payments do not have to be reported in detail to the federal government. However, these payments *do* count towards a state's MOE spending [@schott_how_2015]. 
+
+That said, non-recurrent short-term (emergency) benefits account for an incredibly small amount of North Carolina's TANF and MOE spending. In Fiscal Year 2015, North Carolina's combined TANF and MOE spending was $567,300,528 [@us_dhhs_tanf_2015-1]. Non-recurrent short-term benefits accounted for *0.9%*---or $4,919,303. Most of the $4,919,303---$4,266,045 (86.7%)---came from "separate state programs" spending. This is spending that count towards state MOE but are not funded by TANF. 
+        
