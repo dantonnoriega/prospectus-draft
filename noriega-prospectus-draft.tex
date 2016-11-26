@@ -66,6 +66,7 @@
 \usepackage{bm}
 \usepackage{isomath}
 \usepackage{setspace}
+% \doublespacing
 \usepackage[bf,singlelinecheck=off]{caption}
 \newcommand{\matr}[1]{\mathbf{#1}}
 \newcommand{\blandscape}{\begin{landscape}}
@@ -168,7 +169,7 @@
 
 \title{DRAFT Dissertation Prospectus}
 \author{Danton Noriega}
-\date{November 22, 2016}
+\date{November 26, 2016}
 
 \begin{document}
 \maketitle
@@ -708,9 +709,11 @@ multiple years, and collected under non-experimental conditions.
 
 These data come from a large grocery distributor and retailer serving
 multiple grocery chains. Three years of data will be made available,
-2014 through 2016. These data are transaction level and will include (at
-least) store number, register, transaction ID, date and time of
-purchase, payment type, item, dollars, and quantity.
+2014 through 2016. To my understanding, this includes months where the
+DUFB incentive is active (Aug 1 to Dec 31) and inactive (Jan 1 to July
+31) across all stores. These data are transaction level data and will
+include (at least) store number, register, transaction ID, date and time
+of purchase, payment type, item, dollars, and quantity.
 
 Double Up implementation was considered for a single grocery chain. The
 chain has more than 60 stores, 17 of which were selected as
@@ -724,6 +727,8 @@ not.
 {[}MISSING real specific details about the data e.g.~total transactions
 observed etc.{]}
 
+\textbf{Data Not Linked to Individuals}
+
 One important variable that will not be made available is a variable for
 loyalty card numbers. The company's use of loyalty cards across its many
 chains was an exciting prospect. Previous transaction data from smaller
@@ -733,12 +738,31 @@ advanced point-of-sale systems.
 
 In earlier conversations with the company, it was understood that
 loyalty cards would be made available. However, months into working with
-the company, we were informed that this was no longer possible. Per the
+the company, I was informed that this was no longer possible. Per the
 company's legal department, the company cannot share any personal
 information about their customers. Unfortunately for us, in the loyalty
 card contract signed by customers, the loyalty card number itself is
 considered personal information, meaning loyalty card numbers fall under
 the same legal category as phone numbers and home addresses.
+
+\textbf{DUFB Incentive Inconsistency}
+
+The retail company informed us that the way the DUFB incentive worked in
+2016 is distinct from 2014 and 2015. The DFUB incentive in 2016 worked
+by accruing points for each dollar spent on \emph{locally grown} fresh
+produce. (Recall that each point is equal to one dollar.) Points are
+then redeemed automatically on \emph{any} fresh produce. However, in
+2014 and 2015, the incentive was the \emph{opposite}. In those two
+years, the DUFB incentive worked by accruing points on \emph{any} fresh
+produce, automatically redeeming points on \emph{locally grown} fresh
+produce.
+
+This is important because \emph{locally grown} fresh produce is a much
+smaller subset of the \emph{any} fresh produce. Therefore, in years 2014
+and 2015, shoppers could easily accrue points but had a constrained set
+of produce on which to redeem points.
+
+\textbf{Other Important Information}
 
 \subsection*{Overview of Store Selection and
 Expansion}\label{overview-of-store-selection-and-expansion}
@@ -807,8 +831,8 @@ otherwise have no meaningful interpretation.
 \toprule
 Store & 2014 & 2015 & 2016\\
 \midrule
-1 & assigned & assigned & assigned\\
-2 & assigned & assigned & assigned\\
+1 & pilot & pilot & pilot\\
+2 & pilot & pilot & pilot\\
 3 &  & assigned & assigned\\
 4 &  & assigned & assigned\\
 5 &  & assigned & assigned\\
@@ -888,9 +912,7 @@ were matched using \emph{Coarsened Exact Matching} (CEM)
 with nearby control stores and then scored using a linear probability
 model. Each step is explained in detail.
 
-\subsubsection{Step 1: Coarsened Exact
-Matching}\label{step-1-coarsened-exact-matching}
-\addcontentsline{toc}{subsubsection}{Step 1: Coarsened Exact Matching}
+\emph{Step 1: Coarsened Exact Matching}
 
 The 6 stores classified as \texttt{self-selected} or \texttt{unobserved}
 (stores \texttt{12} through \texttt{17}; see Table
@@ -915,10 +937,7 @@ drive 30 or more minutes to shop at the store \emph{with} Double Up.
 This left 12 stores to be allotted to the control group and 3 treatment
 stores to be effectively discarded.
 
-\subsubsection{Step 2: Scoring via Linear Probability
-Model}\label{step-2-scoring-via-linear-probability-model}
-\addcontentsline{toc}{subsubsection}{Step 2: Scoring via Linear
-Probability Model}
+\emph{Step 2: Scoring via Linear Probability Model}
 
 Assignment to treatment and control can be perfectly determined since we
 know and observe the criteria used for assignment: geographic distance
@@ -955,6 +974,577 @@ then allotted to the control group.
 \includegraphics{noriega-prospectus-draft_files/figure-latex/score-plot-1.pdf}
 \caption{\label{fig:score-plot}Store Score vs Double Up Assignment}
 \end{figure}
+
+\section*{Overview of Proposed Methods}\label{methods-1}
+\addcontentsline{toc}{section}{Overview of Proposed Methods}
+
+I will perform two separate analyses. This is a consequence of the store
+selection issue outline in the data section. The main analysis will be
+performed on the 9 \emph{assigned} stores and 12 \emph{control}
+stores.\footnote{I'm excluding the 2 pilot store because they are never
+  observed without DUFB.} In attempts to make use of as much data as
+possible, I will also perform a smaller analysis with the 3
+\emph{self-selected} stores matched using CEM. (Please see the
+\protect\hypertarget{data-1}{}{Data} Section and Table
+\ref{tab:store-class}) for more about \emph{assigned} and
+\emph{self-selected} stores.)
+
+Difference-in-Differences (DD) and Regression Discontinuity (RD) will
+comprise the main analysis. DD will be the only method for the second
+smaller analysis. I outline each analysis and its methods in the next
+section.
+
+The unit of analysis will be the store, not the individual; the data
+cannot be linked to individuals. I assume the DUFB incentive, if
+effective, will have a store-level effect. That is, if a store's
+implementation of DUFB affects individual behavior, the effect should be
+measurable after aggregating over all observed transactions. My proposed
+analyses depend on this assumption but I am confident the effect will be
+measurable.
+
+I propose two outcome variables. The first is the proportion of SNAP EBT
+dollars being spent or redeemed on fresh produce. If the incentive is
+working, then I should see in increase in SNAP EBT dollars spending on
+fresh produce. I'm certain this outcome variable will be available. I'm
+not so certain about the second outcome variable, the total quantity of
+fresh produce purchased. This depends on whether weight or quantity is
+included in the data. This will depend on UPC matching. UPCs will be
+possible, but matching to UPC databases is not always precise. Should
+matching be poor, discerning what a product is, its weight, etcetera,
+will be difficult, making the second outcome variable unreliable.
+
+\textbf{Past Experience with Similar Data}
+
+This is not my first experience working with transaction data. At this
+point, I have more than 3 years working with transaction data.
+Furthermore, this is not my first experience with transaction data where
+(1) DUFB was implemented and (2) transactions were not linked to
+individuals.
+
+I performed an analysis in April of 2016 for FFN using 5 months of
+transaction data from 3 small Detroit-area grocery stores. Figure
+\ref{fig:trx-cycle} was produced with those data. It was easy to
+distinguish when SNAP benefits were being used in those data. Likewise,
+it was easy to tell when transaction made use of the DUFB incentive
+(either an issuing of DUFB or a redemption). A simple aggregation could
+determine the total amount of dollars spent per some unit time
+(\emph{day} was the smallest possible unit of time). I expected data for
+my prospectus will be very similar. The empirical models in the next
+section were developed under these expectations of the data.
+
+\subsection*{Difference-in-Differences}\label{difference-in-differences}
+\addcontentsline{toc}{subsection}{Difference-in-Differences}
+
+Difference-in-Differences (DD) models will be used in the main and
+secondary analyses. The models will be identical but the data will
+differ.
+
+\subsubsection{The DD model 1 (DD1)}\label{the-dd-model-1-dd1}
+\addcontentsline{toc}{subsubsection}{The DD model 1 (DD1)}
+
+The proposed model is as follows
+
+\[
+\begin{aligned}
+  y_{ist}  &= \alpha_i + \beta_0 DUFB_{s} + \beta_1 POST_{t} + \delta (DUFB_{s} \cdot POST_{t}) + \sum_{j=1}^4 \theta_{j} I_{j}(t) + \epsilon_{ist}
+\end{aligned}
+\]
+
+where \(y_{ist}\) is the outcome variable for store \(i\) in state \(s\)
+during week \(t\). \(\alpha_i\) captures any time-invariant
+store-specific effects. \(DUFB_{s}\) indicates whether store \(i\) has
+or will be part of the DUFB incentive. \(POST_{t}\) indicates if week
+\(t\) for store \(i\) lands in a post- or pre-DUFB year. Recall, there
+are 3 years of data (2014 - 2016) and DUFB implementation is staggered
+across stores. \(I_{j}(t)\) captures any cyclical effects due to the
+monthly SNAP benefit transfer schedule. \(I_{j}(t) = 1\) if week \(t\)
+is the \(j\)th week of the month, where \(j = 1,2,3,4\).
+
+There are a total of \(156\) (\(52 \times 3\)) weeks in these data.
+However, recall that the DUFB program is only live from August 1 to Dec
+31 of each year. In other words, DUFB is being implemented for only
+\(60\) of the \(156\) months. Things are further complicated by the way
+the DUFB incentive worked between 2016 and years 2014 and 2015.
+
+Time will be broken into weeks. The week of one year will be compared to
+the same week in the following year. This is for three main reasons.
+First, there is enough data per store to make precise estimates at the
+weekly level. Given the small sample since (``small N''), expanding the
+amount of observations along time (``bigger T'') will benefit the panel
+models. Second, SNAP spending is cyclical, peeking in the 2nd week. This
+is due to the state's monthly SNAP benefits transfer schedule. Benefits
+are distributed every odd day of the month between the 3rd and 21st.
+Each day maps to the digits \texttt{0} through \texttt{9}. SNAP
+participants receive their benefits once a month on the day
+corresponding to the last digit of their SNAP ID number. For example, ID
+numbers that end in \texttt{0} receive their benefits on the 3rd of each
+month. SNAP EBT benefits are spent quickly. As a result, there are
+always fewer SNAP purchases during the 4th week of the month. And fewer
+SNAP benefits means fewer transaction capable of receiving the DUFB
+incentive. I believe it is better to capture this behavior in a model
+versus smoothing it out by aggregating at the monthly level. Third, it
+captures seasonal spikes that would also be smoothed out if aggregated
+to the monthly level. I think it will be useful comparing, say, the the
+week leading up the Thanksgiving between stores with and without DUFB.
+
+The week-to-week cyclical pattern of SNAP EBT spending can be observed
+in Figure \ref{fig:trx-cycle}. (Note that these are from a different
+data source and different store chain, but from the same US state.) At
+the start of the each month, SNAP EBT transactions (red line) increase
+until peeking at the second week. The count then declines steadily
+through the 4th week before once again spiking during the 1st week of
+the following month. (Ignore the green line; these are DUFB counts from
+a different data set.)
+
+\begin{figure}
+
+{\centering \includegraphics{figures/trx_counts} 
+
+}
+
+\caption{Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line.}\label{fig:trx-cycle}
+\end{figure}
+
+Here is where I'm not sure what the best approach is.
+
+Analysis of stores selected using \emph{known} and \emph{observable}
+criteria.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Sample}: 11 Treated stores, 12 Control Stores across 3 years,
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{2}
+  \tightlist
+  \item
+    Within-group and between-group variation
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \setcounter{enumiii}{3}
+    \tightlist
+    \item
+      We lose some within-group variation as the 2 pilot stores are only
+      ever observed as treated stores.
+    \end{enumerate}
+  \item
+    Stores enter in waves. The staggering is used to produce extra
+    variation between groups.
+  \item
+    T is 58 x 3 (weeks)
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \setcounter{enumiii}{5}
+    \tightlist
+    \item
+      Weeks is important because of MI SNAP schedule
+    \item
+      By the 4th week in every month, purchases with SNAP drop. It is
+      important to capture this and not average it out by looking at
+      monthly purchases.
+    \end{enumerate}
+  \item
+    N is the same across time but the staggering shifts N for treated
+    and control.
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \setcounter{enumiii}{7}
+    \tightlist
+    \item
+      \textbf{Table}: Create table showing the change in N subsample.
+    \end{enumerate}
+  \end{enumerate}
+\item
+  \textbf{Method 1}: Difference in Differences with FE
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{4}
+  \tightlist
+  \item
+    DinD seems appropriate.
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \setcounter{enumiii}{5}
+    \tightlist
+    \item
+      Larger and local economic forces should affect stores within each
+      cluster equally.
+    \end{enumerate}
+  \item
+    FE should remove any store-specific time-invariant attributes.
+  \end{enumerate}
+\item
+  \textbf{Method 2}: Regression Discontinuity
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    \textbf{Fear 1:} using a running variable that is a function of
+    other variables. Only seen one paper reference anything beyond one
+    running variable \citep{papay_extending_2011}. Never seen a running
+    variable that is score function.
+  \item
+    \textbf{Fear 2}: sample size here is small. RD performs better with
+    large sample size.
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{Part 2: DinD with
+matching}\label{part-2-dind-with-matching}
+\addcontentsline{toc}{subsection}{Part 2: DinD with matching}
+
+Smaller analysis of the 3 stores that self-selected and were matched to
+3 other stores.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{Method:} Difference in difference been years 2015 and 2016
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{2}
+  \tightlist
+  \item
+    Power here will be small. Total N will be 6. Likely that nothing
+    will be significant. But need to be transparent.
+  \end{enumerate}
+\end{enumerate}
+
+\chapter{outline}\label{outline}
+
+OVERVIEW
+
+States determine how TANF monies are spent. Leads to heterogeneity in
+how monies are spent. Most states have shifted monies to non basic
+assistance. - why? - for all states, there is a disincentive to do so,
+which is detailed reporting requirements if monies are given out as
+basic assistance. - TANF money is flexible. possible to get block grant
+and spend money on assistance that doesn't require large caseloads or
+detailed reporting. - result? - without access to admin data, we know
+little about where monies go - nonrecurring short-term, emergency
+assistance falls under this area - the addition of work requirement
+created a power dynamic between local gov and recipients - case workers
+receive a lot of discretion about how funds are used and who got
+sanction for failing to meet requirements - created a condition where
+implicit racial biases and cultural narratives about who was more or
+less deserving of welfare inevitably lead to nonwhites being sanctioned
+more often, especially black women with children - true even when case
+workers were also nonwhite - what i'm doing? - paper provides an
+opportunity to verify observed discrimination in data that otherwise
+goes unreported. - the data I have is short-term, emergency assistance
+where people must apply in person. caseworkers have a lot of discretion
+on who is approved or declined.
+
+\chapter{Introduction}\label{introduction}
+
+The Personal Responsibility and Work Opportunity Reconciliation Act of
+1996 (aka ``welfare reform'') replaced the old welfare program, Aid to
+Families with Dependent Children (AFDC), with Temporary Assistance for
+Needy Families (TANF). TANF profoundly changed how states prioritize and
+spend government welfare dollars. The result has been a gutting of
+traditional cash assistance programs over the last 20 year. Cash
+assistance used to accounted for 70\% of AFDC spending. Under TANF, cash
+assistance accounts for 26\%, with ten states spending below 10\%
+\citep{schott_how_2015}. Fewer and fewer dollars now reach families in
+poverty with each passing year \citep{cbpp_chart_2016}.
+
+The literature on the history and consequences of TANF over the past 20
+years is vast.\footnote{For a more detailed history of TANF, see
+  \citet{ziliak_temporary_2015}. \citet{blank_what_2007} provides a
+  great overview of what has been learned 20 year on.} However, for this
+paper, I will spotlight the consequences of two welfare reform changes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The transfer of administrative authority to county and city
+  governments.
+\item
+  The reporting requirement for basic assistance.
+\end{enumerate}
+
+The first change created opportunities for local governments to
+discriminate against nonwhite welfare recipients. Caseworkers
+
+\begin{itemize}
+\tightlist
+\item
+  state and local governments attitudes about the poor and those most
+  need of assistance. this can result in discriminatory distribution of
+  benefits.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \citep{keiser_race_2004} investigate sanction rates for people
+    receiving TANF benefits in Missouri. Sanctioning is decided by case
+    workers at the local level. They find that nonwhites are sanction at
+    higher rates compare than white TANF recipients in every local area.
+  \end{itemize}
+\end{itemize}
+
+However, before doing so, it is important to understand how welfare was
+financed under AFDC and how it changed under TANF. I do so in the next
+two sections.
+
+\textbf{Welfare Financing under the AFDC Program}
+
+The AFDC entitlement program was financed by a federal-state matching
+grant system where the federal government split the marginal cost of
+every dollar spent by the states \citep{ziliak_temporary_2015}. State
+spending on entitlements was matched by the federal government at the
+Federal Medical Assistance Percentage (FMAP), which ranged between 50\%
+and 83\% \citep{falk_temporary_2016}. The FMAP matching rate was a
+function of a state's economy. This assisted and encouraged poorer
+states to spend money towards AFDC entitlements, even during an economic
+downturn.
+
+The federal government, aside from helping fund AFDC, also determined
+eligibility requirements. Even though the states did have the option to
+extend some eligibility requirements, generally any impoverished mother
+caring for a child was eligible to receive AFDC benefits. Benefits,
+which came in the form of monthly cash assistance, had no work
+requirement between 1935 and 1967. In 1967, a small work requirement was
+added to received AFDC benefits, but beneficiaries were rarely sanction
+for failing to meet the requirement. Federal requirements shifted with
+passage of the Family Support Act of 1988 (FSA). FSA required mothers
+with children over the age of 3 to participate in an education, work, or
+training program to encourage a shift from welfare to work. States soon
+began requesting waivers to try their own welfare-to-work programs in
+place of AFDC \citep{blank_what_2007}. By 1996, waivers were approved
+for 43 states. Welfare reform, which ended the AFDC program, occurred
+soon after.
+
+\textbf{Welfare Financing under TANF}
+
+TANF ended federal-state matching grant financing, replacing it with
+federal fixed block-grant financing. Federal TANF spending for
+block-grants is fixed at \$16.5 billion and has been since 1996.
+
+Block-grant welfare financing profoundly changed how states prioritize
+their spending. To receive a block-grant, states are required to spend
+their own funds on programs supporting one of four TANF purposes:
+
+\begin{quote}
+C.F.R §§ 260.20 - What is the purpose of the TANF program?
+
+The TANF program has the following four purposes:
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Provide assistance to needy families so that children may be cared for
+  in their own homes or in the homes of relatives;
+\item
+  End the dependence of needy parents on government benefits by
+  promoting job preparation, work, and marriage;
+\item
+  Prevent and reduce the incidence of out-of-wedlock pregnancies and
+  establish annual numerical goals for preventing and reducing the
+  incidence of these pregnancies; and
+\item
+  Encourage the formation and maintenance of two-parent families.
+\end{enumerate}
+\end{quote}
+
+The amount spent by each state must equal to 75\% of its FY1994
+entitlement outlays. This is known as ``maintenance-of-effort'' (MOE)
+spending.
+
+Under the TANF block-grant financing, states have one true spending
+incentive: to \emph{hit} the MOE level. Failure to meet the 75\% MOE
+threshold results in an increases to 80\% the following year. States are
+also penalized with a dollar-for-dollar reduction equal to the shortfall
+between spending and the MOE threshold. However, unlike with AFDC, there
+is no incentive in place to encourage states to spend their TANF
+block-grants and no incentive to spend beyond. Under AFDC, every
+additional dollar was matched by the federal government. That rate would
+also increase if a state's economy hit a downturn. But under TANF, the
+state pays the full marginal cost of every dollar spent \emph{beyond}
+the TANF block-grant. Further discouraging spending is the fact that
+states can roll-over any unspent TANF dollars to the following year,
+without penalty.
+
+However, it is not difficult for a state to hit its MOE. The flexibility
+of the four TANF purposes, particularly the 3rd and 4th (c and d), means
+practically any state spending is also MOE spending. There is also no
+requirement for states to show how spending for a program satisfies one
+of the four TANF purposes. The state need only outline how funds are
+intended to be used and the purpose it falls under.
+
+This is a much easier, more desirable way to spend funds compared to the
+requirements when providing ``assistance''. ``Assistance'' is defined by
+the US Department of Health and Human Services as any ongoing payment to
+families to help meet basic needs \citep{falk_temporary_2016}. Any
+spending that falls under this definition of assistance must be
+reported, in detail, to the federal government. Detailed reporting of
+who is receiving cash assistance, aka ``caseload'', is a bureaucratic
+burden relative to the nonexistent reporting requirement for non-cash
+assistance.
+
+TANF is working as intended. TANF's block-grant financing, which
+replaced AFDC's federal-state matching grant financing, was supposed to
+provided greater spending flexibility and authority to the states.
+Additionally, the reporting requirement ensure states were imposing TANF
+work requirements and time limits for cash assistance. But it is
+important to remember that welfare reform and TANF reflects the general
+attitudes towards welfare in the late 1990s. There were too many people
+were being rewarded for ``non-work'' and ``single parenthood''
+\citep{rector_continuing_2003}. The reforms were needed to reduce
+government dependency, child poverty, and illegitimacy, whilst also
+encouraging work and strengthening two-parent families.
+
+\textbf{TANF and Race}
+
+This is coded language aimed against black
+
+\begin{itemize}
+\tightlist
+\item
+  TANF in NC
+
+  \begin{itemize}
+  \tightlist
+  \item
+    NC gets 302.2m with an MOE of 154.2m (75\%)
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \citep{falk_temporary_2016}
+    \end{itemize}
+  \item
+    where money is spent reflects state governments view on welfare and
+    the poor
+  \item
+    Basic assistance is not a TANF priority for NC.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      in FY2015, NC spent 9.2\% of TANF dollars on Basic Assistance
+      (44th in the nation)
+      \citep[\citet{schott_how_2015}]{us_dhhs_tanf_2015}\\
+    \end{itemize}
+  \item
+    in recent past, has a rather restrictive approach to providing
+    assistance
+  \item
+    imposed stronger work and saving requirements on beneficiaries in
+    order to receive TANF dollars. reform occurred in 2013 known as
+    ``Work First''
+
+    \begin{itemize}
+    \tightlist
+    \item
+      imposes requirements beyond those in AFDC
+    \item
+      families must sign a ``Mutual Responsibility Agreement''
+    \item
+      must work 20 hours a week
+    \end{itemize}
+  \item
+    work requirements don't appear to pay off in the longterm when
+    compared to intensive training and education programs
+    \citep{pavetti_work_2016}
+  \item
+    access to cash assistance is affected by the overall conditions of
+    how a state views welfare
+  \item
+    cultural narratives of dependency and ``undeserving poor'' lead to
+    discrimination against minorities, especially of black women with
+    children \citep{mannix_tanf_2013}
+  \item
+    implicit biases of caseworkers have been found to lead to lower
+    average benefit payments and higher probability and severity of
+    sanctions for black women with children versus white women
+    \citep{soss_disciplining_2011}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Nonrecurring Short-term
+Benefits}\label{nonrecurring-short-term-benefits}
+
+Non-recurrent short-term benefits\^{}{[}See
+\href{https://www.govregs.com/regulations/title45_chapterII_part260_subpartA_section260.31}{C.F.R.
+§§ 260.31.b}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  are designed to deal with a specific crisis situation or episode of
+  need;\\
+\item
+  are not intended to meet recurrent or ongoing needs; and
+\item
+  will not extend beyond four months
+\end{enumerate}
+
+Non-recurrent short-term benefits do not count as basic assistance
+(C.F.R. §§ 260.31.a). Therefore, these payments do not have to be
+reported in detail to the federal government. However, these payments
+\emph{do} count towards a state's MOE spending \citep{schott_how_2015}.
+
+That said, non-recurrent short-term (emergency) benefits account for an
+incredibly small amount of North Carolina's TANF and MOE spending. In
+Fiscal Year 2015, North Carolina's combined TANF and MOE spending was
+\$567,300,528 \citep{us_dhhs_tanf_2015-1}. Non-recurrent short-term
+benefits accounted for \emph{0.9\%}---or \$4,919,303. Most of the
+\$4,919,303---\$4,266,045 (86.7\%)---came from ``separate state
+programs'' spending. This is spending that count towards state MOE but
+are not funded by TANF.
+
+\chapter*{Data}\label{data-2}
+\addcontentsline{toc}{chapter}{Data}
+
+\section{Source}\label{source}
+
+\begin{itemize}
+\tightlist
+\item
+  comes from DSS
+\item
+  includes emergency assistance only
+\item
+  this does not fall under basic assistance. therefore, under TANF, does
+  not need to be reported.
+\item
+  The type of services included can be found on the DSS website under
+  \href{http://dconc.gov/home/showdocument?id=7815}{Description of
+  Services}
+\end{itemize}
+
+\section{Preliminary Descriptions}\label{preliminary-descriptions}
+
+\begin{itemize}
+\tightlist
+\item
+  clean dataset contains 173654 records
+\item
+  includes data from 2011 to 2016 (by year of service)
+\item
+  DSS uses fiscal year. there are 5 complete fiscal years of data, 2012
+  - 2016
+\item
+  in this subset, there are 93,409 unique records
+\item
+  there can be repeat
+\end{itemize}
 
 \bibliography{bib/book.bib}
 

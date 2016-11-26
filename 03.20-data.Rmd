@@ -1,11 +1,13 @@
-# Data {#data-2 -}
+# Data {#data-3 -}
 
-## Source
 
-- comes from DSS
-- includes emergency assistance only
-- this does not fall under basic assistance. therefore, under TANF, does not need to be reported.
-- The type of services included can be found on the DSS website under [Description of Services](http://dconc.gov/home/showdocument?id=7815)
+The data are of nonrecurring short-term (emergency) benefits from the Durham County Social Services in North Carolina. 
+
+
+- The type of services included can be found in the [Directory of Services](http://dconc.gov/home/showdocument?id=7815) on DSS website. 
+    - financial assistance [page 11-14;  @durham_county_department_of_social_services_directory_2016].
+        + DESCRIBE IN DETAIL
+        
 
 
 ## Preliminary Descriptions
