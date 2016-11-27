@@ -4,6 +4,8 @@ author: "Danton Noriega"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 knit: "bookdown::render_book"
 documentclass: book
+monofont: "Source Code Pro"
+monofontoptions: "Scale=0.8"
 fontsize: 12pt
 geometry: margin=1in
 papersize: letterpaper
@@ -16,13 +18,10 @@ link-citations: yes
 knitr::opts_chunk$set(cache = FALSE, dpi = 300)
 ```
 
-
-# Overview {-}
-
-Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
+<!-- Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
 
 Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is a financial incentive---Double Up Food Bucks---designed to increase fruit and vegetables consumption. A comparison will be made with another financial incentive program called the *Healthy Incentives Pilot* (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.
-
+ -->
 <!-- 
 Chapter 2 is an exploration of how the basket of products purchased by SNAP shoppers changes after the introduction of DUFB. This will use a few different sets of data where one is able to link purchases to individuals.
 

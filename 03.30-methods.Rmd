@@ -1,0 +1,28 @@
+## Proposed Methods {#methods-3 -}
+
+
+### Basic Descriptive Tables and Plots {-}
+
+Tables and graphs describing the data will comprise a large part of this paper. These data have never been analyzed or described, not even by DSS. I will not go into do much detail as it easier to show examples (see [Preview of Results](#preview-3)).
+
+### Prerequisite: Determining Households {-}
+
+An important part this analysis requires understanding the relationships between individuals observed in the data. Who is observed with whom will help determine what is considered a "household". I am not sure how best to do this yet. I'm considering three approaches (and I welcome input here).
+
+The first approach is constructing a sparse matrix where the rows are application IDs and the columns are individual IDs. Each individual appearance within an application would denote a `1`, `0` otherwise. I would then compute a covariance across all individuals. This would capture how often individuals are observed together. 
+
+The second approach is computing the co-occurrence of individuals within an "environment" [@griffith_cooccur:_2015]. Co-occurrence is of interest to biologist attempting to determine if species discovered within an environment co-occur randomly, positively, or negatively. In my particular case with the DSS, there would be no random or negative co-occurrence. However, I'm not sure what I would define to be the "environments". In this case, taking the application ID would be too specific. But considering the sparsity of the matrix, it may work, as any positive co-occurrence probability would imply some degree of relationship.
+
+The last approach is learning about social network analysis. I have never studied social network analysis and do not plan to become even an amateur in the area. I'm more than happy to learn enough to use some of the free R packages for social network analysis to define households. I don't know enough to go any further. But again, I must iterate, I only want to learn enough so I can solve the problem of defining households. I don't care much for it beyond that.
+
+### Measuring Discrimination {-}
+
+The research I listed on discrimination previously mostly focused on severity of sanctions. I am not able to do that with the DSS data.
+
+I can, however, measure the size of benefits and attempt to find any distributional difference based on race, age, or gender. The prerequisite to this, however, is accurately defining households and the relationships between individuals. For example, it will be critical to determine how many children a mother has. Previous research has found increased discrimination for women seeking assistance that have children compared to women without children.
+
+I plan to use combine general data science with matching algorithms. I want to compare individuals that are similar along as many observable dimensions as possible save the one of interest, like race. There are numerous methods for matching individuals. I expect to explore many of them. I've particularly become a fan of Coarsened Exact Matching (CEM) after using it in my other paper. Once individuals are matched, I can compare the distribution of benefits to see if there are any differences.
+
+I wish I could write up something more complicated, but there is a limitation to what I can do with these data beyond what I would consider "level one" data science (charts, exploratory graphs, etc.).
+
+

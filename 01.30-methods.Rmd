@@ -19,7 +19,7 @@ I performed an analysis in April of 2016 for FFN using 5 months of transaction d
 
 Difference-in-Differences (DD) models will be used in the main and secondary analyses. The models will be identical but the data will differ.
 
-#### The DD model 1 (DD1) {-}
+**The DD model 1 (DD1)**
 
 The proposed model is as follows
 
@@ -71,7 +71,7 @@ Analysis of stores selected using *known* and *observable* criteria.
     4. **Fear 1:** using a running variable that is a function of other variables. Only seen one paper reference anything beyond one running variable [@papay_extending_2011]. Never seen a running variable that is score function.
     5.  **Fear 2**:  sample size here is small. RD performs better with large sample size.
 
-### Part 2: DinD with matching {-}
+### Difference-in-Differences with Matching {-}
 
 Smaller analysis of the 3 stores that self-selected and were matched to 3 other stores.
 

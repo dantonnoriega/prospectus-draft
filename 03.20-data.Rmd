@@ -1,19 +1,52 @@
-# Data {#data-3 -}
+## Data {#data-3 -}
+
+### Data Source {-}
+
+The data are of non-recurrent short-term (emergency) benefits from Durham County Social Services in North Carolina. Access to these data is possible through a collaboration between Durham County Social Services (DSS) and the Durham Children's Data Center.  
+
+Non-recurrent short-term benefits^[See [C.F.R. §§ 260.31.b](https://www.govregs.com/regulations/title45_chapterII_part260_subpartA_section260.31)]:
+
+> 1. are designed to deal with a specific crisis situation or episode of need;   
+> 2. are not intended to meet recurrent or ongoing needs; and 
+> 3. will not extend beyond four months
+
+Non-recurrent short-term benefits do not count as basic assistance (C.F.R. §§ 260.31.a). Therefore, these payments do not have to be reported in detail to the federal government. However, these payments *do* count towards a state's MOE spending [@schott_how_2015]. 
+
+That said, non-recurrent short-term (emergency) benefits account for a tiny amount of North Carolina's TANF and MOE spending. In Fiscal Year 2015, North Carolina's combined TANF and MOE spending was \$567,300,528 [@us_dhhs_tanf_2015-1]. Non-recurrent short-term benefits accounted for *0.9%*---or \$4,919,303. Most of the \$4,919,303---\$4,266,045 (86.7%)---came from "separate state programs" spending. This is spending that count towards state MOE but are not funded by TANF. 
+
+The DSS emergency assistance data allow a detailed look into part of North Carolina's \$4.9 million in emergency spending. All emergency assistance programs can be found in the [Directory of Services](http://dconc.gov/home/showdocument?id=7815) on DSS website [@durham_county_department_of_social_services_directory_2016; pages 11-14].
+
+### Data Description {-}
+
+These data include records for 5 complete fiscal years, `2012 - 2016`.^[DSS uses fiscal year when discussing data. I will do the same.] The clean dataset, which removes null values and known errors, contains `156349` records comprising `41302` unique individuals. Per year, we observed between `25000` and `34000` records affecting between `14000` and `17000` individuals.
+
+Variables include individuals "client ID", which uniquely identifies each individual; benefit and application identifiers; first and last name; demographic information such street address, age, race, and ethnicity; date of service; type of assistance request/received and the program the assistance is funded under; status of the application (`DENIED`, `COMPLETE`, `INCOMPLETE`, etc.); and amount of assistance received.
+
+It is important to understand the structure of these data. First, a "record" is a single row of data. Each row is uniquely identified by the application number and the individual. Each application, however, can list multiple individuals. This is because certain aid requires the listing of household members or of children. For example, a child could be listed under an application if a parent applied for emergency TANF Assistance. The amount applied for is repeated across each individual associated with an application even though one person likely requested/received the funds (generally referenced as the "`Case Head`"").
+
+### Data Challenges {-}
+
+There are challenges to this structure. The first challenge, which can be solved but will be difficult (see [Methods](#methods-3)), is that households are not uniquely defined. A single individual could apply for two different types of assistance that will be affecting the same household, yet is only required to list household members in one of the applications. Street address is not unique enough because people move. The current approach is to attempt to identify household heads. These are individuals listed as "Case Heads". Since there can be more than two "Case Heads", ties are broken using which case head is observed most often and then, if necessary, by age. Each case head then acts like a traveling household identifier. Any other individuals observed to be on the same application as these case heads is assigned to that case head's household. It is an imperfect system and I am working to improve upon it.
+
+The second challenge is I've yet determine how the application process works. I acknowledge this is a bit absurd, but I've yet to have most of my questions answered. To be more specific, I do not know if the fate of an application is determined during or soon after an individual sits and meets to ask for emergency assistance. For example, is an application denied then and there? Can an application be "approved" but then waits to be "completed".^[One of my first questions, which has yet to be answer, is the difference between an approved application and a completed one.] This is important because I need to know if application status can evolve over time or if the application status observed is deterministic. I've found not evidence that an application ID switches status.
+
+The last challenge, relating to the previous, is if records are overwritten or if the full history of a record is kept. If all that is observed is the current (or completed) status of an application, then that will affect how these data are analyzed.
 
 
-The data are of nonrecurring short-term (emergency) benefits from the Durham County Social Services in North Carolina. 
+### Unknowns
 
+Here I must break the fourth wall and admit that it is not clear to me which of these services are counted towards TANF and MOE spending. Based on the definitions of "non-recurrent short-term benefits", almost everything listed under "Financial Assistance" on the DSS Directory would seem to qualify. This includes emergency assistance with rent, utilities, transportation, and food.
 
-- The type of services included can be found in the [Directory of Services](http://dconc.gov/home/showdocument?id=7815) on DSS website. 
-    - financial assistance [page 11-14;  @durham_county_department_of_social_services_directory_2016].
-        + DESCRIBE IN DETAIL
-        
+The problem, as I will outline in my preliminary results, is that I do not know if `APPROVED` emergency benefits count or just `COMPLETED`. I have not been provided with a codebook by DSS. I also don't know which assistance types to filter out. As I said, they all seem to fit the definition of non-recurrent, short-term aid. 
 
+Yet, if I proceed under the assumption that all approved or completed emergency benefits count, then Durham County accounts for *\$2.4 million* of North Carolina's FY2015 emergency benefits. That is almost half of was reportedly spend by the entire state of North Carolina. That cannot be right. If I filter to just completed assistance checks, the number drops to \$1.57 million dollars, but that is still too high. Durham County is 1 of 100 counties in North Carolina. It accounts for roughly 3% of the state's population. It doesn't seem possible that it accounts for more than a third of the states emergency assistance spending.
 
-## Preliminary Descriptions
+ This means one, many, or all of the following:
 
-- clean dataset contains 173654 records
-- includes data from 2011 to 2016 (by year of service)
-- DSS uses fiscal year. there are 5 complete fiscal years of data, 2012 - 2016
-- in this subset, there are 93,409 unique records
-- there can be repeat
+>  (1) I need to be filtering out a substantial amount of assistance types; 
+>  (2) I fundamentally misunderstand how MOE spending is accounted for;
+>  (3) There is MOE spending going unreported to the state that could/should be counted; and/or
+>  (4) Durham actually does account for a lot of emergency assistance
+
+This requires further investigation beyond the scope of the prospectus. That said, while it matters to understand how these benefits fit within the larger TANF/MOE structure, studying the data is still provides a look into how a county distributes emergency assistance.
+

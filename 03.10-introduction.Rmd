@@ -1,46 +1,25 @@
-# Introduction {#intro-3}
+# An Analysis of Non-recurrent TANF spending in Durham County {#chapter-3}
 
-OVERVIEW
-
-States determine how TANF monies are spent. Leads to heterogeneity in how monies are spent. Most states have shifted monies to non basic assistance.
-    - why? 
-        - for all states, there is a disincentive to do so, which is detailed reporting requirements if monies are given out as basic assistance.
-        - TANF money is flexible. possible to get block grant and spend money on assistance that doesn't require large caseloads or detailed reporting.
-    - result?
-        - without access to admin data, we know little about where monies go
-            - nonrecurring short-term, emergency assistance falls under this area
-        - the addition of work requirement created a power dynamic between local gov and recipients
-            - case workers receive a lot of discretion about how funds are used and who got sanction for failing to meet requirements
-            - created a condition where implicit racial biases and cultural narratives about who was more or less deserving of welfare inevitably lead to nonwhites being sanctioned more often, especially black women with children
-                - true even when case workers were also nonwhite
-    - what i'm doing?
-        - paper provides an opportunity to verify observed discrimination in data that otherwise goes unreported.
-        - the data I have is short-term, emergency assistance where people must apply in person. caseworkers have a lot of discretion on who is approved or declined.
-    
-
+## Introduction {#intro-3 -}
 
 The Personal Responsibility and Work Opportunity Reconciliation Act of 1996 (aka "welfare reform") replaced the old welfare program, Aid to Families with Dependent Children (AFDC), with Temporary Assistance for Needy Families (TANF). TANF profoundly changed how states prioritize and spend government welfare dollars. The result has been a gutting of traditional cash assistance programs over the last 20 year. Cash assistance used to accounted for 70% of AFDC spending. Under TANF, cash assistance accounts for 26%, with ten states spending below 10% [@schott_how_2015]. Fewer and fewer dollars now reach families in poverty with each passing year [@cbpp_chart_2016].
 
-The literature on the history and consequences of TANF over the past 20 years is vast.^[For a more detailed history of TANF, see @ziliak_temporary_2015. @blank_what_2007 provides a great overview of what has been learned 20 year on.] However, for this paper, I will spotlight the consequences of two welfare reform changes:
+The literature on the history and consequences of TANF over the past 20 years is vast.^[@ziliak_temporary_2015 provides a great overview on the history of TANF, including a great time line in the appendix. @blank_what_2007 provides a great overview of what has been learned 20 years on.] For this paper, I will spotlight the consequences of two welfare reform changes:
 
 1. The transfer of administrative authority to county and city governments.
 2. The reporting requirement for basic assistance. 
 
-The first change created opportunities for local governments to discriminate against nonwhite welfare recipients. Caseworkers
+However, before doing so, it is important to understand how welfare was financed under AFDC and how it changed under TANF.
 
-- state and local governments attitudes about the poor and those most need of assistance. this can result in discriminatory distribution of benefits.
-    + [@keiser_race_2004] investigate sanction rates for people receiving TANF benefits in Missouri. Sanctioning is decided by case workers at the local level. They find that nonwhites are sanction at higher rates compare than white TANF recipients in every local area. 
+### Welfare Financing: AFDC vs TANF {-}
 
+**Financing the AFDC Program**
 
-However, before doing so, it is important to understand how welfare was financed under AFDC and how it changed under TANF. I do so in the next two sections.
-
-**Welfare Financing under the AFDC Program**
-
-The AFDC entitlement program was financed by a federal-state matching grant system where the federal government split the marginal cost of every dollar spent by the states [@ziliak_temporary_2015]. State spending on entitlements was matched by the federal government at the Federal Medical Assistance Percentage (FMAP), which ranged between 50% and 83% [@falk_temporary_2016]. The FMAP matching rate was a function of a state's economy. This assisted and encouraged poorer states to spend money towards AFDC entitlements, even during an economic downturn.
+The AFDC entitlement program was financed by a federal-state matching grant system where the federal government shared the marginal cost of every dollar spent on cash assistance by the states [@ziliak_temporary_2015]. State spending on entitlements was matched by the federal government at the Federal Medical Assistance Percentage (FMAP), which ranged between 50% and 83% [@falk_temporary_2016]. The FMAP matching rate was a function of a state's economy. This assisted and encouraged poorer states to spend money towards AFDC entitlements, even during an economic downturn.
 
 The federal government, aside from helping fund AFDC, also determined eligibility requirements. Even though the states did have the option to extend some eligibility requirements, generally any impoverished mother caring for a child was eligible to receive AFDC benefits. Benefits, which came in the form of monthly cash assistance, had no work requirement between 1935 and 1967. In 1967, a small work requirement was added to received AFDC benefits, but beneficiaries were rarely sanction for failing to meet the requirement. Federal requirements shifted with passage of the Family Support Act of 1988 (FSA). FSA required mothers with children over the age of 3 to participate in an education, work, or training program to encourage a shift from welfare to work. States soon began requesting waivers to try their own welfare-to-work programs in place of AFDC [@blank_what_2007]. By 1996, waivers were approved for 43 states. Welfare reform, which ended the AFDC program, occurred soon after.
 
-**Welfare Financing under TANF**
+**Financing TANF**
 
 TANF ended federal-state matching grant financing, replacing it with federal fixed block-grant financing. Federal TANF spending for block-grants is fixed at $16.5 billion and has been since 1996.
 
@@ -67,19 +46,31 @@ However, it is not difficult for a state to hit its MOE. The flexibility of the 
 
 This is a much easier, more desirable way to spend funds compared to the requirements when providing "assistance". "Assistance" is defined by the US Department of Health and Human Services as any ongoing payment to families to help meet basic needs [@falk_temporary_2016]. Any spending that falls under this definition of assistance must be reported, in detail, to the federal government. Detailed reporting of who is receiving cash assistance, aka "caseload", is a bureaucratic burden relative to the nonexistent reporting requirement for non-cash assistance.
 
-TANF is working as intended. TANF's block-grant financing, which replaced AFDC's federal-state matching grant financing, was supposed to provided greater spending flexibility and authority to the states. Additionally, the reporting requirement ensure states were imposing TANF work requirements and time limits for cash assistance. But it is important to remember that welfare reform and TANF reflects the general attitudes towards welfare in the late 1990s. There were too many people were being rewarded for "non-work" and "single parenthood" [@rector_continuing_2003]. The reforms were needed to reduce government dependency, child poverty, and illegitimacy, whilst also encouraging work and strengthening two-parent families. 
+TANF is working as intended. TANF's block-grant financing, which replaced AFDC's federal-state matching grant financing, was supposed to provided greater spending flexibility and authority to the states. Additionally, the reporting requirement ensure states were imposing TANF work requirements and time limits for cash assistance. I spotlight the consequences of these changes in the next section.
 
-**TANF and Race**
+### TANF Consequences
 
-This is coded language aimed against black
+Granting spending authority to the states created more opportunities for discrimination against nonwhite welfare recipients. The bureaucratic machine that determines eligibility for TANF benefits functions at the local county and city level. Caseworkers at the local level wield an enormous amount of power over the delivery of services. Caseworkers determine eligibility, the size of TANF payments and, importantly, administer sanctions against beneficiaries. Local caseworkers are both the helping hand and the disciplining hammer. That power can often lead caseworkers to make biased decision--whether explicit or implicit---resulting in greater discrimination against nonwhites  [@schram_deciding_2009]. 
 
+Welfare has long been associated with race. It is important to remember that welfare reform and TANF reflects the general attitudes towards welfare in the late 1990s. There were too many people were being rewarded for "non-work" and "single parenthood" [@rector_continuing_2003]. The reforms were needed to reduce government dependency, child poverty, and illegitimacy, whilst also encouraging work and strengthening two-parent families. The goals and language of welfare reform, as explained by @soss_disciplining_2011, implicitly fed prevailing negative attitudes and narratives long associated with American minorities, especially black Americans.^[@@soss_color_2008 explain the construction and passage of welfare reform under what they call the *Racial Classification Model (RCM)*. It is a provoking yet reasonable model but it is beyond the scope of this paper.] Should these negatives attitudes filtered down to local social services departments, there is unfortunately little beneficiaries can do to protect themselves. They are entirely at the mercy of their local caseworkers and administrators. 
 
+It is therefore unsurprising to learn researchers have discovered discrimination in the welfare system, especially in states with long histories of racial conflict and stratification [@mannix_tanf_2013]. @keiser_race_2004 find that nonwhites were more likely than white to be sanctioned for failing to satisfy TANF work requirements. This was true in all local areas across the state of Missouri. @wu_how_2006 find similar results along race in the state of Wisconsin. Black Americans were more likely to be sanctioned than any other group in Wisconsin. They also find that offices which sanction the most also impose more barriers to receiving benefits. Moving up from the state level, @monnat_color_2010 discovered the same results hold even at the national level.
 
+It is important to note that longitudinal state administrative data is what made prior research possible. These were "basic assistance" data. As explained in the previous section, detailed reporting is only required for basic assistance. Year by year, however, there are fewer and fewer states spending money on basic assistance. This means less basic assistance data available for research. But this also means more of TANF spending goes without being scrutinized.
 
+In this paper, I will investigate data from a single local agency in state North Carolina. My novel contribution is the analysis of new data. These are not "basic assistance" data. These are data of "non-recurrent, short-term assistance", which do not need to be reported. This is provides a unique opportunity to discover new findings and confirm old ones using data that is otherwise inaccessible.
 
+In specifically interested in investigating the following:
 
+> 1. Is there any evidence of discrimination along either age, gender, race, amount of children?
+> 2. Is there a pattern to who gets denied emergency benefits?
+> 3. A general understanding of emergency benefits requested and received by residence of Durham County.
 
+I must emphasize that the results of the paper will contextualize a single local agency. It is useful to learn about the agency, but it will provide limited information about the entire state. And while it may provide understanding about how other, similar agencies within the state are using non-recurrent benefits, it would be irresponsible to extrapolate to agencies within different states.
 
+<!-- ### TANF in North Carolina
+
+To
 
     
 - TANF in NC
@@ -97,16 +88,6 @@ This is coded language aimed against black
     - access to cash assistance is affected by the overall conditions of how a state views welfare
     - cultural narratives of dependency and "undeserving poor" lead to discrimination against minorities, especially of black women with children [@mannix_tanf_2013]
     - implicit biases of caseworkers have been found to lead to lower average benefit payments and higher probability and severity of sanctions for black women with children versus white women [@soss_disciplining_2011]
-    
-### Nonrecurring Short-term Benefits
+     -->
 
-Non-recurrent short-term benefits^[See [C.F.R. §§ 260.31.b](https://www.govregs.com/regulations/title45_chapterII_part260_subpartA_section260.31):
-
-1. are designed to deal with a specific crisis situation or episode of need;   
-2. are not intended to meet recurrent or ongoing needs; and 
-3. will not extend beyond four months
-
-Non-recurrent short-term benefits do not count as basic assistance (C.F.R. §§ 260.31.a). Therefore, these payments do not have to be reported in detail to the federal government. However, these payments *do* count towards a state's MOE spending [@schott_how_2015]. 
-
-That said, non-recurrent short-term (emergency) benefits account for an incredibly small amount of North Carolina's TANF and MOE spending. In Fiscal Year 2015, North Carolina's combined TANF and MOE spending was $567,300,528 [@us_dhhs_tanf_2015-1]. Non-recurrent short-term benefits accounted for *0.9%*---or $4,919,303. Most of the $4,919,303---$4,266,045 (86.7%)---came from "separate state programs" spending. This is spending that count towards state MOE but are not funded by TANF. 
         
