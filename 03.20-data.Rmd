@@ -4,9 +4,9 @@
 
 The data are of non-recurrent short-term (emergency) benefits from Durham County Social Services in North Carolina. Access to these data is possible through a collaboration between Durham County Social Services (DSS) and the Durham Children's Data Center.  
 
-Non-recurrent short-term benefits^[See [C.F.R. §§ 260.31.b](https://www.govregs.com/regulations/title45_chapterII_part260_subpartA_section260.31)]:
+Non-recurrent short-term benefits ([C.F.R. §§ 260.31.b](https://www.govregs.com/regulations/title45_chapterII_part260_subpartA_section260.31)]):
 
-> 1. are designed to deal with a specific crisis situation or episode of need;   
+> 1. are designed to deal with a specific crisis situation or episode of need;
 > 2. are not intended to meet recurrent or ongoing needs; and 
 > 3. will not extend beyond four months
 
@@ -14,7 +14,7 @@ Non-recurrent short-term benefits do not count as basic assistance (C.F.R. §§ 
 
 That said, non-recurrent short-term (emergency) benefits account for a tiny amount of North Carolina's TANF and MOE spending. In Fiscal Year 2015, North Carolina's combined TANF and MOE spending was \$567,300,528 [@us_dhhs_tanf_2015-1]. Non-recurrent short-term benefits accounted for *0.9%*---or \$4,919,303. Most of the \$4,919,303---\$4,266,045 (86.7%)---came from "separate state programs" spending. This is spending that count towards state MOE but are not funded by TANF. 
 
-The DSS emergency assistance data allow a detailed look into part of North Carolina's \$4.9 million in emergency spending. All emergency assistance programs can be found in the [Directory of Services](http://dconc.gov/home/showdocument?id=7815) on DSS website [@durham_county_department_of_social_services_directory_2016; pages 11-14].
+The DSS emergency assistance data allow a detailed look into part of North Carolina's \$4.9 million in emergency spending. All emergency assistance programs can be found in the [Directory of Services](http://dconc.gov/home/showdocument?id=7815) on DSS website [@durham_county_department_of_social_services_directory_2016].
 
 ### Data Description {-}
 
@@ -33,7 +33,7 @@ The second challenge is I've yet determine how the application process works. I 
 The last challenge, relating to the previous, is if records are overwritten or if the full history of a record is kept. If all that is observed is the current (or completed) status of an application, then that will affect how these data are analyzed.
 
 
-### Unknowns
+### Unknowns {-}
 
 Here I must break the fourth wall and admit that it is not clear to me which of these services are counted towards TANF and MOE spending. Based on the definitions of "non-recurrent short-term benefits", almost everything listed under "Financial Assistance" on the DSS Directory would seem to qualify. This includes emergency assistance with rent, utilities, transportation, and food.
 
