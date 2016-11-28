@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="chapter-1.html">
+<link rel="prev" href="intro-2.html">
+<link rel="next" href="methods-2.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -137,45 +137,79 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">DRAFT Dissertation Prospectus</h1>
-<h4 class="author"><em>Danton Noriega</em></h4>
-<h4 class="date"><em>November 28, 2016</em></h4>
+<div id="data-2" class="section level2 unnumbered">
+<h2>Data</h2>
+<div id="data-source" class="section level3 unnumbered">
+<h3>Data Source</h3>
+<p>The data are of non-recurrent short-term (emergency) benefits from Durham County Social Services in North Carolina. Access to these data is possible through a collaboration between Durham County Social Services (DSS) and the Durham Children’s Data Center.</p>
+<p>Non-recurrent short-term benefits (<a href="https://www.govregs.com/regulations/title45_chapterII_part260_subpartA_section260.31">C.F.R. §§ 260.31.b</a>]):</p>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>are designed to deal with a specific crisis situation or episode of need;</li>
+<li>are not intended to meet recurrent or ongoing needs; and</li>
+<li>will not extend beyond four months</li>
+</ol>
+</blockquote>
+<p>Non-recurrent short-term benefits do not count as basic assistance (C.F.R. §§ 260.31.a). Therefore, these payments do not have to be reported in detail to the federal government. However, these payments <em>do</em> count towards a state’s MOE spending <span class="citation">(Schott, Pavetti, and Finch <a href="#ref-schott_how_2015">2015</a>)</span>.</p>
+<p>That said, non-recurrent short-term (emergency) benefits account for a tiny amount of North Carolina’s TANF and MOE spending. In Fiscal Year 2015, North Carolina’s combined TANF and MOE spending was $567,300,528 <span class="citation">(US DHHS <a href="#ref-us_dhhs_tanf_2015-1">2015</a>)</span>. Non-recurrent short-term benefits accounted for <em>0.9%</em>—or $4,919,303. Most of the $4,919,303—$4,266,045 (86.7%)—came from “separate state programs” spending. This is spending that count towards state MOE but are not funded by TANF.</p>
+<p>The DSS emergency assistance data allow a detailed look into part of North Carolina’s $4.9 million in emergency spending. All emergency assistance programs can be found in the <a href="http://dconc.gov/home/showdocument?id=7815">Directory of Services</a> on DSS website <span class="citation">(Durham County Department of Social Services <a href="#ref-durham_county_department_of_social_services_directory_2016">2016</a>)</span>.</p>
 </div>
-<div id="section" class="section level1">
-<h1><span class="header-section-number">1</span> </h1>
-<!-- Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
+<div id="data-description" class="section level3 unnumbered">
+<h3>Data Description</h3>
+<p>These data include records for 5 complete fiscal years, <code>2012 - 2016</code>.<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> The clean dataset, which removes null values and known errors, contains <code>156349</code> records comprising <code>41302</code> unique individuals. Per year, we observed between <code>25000</code> and <code>34000</code> records affecting between <code>14000</code> and <code>17000</code> individuals.</p>
+<p>Variables include individuals “client ID”, which uniquely identifies each individual; benefit and application identifiers; first and last name; demographic information such street address, age, race, and ethnicity; date of service; type of assistance request/received and the program the assistance is funded under; status of the application (<code>DENIED</code>, <code>COMPLETE</code>, <code>INCOMPLETE</code>, etc.); and amount of assistance received.</p>
+<p>It is important to understand the structure of these data. First, a “record” is a single row of data. Each row is uniquely identified by the application number and the individual. Each application, however, can list multiple individuals. This is because certain aid requires the listing of household members or of children. For example, a child could be listed under an application if a parent applied for emergency TANF Assistance. The amount applied for is repeated across each individual associated with an application even though one person likely requested/received the funds (generally referenced as the “<code>Case Head</code>”“).</p>
+</div>
+<div id="data-challenges" class="section level3 unnumbered">
+<h3>Data Challenges</h3>
+<p>There are challenges to this structure. The first challenge, which can be solved but will be difficult (see <a href="methods-2.html#methods-2">Methods</a>), is that households are not uniquely defined. A single individual could apply for two different types of assistance that will be affecting the same household, yet is only required to list household members in one of the applications. Street address is not unique enough because people move. The current approach is to attempt to identify household heads. These are individuals listed as “Case Heads”. Since there can be more than two “Case Heads”, ties are broken using which case head is observed most often and then, if necessary, by age. Each case head then acts like a traveling household identifier. Any other individuals observed to be on the same application as these case heads is assigned to that case head’s household. It is an imperfect system and I am working to improve upon it.</p>
+<p>The second challenge is I’ve yet determine how the application process works. I acknowledge this is a bit absurd, but I’ve yet to have most of my questions answered. To be more specific, I do not know if the fate of an application is determined during or soon after an individual sits and meets to ask for emergency assistance. For example, is an application denied then and there? Can an application be “approved” but then waits to be “completed.”<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> This is important because I need to know if application status can evolve over time or if the application status observed is deterministic. I’ve found not evidence that an application ID switches status.</p>
+<p>The last challenge, relating to the previous, is if records are overwritten or if the full history of a record is kept. If all that is observed is the current (or completed) status of an application, then that will affect how these data are analyzed.</p>
+</div>
+<div id="unknowns" class="section level3 unnumbered">
+<h3>Unknowns</h3>
+<p>Here I must break the fourth wall and admit that it is not clear to me which of these services are counted towards TANF and MOE spending. Based on the definitions of “non-recurrent short-term benefits”, almost everything listed under “Financial Assistance” on the DSS Directory would seem to qualify. This includes emergency assistance with rent, utilities, transportation, and food.</p>
+<p>The problem, as I will outline in my preliminary results, is that I do not know if <code>APPROVED</code> emergency benefits count or just <code>COMPLETED</code>. I have not been provided with a codebook by DSS. I also don’t know which assistance types to filter out. As I said, they all seem to fit the definition of non-recurrent, short-term aid.</p>
+<p>Yet, if I proceed under the assumption that all approved or completed emergency benefits count, then Durham County accounts for <em>$2.4 million</em> of North Carolina’s FY2015 emergency benefits. That is almost half of was reportedly spend by the entire state of North Carolina. That cannot be right. If I filter to just completed assistance checks, the number drops to $1.57 million dollars, but that is still too high. Durham County is 1 of 100 counties in North Carolina. It accounts for roughly 3% of the state’s population. It doesn’t seem possible that it accounts for more than a third of the states emergency assistance spending.</p>
+<p>This means one, many, or all of the following:</p>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>I need to be filtering out a substantial amount of assistance types;</li>
+<li>I fundamentally misunderstand how MOE spending is accounted for;</li>
+<li>There is MOE spending going unreported to the state that could/should be counted; and/or</li>
+<li>Durham actually does account for a lot of emergency assistance</li>
+</ol>
+</blockquote>
+<p>This requires further investigation beyond the scope of the prospectus. That said, while it matters to understand how these benefits fit within the larger TANF/MOE structure, studying the data is still provides a look into how a county distributes emergency assistance.</p>
 
-Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is a financial incentive---Double Up Food Bucks---designed to increase fruit and vegetables consumption. A comparison will be made with another financial incentive program called the *Healthy Incentives Pilot* (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.
- -->
-<!-- 
-Chapter 2 is an exploration of how the basket of products purchased by SNAP shoppers changes after the introduction of DUFB. This will use a few different sets of data where one is able to link purchases to individuals.
-
-Chapter 3 is a descriptive paper on how Durham Social Services spends emergency assistance dollars, such as Temporary Assistance for Needy Families (TANF). There is no uniformity between how different states and local governments use TANF funds. There is also little published data research. -->
-<!-- ## Other Ideas {-}
-
-1. **What is the redemption rate of Double Up coupons?**
-    - Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
-    - Under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table
-    - This is unlikely to be the case but the question is, *just how high (or low) is the redemption rate?* Do most coupons go unredeemed?
-    - This will be a technically difficult problem as we do not have panel data but the data could still be used to attempt to answer this question
-2. **What purchasing behavior distinguishes Double Up participants from non-Double Up participants?**
-    - Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?
-    - Is it possible to identify a Double Up purchase if we remove Michigan Produce?
-    - This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.
-3. **How does the snap benefit cycle affect purchasing patters.** 
-    - This is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
- -->
-<!-- # Literature Review {-} -->
-
+</div>
+</div>
+<h3> References</h3>
+<div id="refs" class="references">
+<div id="ref-schott_how_2015">
+<p>Schott, Liz, LaDonna Pavetti, and Ife Finch. 2015. “How States Have Spent Federal and State Funds Under the TANF Block Grant.” <em>Center for Budget and Policy Priorities</em>, October.</p>
+</div>
+<div id="ref-us_dhhs_tanf_2015-1">
+<p>US DHHS. 2015. “TANF Financial Data - FY 2015.” <em>Office of Family Assistance | Administration for Children and Families</em>. <a href="http://www.acf.hhs.gov/ofa/resource/tanf-financial-data-fy-2015" class="uri">http://www.acf.hhs.gov/ofa/resource/tanf-financial-data-fy-2015</a>.</p>
+</div>
+<div id="ref-durham_county_department_of_social_services_directory_2016">
+<p>Durham County Department of Social Services. 2016. “Directory of Services.” <a href="http://dconc.gov/home/showdocument?id=7815" class="uri">http://dconc.gov/home/showdocument?id=7815</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="9">
+<li id="fn9"><p>DSS uses fiscal year when discussing data. I will do the same.<a href="data-2.html#fnref9">↩</a></p></li>
+<li id="fn10"><p>One of my first questions, which has yet to be answer, is the difference between an approved application and a completed one.<a href="data-2.html#fnref10">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="chapter-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="intro-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methods-2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

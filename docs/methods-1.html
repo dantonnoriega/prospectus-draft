@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="chapter-1.html">
+<link rel="prev" href="store-selection-1.html">
+<link rel="next" href="chapter-2.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -137,45 +137,75 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">DRAFT Dissertation Prospectus</h1>
-<h4 class="author"><em>Danton Noriega</em></h4>
-<h4 class="date"><em>November 28, 2016</em></h4>
+<div id="methods-1" class="section level2 unnumbered">
+<h2>Overview of Proposed Methods</h2>
+<p>I will perform two separate analyses. This is a consequence of the store selection issue outline in the data section. The main analysis will be performed on the 9 <em>assigned</em> stores and 12 <em>control</em> stores.<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> In attempts to make use of as much data as possible, I will also perform a smaller analysis with the 3 <em>self-selected</em> stores matched using CEM. (Please see the <span id="data-1">Data</span> Section and Table <a href="store-selection-1.html#tab:store-class">2.1</a>) for more about <em>assigned</em> and <em>self-selected</em> stores.)</p>
+<p>Difference-in-Differences (DD) and Regression Discontinuity (RD) will comprise the main analysis. DD will be the only method for the second smaller analysis. I outline each analysis and its methods in the next section.</p>
+<p>The unit of analysis will be the store, not the individual; the data cannot be linked to individuals. I assume the DUFB incentive, if effective, will have a store-level effect. That is, if a store’s implementation of DUFB affects individual behavior, the effect should be measurable after aggregating over all observed transactions. My proposed analyses depend on this assumption but I am confident the effect will be measurable.</p>
+<p>I propose two outcome variables. The first is the proportion of SNAP EBT dollars being spent or redeemed on fresh produce. If the incentive is working, then I should see in increase in SNAP EBT dollars spending on fresh produce. I’m certain this outcome variable will be available. I’m not so certain about the second outcome variable, the total quantity of fresh produce purchased. This depends on whether weight or quantity is included in the data. This will depend on UPC matching. UPCs will be possible, but matching to UPC databases is not always precise. Should matching be poor, discerning what a product is, its weight, etcetera, will be difficult, making the second outcome variable unreliable.</p>
+<div id="main-analysis-regression-discontinuity-rd" class="section level3 unnumbered">
+<h3>Main Analysis: Regression Discontinuity (RD)</h3>
+<p>In the <a href="store-selection-1.html#store-selection-1">Store Selection</a> section, I discussed the construction of the score function <span class="math inline">\(\bm{s} = \widehat{P(\mathbf{D} = 1 | \bm{X}, \bm{N})}\)</span>. Given <span class="math inline">\(i = 1,...,n\)</span> stores, the score of each store can be determined via observable data, <span class="math inline">\(s_i = \widehat{P(D_i = 1|\bm{x}_i, n_i)}\)</span>. These scores, when ordered, produced perfect separation between treatment stores and control stores (see Figure <a href="store-selection-1.html#fig:score-plot">2.3</a>).</p>
+<p>An RD design requires a <em>running variable</em> where, above some value <span class="math inline">\(c\)</span>, the probability of being assigned to the treatment group is <span class="math inline">\(1\)</span>. Assume I make the score function <span class="math inline">\(\bm{s}\)</span> my running variable such that <span class="math inline">\(D_i = \bm{1}[s_i \ge c]\)</span>.</p>
+<p>In my case, assignment <span class="math inline">\(D_i\)</span> is determined by <span class="math inline">\(s_i\)</span> by construction. Recall that <span class="math inline">\(s_i\)</span> is a function estimated on observable covariates. These are the same observable covariates the company used to determine assignment for a subset of stores. I used a linear probability model to estimate the score function and the estimated model perfecty predicted assignment. I then ordered stores by their score value and selected the next 12 unassigned stores.</p>
+<p>This problem is that I do not actually know <span class="math inline">\(c\)</span>. I only know that <span class="math inline">\(c \in (0.50, 0.64)\)</span>. The light gray band in Figure <a href="methods-1.html#fig:score-plot2">2.4</a> displays the possible values of <span class="math inline">\(c\)</span>. The problem, in essence, is that I do not have—and never will have—enough stores, so I’m lacking density around where the separation occurs.</p>
+<div class="figure"><span id="fig:score-plot2"></span>
+<img src="noriega-prospectus-draft_files/figure-html/score-plot2-1.png" alt="Store Score vs Double Up Assignment with Uncertainty Band (light gray)"  />
+<p class="caption">
+FIGURE 2.4: Store Score vs Double Up Assignment with Uncertainty Band (light gray)
+</p>
 </div>
-<div id="section" class="section level1">
-<h1><span class="header-section-number">1</span> </h1>
-<!-- Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
+<p>I propose to estimate the RD design using various values of <span class="math inline">\(c\)</span>. The perpetual gap means any model estimate to the left or right of some <span class="math inline">\(c_0 \in (0.50, 0.64)\)</span> will have to be extrapolated up to <span class="math inline">\(c_0\)</span>.</p>
+<p><strong>Set-up</strong></p>
+<p>The outcome of variable for each store will be the <em>average amount spent on locally grown produce in a SNAP transaction per day</em>. The timeframe will be August - December (months <span class="math inline">\(8\)</span> - <span class="math inline">\(12\)</span>) of 2016, when the DUFB incentive is place. I decided on using days as the unit of observation to increase the sample amount of data for estimating. I expect there to be enough transactions per day for this to be possible.</p>
+<p>Let <span class="math inline">\(y_{i}\)</span> represent the outcome variable where <span class="math inline">\(i=1,...,n\)</span> denotes stores. Let <span class="math inline">\(c\)</span> denote the cutoff; <span class="math inline">\(s_i\)</span> the score computed for store <span class="math inline">\(i\)</span>; and <span class="math inline">\(D_i\)</span> the assignment variable. Each draw (or row) of data for store <span class="math inline">\(i\)</span> is a vector <span class="math inline">\((y_i, s_i, D_i)\)</span> corresponding to a single day. Recall that <span class="math inline">\(y_i\)</span> is a point statistics estimated using a single days worth of transaction data for store <span class="math inline">\(i\)</span>. All days will be pooled, creating roughly <span class="math inline">\(30\times5=150\)</span> observations (days) per store.</p>
+<p>Let <span class="math inline">\(u_i\)</span> be an error term assumed to be <span class="math inline">\(\mathcal{N}(0, \sigma^2)\)</span>.</p>
+<p>The RD model I propose is as follows</p>
+<p><span class="math display">\[
+y_{i} = \alpha + \rho D_i + \gamma (s_i - c) + \delta D_i(s_i - c) + u_{i}
+\]</span></p>
+<p>My hope is to produce a graph that looks like the following</p>
+<p>[GENERATE EXAMPLE GRAPH. At each point <span class="math inline">\(s_i\)</span>, there will be about 150 points drawn in vertical like. This would help visualize the distribution of average-dollars-per-day.]</p>
+</div>
+<div id="main-analysis-difference-in-differences-model-1-dd1" class="section level3">
+<h3><span class="header-section-number">2.0.1</span> Main Analysis: Difference-in-Differences, Model 1 (DD1)</h3>
+<p>[WRITE MODEL. Below is example of DD model overtime.]</p>
+<div class="figure"><span id="fig:dd1-plot"></span>
+<img src="noriega-prospectus-draft_files/figure-html/dd1-plot-1.png" alt="Example DD Model over 12 months in 2016 (DUFB start month 8)"  />
+<p class="caption">
+FIGURE 2.5: Example DD Model over 12 months in 2016 (DUFB start month 8)
+</p>
+</div>
+<!-- ### Main Analysis: Difference-in-Differences, Model 2 (DD2) -->
+<!-- This model is some -->
+<!-- The proposed model is as follows -->
+<!-- $$ -->
+<!-- \begin{aligned} -->
+<!--   y_{ist}  &= \alpha_i + \beta_0 DUFB_{s} + \beta_1 POST_{t} + \delta (DUFB_{s} \cdot POST_{t}) + \sum_{j=1}^4 \theta_{j} I_{j}(t) + \epsilon_{ist} -->
+<!-- \end{aligned} -->
+<!-- $$ -->
+<!-- where $y_{ist}$ is the outcome variable for store $i$ in state $s$ during week $t$. $\alpha_i$ captures any time-invariant store-specific effects. $DUFB_{s}$ indicates whether store $i$ has or will be part of the DUFB incentive. $POST_{t}$ indicates if week $t$ for store $i$ lands in a post- or pre-DUFB year. Recall, there are 3 years of data (2014 - 2016) and DUFB implementation is staggered across stores.  $I_{j}(t)$ captures any cyclical effects due to the monthly SNAP benefit transfer schedule. $I_{j}(t) = 1$ if week $t$ is the $j$th week of the month, where $j = 1,2,3,4$. -->
+</div>
+<div id="secondary-analysis-difference-in-differences-with-matching" class="section level3 unnumbered">
+<h3>Secondary Analysis: Difference-in-Differences with Matching</h3>
+<p>Smaller analysis of the 3 stores that self-selected and were matched to 3 other stores. Total N will be 6. Likely that nothing will be significant. But need to be transparent.</p>
 
-Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is a financial incentive---Double Up Food Bucks---designed to increase fruit and vegetables consumption. A comparison will be made with another financial incentive program called the *Healthy Incentives Pilot* (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.
- -->
-<!-- 
-Chapter 2 is an exploration of how the basket of products purchased by SNAP shoppers changes after the introduction of DUFB. This will use a few different sets of data where one is able to link purchases to individuals.
-
-Chapter 3 is a descriptive paper on how Durham Social Services spends emergency assistance dollars, such as Temporary Assistance for Needy Families (TANF). There is no uniformity between how different states and local governments use TANF funds. There is also little published data research. -->
-<!-- ## Other Ideas {-}
-
-1. **What is the redemption rate of Double Up coupons?**
-    - Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
-    - Under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table
-    - This is unlikely to be the case but the question is, *just how high (or low) is the redemption rate?* Do most coupons go unredeemed?
-    - This will be a technically difficult problem as we do not have panel data but the data could still be used to attempt to answer this question
-2. **What purchasing behavior distinguishes Double Up participants from non-Double Up participants?**
-    - Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?
-    - Is it possible to identify a Double Up purchase if we remove Michigan Produce?
-    - This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.
-3. **How does the snap benefit cycle affect purchasing patters.** 
-    - This is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
- -->
-<!-- # Literature Review {-} -->
-
+</div>
+</div>
+<!-- </div> -->
+<div class="footnotes">
+<hr />
+<ol start="6">
+<li id="fn6"><p>I’m excluding the 2 pilot store because they are never observed without DUFB.<a href="methods-1.html#fnref6">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="chapter-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="store-selection-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

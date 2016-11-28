@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="chapter-1.html">
+<link rel="prev" href="data-2.html">
+<link rel="next" href="preview-2.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -137,45 +137,41 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">DRAFT Dissertation Prospectus</h1>
-<h4 class="author"><em>Danton Noriega</em></h4>
-<h4 class="date"><em>November 28, 2016</em></h4>
+<div id="methods-2" class="section level2 unnumbered">
+<h2>Proposed Methods</h2>
+<div id="basic-descriptive-tables-and-plots" class="section level3 unnumbered">
+<h3>Basic Descriptive Tables and Plots</h3>
+<p>Tables and graphs describing the data will comprise a large part of this paper. These data have never been analyzed or described, not even by DSS. I will not go into do much detail as it easier to show examples (see <a href="preview-2.html#preview-2">Preview of Results</a>).</p>
 </div>
-<div id="section" class="section level1">
-<h1><span class="header-section-number">1</span> </h1>
-<!-- Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
+<div id="prerequisite-determining-households" class="section level3 unnumbered">
+<h3>Prerequisite: Determining Households</h3>
+<p>An important part this analysis requires understanding the relationships between individuals observed in the data. Who is observed with whom will help determine what is considered a “household”. I am not sure how best to do this yet. I’m considering three approaches (and I welcome input here).</p>
+<p>The first approach is constructing a sparse matrix where the rows are application IDs and the columns are individual IDs. Each individual appearance within an application would denote a <code>1</code>, <code>0</code> otherwise. I would then compute a covariance across all individuals. This would capture how often individuals are observed together.</p>
+<p>The second approach is computing the co-occurrence of individuals within an “environment” <span class="citation">(Griffith et al. <a href="#ref-griffith_cooccur:_2015">2015</a>)</span>. Co-occurrence is of interest to biologist attempting to determine if species discovered within an environment co-occur randomly, positively, or negatively. In my particular case with the DSS, there would be no random or negative co-occurrence. However, I’m not sure what I would define to be the “environments”. In this case, taking the application ID would be too specific. But considering the sparsity of the matrix, it may work, as any positive co-occurrence probability would imply some degree of relationship.</p>
+<p>The last approach is learning about social network analysis. I have never studied social network analysis and do not plan to become even an amateur in the area. I’m more than happy to learn enough to use some of the free R packages for social network analysis to define households. I don’t know enough to go any further. But again, I must iterate, I only want to learn enough so I can solve the problem of defining households. I don’t care much for it beyond that.</p>
+</div>
+<div id="measuring-discrimination" class="section level3 unnumbered">
+<h3>Measuring Discrimination</h3>
+<p>The research I listed on discrimination previously mostly focused on severity of sanctions. I am not able to do that with the DSS data.</p>
+<p>I can, however, measure the size of benefits and attempt to find any distributional difference based on race, age, or gender. The prerequisite to this, however, is accurately defining households and the relationships between individuals. For example, it will be critical to determine how many children a mother has. Previous research has found increased discrimination for women seeking assistance that have children compared to women without children.</p>
+<p>I plan to use combine general data science with matching algorithms. I want to compare individuals that are similar along as many observable dimensions as possible save the one of interest, like race. There are numerous methods for matching individuals. I expect to explore many of them. I’ve particularly become a fan of Coarsened Exact Matching (CEM) after using it in my other paper. Once individuals are matched, I can compare the distribution of benefits to see if there are any differences.</p>
+<p>I wish I could write up something more complicated, but there is a limitation to what I can do with these data beyond what I would consider “level one” data science (charts, exploratory graphs, etc.).</p>
 
-Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is a financial incentive---Double Up Food Bucks---designed to increase fruit and vegetables consumption. A comparison will be made with another financial incentive program called the *Healthy Incentives Pilot* (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.
- -->
-<!-- 
-Chapter 2 is an exploration of how the basket of products purchased by SNAP shoppers changes after the introduction of DUFB. This will use a few different sets of data where one is able to link purchases to individuals.
-
-Chapter 3 is a descriptive paper on how Durham Social Services spends emergency assistance dollars, such as Temporary Assistance for Needy Families (TANF). There is no uniformity between how different states and local governments use TANF funds. There is also little published data research. -->
-<!-- ## Other Ideas {-}
-
-1. **What is the redemption rate of Double Up coupons?**
-    - Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
-    - Under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table
-    - This is unlikely to be the case but the question is, *just how high (or low) is the redemption rate?* Do most coupons go unredeemed?
-    - This will be a technically difficult problem as we do not have panel data but the data could still be used to attempt to answer this question
-2. **What purchasing behavior distinguishes Double Up participants from non-Double Up participants?**
-    - Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?
-    - Is it possible to identify a Double Up purchase if we remove Michigan Produce?
-    - This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.
-3. **How does the snap benefit cycle affect purchasing patters.** 
-    - This is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
- -->
-<!-- # Literature Review {-} -->
-
+</div>
+</div>
+<h3> References</h3>
+<div id="refs" class="references">
+<div id="ref-griffith_cooccur:_2015">
+<p>Griffith, Daniel M., Joseph A. Veech, Charles J. Marsh, and others. 2015. “Cooccur: Probabilistic Species Co-Occurrence Analysis in R.” <em>Journal of Statistical Software</em>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="chapter-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="data-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="preview-2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

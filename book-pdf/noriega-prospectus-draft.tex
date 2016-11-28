@@ -22,7 +22,7 @@
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.25in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={DRAFT Dissertation Prospectus},
@@ -170,7 +170,7 @@
 
 \title{DRAFT Dissertation Prospectus}
 \author{Danton Noriega}
-\date{November 26, 2016}
+\date{November 28, 2016}
 
 \begin{document}
 \maketitle
@@ -726,7 +726,7 @@ card contract signed by customers, the loyalty card number itself is
 considered personal information, meaning loyalty card numbers fall under
 the same legal category as phone numbers and home addresses.
 
-\textbf{DUFB Incentive Inconsistency}
+\textbf{DUFB Incentive Inconsistency Across Years}
 
 The retail company informed us that the way the DUFB incentive worked in
 2016 is distinct from 2014 and 2015. The DFUB incentive in 2016 worked
@@ -741,13 +741,77 @@ produce.
 This is important because \emph{locally grown} fresh produce is a much
 smaller subset of the \emph{any} fresh produce. Therefore, in years 2014
 and 2015, shoppers could easily accrue points but had a constrained set
-of produce on which to redeem points.
+of produce on which to redeem points. In any case, estimates of the
+incentive for the year 2015 cannot be compared to estimates in the year
+2016.
 
-\textbf{Other Important Information}
+\textbf{Other Information}
 
-\subsection*{Overview of Store Selection and
-Expansion}\label{overview-of-store-selection-and-expansion}
-\addcontentsline{toc}{subsection}{Overview of Store Selection and
+\emph{Past Experience with Similar Data}
+
+This is not my first experience working with transaction data. At this
+point, I have more than 3 years working with transaction data.
+Furthermore, this is not my first experience with transaction data where
+(1) DUFB was implemented and (2) transactions were not linked to
+individuals.
+
+I performed an analysis in April of 2016 for FFN using 5 months of
+transaction data from 3 small Detroit-area grocery stores. Figure
+\ref{fig:trx-cycle} was produced with those data. It was easy to
+distinguish when SNAP benefits were being used in those data. Likewise,
+it was easy to tell when transaction made use of the DUFB incentive
+(either an issuing of DUFB or a redemption). A simple aggregation could
+determine the total amount of dollars spent per some unit time
+(\emph{day} was the smallest possible unit of time). I expected data for
+my prospectus will be very similar. The empirical models in the next
+section were developed under these expectations of the data.
+
+\emph{SNAP Spending is Cyclical}
+
+In some prior work, I've observed that SNAP spending is cyclical,
+peeking in the 2nd week. This is due to the state's monthly SNAP
+benefits transfer schedule. Benefits are distributed every odd day of
+the month between the 3rd and 21st. Each day maps to the digits
+\texttt{0} through \texttt{9}. SNAP participants receive their benefits
+once a month on the day corresponding to the last digit of their SNAP ID
+number. For example, ID numbers that end in \texttt{0} receive their
+benefits on the 3rd of each month. SNAP EBT benefits are spent quickly.
+As a result, there are always fewer SNAP purchases during the 4th week
+of the month. And fewer SNAP benefits means fewer transaction capable of
+receiving the DUFB incentive. I'm not yet sure what impact this will
+have on my analysis this time around, but I thought it important and
+interesting to point out and consider.
+
+The week-to-week cyclical pattern of SNAP EBT spending can be observed
+in Figure \ref{fig:trx-cycle}. (Note that these are from a different
+data source and different store chain, but from the same US state.) At
+the start of the each month, SNAP EBT transactions (red line) increase
+until peeking at the second week. The count then declines steadily
+through the 4th week before once again spiking during the 1st week of
+the following month. (Ignore the green line; these are DUFB counts from
+a different data set.)
+
+\begin{figure}
+
+{\centering \includegraphics{figures/trx_counts} 
+
+}
+
+\caption{Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line.}\label{fig:trx-cycle}
+\end{figure}
+
+\emph{Concerns}
+
+One concern I had was if local supply of produce differed geographically
+across the state where the stores are located. The company
+representative told me that should not be a factor because all stores
+are supplied from the same warehouse. Therefore, in theory, each store
+should have the same local produce. I plan to visit the stores on a
+later date to confirm that this is actually the case.
+
+\hypertarget{store-selection-1}{\section*{Overview of Store Selection
+and Expansion}\label{store-selection-1}}
+\addcontentsline{toc}{section}{Overview of Store Selection and
 Expansion}
 
 How the 17 ``treatment'' stores and 15 ``control'' stores were selected
@@ -994,220 +1058,106 @@ possible, but matching to UPC databases is not always precise. Should
 matching be poor, discerning what a product is, its weight, etcetera,
 will be difficult, making the second outcome variable unreliable.
 
-\textbf{Past Experience with Similar Data}
+\subsection*{Main Analysis: Regression Discontinuity
+(RD)}\label{main-analysis-regression-discontinuity-rd}
+\addcontentsline{toc}{subsection}{Main Analysis: Regression
+Discontinuity (RD)}
 
-This is not my first experience working with transaction data. At this
-point, I have more than 3 years working with transaction data.
-Furthermore, this is not my first experience with transaction data where
-(1) DUFB was implemented and (2) transactions were not linked to
-individuals.
+In the \protect\hyperlink{store-selection-1}{Store Selection} section, I
+discussed the construction of the score function
+\(\bm{s} = \widehat{P(\mathbf{D} = 1 | \bm{X}, \bm{N})}\). Given
+\(i = 1,...,n\) stores, the score of each store can be determined via
+observable data, \(s_i = \widehat{P(D_i = 1|\bm{x}_i, n_i)}\). These
+scores, when ordered, produced perfect separation between treatment
+stores and control stores (see Figure \ref{fig:score-plot}).
 
-I performed an analysis in April of 2016 for FFN using 5 months of
-transaction data from 3 small Detroit-area grocery stores. Figure
-\ref{fig:trx-cycle} was produced with those data. It was easy to
-distinguish when SNAP benefits were being used in those data. Likewise,
-it was easy to tell when transaction made use of the DUFB incentive
-(either an issuing of DUFB or a redemption). A simple aggregation could
-determine the total amount of dollars spent per some unit time
-(\emph{day} was the smallest possible unit of time). I expected data for
-my prospectus will be very similar. The empirical models in the next
-section were developed under these expectations of the data.
+An RD design requires a \emph{running variable} where, above some value
+\(c\), the probability of being assigned to the treatment group is
+\(1\). Assume I make the score function \(\bm{s}\) my running variable
+such that \(D_i = \bm{1}[s_i \ge c]\).
 
-\subsection*{Difference-in-Differences}\label{difference-in-differences}
-\addcontentsline{toc}{subsection}{Difference-in-Differences}
+In my case, assignment \(D_i\) is determined by \(s_i\) by construction.
+Recall that \(s_i\) is a function estimated on observable covariates.
+These are the same observable covariates the company used to determine
+assignment for a subset of stores. I used a linear probability model to
+estimate the score function and the estimated model perfecty predicted
+assignment. I then ordered stores by their score value and selected the
+next 12 unassigned stores.
 
-Difference-in-Differences (DD) models will be used in the main and
-secondary analyses. The models will be identical but the data will
-differ.
-
-\textbf{The DD model 1 (DD1)}
-
-The proposed model is as follows
-
-\[
-\begin{aligned}
-  y_{ist}  &= \alpha_i + \beta_0 DUFB_{s} + \beta_1 POST_{t} + \delta (DUFB_{s} \cdot POST_{t}) + \sum_{j=1}^4 \theta_{j} I_{j}(t) + \epsilon_{ist}
-\end{aligned}
-\]
-
-where \(y_{ist}\) is the outcome variable for store \(i\) in state \(s\)
-during week \(t\). \(\alpha_i\) captures any time-invariant
-store-specific effects. \(DUFB_{s}\) indicates whether store \(i\) has
-or will be part of the DUFB incentive. \(POST_{t}\) indicates if week
-\(t\) for store \(i\) lands in a post- or pre-DUFB year. Recall, there
-are 3 years of data (2014 - 2016) and DUFB implementation is staggered
-across stores. \(I_{j}(t)\) captures any cyclical effects due to the
-monthly SNAP benefit transfer schedule. \(I_{j}(t) = 1\) if week \(t\)
-is the \(j\)th week of the month, where \(j = 1,2,3,4\).
-
-There are a total of \(156\) (\(52 \times 3\)) weeks in these data.
-However, recall that the DUFB program is only live from August 1 to Dec
-31 of each year. In other words, DUFB is being implemented for only
-\(60\) of the \(156\) months. Things are further complicated by the way
-the DUFB incentive worked between 2016 and years 2014 and 2015.
-
-Time will be broken into weeks. The week of one year will be compared to
-the same week in the following year. This is for three main reasons.
-First, there is enough data per store to make precise estimates at the
-weekly level. Given the small sample since (``small N''), expanding the
-amount of observations along time (``bigger T'') will benefit the panel
-models. Second, SNAP spending is cyclical, peeking in the 2nd week. This
-is due to the state's monthly SNAP benefits transfer schedule. Benefits
-are distributed every odd day of the month between the 3rd and 21st.
-Each day maps to the digits \texttt{0} through \texttt{9}. SNAP
-participants receive their benefits once a month on the day
-corresponding to the last digit of their SNAP ID number. For example, ID
-numbers that end in \texttt{0} receive their benefits on the 3rd of each
-month. SNAP EBT benefits are spent quickly. As a result, there are
-always fewer SNAP purchases during the 4th week of the month. And fewer
-SNAP benefits means fewer transaction capable of receiving the DUFB
-incentive. I believe it is better to capture this behavior in a model
-versus smoothing it out by aggregating at the monthly level. Third, it
-captures seasonal spikes that would also be smoothed out if aggregated
-to the monthly level. I think it will be useful comparing, say, the the
-week leading up the Thanksgiving between stores with and without DUFB.
-
-The week-to-week cyclical pattern of SNAP EBT spending can be observed
-in Figure \ref{fig:trx-cycle}. (Note that these are from a different
-data source and different store chain, but from the same US state.) At
-the start of the each month, SNAP EBT transactions (red line) increase
-until peeking at the second week. The count then declines steadily
-through the 4th week before once again spiking during the 1st week of
-the following month. (Ignore the green line; these are DUFB counts from
-a different data set.)
+This problem is that I do not actually know \(c\). I only know that
+\(c \in (0.50, 0.64)\). The light gray band in Figure
+\ref{fig:score-plot2} displays the possible values of \(c\). The
+problem, in essence, is that I do not have---and never will
+have---enough stores, so I'm lacking density around where the separation
+occurs.
 
 \begin{figure}
-
-{\centering \includegraphics{figures/trx_counts} 
-
-}
-
-\caption{Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line.}\label{fig:trx-cycle}
+\centering
+\includegraphics{noriega-prospectus-draft_files/figure-latex/score-plot2-1.pdf}
+\caption{\label{fig:score-plot2}Store Score vs Double Up Assignment with
+Uncertainty Band (light gray)}
 \end{figure}
 
-Here is where I'm not sure what the best approach is.
+I propose to estimate the RD design using various values of \(c\). The
+perpetual gap means any model estimate to the left or right of some
+\(c_0 \in (0.50, 0.64)\) will have to be extrapolated up to \(c_0\).
 
-Analysis of stores selected using \emph{known} and \emph{observable}
-criteria.
+\textbf{Set-up}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{Sample}: 11 Treated stores, 12 Control Stores across 3 years,
+The outcome of variable for each store will be the \emph{average amount
+spent on locally grown produce in a SNAP transaction per day}. The
+timeframe will be August - December (months \(8\) - \(12\)) of 2016,
+when the DUFB incentive is place. I decided on using days as the unit of
+observation to increase the sample amount of data for estimating. I
+expect there to be enough transactions per day for this to be possible.
 
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \setcounter{enumii}{2}
-  \tightlist
-  \item
-    Within-group and between-group variation
+Let \(y_{i}\) represent the outcome variable where \(i=1,...,n\) denotes
+stores. Let \(c\) denote the cutoff; \(s_i\) the score computed for
+store \(i\); and \(D_i\) the assignment variable. Each draw (or row) of
+data for store \(i\) is a vector \((y_i, s_i, D_i)\) corresponding to a
+single day. Recall that \(y_i\) is a point statistics estimated using a
+single days worth of transaction data for store \(i\). All days will be
+pooled, creating roughly \(30\times5=150\) observations (days) per
+store.
 
-    \begin{enumerate}
-    \def\labelenumiii{\arabic{enumiii}.}
-    \setcounter{enumiii}{3}
-    \tightlist
-    \item
-      We lose some within-group variation as the 2 pilot stores are only
-      ever observed as treated stores.
-    \end{enumerate}
-  \item
-    Stores enter in waves. The staggering is used to produce extra
-    variation between groups.
-  \item
-    T is 58 x 3 (weeks)
+Let \(u_i\) be an error term assumed to be \(\mathcal{N}(0, \sigma^2)\).
 
-    \begin{enumerate}
-    \def\labelenumiii{\arabic{enumiii}.}
-    \setcounter{enumiii}{5}
-    \tightlist
-    \item
-      Weeks is important because of MI SNAP schedule
-    \item
-      By the 4th week in every month, purchases with SNAP drop. It is
-      important to capture this and not average it out by looking at
-      monthly purchases.
-    \end{enumerate}
-  \item
-    N is the same across time but the staggering shifts N for treated
-    and control.
+The RD model I propose is as follows
 
-    \begin{enumerate}
-    \def\labelenumiii{\arabic{enumiii}.}
-    \setcounter{enumiii}{7}
-    \tightlist
-    \item
-      \textbf{Table}: Create table showing the change in N subsample.
-    \end{enumerate}
-  \end{enumerate}
-\item
-  \textbf{Method 1}: Difference in Differences with FE
+\[
+y_{i} = \alpha + \rho D_i + \gamma (s_i - c) + \delta D_i(s_i - c) + u_{i}
+\]
 
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \setcounter{enumii}{4}
-  \tightlist
-  \item
-    DinD seems appropriate.
+My hope is to produce a graph that looks like the following
 
-    \begin{enumerate}
-    \def\labelenumiii{\arabic{enumiii}.}
-    \setcounter{enumiii}{5}
-    \tightlist
-    \item
-      Larger and local economic forces should affect stores within each
-      cluster equally.
-    \end{enumerate}
-  \item
-    FE should remove any store-specific time-invariant attributes.
-  \end{enumerate}
-\item
-  \textbf{Method 2}: Regression Discontinuity
+{[}GENERATE EXAMPLE GRAPH. At each point \(s_i\), there will be about
+150 points drawn in vertical like. This would help visualize the
+distribution of average-dollars-per-day.{]}
 
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \setcounter{enumii}{3}
-  \tightlist
-  \item
-    \textbf{Fear 1:} using a running variable that is a function of
-    other variables. Only seen one paper reference anything beyond one
-    running variable \citep{papay_extending_2011}. Never seen a running
-    variable that is score function.
-  \item
-    \textbf{Fear 2}: sample size here is small. RD performs better with
-    large sample size.
-  \end{enumerate}
-\end{enumerate}
+\subsection{Main Analysis: Difference-in-Differences, Model 1
+(DD1)}\label{main-analysis-difference-in-differences-model-1-dd1}
 
-\subsection*{Difference-in-Differences with
-Matching}\label{difference-in-differences-with-matching}
-\addcontentsline{toc}{subsection}{Difference-in-Differences with
-Matching}
+{[}WRITE MODEL. Below is example of DD model overtime.{]}
+
+\begin{figure}
+\centering
+\includegraphics{noriega-prospectus-draft_files/figure-latex/dd1-plot-1.pdf}
+\caption{\label{fig:dd1-plot}Example DD Model over 12 months in 2016 (DUFB
+start month 8)}
+\end{figure}
+
+\subsection*{Secondary Analysis: Difference-in-Differences with
+Matching}\label{secondary-analysis-difference-in-differences-with-matching}
+\addcontentsline{toc}{subsection}{Secondary Analysis:
+Difference-in-Differences with Matching}
 
 Smaller analysis of the 3 stores that self-selected and were matched to
-3 other stores.
+3 other stores. Total N will be 6. Likely that nothing will be
+significant. But need to be transparent.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  \textbf{Method:} Difference in difference been years 2015 and 2016
+\chapter{Non-recurrent TANF spending in Durham County}\label{chapter-2}
 
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \setcounter{enumii}{2}
-  \tightlist
-  \item
-    Power here will be small. Total N will be 6. Likely that nothing
-    will be significant. But need to be transparent.
-  \end{enumerate}
-\end{enumerate}
-
-\chapter{An Analysis of Non-recurrent TANF spending in Durham
-County}\label{chapter-3}
-
-\section*{Introduction}\label{intro-3}
+\section*{Introduction}\label{intro-2}
 \addcontentsline{toc}{section}{Introduction}
 
 The Personal Responsibility and Work Opportunity Reconciliation Act of
@@ -1347,7 +1297,8 @@ Additionally, the reporting requirement ensure states were imposing TANF
 work requirements and time limits for cash assistance. I spotlight the
 consequences of these changes in the next section.
 
-\subsection{TANF Consequences}\label{tanf-consequences}
+\subsection*{TANF Consequences}\label{tanf-consequences}
+\addcontentsline{toc}{subsection}{TANF Consequences}
 
 Granting spending authority to the states created more opportunities for
 discrimination against nonwhite welfare recipients. The bureaucratic
@@ -1371,9 +1322,9 @@ encouraging work and strengthening two-parent families. The goals and
 language of welfare reform, as explained by
 \citet{soss_disciplining_2011}, implicitly fed prevailing negative
 attitudes and narratives long associated with American minorities,
-especially black Americans.\footnote{@\citet{soss_color_2008} explain
-  the construction and passage of welfare reform under what they call
-  the \emph{Racial Classification Model (RCM)}. It is a provoking yet
+especially black Americans.\footnote{\citet{soss_color_2008} explain the
+  construction and passage of welfare reform under what they call the
+  \emph{Racial Classification Model (RCM)}. It is a provoking yet
   reasonable model but it is beyond the scope of this paper.} Should
 these negatives attitudes filtered down to local social services
 departments, there is unfortunately little beneficiaries can do to
@@ -1432,7 +1383,7 @@ provide understanding about how other, similar agencies within the state
 are using non-recurrent benefits, it would be irresponsible to
 extrapolate to agencies within different states.
 
-\section*{Data}\label{data-3}
+\section*{Data}\label{data-2}
 \addcontentsline{toc}{section}{Data}
 
 \subsection*{Data Source}\label{data-source}
@@ -1443,9 +1394,9 @@ Durham County Social Services in North Carolina. Access to these data is
 possible through a collaboration between Durham County Social Services
 (DSS) and the Durham Children's Data Center.
 
-Non-recurrent short-term benefits\footnote{See
-  \href{https://www.govregs.com/regulations/title45_chapterII_part260_subpartA_section260.31}{C.F.R.
-  §§ 260.31.b}}:
+Non-recurrent short-term benefits
+(\href{https://www.govregs.com/regulations/title45_chapterII_part260_subpartA_section260.31}{C.F.R.
+§§ 260.31.b}{]}):
 
 \begin{quote}
 \begin{enumerate}
@@ -1453,7 +1404,7 @@ Non-recurrent short-term benefits\footnote{See
 \tightlist
 \item
   are designed to deal with a specific crisis situation or episode of
-  need;\\
+  need;
 \item
   are not intended to meet recurrent or ongoing needs; and
 \item
@@ -1479,8 +1430,7 @@ North Carolina's \$4.9 million in emergency spending. All emergency
 assistance programs can be found in the
 \href{http://dconc.gov/home/showdocument?id=7815}{Directory of Services}
 on DSS website
-{[}\citet{durham_county_department_of_social_services_directory_2016};
-pages 11-14{]}.
+\citep{durham_county_department_of_social_services_directory_2016}.
 
 \subsection*{Data Description}\label{data-description}
 \addcontentsline{toc}{subsection}{Data Description}
@@ -1517,7 +1467,7 @@ requested/received the funds (generally referenced as the
 
 There are challenges to this structure. The first challenge, which can
 be solved but will be difficult (see
-\protect\hyperlink{methods-3}{Methods}), is that households are not
+\protect\hyperlink{methods-2}{Methods}), is that households are not
 uniquely defined. A single individual could apply for two different
 types of assistance that will be affecting the same household, yet is
 only required to list household members in one of the applications.
@@ -1549,7 +1499,8 @@ overwritten or if the full history of a record is kept. If all that is
 observed is the current (or completed) status of an application, then
 that will affect how these data are analyzed.
 
-\subsection{Unknowns}\label{unknowns}
+\subsection*{Unknowns}\label{unknowns}
+\addcontentsline{toc}{subsection}{Unknowns}
 
 Here I must break the fourth wall and admit that it is not clear to me
 which of these services are counted towards TANF and MOE spending. Based
@@ -1598,7 +1549,7 @@ That said, while it matters to understand how these benefits fit within
 the larger TANF/MOE structure, studying the data is still provides a
 look into how a county distributes emergency assistance.
 
-\hypertarget{methods-3}{\section*{Proposed Methods}\label{methods-3}}
+\hypertarget{methods-2}{\section*{Proposed Methods}\label{methods-2}}
 \addcontentsline{toc}{section}{Proposed Methods}
 
 \subsection*{Basic Descriptive Tables and
@@ -1608,7 +1559,7 @@ Plots}\label{basic-descriptive-tables-and-plots}
 Tables and graphs describing the data will comprise a large part of this
 paper. These data have never been analyzed or described, not even by
 DSS. I will not go into do much detail as it easier to show examples
-(see \protect\hyperlink{preview-3}{Preview of Results}).
+(see \protect\hyperlink{preview-2}{Preview of Results}).
 
 \subsection*{Prerequisite: Determining
 Households}\label{prerequisite-determining-households}
@@ -1672,13 +1623,249 @@ I wish I could write up something more complicated, but there is a
 limitation to what I can do with these data beyond what I would consider
 ``level one'' data science (charts, exploratory graphs, etc.).
 
-\hypertarget{preview-3}{\section*{Preview of Results}\label{preview-3}}
+\hypertarget{preview-2}{\section*{Preview of Results}\label{preview-2}}
 \addcontentsline{toc}{section}{Preview of Results}
 
 {[}OMITTED{]}
 
 I realize I am not sure if I can show any results. I need to confirm
-what the policy for doing is with Beth Giffords.
+with Beth Giffords if I have permission to take summary data off the
+protected server.
+
+\chapter{Costumer Segmentation of SNAP Shoppers and Shifts in Product
+Purchases}\label{costumer-segmentation-of-snap-shoppers-and-shifts-in-product-purchases}
+
+\textbf{Danton Noriega} November 13, 2016
+
+\section*{Motivation}\label{motivation}
+\addcontentsline{toc}{section}{Motivation}
+
+The motivation for determining customer segmentation of SNAP shoppers
+are three fold (or more, as I explore further).
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  To observe, in detail, if and where there is a notable shift in
+  shopping patterns when SNAP customers split into ``active-DUFB'' and
+  ``passive-DUFB'' shoppers.
+\item
+  To observe if there is an identifiable subgroup in ``passive-DUFB''
+  SNAP shoppers that could greatly benefit from the program yet appears
+  not to be using it. This could help target certain SNAP shoppers,
+  conditional on knowing loyalty card numbers.
+\item
+  Understand the product space of all products, particularly those not
+  eligible for the DUFB incentive. It is important to determine how
+  products may be substituted and which products may act as complements
+  to produce targeted by the incentive.
+\end{enumerate}
+\end{quote}
+
+The last motivator is creating time for myself to expand my technical
+expertise in machine learning and in using different programming
+languages. I plan to do this project entirely in Python, as opposed to
+R. I do not want to pigeon-hole myself into one programming language.
+
+\section*{Introduction}\label{introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+Households participating in the Supplemental Nutrition Assistance
+Program (SNAP) is group segmentation via self-selection. No all low
+income households eligible for SNAP chose to participate in the program.
+This non-random participation is known as ``self-selection''. This
+self-selection segments the SNAP-eligible population into two groups,
+participating and not-participating. \citet{cole_diet_2008} examine data
+from the National Health and Nutrition Examination Survey and compare
+these two groups. The two differ along almost all demographic variables,
+nutritional intake, even average height and weight.
+\citet{bitler_health_2015} finds these differences persisting across all
+studies using data detailed enough to differentiate household by income
+and SNAP participation.
+
+Self-selection is expected in any program where participation is
+voluntary. Program participation is an observable outcome. This creates
+a variable along which we can segmentation any program-eligible
+population into participants and non-participation. What determines
+participation, however, is often a mix of observable and unobservable
+factors. These unobservable, or latent, factors are generally obsessed
+about by economists because they complicate casual inference models. For
+example, in determining how effective SNAP is at improving nutrition, it
+is important to control for self-selection into the program.
+Self-selection biases model estimates, which is how economist measures
+the impact some variable has on the outcome of interest. In an ideal
+world, an economist would randomize SNAP-eligible households into the
+program and measure changes in health and nutrition.
+
+But there is value in segmentation via self-selection, especially for
+policy makers. Let me pose a hypothetical scenario to illustrate how and
+why. Assume a vaccine exists for a virus that affects a small segment of
+the population. Of the infected segment, half are already immune but the
+other half are not. This segments the population even further. The
+government starts a program to give this vaccine away for free. Like
+most government program, participation is voluntary. Further assume that
+some individuals with the virus have observable symptoms but others do
+not. If the program is offered, segmentation between those who receive
+the vaccine and those who do not will occurs by design. Unfortunately,
+there is also a group of fearful hypochondriacs who think they have the
+virus. Now assume that supplies of the vaccine are limited. It would be
+inefficient for the government to advertise the program to the entire
+population. Anyone with symptoms, including the hypochondriacs, would
+self-select to participate. The most efficient solution would be to
+administer the vaccine only to those that are infected but not immune.
+Under these circumstances, having a way to determine who has the virus
+would be advantageous (the first segmentation). More advantageous would
+be a way to determine who, of the infected segment, is immune (the
+second segmentation). Were that the case, the government could reach out
+and offer the program just the group that is infected but not immune.
+Participation is still voluntary, but resources are used more
+efficiently.
+
+With the detailed data about the population, this type of segmentation
+is possible. It would not be perfectly predictive (deterministic), but
+with good data, it could be highly predictive.
+
+I propose attempting to segment SNAP participants into those likely or
+unlikely to respond to a financial incentives program called Double Up
+Foods Bucks. The Double Up Food Bucks (DUFB) incentive matches every
+dollar spent on locally grown produce by SNAP shoppers. Matched dollars
+are accrued on a grocery store loyalty card and can be used to on
+\emph{any} fresh produce, not just locally grown produce. The caveat
+here is that every SNAP shopper using a loyalty card is participating in
+DUFB by default. A subset of SNAP shoppers, however, would be
+\emph{actively} participating, distinct from \emph{passively}
+participating. The latter are SNAP shoppers that, with or without
+knowledge of the DUFB incentive, do \emph{not} adjust their shopping
+behavior to take advantage of the incentive. The former are SNAP
+shoppers that do adjust their shopping behavior in response to the
+incentive.
+
+Under the assumption that the program is effective, it would be useful
+to know which SNAP shoppers are more likely to respond to the incentive.
+Resources for the program are limited. It would be more effective to
+target shoppers that are likely to actively participate in the DUFB
+incentive. Targeting, in this case, is a step beyond simply informing
+SNAP shoppers about the program. It would entail advertising specific
+products that would encourage more active participation. For example,
+local grown carrots that are on sale to SNAP shoppers that have
+previously purchased carrots of any kind. The shopper would then be
+informed that the locally grown carrots are eligible for the DUFB
+incentive.
+
+There is precedent for this kind of targeted advertising. Online
+retailers, like Amazon or Ebay, segmented customers based on their
+browsing and purchasing patterns to improve the likelihood of a sale.
+Customer (or market) segmentation can improve sales and decrease cost by
+increasing the efficiency of advertising. Given two customers with
+distinct shopping patterns, it is more effective and efficient to
+specifically target each customer with different ads, each containing
+distinct products, than to use the same ad for both. It is now
+inexpensive, thanks to decreasing computing and data storage costs, to
+store customer data, segment them into groups, and target each group
+with a tailored ad or product.
+
+Large retailers, like Walmart or Target, have also shifted to using
+algorithms to improve sales, both online and within their physical
+stores. Walmart, for example, sponsored a Kaggle competition in 2015 to
+improve the efficiency of categorizing customer shopping trips. Walmart
+provided data where they already segmented every shopping trip into 38
+distinct type. Walmart, however, wanted to reproduce the output of its
+own proprietary costumer segmentation algorithm using only the items a
+customer purchased \citep{walmart_data_2015}. Walmart, which has access
+to far more data about its customers beyond what they purchase,
+anticipated it was possible to reproduce their valuable algorithm with
+less data (aka ``features'')---in this case, purchase history.
+
+The only predefine segmentation will be whether or not a shopper is a
+SNAP participating. Further segmentation of those participating in SNAP
+will require an analysis of transaction data. I will use
+\citet{friedman_elements_2001} and \citet{james_introduction_2013} as my
+guides to learning and implementing the most well known clustering
+algorithms.
+
+To my knowledge, there is no policy research that has attempted to
+segment SNAP shoppers based on their purchase history. I believe
+understanding how SNAP shoppers actively or passively participate in
+incentive programs like DUFB would be a unique contribution to the
+literature.
+
+\section*{Data}\label{data}
+\addcontentsline{toc}{section}{Data}
+
+The type of segmentation I could do will be data dependent.
+
+\subsection*{Least Interesting Data
+(Obtained)}\label{least-interesting-data-obtained}
+\addcontentsline{toc}{subsection}{Least Interesting Data (Obtained)}
+
+At the moment, I already have UPC level data from 7 small grocery stores
+in the Detroit Michigan area. For 5 of the 7, I have data for 2015 and
+2016. For 2 of the 7, I only have data from 2016. The downside of these
+data is that purchases cannot be linked to individuals and the data is
+all from months and years when DUFB was in place.
+
+Therefore, segmentation would not be at the customer level, but really
+at the transaction level. Furthermore, we cannot observe changes in
+purchases potentially induced by the introduction of DUFB. This is less
+interesting but the results may still prove insightful for understanding
+what a products are purchased when DUFB dollars are issued versus when
+they are redeemed.
+
+\subsection*{Moderately Interesting Data (Almost certainly
+happening)}\label{moderately-interesting-data-almost-certainly-happening}
+\addcontentsline{toc}{subsection}{Moderately Interesting Data (Almost
+certainly happening)}
+
+The data we should be getting (shortly?) from SpartanNash improves on
+the data from the small Detroit stores by providing data from different
+months and years from stores observed before and during DUFB
+implementation. This means it will be possible to observed shifts in the
+items purchased by SNAP shoppers within and across stores.
+
+The problem, however, of attributing the shift to individuals changing
+shopping behavior will still be weak. We should of course expect the
+shopping baskets of transactions using DUFB to be different from those
+that are not using DUFB. Likewise, we should observe a difference when
+accruing DUFB points versus redeeming. But being able to map the shifts
+across multiple stores as shoppers self-select into using the program
+could also be insightful.
+
+\subsection*{Most Useful Data (Likely
+Happening)}\label{most-useful-data-likely-happening}
+\addcontentsline{toc}{subsection}{Most Useful Data (Likely Happening)}
+
+I'm working on getting a data sets that does in fact link transaction
+data to individuals via a loyalty card system.
+
+These data come from 5 stores in Kansas from the PriceChopper chain.
+These data cover the same months in 2015 and 2016, where only 2016 had
+DUFB. All data, including loyalty cards, exists. The issue is
+logistical. There was a misunderstanding between PriceChopper, Fair Food
+Networks, and another researcher (Dr.~Cheryl Gibson), which delayed the
+data from reaching other researchers (like me). I have a call on
+November 30th to discuss how I could gain access to these data.
+
+\hypertarget{methods}{\section*{Methods}\label{methods}}
+\addcontentsline{toc}{section}{Methods}
+
+There are a few supervised and unsupervised machine learning approaches
+that intend to use. My goal is to aim for the ``low hanging fruit'' and
+use methods that are easy to implement, like \texttt{k-means} and
+\texttt{hierarchical\ clustering}. Should it prove to not be too much
+extra effort, I would like to try some latent variable models like topic
+modeling. This would require gathering descriptive data about products
+and link them via UPC. One could then treat each segment as a ``topic''
+(the latent variable) and the associated products as the observable
+variables contained within each segment.
+
+I have much to learn here, unfortunately. Yet, this is why I selected to
+do this paper. I would like a reason to dive deep into these methods,
+learn them, and implement them. Doing so would also help me produce a
+coding ``portfolio'' to show to companies that I am capable of higher
+level data science and statistical learning---and in more than one
+programming language.
 
 \bibliography{bib/book.bib}
 

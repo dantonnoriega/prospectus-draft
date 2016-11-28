@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="chapter-1.html">
+<link rel="prev" href="data.html">
+<link rel="next" href="references.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -137,45 +137,20 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">DRAFT Dissertation Prospectus</h1>
-<h4 class="author"><em>Danton Noriega</em></h4>
-<h4 class="date"><em>November 28, 2016</em></h4>
-</div>
-<div id="section" class="section level1">
-<h1><span class="header-section-number">1</span> </h1>
-<!-- Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
-
-Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is a financial incentive---Double Up Food Bucks---designed to increase fruit and vegetables consumption. A comparison will be made with another financial incentive program called the *Healthy Incentives Pilot* (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.
- -->
-<!-- 
-Chapter 2 is an exploration of how the basket of products purchased by SNAP shoppers changes after the introduction of DUFB. This will use a few different sets of data where one is able to link purchases to individuals.
-
-Chapter 3 is a descriptive paper on how Durham Social Services spends emergency assistance dollars, such as Temporary Assistance for Needy Families (TANF). There is no uniformity between how different states and local governments use TANF funds. There is also little published data research. -->
-<!-- ## Other Ideas {-}
-
-1. **What is the redemption rate of Double Up coupons?**
-    - Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
-    - Under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table
-    - This is unlikely to be the case but the question is, *just how high (or low) is the redemption rate?* Do most coupons go unredeemed?
-    - This will be a technically difficult problem as we do not have panel data but the data could still be used to attempt to answer this question
-2. **What purchasing behavior distinguishes Double Up participants from non-Double Up participants?**
-    - Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?
-    - Is it possible to identify a Double Up purchase if we remove Michigan Produce?
-    - This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.
-3. **How does the snap benefit cycle affect purchasing patters.** 
-    - This is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
- -->
-<!-- # Literature Review {-} -->
+<div id="methods" class="section level2 unnumbered">
+<h2>Methods</h2>
+<p>There are a few supervised and unsupervised machine learning approaches that intend to use. My goal is to aim for the “low hanging fruit” and use methods that are easy to implement, like <code>k-means</code> and <code>hierarchical clustering</code>. Should it prove to not be too much extra effort, I would like to try some latent variable models like topic modeling. This would require gathering descriptive data about products and link them via UPC. One could then treat each segment as a “topic” (the latent variable) and the associated products as the observable variables contained within each segment.</p>
+<p>I have much to learn here, unfortunately. Yet, this is why I selected to do this paper. I would like a reason to dive deep into these methods, learn them, and implement them. Doing so would also help me produce a coding “portfolio” to show to companies that I am capable of higher level data science and statistical learning—and in more than one programming language.</p>
 
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="chapter-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

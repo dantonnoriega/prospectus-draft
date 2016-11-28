@@ -12,52 +12,39 @@ One important variable that will not be made available is a variable for loyalty
 
 In earlier conversations with the company, it was understood that loyalty cards would be made available. However, months into working with the company, I was informed that this was no longer possible. Per the company's legal department, the company cannot share any personal information about their customers. Unfortunately for us, in the loyalty card contract signed by customers, the loyalty card number itself is considered personal information, meaning loyalty card numbers fall under the same legal category as phone numbers and home addresses.
 
-**DUFB Incentive Inconsistency**
+**DUFB Incentive Inconsistency Across Years**
 
 The retail company informed us that the way the DUFB incentive worked in 2016 is distinct from 2014 and 2015. The DFUB incentive in 2016 worked by accruing points for each dollar spent on *locally grown* fresh produce. (Recall that each point is equal to one dollar.) Points are then redeemed automatically on *any* fresh produce. However, in 2014 and 2015, the incentive was the *opposite*. In those two years, the DUFB incentive worked by accruing points on *any* fresh produce, automatically redeeming points on *locally grown* fresh produce. 
 
-This is important because *locally grown* fresh produce is a much smaller subset of the *any* fresh produce. Therefore, in years 2014 and 2015, shoppers could easily accrue points but had a constrained set of produce on which to redeem points.
+This is important because *locally grown* fresh produce is a much smaller subset of the *any* fresh produce. Therefore, in years 2014 and 2015, shoppers could easily accrue points but had a constrained set of produce on which to redeem points. In any case, estimates of the incentive for the year 2015 cannot be compared to estimates in the year 2016.
 
 
-**Other Important Information**
+**Other Information**
+
+*Past Experience with Similar Data*
+
+This is not my first experience working with transaction data. At this point, I have more than 3 years working with transaction data. Furthermore, this is not my first experience with transaction data where (1) DUFB was implemented and (2) transactions were not linked to individuals.
+
+I performed an analysis in April of 2016 for FFN using 5 months of transaction data from 3 small Detroit-area grocery stores. Figure \@ref(fig:trx-cycle) was produced with those data. It was easy to distinguish when SNAP benefits were being used in those data. Likewise, it was easy to tell when transaction made use of the DUFB incentive (either an issuing of DUFB or a redemption). A simple aggregation could determine the total amount of dollars spent per some unit time (*day* was the smallest possible unit of time). I expected data for my prospectus will be very similar. The empirical models in the next section were developed under these expectations of the data.
+
+*SNAP Spending is Cyclical*
+
+In some prior work, I've observed that SNAP spending is cyclical, peeking in the 2nd week. This is due to the state's monthly SNAP benefits transfer schedule. Benefits are distributed every odd day of the month between the 3rd and 21st. Each day maps to the digits `0` through `9`. SNAP participants receive their benefits once a month on the day corresponding to the last digit of their SNAP ID number. For example, ID numbers that end in `0` receive their benefits on the 3rd of each month. SNAP EBT benefits are spent quickly. As a result, there are always fewer SNAP purchases during the 4th week of the month. And fewer SNAP benefits means fewer transaction capable of receiving the DUFB incentive. I'm not yet sure what impact this will have on my analysis this time around, but I thought it important and interesting to point out and consider.
+
+The week-to-week cyclical pattern of SNAP EBT spending can be observed in Figure \@ref(fig:trx-cycle). (Note that these are from a different data source and different store chain, but from the same US state.) At the start of the each month, SNAP EBT transactions (red line) increase until peeking at the second week. The count then declines steadily through the 4th week before once again spiking during the 1st week of the following month. (Ignore the green line; these are DUFB counts from a different data set.)
 
 
-### Overview of Store Selection and Expansion {-}
+```{r trx-cycle, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.cap = 'Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line.', fig.align='center'}
 
-How the 17 "treatment" stores and 15 "control" stores were selected in 2016 is important. First and foremost, selection was *not* random. Stores were either selected by the company (13 of 17) or self-selected into Double Up (4 of 17). Second, the 15 control stores were selected *after* the selection of the 17 treatment stores. Data from all remaining stores was requested but the request was denied; only 15 stores had been approved by the company's management. Finally, and most importantly, the selection criteria for the 17 treatment stores is *observable*. The implications of this will be covered in more detail in the [Methods](#methods) section.
+if(getOutputFormat() == "latex") {
+    fig <- 'figures/trx_counts.pdf'
+} else {
+    fig <- 'figures/trx_counts.png'
+}
 
-### Selection and Expansion of Double Up Stores {-}
-
-The first 2 stores were piloted with Double Up in 2014. Both were in geographically distinct areas (these will be referred to as "`Node 0`" and "`Node 1`"). There was a small expansion adding 3 more stores in 2015. The 3 stores were selected because they were geographically close to the 2 original pilot stores (2 close to `Node 0`, 1 close to `Node 1`). The 5 stores are referred to as the "core". The location of these 5 stores, separated in two clusters, established the geographic constraints that were then used to determine most of the additional stores in 2016.
-
-Double Up was expanded to 12 more stores in 2016, totaling 17. Of those 12, 6 were selected due to their proximity to the 5 core stores, their SNAP EBT^[Electronic Benefit Transfer.] sales figures, and similarity in surrounding demographics (high population density, more African-American). In other words, 9 of the 17 stores---excluding the initial 2 pilot stores—--were selected on a set of *observable* characteristics. The remaining 6 stores were not.
-
-Of the remaining 6 stores, 4 asked if they could be included in the program. These stores *self-selected* into Double Up, making these stores fundamentally distinct. They were considered, and then included, only because they fell within the "Top 50". The final 2 stores were selected by the company for "strategic business decision". The best interpretation of this is that the company thought that Double Up would provide a competitive edge to the 2 included stores given some internal calculus. How the company came to this decision is *unknown* and therefore *unobserved*.
-
-Table \@ref(tab:store-class) helps understand the year by year expansion of Double Up. Stores are classified as either `assigned`, `self-selected`, or `unobserved`. To be `assigned` means a stores participation in Double Up was determined (assigned) by the company; `self-selected` means the store asked the company to participate; `unobserved` means that the company selected the store to participate in Double Up but for unknown and unobserved reasons. Numbers were assigned to each store for easy reference but otherwise have no meaningful interpretation.
-
-
-```{r store-class, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
-
-tbl_df <- dufb_sn_df %>%
-  dplyr::arrange(-dufb_2014, -dufb_2015, -dufb_2016, unknown) %>%
-  dplyr::mutate(store_id = 1:length(store)) %>%
-  dplyr::select(store, store_id, c(4:10)) %>%
-  dplyr::mutate(type = if_else(self_selected == 1,
-    'self-selected',
-    'assigned')) %>%
-  dplyr::mutate(type = if_else(unknown == 1, 'unobserved', type)) %>%
-  dplyr::mutate(type = if_else(dufb_2014 == 1, 'pilot', type)) %>%
-  dplyr::select(store_id, type, dplyr::contains('dufb'))
-
-tbl <- tbl_df %>%
-  dplyr::mutate(`2014` = if_else(dufb_2014 == 1, type, '')) %>%
-  dplyr::mutate(`2015` = if_else(dufb_2015 == 1, type, '')) %>%
-  dplyr::mutate(`2016` = if_else(dufb_2016 == 1, type, '')) %>%
-  dplyr::select(store_id, `2014`:`2016`) %>%
-  dplyr::rename(Store = store_id) %>%
-  knitr::kable(., caption = 'Year by Year Store Selection. Stores 1 and 2 represent the initial 2014 pilot stores.', booktabs = TRUE)
-tbl
+knitr::include_graphics(fig)
 ```
 
+*Concerns*
 
+One concern I had was if local supply of produce differed geographically across the state where the stores are located. The company representative told me that should not be a factor because all stores are supplied from the same warehouse. Therefore, in theory, each store should have the same local produce. I plan to visit the stores on a later date to confirm that this is actually the case.

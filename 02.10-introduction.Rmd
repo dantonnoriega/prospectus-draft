@@ -1,6 +1,7 @@
-# An Analysis of Non-recurrent TANF spending in Durham County {#chapter-3}
+# Non-recurrent TANF spending in Durham County {#chapter-2}
 
-## Introduction {#intro-3 -}
+
+## Introduction {#intro-2 -}
 
 The Personal Responsibility and Work Opportunity Reconciliation Act of 1996 (aka "welfare reform") replaced the old welfare program, Aid to Families with Dependent Children (AFDC), with Temporary Assistance for Needy Families (TANF). TANF profoundly changed how states prioritize and spend government welfare dollars. The result has been a gutting of traditional cash assistance programs over the last 20 year. Cash assistance used to accounted for 70% of AFDC spending. Under TANF, cash assistance accounts for 26%, with ten states spending below 10% [@schott_how_2015]. Fewer and fewer dollars now reach families in poverty with each passing year [@cbpp_chart_2016].
 

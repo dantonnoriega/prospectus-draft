@@ -39,9 +39,9 @@ dd <- d %>%
   dplyr::select(score, assignment) %>%
   dplyr::mutate(`Double Up` = dplyr::if_else(assignment == 1, 'Yes', 'No'))
 
-ggplot2::ggplot(data = dd) + 
+g1 <- ggplot2::ggplot(data = dd) + 
     ggplot2::geom_point(aes(x = score, y = assignment, colour = `Double Up`), size = 3) +
-    theme_clean() +
-    geom_vline(aes(xintercept = .57), color = 'blue', linetype = 'dashed')
+    theme_clean()
 
+g1 + geom_vline(aes(xintercept = .57), color = 'blue', linetype = 'dashed')
 ```

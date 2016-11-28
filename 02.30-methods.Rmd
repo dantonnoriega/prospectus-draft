@@ -1,9 +1,9 @@
-## Proposed Methods {#methods-3 -}
+## Proposed Methods {#methods-2 -}
 
 
 ### Basic Descriptive Tables and Plots {-}
 
-Tables and graphs describing the data will comprise a large part of this paper. These data have never been analyzed or described, not even by DSS. I will not go into do much detail as it easier to show examples (see [Preview of Results](#preview-3)).
+Tables and graphs describing the data will comprise a large part of this paper. These data have never been analyzed or described, not even by DSS. I will not go into do much detail as it easier to show examples (see [Preview of Results](#preview-2)).
 
 ### Prerequisite: Determining Households {-}
 

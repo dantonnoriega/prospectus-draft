@@ -1,7 +1,7 @@
 library(tidyverse)
 library(magrittr)
 
-DD2 <- function() {
+DD1 <- function() {
 # make example plots
 df <- data_frame(month = rep(1:12,3), 
      dufb = c(rep("no",12), rep("counterfactual",12), rep("yes",12)))

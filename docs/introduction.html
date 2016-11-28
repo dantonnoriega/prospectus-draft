@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="chapter-1.html">
+<link rel="prev" href="motivation.html">
+<link rel="next" href="data.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -137,45 +137,44 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">DRAFT Dissertation Prospectus</h1>
-<h4 class="author"><em>Danton Noriega</em></h4>
-<h4 class="date"><em>November 28, 2016</em></h4>
+<div id="introduction" class="section level2 unnumbered">
+<h2>Introduction</h2>
+<p>Households participating in the Supplemental Nutrition Assistance Program (SNAP) is group segmentation via self-selection. No all low income households eligible for SNAP chose to participate in the program. This non-random participation is known as “self-selection”. This self-selection segments the SNAP-eligible population into two groups, participating and not-participating. <span class="citation">Cole and Fox (<a href="#ref-cole_diet_2008">2008</a>)</span> examine data from the National Health and Nutrition Examination Survey and compare these two groups. The two differ along almost all demographic variables, nutritional intake, even average height and weight. <span class="citation">Bitler (<a href="#ref-bitler_health_2015">2015</a>)</span> finds these differences persisting across all studies using data detailed enough to differentiate household by income and SNAP participation.</p>
+<p>Self-selection is expected in any program where participation is voluntary. Program participation is an observable outcome. This creates a variable along which we can segmentation any program-eligible population into participants and non-participation. What determines participation, however, is often a mix of observable and unobservable factors. These unobservable, or latent, factors are generally obsessed about by economists because they complicate casual inference models. For example, in determining how effective SNAP is at improving nutrition, it is important to control for self-selection into the program. Self-selection biases model estimates, which is how economist measures the impact some variable has on the outcome of interest. In an ideal world, an economist would randomize SNAP-eligible households into the program and measure changes in health and nutrition.</p>
+<p>But there is value in segmentation via self-selection, especially for policy makers. Let me pose a hypothetical scenario to illustrate how and why. Assume a vaccine exists for a virus that affects a small segment of the population. Of the infected segment, half are already immune but the other half are not. This segments the population even further. The government starts a program to give this vaccine away for free. Like most government program, participation is voluntary. Further assume that some individuals with the virus have observable symptoms but others do not. If the program is offered, segmentation between those who receive the vaccine and those who do not will occurs by design. Unfortunately, there is also a group of fearful hypochondriacs who think they have the virus. Now assume that supplies of the vaccine are limited. It would be inefficient for the government to advertise the program to the entire population. Anyone with symptoms, including the hypochondriacs, would self-select to participate. The most efficient solution would be to administer the vaccine only to those that are infected but not immune. Under these circumstances, having a way to determine who has the virus would be advantageous (the first segmentation). More advantageous would be a way to determine who, of the infected segment, is immune (the second segmentation). Were that the case, the government could reach out and offer the program just the group that is infected but not immune. Participation is still voluntary, but resources are used more efficiently.</p>
+<p>With the detailed data about the population, this type of segmentation is possible. It would not be perfectly predictive (deterministic), but with good data, it could be highly predictive.</p>
+<p>I propose attempting to segment SNAP participants into those likely or unlikely to respond to a financial incentives program called Double Up Foods Bucks. The Double Up Food Bucks (DUFB) incentive matches every dollar spent on locally grown produce by SNAP shoppers. Matched dollars are accrued on a grocery store loyalty card and can be used to on <em>any</em> fresh produce, not just locally grown produce. The caveat here is that every SNAP shopper using a loyalty card is participating in DUFB by default. A subset of SNAP shoppers, however, would be <em>actively</em> participating, distinct from <em>passively</em> participating. The latter are SNAP shoppers that, with or without knowledge of the DUFB incentive, do <em>not</em> adjust their shopping behavior to take advantage of the incentive. The former are SNAP shoppers that do adjust their shopping behavior in response to the incentive.</p>
+<p>Under the assumption that the program is effective, it would be useful to know which SNAP shoppers are more likely to respond to the incentive. Resources for the program are limited. It would be more effective to target shoppers that are likely to actively participate in the DUFB incentive. Targeting, in this case, is a step beyond simply informing SNAP shoppers about the program. It would entail advertising specific products that would encourage more active participation. For example, local grown carrots that are on sale to SNAP shoppers that have previously purchased carrots of any kind. The shopper would then be informed that the locally grown carrots are eligible for the DUFB incentive.</p>
+<p>There is precedent for this kind of targeted advertising. Online retailers, like Amazon or Ebay, segmented customers based on their browsing and purchasing patterns to improve the likelihood of a sale. Customer (or market) segmentation can improve sales and decrease cost by increasing the efficiency of advertising. Given two customers with distinct shopping patterns, it is more effective and efficient to specifically target each customer with different ads, each containing distinct products, than to use the same ad for both. It is now inexpensive, thanks to decreasing computing and data storage costs, to store customer data, segment them into groups, and target each group with a tailored ad or product.</p>
+<p>Large retailers, like Walmart or Target, have also shifted to using algorithms to improve sales, both online and within their physical stores. Walmart, for example, sponsored a Kaggle competition in 2015 to improve the efficiency of categorizing customer shopping trips. Walmart provided data where they already segmented every shopping trip into 38 distinct type. Walmart, however, wanted to reproduce the output of its own proprietary costumer segmentation algorithm using only the items a customer purchased <span class="citation">(Walmart <a href="#ref-walmart_data_2015">2015</a>)</span>. Walmart, which has access to far more data about its customers beyond what they purchase, anticipated it was possible to reproduce their valuable algorithm with less data (aka “features”)—in this case, purchase history.</p>
+<p>The only predefine segmentation will be whether or not a shopper is a SNAP participating. Further segmentation of those participating in SNAP will require an analysis of transaction data. I will use <span class="citation">Friedman, Hastie, and Tibshirani (<a href="#ref-friedman_elements_2001">2001</a>)</span> and <span class="citation">James et al. (<a href="#ref-james_introduction_2013">2013</a>)</span> as my guides to learning and implementing the most well known clustering algorithms.</p>
+<p>To my knowledge, there is no policy research that has attempted to segment SNAP shoppers based on their purchase history. I believe understanding how SNAP shoppers actively or passively participate in incentive programs like DUFB would be a unique contribution to the literature.</p>
 </div>
-<div id="section" class="section level1">
-<h1><span class="header-section-number">1</span> </h1>
-<!-- Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
-
-Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is a financial incentive---Double Up Food Bucks---designed to increase fruit and vegetables consumption. A comparison will be made with another financial incentive program called the *Healthy Incentives Pilot* (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.
- -->
-<!-- 
-Chapter 2 is an exploration of how the basket of products purchased by SNAP shoppers changes after the introduction of DUFB. This will use a few different sets of data where one is able to link purchases to individuals.
-
-Chapter 3 is a descriptive paper on how Durham Social Services spends emergency assistance dollars, such as Temporary Assistance for Needy Families (TANF). There is no uniformity between how different states and local governments use TANF funds. There is also little published data research. -->
-<!-- ## Other Ideas {-}
-
-1. **What is the redemption rate of Double Up coupons?**
-    - Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
-    - Under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table
-    - This is unlikely to be the case but the question is, *just how high (or low) is the redemption rate?* Do most coupons go unredeemed?
-    - This will be a technically difficult problem as we do not have panel data but the data could still be used to attempt to answer this question
-2. **What purchasing behavior distinguishes Double Up participants from non-Double Up participants?**
-    - Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?
-    - Is it possible to identify a Double Up purchase if we remove Michigan Produce?
-    - This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.
-3. **How does the snap benefit cycle affect purchasing patters.** 
-    - This is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
- -->
-<!-- # Literature Review {-} -->
-
+<h3> References</h3>
+<div id="refs" class="references">
+<div id="ref-cole_diet_2008">
+<p>Cole, Nancy, and Mary Kay Fox. 2008. “Diet Quality of Americans by Food Stamp Participation Status: Data from the National Health and Nutrition Examination Survey, 1999-2004.” FSP-08-NH. Office of Research, Nutrition; Analysis: USDA FNS.</p>
+</div>
+<div id="ref-bitler_health_2015">
+<p>Bitler, Marianne P. 2015. “The Health and Nutrition Effects of SNAP.” <em>SNAP Matters: How Food Stamps Affect Health and Well-Being</em>, 134.</p>
+</div>
+<div id="ref-walmart_data_2015">
+<p>Walmart. 2015. “Data - Walmart Recruiting: Trip Type Classification | Kaggle.” <em>Kaggle</em>. <a href="https://www.kaggle.com/c/walmart-recruiting-trip-type-classification/data" class="uri">https://www.kaggle.com/c/walmart-recruiting-trip-type-classification/data</a>.</p>
+</div>
+<div id="ref-friedman_elements_2001">
+<p>Friedman, Jerome, Trevor Hastie, and Robert Tibshirani. 2001. <em>The Elements of Statistical Learning</em>. Vol. 1. Springer series in statistics Springer, Berlin.</p>
+</div>
+<div id="ref-james_introduction_2013">
+<p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. 2013. <em>An Introduction to Statistical Learning</em>. Vol. 6. Springer.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="chapter-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="motivation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

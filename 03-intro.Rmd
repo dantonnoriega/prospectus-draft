@@ -1,0 +1,66 @@
+# Costumer Segmentation of SNAP Shoppers and Shifts in Product Purchases
+**Danton Noriega**
+November 13, 2016
+
+## Motivation  {-}
+
+The motivation for determining customer segmentation of SNAP shoppers are three fold (or more, as I explore further).
+
+> 1. To observe, in detail, if and where there is a notable shift in shopping patterns when SNAP customers split into “active-DUFB” and “passive-DUFB” shoppers.
+> 2. To observe if there is an identifiable subgroup in “passive-DUFB” SNAP shoppers that could greatly benefit from the program yet appears not to be using it. This could help target certain SNAP shoppers, conditional on knowing loyalty card numbers.
+> 3. Understand the product space of all products, particularly those not eligible for the DUFB incentive. It is important to determine how products may be substituted and which products may act as complements to produce targeted by the incentive.
+
+
+The last motivator is creating time for myself to expand my technical expertise in machine learning and in using different programming languages. I plan to do this project entirely in Python, as opposed to R. I do not want to pigeon-hole myself into one programming language.
+
+## Introduction {-}
+
+Households participating in the Supplemental Nutrition Assistance Program (SNAP) is group segmentation via self-selection. No all low income households eligible for SNAP chose to participate in the program. This non-random participation is known as "self-selection". This self-selection segments the SNAP-eligible population into two groups, participating and not-participating. @cole_diet_2008 examine data from the National Health and Nutrition Examination Survey and compare these two groups. The two differ along almost all demographic variables, nutritional intake, even average height and weight. @bitler_health_2015 finds these differences persisting across all studies using data detailed enough to differentiate household by income and SNAP participation.
+
+Self-selection is expected in any program where participation is voluntary. Program participation is an observable outcome. This creates a variable along which we can segmentation any program-eligible population into participants and non-participation. What determines participation, however, is often a mix of observable and unobservable factors. These unobservable, or latent, factors are generally obsessed about by economists because they complicate casual inference models. For example, in determining how effective SNAP is at improving nutrition, it is important to control for self-selection into the program. Self-selection biases model estimates, which is how economist measures the impact some variable has on the outcome of interest. In an ideal world, an economist would randomize SNAP-eligible households into the program and measure changes in health and nutrition.
+
+But there is value in segmentation via self-selection, especially for policy makers. Let me pose a hypothetical scenario to illustrate how and why. Assume a vaccine exists for a virus that affects a small segment of the population. Of the infected segment, half are already immune but the other half are not. This segments the population even further. The government starts a program to give this vaccine away for free. Like most government program, participation is voluntary. Further assume that some individuals with the virus have observable symptoms but others do not. If the program is offered, segmentation between those who receive the vaccine and those who do not will occurs by design. Unfortunately, there is also a group of fearful hypochondriacs who think they have the virus. Now assume that supplies of the vaccine are limited. It would be inefficient for the government to advertise the program to the entire population. Anyone with symptoms, including the hypochondriacs, would self-select to participate. The most efficient solution would be to administer the vaccine only to those that are infected but not immune. Under these circumstances, having a way to determine who has the virus would be advantageous (the first segmentation). More advantageous would be a way to determine who, of the infected segment, is immune (the second segmentation). Were that the case, the government could reach out and offer the program just the group that is infected but not immune. Participation is still voluntary, but resources are used more efficiently. 
+
+With the detailed data about the population, this type of segmentation is possible. It would not be perfectly predictive (deterministic), but with good data, it could be highly predictive.
+
+I propose attempting to segment SNAP participants into those likely or unlikely to respond to a financial incentives program called Double Up Foods Bucks. The Double Up Food Bucks (DUFB) incentive matches every dollar spent on locally grown produce by SNAP shoppers. Matched dollars are accrued on a grocery store loyalty card and can be used to on *any* fresh produce, not just locally grown produce. The caveat here is that every SNAP shopper using a loyalty card is participating in DUFB by default. A subset of SNAP shoppers, however, would be *actively* participating, distinct from *passively* participating. The latter are SNAP shoppers that, with or without knowledge of the DUFB incentive, do *not* adjust their shopping behavior to take advantage of the incentive. The former are SNAP shoppers that do adjust their shopping behavior in response to the incentive.
+
+Under the assumption that the program is effective, it would be useful to know which SNAP shoppers are more likely to respond to the incentive. Resources for the program are limited. It would be more effective to target shoppers that are likely to actively participate in the DUFB incentive. Targeting, in this case, is a step beyond simply informing SNAP shoppers about the program. It would entail advertising specific products that would encourage more active participation. For example, local grown carrots that are on sale to SNAP shoppers that have previously purchased carrots of any kind. The shopper would then be informed that the locally grown carrots are eligible for the DUFB incentive.
+
+There is precedent for this kind of targeted advertising. Online retailers, like Amazon or Ebay, segmented customers based on their browsing and purchasing patterns to improve the likelihood of a sale. Customer (or market) segmentation can improve sales and decrease cost by increasing the efficiency of advertising. Given two customers with distinct shopping patterns, it is more effective and efficient to specifically target each customer with different ads, each containing distinct products, than to use the same ad for both. It is now inexpensive, thanks to decreasing computing and data storage costs, to store customer data, segment them into groups, and target each group with a tailored ad or product.
+
+Large retailers, like Walmart or Target, have also shifted to using algorithms to improve sales, both online and within their physical stores. Walmart, for example, sponsored a Kaggle competition in 2015 to improve the efficiency of categorizing customer shopping trips. Walmart provided data where they already segmented every shopping trip into 38 distinct type. Walmart, however, wanted to reproduce the output of its own proprietary costumer segmentation algorithm using only the items a customer purchased [@walmart_data_2015]. Walmart, which has access to far more data about its customers beyond what they purchase, anticipated it was possible to reproduce their valuable algorithm with less data (aka "features")---in this case, purchase history. 
+
+The only predefine segmentation will be whether or not a shopper is a SNAP participating. Further segmentation of those participating in SNAP will require an analysis of transaction data. I will use @friedman_elements_2001 and @james_introduction_2013 as my guides to learning and implementing the most well known clustering algorithms.
+
+To my knowledge, there is no policy research that has attempted to segment SNAP shoppers based on their purchase history. I believe understanding how SNAP shoppers actively or passively participate in incentive programs like DUFB would be a unique contribution to the literature. 
+
+## Data {-}
+
+The type of segmentation I could do will be data dependent.
+
+### Least Interesting Data (Obtained) {-}
+
+At the moment, I already have UPC level data from 7 small grocery stores in the Detroit Michigan area. For 5 of the 7, I have data for 2015 and 2016. For 2 of the 7, I only have data from 2016. The downside of these data is that purchases cannot be linked to individuals and the data is all from months and years when DUFB was in place. 
+
+Therefore, segmentation would not be at the customer level, but really at the transaction level. Furthermore, we cannot observe changes in purchases potentially induced by the introduction of DUFB. This is less interesting but the results may still prove insightful for understanding what a products are purchased when DUFB dollars are issued versus when they are redeemed. 
+
+### Moderately Interesting Data (Almost certainly happening) {-}
+
+The data we should be getting (shortly?) from SpartanNash improves on the data from the small Detroit stores by providing data from different months and years from stores observed before and during DUFB implementation. This means it will be possible to observed shifts in the items purchased by SNAP shoppers within and across stores. 
+
+The problem, however, of attributing the shift to individuals changing shopping behavior will still be weak. We should of course expect the shopping baskets of transactions using DUFB to be different from those that are not using DUFB. Likewise, we should observe a difference when accruing DUFB points versus redeeming. But being able to map the shifts across multiple stores as shoppers self-select into using the program could also be insightful.
+
+### Most Useful Data (Likely Happening) {-}
+
+I’m working on getting a data sets that does in fact link transaction data to individuals via a loyalty card system.
+
+These data come from 5 stores in Kansas from the PriceChopper chain. These data cover the same months in 2015 and 2016, where only 2016 had DUFB. All data, including loyalty cards, exists. The issue is logistical. There was a misunderstanding between PriceChopper, Fair Food Networks, and another researcher (Dr. Cheryl Gibson), which delayed the data from reaching other researchers (like me). I have a call on November 30th to discuss how I could gain access to these data.
+
+
+## Methods {-}
+
+There are a few supervised and unsupervised machine learning approaches that intend to use. My goal is to aim for the “low hanging fruit” and use methods that are easy to implement, like `k-means` and `hierarchical clustering`. Should it prove to not be too much extra effort, I would like to try some latent variable models like topic modeling. This would require gathering descriptive data about products and link them via UPC. One could then treat each segment as a “topic” (the latent variable) and the associated products as the observable variables contained within each segment.
+
+I have much to learn here, unfortunately. Yet, this is why I selected to do this paper. I would like a reason to dive deep into these methods, learn them, and implement them. Doing so would also help me produce a coding "portfolio" to show to companies that I am capable of higher level data science and statistical learning---and in more than one programming language.
+

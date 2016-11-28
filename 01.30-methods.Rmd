@@ -8,72 +8,79 @@ The unit of analysis will be the store, not the individual; the data cannot be l
 
 I propose two outcome variables. The first is the proportion of SNAP EBT dollars being spent or redeemed on fresh produce. If the incentive is working, then I should see in increase in SNAP EBT dollars spending on fresh produce. I'm certain this outcome variable will be available. I'm not so certain about the second outcome variable, the total quantity of fresh produce purchased. This depends on whether weight or quantity is included in the data. This will depend on UPC matching. UPCs will be possible, but matching to UPC databases is not always precise. Should matching be poor, discerning what a product is, its weight, etcetera, will be difficult, making the second outcome variable unreliable.
 
-**Past Experience with Similar Data**
+### Main Analysis: Regression Discontinuity (RD) {-}
 
-This is not my first experience working with transaction data. At this point, I have more than 3 years working with transaction data. Furthermore, this is not my first experience with transaction data where (1) DUFB was implemented and (2) transactions were not linked to individuals.
+In the [Store Selection](#store-selection-1) section, I discussed the construction of the score function $\bm{s} = \widehat{P(\mathbf{D} = 1 | \bm{X}, \bm{N})}$. Given $i = 1,...,n$ stores, the score of each store can be determined via observable data, $s_i = \widehat{P(D_i = 1|\bm{x}_i, n_i)}$. These scores, when ordered, produced perfect separation between treatment stores and control stores (see Figure \@ref(fig:score-plot)).
 
-I performed an analysis in April of 2016 for FFN using 5 months of transaction data from 3 small Detroit-area grocery stores. Figure \@ref(fig:trx-cycle) was produced with those data. It was easy to distinguish when SNAP benefits were being used in those data. Likewise, it was easy to tell when transaction made use of the DUFB incentive (either an issuing of DUFB or a redemption). A simple aggregation could determine the total amount of dollars spent per some unit time (*day* was the smallest possible unit of time). I expected data for my prospectus will be very similar. The empirical models in the next section were developed under these expectations of the data.
+An RD design requires a *running variable* where, above some value $c$, the probability of being assigned to the treatment group is $1$. Assume I make the score function $\bm{s}$ my running variable such that $D_i = \bm{1}[s_i \ge c]$.
 
+In my case, assignment $D_i$ is determined by $s_i$ by construction. Recall that $s_i$ is a function estimated on observable covariates. These are the same observable covariates the company used to determine assignment for a subset of stores. I used a linear probability model to estimate the score function and the estimated model perfecty predicted assignment. I then ordered stores by their score value and selected the next 12 unassigned stores.
 
-### Difference-in-Differences {-}
+This problem is that I do not actually know $c$. I only know that $c \in (0.50, 0.64)$. The light gray band in Figure \@ref(fig:score-plot2) displays the possible values of $c$. The problem, in essence, is that I do not have---and never will have---enough stores, so I'm lacking density around where the separation occurs. 
 
-Difference-in-Differences (DD) models will be used in the main and secondary analyses. The models will be identical but the data will differ.
+```{r score-plot2, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=4, fig.cap = "Store Score vs Double Up Assignment with Uncertainty Band (light gray)"}
+# d <- score_controls(metric='drive')
+# saveRDS(d, 'data/score-metric-driving.rds')
+d <- readRDS('data/score-metric-driving.rds')
+dd <- d %>%
+  dplyr::slice(1:23) %>%
+  dplyr::mutate(assignment = 1 - control) %>%
+  dplyr::select(score, assignment) %>%
+  dplyr::mutate(`Double Up` = dplyr::if_else(assignment == 1, 'Yes', 'No'))
 
-**The DD model 1 (DD1)**
+g1 <- ggplot2::ggplot(data = dd) + 
+    ggplot2::geom_point(aes(x = score, y = assignment, colour = `Double Up`), size = 4) +
+    theme_clean()
 
-The proposed model is as follows
+g1 + geom_rect(aes(xmin = .51, xmax = .63, ymin = -Inf, ymax = Inf), fill = 'lightgray')
 
-$$
-\begin{aligned}
-  y_{ist}  &= \alpha_i + \beta_0 DUFB_{s} + \beta_1 POST_{t} + \delta (DUFB_{s} \cdot POST_{t}) + \sum_{j=1}^4 \theta_{j} I_{j}(t) + \epsilon_{ist}
-\end{aligned}
-$$
- 
-where $y_{ist}$ is the outcome variable for store $i$ in state $s$ during week $t$. $\alpha_i$ captures any time-invariant store-specific effects. $DUFB_{s}$ indicates whether store $i$ has or will be part of the DUFB incentive. $POST_{t}$ indicates if week $t$ for store $i$ lands in a post- or pre-DUFB year. Recall, there are 3 years of data (2014 - 2016) and DUFB implementation is staggered across stores.  $I_{j}(t)$ captures any cyclical effects due to the monthly SNAP benefit transfer schedule. $I_{j}(t) = 1$ if week $t$ is the $j$th week of the month, where $j = 1,2,3,4$. 
-
-There are a total of $156$ ($52 \times 3$) weeks in these data. However, recall that the DUFB program is only live from August 1 to Dec 31 of each year. In other words, DUFB is being implemented for only $60$ of the $156$ months. Things are further complicated by the way the DUFB incentive worked between 2016 and years 2014 and 2015.
-
-Time will be broken into weeks. The week of one year will be compared to the same week in the following year. This is for three main reasons. First, there is enough data per store to make precise estimates at the weekly level. Given the small sample since ("small N"), expanding the amount of observations along time ("bigger T") will benefit the panel models. Second, SNAP spending is cyclical, peeking in the 2nd week. This is due to the state's monthly SNAP benefits transfer schedule. Benefits are distributed every odd day of the month between the 3rd and 21st. Each day maps to the digits `0` through `9`. SNAP participants receive their benefits once a month on the day corresponding to the last digit of their SNAP ID number. For example, ID numbers that end in `0` receive their benefits on the 3rd of each month. SNAP EBT benefits are spent quickly. As a result, there are always fewer SNAP purchases during the 4th week of the month. And fewer SNAP benefits means fewer transaction capable of receiving the DUFB incentive. I believe it is better to capture this behavior in a model versus smoothing it out by aggregating at the monthly level. Third, it captures seasonal spikes that would also be smoothed out if aggregated to the monthly level. I think it will be useful comparing, say, the the week leading up the Thanksgiving between stores with and without DUFB.
-
-The week-to-week cyclical pattern of SNAP EBT spending can be observed in Figure \@ref(fig:trx-cycle). (Note that these are from a different data source and different store chain, but from the same US state.) At the start of the each month, SNAP EBT transactions (red line) increase until peeking at the second week. The count then declines steadily through the 4th week before once again spiking during the 1st week of the following month. (Ignore the green line; these are DUFB counts from a different data set.)
-
-
-```{r trx-cycle, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.cap = 'Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line.', fig.align='center'}
-
-if(getOutputFormat() == "latex") {
-    fig <- 'figures/trx_counts.pdf'
-} else {
-    fig <- 'figures/trx_counts.png'
-}
-
-knitr::include_graphics(fig)
 ```
 
-Here is where I'm not sure what the best approach is.
+I propose to estimate the RD design using various values of $c$. The perpetual gap means any model estimate to the left or right of some $c_0 \in (0.50, 0.64)$  will have to be extrapolated up to $c_0$.
+
+**Set-up**
+
+The outcome of variable for each store will be the *average amount spent on locally grown produce in a SNAP transaction per day*. The timeframe will be August - December (months $8$ - $12$) of 2016, when the DUFB incentive is place. I decided on using days as the unit of observation to increase the sample amount of data for estimating. I expect there to be enough transactions per day for this to be possible.
+
+Let $y_{i}$ represent the outcome variable where $i=1,...,n$ denotes stores. Let $c$ denote the cutoff; $s_i$ the score computed for store $i$; and $D_i$ the assignment variable. Each draw (or row) of data for store $i$ is a vector $(y_i, s_i, D_i)$ corresponding to a single day. Recall that $y_i$ is a point statistics estimated using a single days worth of transaction data for store $i$. All days will be pooled, creating roughly $30\times5=150$ observations (days) per store.
 
 
-Analysis of stores selected using *known* and *observable* criteria.  
+Let $u_i$ be an error term assumed to be $\mathcal{N}(0, \sigma^2)$.
 
-1. **Sample**: 11 Treated stores, 12 Control Stores across 3 years, 
-    3. Within-group and between-group variation
-        4. We lose some within-group variation as the 2 pilot stores are only ever observed as treated stores.
-    4. Stores enter in waves. The staggering is used to produce extra variation between groups.
-    5. T is 58 x 3 (weeks)
-        6. Weeks is important because of MI SNAP schedule
-        7. By the 4th week in every month, purchases with SNAP drop. It is important to capture this and not average it out by looking at monthly purchases.
-    7. N is the same across time but the staggering shifts N for treated and control.
-        8. **Table**: Create table showing the change in N subsample.
-4. **Method 1**: Difference in Differences with FE
-    5. DinD seems appropriate.
-        6. Larger and local economic forces should affect stores within each cluster equally. 
-    6. FE should remove any store-specific time-invariant attributes.
-3. **Method 2**: Regression Discontinuity
-    4. **Fear 1:** using a running variable that is a function of other variables. Only seen one paper reference anything beyond one running variable [@papay_extending_2011]. Never seen a running variable that is score function.
-    5.  **Fear 2**:  sample size here is small. RD performs better with large sample size.
+The RD model I propose is as follows
 
-### Difference-in-Differences with Matching {-}
+$$
+y_{i} = \alpha + \rho D_i + \gamma (s_i - c) + \delta D_i(s_i - c) + u_{i}
+$$
 
-Smaller analysis of the 3 stores that self-selected and were matched to 3 other stores.
+My hope is to produce a graph that looks like the following
 
-3. **Method:** Difference in difference been years 2015 and 2016
-    3. Power here will be small. Total N will be 6. Likely that nothing will be significant. But need to be transparent.
+[GENERATE EXAMPLE GRAPH. At each point $s_i$, there will be about 150 points drawn in vertical like. This would help visualize the distribution of average-dollars-per-day.]
+
+### Main Analysis: Difference-in-Differences, Model 1 (DD1)
+
+[WRITE MODEL. Below is example of DD model overtime.]
+
+```{r dd1-plot, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=4, fig.cap = "Example DD Model over 12 months in 2016 (DUFB start month 8)"}
+
+DD1()
+
+```
+
+<!-- ### Main Analysis: Difference-in-Differences, Model 2 (DD2) -->
+
+<!-- This model is some -->
+<!-- The proposed model is as follows -->
+
+<!-- $$ -->
+<!-- \begin{aligned} -->
+<!--   y_{ist}  &= \alpha_i + \beta_0 DUFB_{s} + \beta_1 POST_{t} + \delta (DUFB_{s} \cdot POST_{t}) + \sum_{j=1}^4 \theta_{j} I_{j}(t) + \epsilon_{ist} -->
+<!-- \end{aligned} -->
+<!-- $$ -->
+
+<!-- where $y_{ist}$ is the outcome variable for store $i$ in state $s$ during week $t$. $\alpha_i$ captures any time-invariant store-specific effects. $DUFB_{s}$ indicates whether store $i$ has or will be part of the DUFB incentive. $POST_{t}$ indicates if week $t$ for store $i$ lands in a post- or pre-DUFB year. Recall, there are 3 years of data (2014 - 2016) and DUFB implementation is staggered across stores.  $I_{j}(t)$ captures any cyclical effects due to the monthly SNAP benefit transfer schedule. $I_{j}(t) = 1$ if week $t$ is the $j$th week of the month, where $j = 1,2,3,4$. -->
+
+
+### Secondary Analysis: Difference-in-Differences with Matching {-}
+
+Smaller analysis of the 3 stores that self-selected and were matched to 3 other stores. Total N will be 6. Likely that nothing will be significant. But need to be transparent.

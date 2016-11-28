@@ -7,7 +7,7 @@ documentclass: book
 monofont: "Source Code Pro"
 monofontoptions: "Scale=0.8"
 fontsize: 12pt
-geometry: margin=1in
+geometry: margin=1.25in
 papersize: letterpaper
 bibliography: [bib/book.bib]
 biblio-style: apalike
@@ -16,6 +16,10 @@ link-citations: yes
 
 ```{r setup-all, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
 knitr::opts_chunk$set(cache = FALSE, dpi = 300)
+```
+
+```{r, echo=FALSE, eval = TRUE}
+if(getOutputFormat() == "html") knitr::asis_output("#")
 ```
 
 <!-- Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within a subset of grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A regression discontinuity design and difference-in-differences, between stores using Double Up (treatment) and those without (control), will be used to measure the size of the effect.
