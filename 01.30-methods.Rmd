@@ -19,18 +19,6 @@ In my case, assignment $D_i$ is determined by $s_i$ by construction. Recall that
 This problem is that I do not actually know $c$. I only know that $c \in (0.50, 0.64)$. The light gray band in Figure \@ref(fig:score-plot2) displays the possible values of $c$. The problem, in essence, is that I do not have---and never will have---enough stores, so I'm lacking density around where the separation occurs. 
 
 ```{r score-plot2, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=4, fig.cap = "Store Score vs Double Up Assignment with Uncertainty Band (light gray)"}
-# d <- score_controls(metric='drive')
-# saveRDS(d, 'data/score-metric-driving.rds')
-d <- readRDS('data/score-metric-driving.rds')
-dd <- d %>%
-  dplyr::slice(1:23) %>%
-  dplyr::mutate(assignment = 1 - control) %>%
-  dplyr::select(score, assignment) %>%
-  dplyr::mutate(`Double Up` = dplyr::if_else(assignment == 1, 'Yes', 'No'))
-
-g1 <- ggplot2::ggplot(data = dd) + 
-    ggplot2::geom_point(aes(x = score, y = assignment, colour = `Double Up`), size = 4) +
-    theme_clean()
 
 g1 + geom_rect(aes(xmin = .51, xmax = .63, ymin = -Inf, ymax = Inf), fill = 'lightgray')
 
@@ -57,7 +45,7 @@ My hope is to produce a graph that looks like the following
 
 [GENERATE EXAMPLE GRAPH. At each point $s_i$, there will be about 150 points drawn in vertical like. This would help visualize the distribution of average-dollars-per-day.]
 
-### Main Analysis: Difference-in-Differences, Model 1 (DD1)
+### Main Analysis: Difference-in-Differences, Model 1 (DD1) {-}
 
 [WRITE MODEL. Below is example of DD model overtime.]
 

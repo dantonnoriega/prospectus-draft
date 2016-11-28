@@ -1,6 +1,4 @@
-# Costumer Segmentation of SNAP Shoppers and Shifts in Product Purchases
-**Danton Noriega**
-November 13, 2016
+# Costumer Segmentation of SNAP Shoppers
 
 ## Motivation  {-}
 

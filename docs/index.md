@@ -166,13 +166,14 @@ I performed an analysis in April of 2016 for FFN using 5 months of transaction d
 
 In some prior work, I've observed that SNAP spending is cyclical, peeking in the 2nd week. This is due to the state's monthly SNAP benefits transfer schedule. Benefits are distributed every odd day of the month between the 3rd and 21st. Each day maps to the digits `0` through `9`. SNAP participants receive their benefits once a month on the day corresponding to the last digit of their SNAP ID number. For example, ID numbers that end in `0` receive their benefits on the 3rd of each month. SNAP EBT benefits are spent quickly. As a result, there are always fewer SNAP purchases during the 4th week of the month. And fewer SNAP benefits means fewer transaction capable of receiving the DUFB incentive. I'm not yet sure what impact this will have on my analysis this time around, but I thought it important and interesting to point out and consider.
 
-The week-to-week cyclical pattern of SNAP EBT spending can be observed in Figure \@ref(fig:trx-cycle). (Note that these are from a different data source and different store chain, but from the same US state.) At the start of the each month, SNAP EBT transactions (red line) increase until peeking at the second week. The count then declines steadily through the 4th week before once again spiking during the 1st week of the following month. (Ignore the green line; these are DUFB counts from a different data set.)
-
-
 <div class="figure" style="text-align: center">
 <img src="figures/trx_counts.png" alt="Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line." width="780" />
 <p class="caption">(\#fig:trx-cycle)Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line.</p>
 </div>
+
+
+The week-to-week cyclical pattern of SNAP EBT spending can be observed in Figure \@ref(fig:trx-cycle). (Note that these are from a different data source and different store chain, but from the same US state.) At the start of the each month, SNAP EBT transactions (red line) increase until peeking at the second week. The count then declines steadily through the 4th week before once again spiking during the 1st week of the following month. (Ignore the green line; these are DUFB counts from a different data set.)
+
 
 *Concerns*
 
@@ -320,7 +321,7 @@ My hope is to produce a graph that looks like the following
 
 [GENERATE EXAMPLE GRAPH. At each point $s_i$, there will be about 150 points drawn in vertical like. This would help visualize the distribution of average-dollars-per-day.]
 
-### Main Analysis: Difference-in-Differences, Model 1 (DD1)
+### Main Analysis: Difference-in-Differences, Model 1 (DD1) {-}
 
 [WRITE MODEL. Below is example of DD model overtime.]
 
@@ -545,7 +546,8 @@ I realize I am not sure if I can show any results. I need to confirm with Beth G
 <!--chapter:end:02.40-results.Rmd-->
 
 
-# Costumer Segmentation of SNAP Shoppers and Shifts in Product Purchases
+# Costumer Segmentation of SNAP Shoppers
+
 **Danton Noriega**
 November 13, 2016
 
