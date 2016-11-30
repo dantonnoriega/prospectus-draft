@@ -1,0 +1,39 @@
+## The Data Generating Process {-}
+
+In this section, I walk through how I understand the Data Generating Process (DGP). This is important for constructing the proper model. I have not seen these data but I believe I understand enough about it to conceptualize the DGP and construct a model.
+
+
+### Posing the Problem: The Ideal {-}
+
+First, what is it I'm interested in measuring? Ideally, I would like to measure if the existence of the DUFB incentive increases the amount of fruits and vegetables purchased by SNAP shoppers. (From this point, "individual" or "person" or "shopper" is the same as "an individual shopper who is a SNAP beneficiary".) In this model, the outcome variable $y_{ij}$ would be the fraction of total SNAP dollars person $i$ spent on fruits and vegetables in some store $j$. My interest how $y_{ij}$ changes in response to the treatment. 
+
+The store's technology is directly affected by the DUFB incentive. The treatment *indirectly* affects person $i$ via store $j$. Specifically, the treatment changes the POS system of store $j$, which automatically applies the DUFB incentive to any shopper $i$ purchasing locally grown, eligible produce that (i) is using SNAP benefits and (ii) is using a loyalty card. To reiterate, DUFB incentive is triggered anytime (i) and (ii) are true. For the DUFB incentive to be "working", shopper $i$ must *respond* and *actively* participate in the incentive program. On the other hand, an *unresponsive* shopper *passively* participates, triggering the DUFB incentive automatically---accruing or redeeming points---without a change in shopping behavior.
+
+I want to know if person $i$'s purchases, $y_{ij}$, are affected by the existence of the DUFB implementation on store $j$'s POS system. I assume there are two types of shoppers, *responsive* and *unresponsive*. $i = r$ denote the shopper *responsive* to the incentive and $i = u$ denotes the *unresponsive* shopper. Each shopper responds differently to the DUFB. I next construct a table out outcomes for each person under a potential outcomes framework.
+
+
+
+Table: (\#tab:potential-outcomes) Potential outcomes
+
+                                  |  Shopper $r$   |  Shopper $u$  |
+---------------------------------:|:--------------:|:-------------:|
+Store $j$ w/ DUFB&#58; y_{1ij}    | \alpha + \beta |    \alpha     |
+Store $j$ w/o DUFB&#58; y_{0ij}   |  \alpha        |    \alpha     | 
+          
+Recall that any SNAP shopper satisfying (i) and (ii) while making a purchase in store $j$ receives the DUFB incentive.
+          
+
+
+Denote person $i$ shopping in treated store $j$, $D_{ij}$. At the simplest level, I assume each person spends, on average, the same value $\alpha$ plus a random normal shock, $\epsilon_{ij} ~ \mathcal{N}(0, \sigma_{ij}^2)$, that is person- and store-specific. 
+
+\[
+  y_{ij} = y_{1ij} + (y_{1ij} + y_{0ij})D_{ij}
+\]
+
+\[
+  y_{1rj} = y_{1ij} + (y_{1ij} + y_{0ij})D_{ij}
+  \alpha + \beta D_{ij} + \epsilon_{rj} \\
+  y_{0rj} = \alpha + \delta D_{ij} + \epsilon_{uj}
+\]
+
+Let's look at the expected outcome for 
