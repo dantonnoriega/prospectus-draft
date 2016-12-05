@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="intro-1.html">
-<link rel="next" href="the-data-generating-process.html">
+<link rel="prev" href="data-1.html">
+<link rel="next" href="store-selection-1.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -140,41 +140,72 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-1" class="section level2 unnumbered">
-<h2>Data Description</h2>
-<p>These data come from a large grocery distributor and retailer serving multiple grocery chains. Three years of data will be made available, 2014 through 2016. To my understanding, this includes months where the DUFB incentive is active (Aug 1 to Dec 31) and inactive (Jan 1 to July 31) across all stores. These data are transaction level data and will include (at least) store number, register, transaction ID, date and time of purchase, payment type, item, dollars, and quantity.</p>
-<p>Double Up implementation was considered for a single grocery chain. The chain has more than 60 stores, 17 of which were selected as “treatment” stores (with Double Up). Of the remaining stores, data is being made available from an addition 15 to serve as “controls”. The quotes here signify that these terms will be used as shorthand, but the terminology is somewhat misleading. The use of “treatment” and “control” could lead one to think store assignment was random. It was not.</p>
-<p>[MISSING real specific details about the data e.g. total transactions observed etc.]</p>
-<p><strong>Data Not Linked to Individuals</strong></p>
-<p>One important variable that will not be made available is a variable for loyalty card numbers. The company’s use of loyalty cards across its many chains was an exciting prospect. Previous transaction data from smaller independent grocery chains had no way linking purchases to a single unique identifier over time because these smaller chains did not have advanced point-of-sale systems.</p>
-<p>In earlier conversations with the company, it was understood that loyalty cards would be made available. However, months into working with the company, I was informed that this was no longer possible. Per the company’s legal department, the company cannot share any personal information about their customers. Unfortunately for us, in the loyalty card contract signed by customers, the loyalty card number itself is considered personal information, meaning loyalty card numbers fall under the same legal category as phone numbers and home addresses.</p>
-<p><strong>DUFB Incentive Inconsistency Across Years</strong></p>
-<p>The retail company informed us that the way the DUFB incentive worked in 2016 is distinct from 2014 and 2015. The DFUB incentive in 2016 worked by accruing points for each dollar spent on <em>locally grown</em> fresh produce. (Recall that each point is equal to one dollar.) Points are then redeemed automatically on <em>any</em> fresh produce. However, in 2014 and 2015, the incentive was the <em>opposite</em>. In those two years, the DUFB incentive worked by accruing points on <em>any</em> fresh produce, automatically redeeming points on <em>locally grown</em> fresh produce.</p>
-<p>This is important because <em>locally grown</em> fresh produce is a much smaller subset of the <em>any</em> fresh produce. Therefore, in years 2014 and 2015, shoppers could easily accrue points but had a constrained set of produce on which to redeem points. In any case, estimates of the incentive for the year 2015 cannot be compared to estimates in the year 2016.</p>
-<p><strong>Other Information</strong></p>
-<p><em>Past Experience with Similar Data</em></p>
-<p>This is not my first experience working with transaction data. At this point, I have more than 3 years working with transaction data. Furthermore, this is not my first experience with transaction data where (1) DUFB was implemented and (2) transactions were not linked to individuals.</p>
-<p>I performed an analysis in April of 2016 for FFN using 5 months of transaction data from 3 small Detroit-area grocery stores. Figure <a href="data-1.html#fig:trx-cycle">2.1</a> was produced with those data. It was easy to distinguish when SNAP benefits were being used in those data. Likewise, it was easy to tell when transaction made use of the DUFB incentive (either an issuing of DUFB or a redemption). A simple aggregation could determine the total amount of dollars spent per some unit time (<em>day</em> was the smallest possible unit of time). I expected data for my prospectus will be very similar. The empirical models in the next section were developed under these expectations of the data.</p>
-<p><em>SNAP Spending is Cyclical</em></p>
-<p>In some prior work, I’ve observed that SNAP spending is cyclical, peeking in the 2nd week. This is due to the state’s monthly SNAP benefits transfer schedule. Benefits are distributed every odd day of the month between the 3rd and 21st. Each day maps to the digits <code>0</code> through <code>9</code>. SNAP participants receive their benefits once a month on the day corresponding to the last digit of their SNAP ID number. For example, ID numbers that end in <code>0</code> receive their benefits on the 3rd of each month. SNAP EBT benefits are spent quickly. As a result, there are always fewer SNAP purchases during the 4th week of the month. And fewer SNAP benefits means fewer transaction capable of receiving the DUFB incentive. I’m not yet sure what impact this will have on my analysis this time around, but I thought it important and interesting to point out and consider.</p>
-<div class="figure" style="text-align: center"><span id="fig:trx-cycle"></span>
-<img src="figures/trx_counts.png" alt="Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line." width="780" />
-<p class="caption">
-FIGURE 2.1: Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line.
-</p>
-</div>
-<p>The week-to-week cyclical pattern of SNAP EBT spending can be observed in Figure <a href="data-1.html#fig:trx-cycle">2.1</a>. (Note that these are from a different data source and different store chain, but from the same US state.) At the start of the each month, SNAP EBT transactions (red line) increase until peeking at the second week. The count then declines steadily through the 4th week before once again spiking during the 1st week of the following month. (Ignore the green line; these are DUFB counts from a different data set.)</p>
-<p><em>Concerns</em></p>
-<p>One concern I had was if local supply of produce differed geographically across the state where the stores are located. The company representative told me that should not be a factor because all stores are supplied from the same warehouse. Therefore, in theory, each store should have the same local produce. I plan to visit the stores on a later date to confirm that this is actually the case.</p>
+<div id="the-data-generating-process" class="section level2 unnumbered">
+<h2>The Data Generating Process</h2>
+<p>In this section, I walk through how I understand the Data Generating Process (DGP). This is important for constructing the proper model. I have not seen these data but I believe I understand enough about it to conceptualize the DGP and construct a model.</p>
+<div id="posing-the-problem-the-ideal" class="section level3 unnumbered">
+<h3>Posing the Problem: The Ideal</h3>
+<p>First, what is it I’m interested in measuring? Ideally, I would like to measure if the existence of the DUFB incentive increases the amount of fruits and vegetables purchased by SNAP shoppers. (From this point, “individual” or “person” or “shopper” is the same as “an individual shopper who is a SNAP beneficiary”.) In this model, the outcome variable <span class="math inline">\(y_{ij}\)</span> would be the fraction of total SNAP dollars person <span class="math inline">\(i\)</span> spent on fruits and vegetables in some store <span class="math inline">\(j\)</span>. My interest how <span class="math inline">\(y_{ij}\)</span> changes in response to the treatment.</p>
+<p>The store’s technology is directly affected by the DUFB incentive. The treatment <em>indirectly</em> affects person <span class="math inline">\(i\)</span> via store <span class="math inline">\(j\)</span>. Specifically, the treatment changes the POS system of store <span class="math inline">\(j\)</span>, which automatically applies the DUFB incentive to any shopper <span class="math inline">\(i\)</span> purchasing locally grown, eligible produce that <span class="math inline">\((a)\)</span> is using SNAP benefits and <span class="math inline">\((b)\)</span> is using a loyalty card. To reiterate, DUFB incentive is triggered anytime <span class="math inline">\((a)\)</span> and <span class="math inline">\((b)\)</span> are true. For the DUFB incentive to be “working”, shopper <span class="math inline">\(i\)</span> must <em>respond</em> and <em>actively</em> participate in the incentive program. On the other hand, an <em>unresponsive</em> shopper <em>passively</em> participates, triggering the DUFB incentive automatically—accruing or redeeming points—without a change in shopping behavior.</p>
+<blockquote>
+<p>How could I tell if the incentive was working from these data?</p>
+</blockquote>
+<p>Specifically, I want to know if person <span class="math inline">\(i\)</span>’s purchases, <span class="math inline">\(y_{ij}\)</span>, are affected by the existence of the DUFB implementation on store <span class="math inline">\(j\)</span>’s POS system. Denote person <span class="math inline">\(i\)</span> shopping in treated store <span class="math inline">\(j\)</span>, <span class="math inline">\(D_{ij}=1\)</span> and <span class="math inline">\(0\)</span> otherwise. At the simplest level, I assume each person spends, on average, the same value <span class="math inline">\(\alpha\)</span> plus a random normal shock, <span class="math inline">\(\epsilon_{ij} \sim \mathcal{N}(0, \sigma_{ij}^2)\)</span>, that is person- and store-specific. I assume there are two types of shoppers, <em>responsive</em> and <em>unresponsive</em>. <span class="math inline">\(i = r\)</span> denote the shopper <em>responsive</em> to the incentive and <span class="math inline">\(i = u\)</span> denotes the <em>unresponsive</em> shopper. Each shopper responds differently to the DUFB incentive. The following regression set up accommodates this framework.</p>
+<p><span class="math display">\[
+  y_{ij} = \alpha + \beta_i D_{ij} + \epsilon_{ij}
+\]</span></p>
+<p><span class="math display">\[
+y_{ij} = 
+\begin{cases}
+  y_{0ij}~\text{ if }D_{ij} = 0 \\
+  y_{1ij}~\text{ if }D_{ij} = 1
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+y_{ij} = y_{0ij} + (y_{1ij} - y_{0ij})D_{ij}
+\]</span></p>
+<p>Below is a table for each person under a potential outcomes framework.</p>
+<table>
+<caption><span id="tab:potential-outcomes">TABLE 2.1: </span> Expected potential outcomes</caption>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="center">Shopper <span class="math inline">\(r\)</span></th>
+<th align="center">Shopper <span class="math inline">\(u\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Store <span class="math inline">\(j\)</span> with DUFB: <span class="math inline">\(y_{1ij}\)</span></td>
+<td align="center"><span class="math inline">\(\alpha + \beta_{r}\)</span></td>
+<td align="center"><span class="math inline">\(\alpha + \beta_u\)</span></td>
+</tr>
+<tr class="even">
+<td align="right">Store <span class="math inline">\(j\)</span> w/o DUFB: <span class="math inline">\(y_{0ij}\)</span></td>
+<td align="center"><span class="math inline">\(\alpha\)</span></td>
+<td align="center"><span class="math inline">\(\alpha\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Recall that any SNAP shopper satisfying <span class="math inline">\((a)\)</span> and <span class="math inline">\((b)\)</span> while making a purchase in store <span class="math inline">\(j\)</span> receives the DUFB incentive. Should a shopper of type <span class="math inline">\(r\)</span> or <span class="math inline">\(u\)</span> find themselves in a store <em>without</em> DUFB, then we should expect them same average effect <span class="math inline">\(\alpha\)</span>. On the other hand, should these shoppers find themselves in a store <em>with</em> DUFB, then only the responsive shopper <span class="math inline">\(r\)</span> would be affected by <span class="math inline">\(\beta_r\)</span> and shopper <span class="math inline">\(u\)</span> by <span class="math inline">\(\beta_u\)</span>.</p>
+<p>Assume that type <span class="math inline">\(u\)</span> shoppers are totally unaffected by the incentive; <span class="math inline">\(\beta_u = 0\)</span>. Pooling together all individuals, the regression becomes</p>
+<p><span class="math display">\[y_{ij} = \alpha + \beta D_{ij} + \epsilon_{ij}\]</span></p>
+<p>where <span class="math inline">\(\beta_u &lt; \beta &lt; \beta_r\)</span> as long as there are some <em>unresponsive</em> shoppers, <span class="math inline">\(n_{u} &gt; 0\)</span>, such that <span class="math inline">\(n_{r} + n_{u} = N\)</span>.</p>
+<p>The challenge, of course, is that are numerous things I do not know:</p>
+<ol style="list-style-type: decimal">
+<li>There aren’t just <em>responsive</em> and <em>unresponsive</em> types. Each individual will respond to the DUFB incentive differently. A pooled estimate <span class="math inline">\(\beta\)</span> captures the average of that distinct responses.</li>
+<li></li>
+</ol>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="intro-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-data-generating-process.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="data-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="store-selection-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

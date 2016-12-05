@@ -133,7 +133,7 @@ Currently, no research exists evaluating DUFB, or similar incentive programs, us
 <!--chapter:end:01.10-introduction.Rmd-->
 
 
-## Data {#data-1 -}
+## Data Description {#data-1 -}
 
 These data come from a large grocery distributor and retailer serving multiple grocery chains. Three years of data will be made available, 2014 through 2016. To my understanding, this includes months where the DUFB incentive is active (Aug 1 to Dec 31) and inactive (Jan 1 to July 31) across all stores. These data are transaction level data and will include (at least) store number, register, transaction ID, date and time of purchase, payment type, item, dollars, and quantity.
 
@@ -180,6 +180,64 @@ The week-to-week cyclical pattern of SNAP EBT spending can be observed in Figure
 One concern I had was if local supply of produce differed geographically across the state where the stores are located. The company representative told me that should not be a factor because all stores are supplied from the same warehouse. Therefore, in theory, each store should have the same local produce. I plan to visit the stores on a later date to confirm that this is actually the case.
 
 <!--chapter:end:01.20-data.Rmd-->
+
+
+## The Data Generating Process {-}
+
+In this section, I walk through how I understand the Data Generating Process (DGP). This is important for constructing the proper model. I have not seen these data but I believe I understand enough about it to conceptualize the DGP and construct a model.
+
+
+### Posing the Problem: The Ideal {-}
+
+First, what is it I'm interested in measuring? Ideally, I would like to measure if the existence of the DUFB incentive increases the amount of fruits and vegetables purchased by SNAP shoppers. (From this point, "individual" or "person" or "shopper" is the same as "an individual shopper who is a SNAP beneficiary".) In this model, the outcome variable $y_{ij}$ would be the fraction of total SNAP dollars person $i$ spent on fruits and vegetables in some store $j$. My interest how $y_{ij}$ changes in response to the treatment. 
+
+The store's technology is directly affected by the DUFB incentive. The treatment *indirectly* affects person $i$ via store $j$. Specifically, the treatment changes the POS system of store $j$, which automatically applies the DUFB incentive to any shopper $i$ purchasing locally grown, eligible produce that $(a)$ is using SNAP benefits and $(b)$ is using a loyalty card. To reiterate, DUFB incentive is triggered anytime $(a)$ and $(b)$ are true. For the DUFB incentive to be "working", shopper $i$ must *respond* and *actively* participate in the incentive program. On the other hand, an *unresponsive* shopper *passively* participates, triggering the DUFB incentive automatically---accruing or redeeming points---without a change in shopping behavior.
+
+>How could I tell if the incentive was working from these data?
+
+
+Specifically, I want to know if person $i$'s purchases, $y_{ij}$, are affected by the existence of the DUFB implementation on store $j$'s POS system. Denote person $i$ shopping in treated store $j$, $D_{ij}=1$ and $0$ otherwise. At the simplest level, I assume each person spends, on average, the same value $\alpha$ plus a random normal shock, $\epsilon_{ij} \sim \mathcal{N}(0, \sigma_{ij}^2)$, that is person- and store-specific. I assume there are two types of shoppers, *responsive* and *unresponsive*. $i = r$ denote the shopper *responsive* to the incentive and $i = u$ denotes the *unresponsive* shopper. Each shopper responds differently to the DUFB incentive. The following regression set up accommodates this framework.
+
+$$
+  y_{ij} = \alpha + \beta_i D_{ij} + \epsilon_{ij}
+$$
+
+$$
+y_{ij} = 
+\begin{cases}
+  y_{0ij}~\text{ if }D_{ij} = 0 \\
+  y_{1ij}~\text{ if }D_{ij} = 1
+\end{cases}
+$$
+
+$$
+y_{ij} = y_{0ij} + (y_{1ij} - y_{0ij})D_{ij}
+$$
+
+
+Below is a table for each person under a potential outcomes framework. 
+
+Table: (\#tab:potential-outcomes) Expected potential outcomes
+
+|                                      |  Shopper $r$     |  Shopper $u$  |
+|-------------------------------------:|:----------------:|:-------------:|
+|Store $j$ with DUFB&#58; $y_{1ij}$    | $\alpha + \beta_{r}$ |    $\alpha + \beta_u$     |
+|Store $j$ w/o DUFB&#58; $y_{0ij}$     |  $\alpha$        |    $\alpha$     | 
+
+Recall that any SNAP shopper satisfying $(a)$ and $(b)$ while making a purchase in store $j$ receives the DUFB incentive. Should a shopper of type $r$ or $u$ find themselves in a store *without* DUFB, then we should expect them same average effect $\alpha$. On the other hand, should these shoppers find themselves in a store *with* DUFB, then only the responsive shopper $r$ would be affected by $\beta_r$ and shopper $u$ by $\beta_u$.
+
+Assume that type $u$ shoppers are totally unaffected by the incentive; $\beta_u = 0$. Pooling together all individuals, the regression becomes
+
+$$y_{ij} = \alpha + \beta D_{ij} + \epsilon_{ij}$$
+
+where $\beta_u < \beta < \beta_r$ as long as there are some *unresponsive* shoppers, $n_{u} > 0$, such that $n_{r} + n_{u} = N$.
+
+The challenge, of course, is that are numerous things I do not know:
+
+1. There aren't just *responsive* and *unresponsive* types. Each individual will respond to the DUFB incentive differently. A pooled estimate $\beta$ captures the average of that distinct responses.
+2. 
+
+<!--chapter:end:01.21-dgp.Rmd-->
 
 
 ## Overview of Store Selection and Expansion {#store-selection-1 -}
@@ -232,10 +290,6 @@ Not conveyed in Figure \@ref(fig:dufb-expansion) is that the 2015 and 2016 expan
 <img src="figures/expansion-v.png" alt="Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with Double Up, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame." width="691" />
 <p class="caption">(\#fig:dufb-expansion)Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with Double Up, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame.</p>
 </div>
-
-<!--chapter:end:01.21-expansion.Rmd-->
-
-
 
 ### Selection of Control Stores {-}
 
@@ -547,9 +601,6 @@ I realize I am not sure if I can show any results. I need to confirm with Beth G
 
 
 # Costumer Segmentation of SNAP Shoppers
-
-**Danton Noriega**
-November 13, 2016
 
 ## Motivation  {-}
 
