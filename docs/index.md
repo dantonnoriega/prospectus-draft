@@ -215,14 +215,14 @@ y_{ij} = y_{0ij} + (y_{1ij} - y_{0ij})D_{ij}
 $$
 
 
-Below is a table for each person under a potential outcomes framework. 
+Below is a table for each shoppers expected outcomes. 
 
-Table: (\#tab:potential-outcomes) Expected potential outcomes
+Table: (\#tab:potential-outcomes) Expected outcomes
 
 |                                      |  Shopper $r$     |  Shopper $u$  |
 |-------------------------------------:|:----------------:|:-------------:|
-|Store $j$ with DUFB&#58; $y_{1ij}$    | $\alpha + \beta_{r}$ |    $\alpha + \beta_u$     |
-|Store $j$ w/o DUFB&#58; $y_{0ij}$     |  $\alpha$        |    $\alpha$     | 
+|Store $j$ with DUFB&#58; $E[y_{ij} \vert D_{ij}=1]$    | $\alpha + \beta_{r}$ |    $\alpha + \beta_u$     |
+|Store $j$ w/o DUFB&#58; $E[y_{ij} \vert D_{ij}=0]$     |  $\alpha$        |    $\alpha$     | 
 
 Recall that any SNAP shopper satisfying $(a)$ and $(b)$ while making a purchase in store $j$ receives the DUFB incentive. Should a shopper of type $r$ or $u$ find themselves in a store *without* DUFB, then we should expect them same average effect $\alpha$. On the other hand, should these shoppers find themselves in a store *with* DUFB, then only the responsive shopper $r$ would be affected by $\beta_r$ and shopper $u$ by $\beta_u$.
 

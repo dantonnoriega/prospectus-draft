@@ -170,7 +170,7 @@
 
 \title{DRAFT Dissertation Prospectus}
 \author{Danton Noriega}
-\date{December 05, 2016}
+\date{December 06, 2016}
 
 \begin{document}
 \maketitle
@@ -877,23 +877,44 @@ y_{ij} =
 y_{ij} = y_{0ij} + (y_{1ij} - y_{0ij})D_{ij}
 \]
 
-Below is a table for each person under a potential outcomes framework.
+Below is a table for each shoppers expected outcomes.
 
 \begin{longtable}[]{@{}rcc@{}}
-\caption{\label{tab:potential-outcomes} Expected potential
-outcomes}\tabularnewline
+\caption{\label{tab:potential-outcomes} Expected outcomes}\tabularnewline
 \toprule
-& Shopper \(r\) & Shopper \(u\)\tabularnewline
+\begin{minipage}[b]{0.48\columnwidth}\raggedleft\strut
+\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Shopper \(r\)\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\centering\strut
+Shopper \(u\)\strut
+\end{minipage}\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-& Shopper \(r\) & Shopper \(u\)\tabularnewline
+\begin{minipage}[b]{0.48\columnwidth}\raggedleft\strut
+\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Shopper \(r\)\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\centering\strut
+Shopper \(u\)\strut
+\end{minipage}\tabularnewline
 \midrule
 \endhead
-Store \(j\) with DUFB: \(y_{1ij}\) & \(\alpha + \beta_{r}\) &
-\(\alpha + \beta_u\)\tabularnewline
-Store \(j\) w/o DUFB: \(y_{0ij}\) & \(\alpha\) &
-\(\alpha\)\tabularnewline
+\begin{minipage}[t]{0.48\columnwidth}\raggedleft\strut
+Store \(j\) with DUFB: \(E[y_{ij} \vert D_{ij}=1]\)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+\(\alpha + \beta_{r}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering\strut
+\(\alpha + \beta_u\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.48\columnwidth}\raggedleft\strut
+Store \(j\) w/o DUFB: \(E[y_{ij} \vert D_{ij}=0]\)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+\(\alpha\)\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering\strut
+\(\alpha\)\strut
+\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
