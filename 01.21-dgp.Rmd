@@ -1,6 +1,6 @@
 ## The Data Generating Process {-}
 
-In this section, I walk through how I understand the Data Generating Process (DGP). This is important for constructing the proper model. I have not seen these data but I believe I understand enough about it to conceptualize the DGP and construct a model.
+In this section, I outlined what I understand to be the Data Generating Process (DGP). This is important for constructing the proper model. I have not seen these data but I believe I can understand enough about it to conceptualize the DGP and construct a model.
 
 
 ### Posing the Problem: The Ideal {-}
@@ -9,10 +9,10 @@ First, what is it I'm interested in measuring? Ideally, I would like to measure 
 
 The store's technology is directly affected by the DUFB incentive. The treatment *indirectly* affects person $i$ via store $j$. Specifically, the treatment changes the POS system of store $j$, which automatically applies the DUFB incentive to any shopper $i$ purchasing locally grown, eligible produce that $(a)$ is using SNAP benefits and $(b)$ is using a loyalty card. To reiterate, DUFB incentive is triggered anytime $(a)$ and $(b)$ are true. For the DUFB incentive to be "working", shopper $i$ must *respond* and *actively* participate in the incentive program. On the other hand, an *unresponsive* shopper *passively* participates, triggering the DUFB incentive automatically---accruing or redeeming points---without a change in shopping behavior.
 
->How could I tell if the incentive was working from these data?
 
 
-Specifically, I want to know if person $i$'s purchases, $y_{ij}$, are affected by the existence of the DUFB implementation on store $j$'s POS system. Denote person $i$ shopping in treated store $j$, $D_{ij}=1$ and $0$ otherwise. At the simplest level, I assume each person spends, on average, the same value $\alpha$ plus a random normal shock, $\epsilon_{ij} \sim \mathcal{N}(0, \sigma_{ij}^2)$, that is person- and store-specific. I assume there are two types of shoppers, *responsive* and *unresponsive*. $i = r$ denote the shopper *responsive* to the incentive and $i = u$ denotes the *unresponsive* shopper. Each shopper responds differently to the DUFB incentive. The following regression set up accommodates this framework.
+
+How can I tell if the incentive was working from these data? Specifically, I want to know if person $i$'s purchases, $y_{ij}$, are affected by the existence of the DUFB implementation on store $j$'s POS system. Denote person $i$ shopping in treated store $j$, $D_{ij}=1$ and $0$ otherwise. At the simplest level, I assume each person spends, on average, the same value $\alpha$ plus a random normal shock, $\epsilon_{ij} \sim \mathcal{N}(0, \sigma_{ij}^2)$, that is person- and store-specific. I assume there are two types of shoppers, *responsive* and *unresponsive*. $i = r$ denote the shopper *responsive* to the incentive and $i = u$ denotes the *unresponsive* shopper. Each shopper responds differently to the DUFB incentive. The following simple regression set up accommodates this framework.
 
 $$
   y_{ij} = \alpha + \beta_i D_{ij} + \epsilon_{ij}
@@ -37,8 +37,17 @@ where $\beta_u < \beta < \beta_r$ as long as there are some *unresponsive* shopp
 
 The challenge, of course, is that are numerous things I do not know.
 
-2. There aren't just *responsive* and *unresponsive* types. Each individual will respond to the DUFB incentive differently. A pooled estimate $\beta$ captures the average across all responses.
-3. I have no way of distinguishing *responsive* versus *unresponsive* shoppers. I have to assume that a shopper spending more on fruits and vegetables then on prior shopping trips is responding to the incentive. But this assumption is weak.
+1. I have no way of distinguishing *responsive* versus *unresponsive* shoppers. I have to assume that a shopper spending more on fruits and vegetables then on prior shopping trips is responding to the incentive. But this assumption is weak.
 1. If I assume shoppers only visit their nearest store, regardless of treatment status, then I will observed shoppers in either a treated or control store, but never both. Classic *selection bias*.
 
 
+
+$$
+y_{ij} = 
+\begin{cases}
+  y_{0ij}~\text{ if }D_{ij} = 0 \\
+  y_{1ij}~\text{ if }D_{ij} = 1
+\end{cases}
+$$
+
+$$y_{ij} = y_{0ij} + (y_{1ij} - y_{0ij})D_{ij}$$
