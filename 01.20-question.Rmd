@@ -6,13 +6,10 @@ Answering this question is complicated by (1) how the DUFB incentive is implemen
 
 How a participant responds to assignment is referred to as *compliance* [@angrist_mostly_2008].^[Participants can be further categorized into "compliers", "never-takers", "always-takers", and "defiers". These categorizations provide useful terminology but are not relevant in the context of the DUFB incentive.] But in this case, it is the stores, not the individual shoppers, that have been "assigned" to a treatment or control group. Stores, if assigned to the treatment group by the retail chain, are "compliers" by default; the DUFB incentive is implemented on store's point-of-sale (POS) system. Some stores (4) behaved somewhat like "always-takers", having asked to participate in DUFB, but most store (13) are "compliers".^[I must note that, while this creates some worries of "self-selection" by stores, I'm not convinced this bias cannot be handled by a model that includes a store-level fixed-effect.]
 
-How, then, does one think about individual participation in the DUFB program? In reality, it is stores that participate in the DUFB program while its SNAP shoppers merely have the option to benefit from the program. I imagine use the DUFB incentive depends heavily on a series latent variables corresponding to individual shoppers, stores, and the retail chain.
+How, then, does one think about SNAP shopper participation in the DUFB program? It is stores that participate in the DUFB program. SNAP shoppers have the option to benefit from the program without ever being "assigned" to any treatment group. A shopper's active participation in DUFB is therefore largely driven by another type of self-selection. I imagine use the DUFB incentive depends on a series latent variables corresponding to individual shoppers, stores, and the retail chain. For example, demographics, price sensitivity, food preferences, health consciousness are all latent variables that could affect shopper DUFB activity. Other latent variables include how effectively the retail chain markets the DUFB program to management of participating stores and how effectively this information is relayed by stores to individual shoppers. Enthusiasm for the program is likewise a latent retail chain and store-level variable.
 
-ow does one even identify if an individual is even participating in the program given that the DUFB incentive is applied automatically? 
+The DUFB incentive being applied automatically further complicates identifying individual participation. Assuming I had full information on shoppers and stores, I still cannot perfectly identify which SNAP transaction are responding to the incentive versus "shopping as usual". 
 
-
-
-2. Purchases cannot be linked to individuals
 
 I address each of these problems by developing a simple model, assuming ideal data and identification, and then dropping those assumptions. First, I overview some of the challenges presented by 
 
@@ -55,6 +52,7 @@ where $\beta_u < \beta < \beta_r$ as long as there are some *unresponsive* shopp
 
 But of course, I cannot identify which shoppers are of
 
+<!-- 
 $$
 y_{ij} = 
 \begin{cases}
@@ -66,7 +64,7 @@ $$
 $$y_{ij} = y_{0ij} + (y_{1ij} - y_{0ij})D_{ij}$$
 
 
-
+ -->
 
 
 
