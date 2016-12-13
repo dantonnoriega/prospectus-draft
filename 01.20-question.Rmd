@@ -22,7 +22,7 @@ I address each of these problems by developing a simple model, assuming ideal da
 
 ### The Ideal {-}
 
-I would like to measure if the existence of the DUFB incentive increases the amount of fruits and vegetables purchased by SNAP shoppers. (From this point, "individual" or "person" or "shopper" is the same as "an individual shopper who is a SNAP beneficiary".) In this model, the outcome variable $y_{ij}$ would be the fraction of total SNAP dollars person $i$ spent on fruits and vegetables in some store $j$. My interest is in how $y_{ij}$ changes in response to the existence of the DUFB incentive (the treatment). 
+I would like to measure if the existence of the DUFB incentive increases the amount of fruits and vegetables purchased by SNAP shoppers. (From this point, "individual" or "person" or "shopper" is the same as "an individual shopper who is a SNAP beneficiary".) In this model, the outcome variable $y_{ij}$ would be the fraction of total SNAP dollars person $i$ spent on fruits and vegetables in some store $j$. My interest is in how $y_{ij}$ changes in response to the existence of the DUFB incentive (the treatment). For now, I will ignore time and focus on a cross section of data drawn after DUFB implementation has already occurred.
 
 The store's technology is directly affected by the DUFB incentive. Specifically, the treatment changes the POS system of store $j$, which automatically applies the DUFB incentive to any shopper $i$ purchasing locally grown, eligible produce that $(a)$ is using SNAP benefits and $(b)$ is using a loyalty card. To reiterate, DUFB incentive is triggered anytime $(a)$ and $(b)$ are true for some shopper $i$. For the DUFB incentive to be "working", shopper $i$ must *respond* and *actively* participate in the incentive program. On the other hand, an *unresponsive* shopper *passively* participates, triggering the DUFB incentive automatically---accruing or redeeming points---without a change in shopping behavior.
 
@@ -33,7 +33,7 @@ $$
   y_{ij} = \alpha + \beta_i D_{ij} + \epsilon_{ij}
 $$
 
-Below is a table for each shoppers expected outcomes. 
+Below is a table for each shoppers expected outcomes.
 
 Table: (\#tab:expected-outcomes) Expected outcomes
 
@@ -50,7 +50,7 @@ $$y_{ij} = \alpha + \beta D_{ij} + \epsilon_{ij}$$
 
 where $\beta_u < \beta < \beta_r$ as long as there are some *unresponsive* shoppers, $n_{u} > 0$, such that $n_{r} + n_{u} = N$.
 
-But of course, I cannot identify which shoppers are of
+But I cannot actually identify which shoppers are responding to the incentive. Furthermore, any shopper observed in a treated store I must make the assumption that a shopper
 
 <!-- 
 $$
