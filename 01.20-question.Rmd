@@ -4,79 +4,24 @@
 
 ### Hypotheses
 
-**Hypothesis 1**: I expect a very slight (0 - 2%) increase in fruit and vegetable expenditures during the months the DUFB incentive is active in participating store (Aug - Dec). The effect will fade over time. I expect no significant differences in fruit and vegetable expenditures during the months the incentive is not in effect (Jan - July).
+**Hypothesis 1**
+: I expect a very slight (1 - 2%) increase in fruit and vegetable (FV) expenditures during the months the DUFB incentive is active in participating store (Aug - Dec). The effect will fade over time. I expect no significant differences in fruit and vegetable expenditures during the months the incentive is not in effect (Jan - July).
+
+Note that the DUFB incentive is applied automatically to all SNAP shoppers accruing or redeeming DUFB points (covered in more detail in the [Data Section](data-1)). Therefore, by default, all SNAP shoppers at a DUFB store are technically "participating". However, SNAP shoppers should be considered "passive" or "active" participants. "Active participation" would characterize shoppers responding to the DUFB incentive; "passive participation" would characterize shoppers who continue to shop as usual, despite automatically accruing or redeeming points.
+
+From prior implementations of the program, participation rates in DUFB-like incentive programs can be low. In this case, I expect SNAP shoppers to consist of mostly "passive" participants. Combined with the fact that SNAP dollars account for less than 5% of all spending in these stores, I don't think there is a very large pool of SNAP participants to draw from. As a result, the "active" participants, who respond to the incentive and purchase more fruits and vegetables, will consist of a small fraction of total FV spending. This will be enough to minimal shift the distribution of FV spending.
 
 
-Answering this question is complicated by 
+I expect Low "active" participation rates to result from generally low awareness of the program for this particular grocery chain. This is includes both staff and the shoppers themselves. I don't know if the corporate office, which selected and implemented the DUFB incentive, clearly communicated or advertised the DUFB program to store management/staff and customers. I must be clear that this is merely a hunch. I don't think there is a large profit motive behind implementing this program for the retailer. I think it is an opportunity to pretend to be doing some good and to have something which reflects a positive corporate image.
 
-(1) how the DUFB incentive is implemented, 
-(2) the lack of loyalty card data (this makes it impossible to link purchases to individuals), and 
-(3) having a censored dependent variable (no fruit or vegetable purchases will be observed in many of the transactions)
-
-### (1) How the DUFB Incentive is Implemented {-}
-
-The DUFB incentive is applied automatically at the store level. Therefore, the incentive works only if individuals choose to actively participate in the program. This is distinct to standard experimental procedure where individuals are assigned to the treatment or control group and then choose to participate (or not). 
-
-How a participant responds to assignment is generally referred to as *compliance* [@angrist_mostly_2008].^[Participants can be further categorized into "compliers", "never-takers", "always-takers", and "defiers". These categorizations provide useful terminology but are not relevant in the context of the DUFB incentive.] But in this case, it is the stores, not the individual shoppers, that have been "assigned" to a treatment or control group. Stores, if assigned to the treatment group by the retail chain, are "compliers" by default; the DUFB incentive is implemented on store's point-of-sale (POS) system. Some stores (4) behaved somewhat like "always-takers", having asked to participate in DUFB, but most store (13) are "compliers".^[I must note that, while this creates some worries of "self-selection" by stores, I think this bias can be handled by a model that includes a store-level fixed-effect.]
-
-How, then, does one think about SNAP shopper participation in the DUFB program if it is stores that are ultimately assigned to the DUFB program. SNAP shoppers have the option to benefit from the program without ever being "assigned" to any treatment group. A shopper's active participation in DUFB is therefore driven by another type of self-selection. I imagine use of the DUFB incentive depends on a series latent variables corresponding to individual shoppers, stores, and the retail chain. For example, demographics, price sensitivity, food preferences, health consciousness are all latent variables that could affect shopper DUFB activity. Other latent variables include how effectively the retail chain markets the DUFB program to management of participating stores and how effectively this information is relayed by stores to individual shoppers. Management's enthusiasm for the program is likewise a latent retail chain and store-level variable.
-
-Automatically redemption of the DUFB points also complicates identifying individual participation. Automatic redemption of DUFB "points" means I cannot identify which SNAP transaction are responding to the incentive versus "shopping as usual". That is, I will observe many SNAP shoppers redeeming DUFB points for fruits and vegetables that are oblivious to the existence of the incentive. I will also observe individuals who have chosen to actively participate in the program. In aggregate, however, I assume that any increase in the total amount of fruit and vegetables purchases in DUFB stores can be attributed to the incentive. This is where having purchasing data from the non-DUFB stores is important. The non-DUFB stores will help improve estimation by controlling for any changes in fruit and purchases that may occur for reasons other than the DUFB incentive e.g. seasonal or macroeconomic conditions.
-
-### (2) No Loyalty Card Data {-}
-
-### (3) Censored Dependent Variable {-}
-
-### Other Challenges
-
-1. I have no way of distinguishing *responsive* versus *unresponsive* shoppers. I have to assume that a shopper spending more on fruits and vegetables versus prior shopping trips is responding to the incentive. 
-2. If I assume shoppers only visit their nearest store, regardless of treatment status, then I will observed shoppers in either a treated or control store, but never both.
-3. I have no information about the shoppers besides what I can glean from purchases; I cannot control for a shopper age or demographics, for example.
-
-### The Ideal {-}
-
-I would like to measure if the existence of the DUFB incentive increases the amount of fruits and vegetables purchased by SNAP shoppers. (From this point, "individual" or "person" or "shopper" is the same as "an individual shopper who is a SNAP beneficiary".) In this model, the outcome variable $y_{ij}$ would be the fraction of total SNAP dollars person $i$ spent on fruits and vegetables in some store $j$. My interest is in how $y_{ij}$ changes in response to the existence of the DUFB incentive (the treatment). For now, I will ignore time and focus on a cross section of data drawn after DUFB implementation has already occurred.
-
-The store's technology is directly affected by the DUFB incentive. Specifically, the treatment changes the POS system of store $j$, which automatically applies the DUFB incentive to any shopper $i$ purchasing locally grown, eligible produce that $(a)$ is using SNAP benefits and $(b)$ is using a loyalty card. To reiterate, DUFB incentive is triggered anytime $(a)$ and $(b)$ are true for some shopper $i$. For the DUFB incentive to be "working", shopper $i$ must *respond* and *actively* participate in the incentive program. On the other hand, an *unresponsive* shopper *passively* participates, triggering the DUFB incentive automatically---accruing or redeeming points---without a change in shopping behavior.
-
-If person $i$'s purchases, $y_{ij}$, are affected by the existence of the DUFB implementation on store $j$'s POS system, then I should observe an increase in person $i$ spending following implementation. Denote person $i$ shopping in treated store $j$, $D_{ij}=1$ and $0$ otherwise. At the simplest level, I assume each person spends, on average, the same value $\alpha$ plus a random normal shock, $\epsilon_{ij} \sim \mathcal{N}(0, \sigma_{ij}^2)$, that is person- and store-specific. I assume there are two types of shoppers, *responsive* and *unresponsive*. $i = r$ denote the shopper *responsive* to the incentive and $i = u$ denotes the *unresponsive* shopper. Each shopper responds differently to the DUFB incentive. The following simple regression set up accommodates this framework.
-
-$$
-  y_{ij} = \alpha + \beta_i D_{ij} + \epsilon_{ij}
-$$
-
-Below is a table for each shoppers expected outcomes.
-
-Table: (\#tab:expected-outcomes) Expected outcomes
-
-|                                      |  Shopper $r$     |  Shopper $u$  |
-|-------------------------------------:|:----------------:|:-------------:|
-|Store $j$ with DUFB&#58; $E[y_{ij} \vert D_{ij}=1]$    | $\alpha + \beta_{r}$ |    $\alpha + \beta_u$     |
-|Store $j$ w/o DUFB&#58; $E[y_{ij} \vert D_{ij}=0]$     |  $\alpha$        |    $\alpha$     | 
-
-Recall that any SNAP shopper satisfying $(a)$ and $(b)$ while making a purchase in store $j$ receives the DUFB incentive. Should a shopper of type $r$ or $u$ find themselves in a store *without* DUFB, then I expect them same average effect $\alpha$. On the other hand, should these shoppers find themselves in a store *with* DUFB, then only the responsive shopper $r$ would be affected by $\beta_r$ and shopper $u$ by $\beta_u$.
-
-Assume that type $u$ shoppers are totally unaffected by the incentive; $\beta_u = 0$. Pooling together all individuals, the regression becomes
-
-$$y_{ij} = \alpha + \beta D_{ij} + \epsilon_{ij}$$
-
-where $\beta_u < \beta < \beta_r$ as long as there are some *unresponsive* shoppers, $n_{u} > 0$, such that $n_{r} + n_{u} = N$.
-
-But I cannot actually identify which shoppers are responding to the incentive. Furthermore, any shopper observed in a treated store I must make the assumption that a shopper
-
-<!-- 
-$$
-y_{ij} = 
-\begin{cases}
-  y_{0ij}~\text{ if }D_{ij} = 0 \\
-  y_{1ij}~\text{ if }D_{ij} = 1
-\end{cases}
-$$
-
-$$y_{ij} = y_{0ij} + (y_{1ij} - y_{0ij})D_{ij}$$
-
-
- -->
+A survey of store staff and of some customers to test this hunch would be great.
 
 
 
+**Hypothesis 2**
+: If measurable, I expect spending increases to occur within the first 3 weeks of each month, when most SNAP benefits are distributed and consumed. I also expect week 4 for all stores, regardless of DUFB participation, to be relatively similar.
+
+
+Prior research finds that SNAP shoppers spend their benefits soon after receiving them, generally in one large shopping trip [@wiig_art_2009; @damon_first_2013]. The grocery stores are located in a state where benefits are disbursed every odd day of the month between the 3rd and 21st, spanning the first 3 weeks of each month. Therefore, by the 4th week, few unspent dollars will exists. Since the DUFB incentive is only triggered by the use of SNAP benefits, SNAP shoppers will be unable to make use of DUFB.
+
+I expect that, were we to remove the 4th week of each month from all stores, the DUFB effect size will increase. I do not anticipate to see shoppers behave in strategic saving behavior of DUFB points (which is quite difficult given the automatic accrual and redemption system) nor do I think FV spending to increase much without the presence of the incentive. More importantly, since I cannot track link purchases to individuals (more on this later), it will be impossible to identify which transactions are made by SNAP shoppers when they are not using their SNAP EBT cards.
