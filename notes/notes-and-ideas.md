@@ -1,4 +1,4 @@
-Notes and Ideas
+# Notes and Ideas
 
 - @payne_shopper_2014 show that 50% of purchases in a shopping trip comprise of unplanned purchases. This creates a large fraction left for influence.
     + In [this video](video), Payne shows how important human interaction is in promoting sales. In this case, "suggestive selling" at POS to buy a fresh item for .99 cents.
