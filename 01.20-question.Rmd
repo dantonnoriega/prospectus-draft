@@ -2,8 +2,6 @@
 
 > How effective is the DUFB financial incentive at increasing the fresh fruits and vegetables purchased by SNAP shoppers within a grocery store environment?
 
-### Hypotheses
-
 **Hypothesis 1**
 : I expect a very slight (1 - 2%) increase in fruit and vegetable (FV) expenditures during the months the DUFB incentive is active in participating store (Aug - Dec). The effect will fade over time. I expect no significant differences in fruit and vegetable expenditures during the months the incentive is not in effect (Jan - July).
 
