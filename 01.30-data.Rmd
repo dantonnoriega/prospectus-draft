@@ -46,13 +46,9 @@ This is important because *locally grown* fresh produce is a much smaller subset
 
 ### Limited Dependent Variable {-}
 
-It is very likely that for any recorded visit to the cashier---what I call a "transaction"---a customer does not purchase fresh fruits or vegetables (FFV). If I split a customer's items purchased during a transaction into a few general categories (e.g. dairy, candy, meat, etc.) and aggregated expenditure over these categories, I will observe a non-trivial amount of zeros. More importantly, these are "true" zeros. That is, these zeros are not substitutes for missing data or representing negative values. These type of "true" zeros are referred to as a *corner solution*.
+It is very likely that for any recorded visit to the cashier---what I call a "transaction"---a customer does not purchase fresh fruits or vegetables (FFV). If I split a customer's items purchased during a transaction into a few general categories (e.g. dairy, candy, meat, etc.) and aggregated expenditure over these categories, I will observe a non-trivial amount of zeros. 
 
-Corner solutions for expenditures can occur for various reasons. @pudney_modelling_1989 covers three of the most likely mechanisms producing "true" zeros. (I should note that they are discussed in context of cross-sectional data but they extent or apply to panel data.) The first reason is that the data was gathered in too short a period of time for the purchase to occur. This problem is far more applicable in cross-sectional data (i.e. durable goods purchased infrequently). In a panel data context, it could be that in a given transaction, the customer happened to not purchase any FFVs, regardless the customer's preferences. But that does not mean that across all transactions no FFV purchases were observed. The second reason is a supply side reason the customer has no control over. For example, there could be a shortage of FFVs or none are available. Imagine searching for FFV purchases in collection of convenience store data. Many zeros would exists because some convenience stores do not sell FFVs. The third zero results from a customer's decision as a function of prices, preferences, and income constraints. A zero is perhaps observed because FFVs are too expensive and the customer can get larger quantities of other, equally or more preferred, foods for the same price.
-
-
-
-
+@humphreys_dealing_2013 and @carlevaro_multiple_2016 both  discuss available models for dealing with zeros, a standard Tobit model or a Hurdle model would have been likely candidates. Instead, I will model each store as a random value $Y_j$ that spits out expenditures along a mixed distribution. Specifically, a mix of a discrete distribution and continuous distribution where $P(Y_j = 0) > 0$ (discrete) and $P(Y_j = y) = 0$ for all $y > 0$ (continuous). This will be covered in greater detail in the [Methods Section](#methods-1).
 
 ### Other Information {-}
 

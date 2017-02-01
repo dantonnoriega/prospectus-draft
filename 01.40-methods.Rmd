@@ -1,6 +1,17 @@
 ## Overview of Proposed Methods {#methods-1 -}
 
-I will perform two separate analyses. This is a consequence of the store selection issue outline in the data section. The main analysis will be performed on the 9 *assigned* stores and 12 *control* stores.^[I'm excluding the 2 pilot store because they are never observed without DUFB.] In attempts to make use of as much data as possible, I will also perform a smaller analysis with the 3 *self-selected* stores matched using CEM. (Please see the [Data]{#data-1} Section and Table \@ref(tab:store-class)) for more about *assigned* and *self-selected* stores.)
+My choice of methods is complicated by 3 problems, each introduced in the [Data Section](#data-1).
+
+1. Purchases not linked to individuals.
+2. Limited depended variable.
+3. Treatment is inconsistent across years.
+
+The first 
+
+
+I will perform two main analyses: Difference-in-Differences (DD) and Regression Discontinuity (RD). The DD analysis will make use of as much data a possible---17 *treated* stores and the 15 *control* stores. I will assume the selection problem outline in the [Store Selection Section](#store-selection-1) can be controlled using store-level fixed-effects. That is, I will assume the DUFB treatment is strictly exogenous conditional on any time-invariant (observed and unobserved) store-level characteristics.
+
+This is a consequence of the store selection issue outline in the data section. The main analysis will be performed on the 9 *assigned* stores and 12 *control* stores.^[I'm excluding the 2 pilot store because they are never observed without DUFB.] In attempts to make use of as much data as possible, I will also perform a smaller analysis with the 3 *self-selected* stores matched using CEM.^[Please see the Section and Table \@ref(tab:store-class)) for more about *assigned* and *self-selected* stores.] 
 
 Difference-in-Differences (DD) and Regression Discontinuity (RD) will comprise the main analysis. DD will be the only method for the second smaller analysis. I outline each analysis and its methods in the next section.
 
