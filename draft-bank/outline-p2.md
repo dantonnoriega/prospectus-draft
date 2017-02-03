@@ -8,6 +8,16 @@
 
 **Part 1**: Millions of families depend on SNAP benefits to provide sustained, predictable access to food. With reduced access to TANF benefits, SNAP has become the most popular cash-like assistance available to struggling families.
 
-**Part 2**: Economic theory assumes families have some access to cash. SNAP benefits therefore act as a buffer, alleviating strained food budgets and allowing families to shift cash towards other SNAP-ineligible goods. Unfortunately, monthly SNAP benefits are insufficient for many of the poorest families. With little access to cash, 
+**Part 2**: Economic theory assumes families have some access to cash. SNAP benefits therefore act as a buffer, alleviating strained food budgets and allowing families to shift cash towards other SNAP-ineligible goods. Unfortunately, monthly SNAP benefits are insufficient for many of the poorest families.
 
-**Part 3**: Spending is highest within the first 3 days of receiving SNAP benefits. By the week leading up to the next scheduled monthly transfer, families often have no benefits left to spend on food. 
+**Part 3**: Spending is highest within the first 3 days of receiving SNAP benefits. Days leading up to the next scheduled monthly transfer, families often have no benefits left to spend on food. Low on cash, families tighten their belts and eat less nutritious foods. They also turn to informal and formal (e.g. social services) safety nets for assistance. 
+
+**Part 4**: For families coping with poverty, informal safety nets (e.g. family, friends) tend to be the first line of defense should formal safety nets (e.g. SNAP) fall short. However, informal safety nets are not always available. Family and friends for those coping with poverty often struggle with similar levels of economic insecurity. With few options left, families or the most extreme margins will turn to food banks or emergency social services for help.
+
+**Part 5**: Emergency services are scarce but exists to help families lacking cash to pay for necessities like rent, electricity, and food.
+
+
+
+**Extra**: Cash assistance reaches fewer families since the 1996 welfare reform act. SNAP, on the other hand, has become the largest public assistance program in the US, peaking during the worst years of the Great Recession. While SNAP is a cash-like assistance program, it is still not cash. It cannot pay the rent or the bills. And when economic instability forces families to make tough decisions, especially those on the margins of poverty, it is a lack of cash that prompts families to search for help from formal and informal networks.
+
+
