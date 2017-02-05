@@ -12,9 +12,13 @@
 
 **Part 3**: Spending is highest within the first 3 days of receiving SNAP benefits. Days leading up to the next scheduled monthly transfer, families often have no benefits left to spend on food. Low on cash, families tighten their belts and eat less nutritious foods. They also turn to informal and formal (e.g. social services) safety nets for assistance. 
 
-**Part 4**: For families coping with poverty, informal safety nets (e.g. family, friends) tend to be the first line of defense should formal safety nets (e.g. SNAP) fall short. However, informal safety nets are not always available. Family and friends for those coping with poverty often struggle with similar levels of economic insecurity. With few options left, families or the most extreme margins will turn to food banks or emergency social services for help.
+**Part 4**: For families coping with poverty, informal safety nets (e.g. family, friends) tend to be the first line of defense should formal safety nets (e.g. SNAP) fall short. However, informal safety nets are not always available. Family and friends for those coping with poverty often struggle with similar levels of economic insecurity. Limited access to cash means families on the most extreme margins will turn to formal networks of support, like food banks or emergency social services for assistance.
 
-**Part 5**: Emergency services are scarce but exists to help families lacking cash to pay for necessities like rent, electricity, and food.
+**Part 5**: Formal services exists that can provide families with emergency cash to pay for necessities like rent, electricity, and food. Food banks are an example of formal service that could be considered emergency assistance for some families (although not for all, unfortunately). Emergency cash assistance also exists to help with rent and utilities but access can be quite restricted. Durham Count Social Services, for example, provides emergency TANF assistance, which is limited to a $400 dollars per 365 days. Emergency food cards also exists, but SNAP recipients are ineligible.[^One of the conditions to receiving a food card is that households must sign up for SNAP.]
+
+**Part 6**: Scarcity of cash should increase demand for support for informal and formal cash assistance. This is most likely to occur during the last week I test this by checking demand for emergency cash services
+
+ 
 
 
 
