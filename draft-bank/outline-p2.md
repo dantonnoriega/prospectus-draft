@@ -16,7 +16,8 @@
 
 **Part 5**: Formal services exists that can provide families with emergency cash to pay for necessities like rent, electricity, and food. Food banks are an example of formal service that could be considered emergency assistance for some families (although not for all, unfortunately). Emergency cash assistance also exists to help with rent and utilities but access can be quite restricted. Durham Count Social Services, for example, provides emergency TANF assistance, which is limited to a $400 dollars per 365 days. Emergency food cards also exists, but SNAP recipients are ineligible.[^One of the conditions to receiving a food card is that households must sign up for SNAP.]
 
-**Part 6**: Scarcity of cash should increase demand for support for informal and formal cash assistance. This is most likely to occur during the last week I test this by checking demand for emergency cash services
+**Part 6**: Scarcity of cash should increase demand for support for informal and formal cash assistance. This is most likely to occur during the last and first weeks of the month given North Carolina's SNAP benefits transfer schedule. I test this by checking household demand for emergency cash services and demand for Food Bank assistance in Durham County.
+
 
  
 

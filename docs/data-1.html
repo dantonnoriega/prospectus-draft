@@ -26,15 +26,15 @@
 <meta name="author" content="Danton Noriega">
 
 
-<meta name="date" content="2016-12-06">
+<meta name="date" content="2017-02-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="intro-1.html">
-<link rel="next" href="the-data-generating-process.html">
+<link rel="prev" href="research-question.html">
+<link rel="next" href="store-selection-1.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,6 +49,38 @@
 
 
 
+<script src="libs/htmlwidgets-0.8/htmlwidgets.js"></script>
+<script src="libs/proj4js-2.3.15/proj4.js"></script>
+<link href="libs/highcharts-5.0.6/css/motion.css" rel="stylesheet" />
+<script src="libs/highcharts-5.0.6/highstock.js"></script>
+<script src="libs/highcharts-5.0.6/highcharts-3d.js"></script>
+<script src="libs/highcharts-5.0.6/highcharts-more.js"></script>
+<script src="libs/highcharts-5.0.6/modules/annotations.js"></script>
+<script src="libs/highcharts-5.0.6/modules/broken-axis.js"></script>
+<script src="libs/highcharts-5.0.6/modules/data.js"></script>
+<script src="libs/highcharts-5.0.6/modules/drilldown.js"></script>
+<script src="libs/highcharts-5.0.6/modules/exporting.js"></script>
+<script src="libs/highcharts-5.0.6/modules/funnel.js"></script>
+<script src="libs/highcharts-5.0.6/modules/heatmap.js"></script>
+<script src="libs/highcharts-5.0.6/modules/map.js"></script>
+<script src="libs/highcharts-5.0.6/modules/no-data-to-display.js"></script>
+<script src="libs/highcharts-5.0.6/modules/offline-exporting.js"></script>
+<script src="libs/highcharts-5.0.6/modules/solid-gauge.js"></script>
+<script src="libs/highcharts-5.0.6/modules/treemap.js"></script>
+<script src="libs/highcharts-5.0.6/plugins/annotations.js"></script>
+<script src="libs/highcharts-5.0.6/plugins/draggable-legend.js"></script>
+<script src="libs/highcharts-5.0.6/plugins/draggable-points.js"></script>
+<script src="libs/highcharts-5.0.6/plugins/export-csv.js"></script>
+<script src="libs/highcharts-5.0.6/plugins/grouped-categories.js"></script>
+<script src="libs/highcharts-5.0.6/plugins/motion.js"></script>
+<script src="libs/highcharts-5.0.6/plugins/pattern-fill-v2.js"></script>
+<script src="libs/highcharts-5.0.6/plugins/tooltip-delay.js"></script>
+<script src="libs/highcharts-5.0.6/custom/reset.js"></script>
+<script src="libs/highcharts-5.0.6/custom/symbols-extra.js"></script>
+<script src="libs/highcharts-5.0.6/custom/text-symbols.js"></script>
+<link href="libs/fontawesome-4.5.0/font-awesome.min.css" rel="stylesheet" />
+<link href="libs/htmlwdgtgrid-1/htmlwdgtgrid.css" rel="stylesheet" />
+<script src="libs/highchart-binding-0.5.0/highchart.js"></script>
 
 
 
@@ -79,14 +111,20 @@
 <li class="chapter" data-level="" data-path="intro-1.html"><a href="intro-1.html#double-up-food-bucks-vs-the-healthy-incentives-pilot"><i class="fa fa-check"></i>Double Up Food Bucks vs the Healthy Incentives Pilot</a></li>
 <li class="chapter" data-level="" data-path="intro-1.html"><a href="intro-1.html#evaluating-double-up-food-bucks-in-non-experimental-conditions"><i class="fa fa-check"></i>Evaluating Double Up Food Bucks in Non-experimental Conditions</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i>Data Description</a></li>
-<li class="chapter" data-level="" data-path="the-data-generating-process.html"><a href="the-data-generating-process.html"><i class="fa fa-check"></i>The Data Generating Process</a><ul>
-<li class="chapter" data-level="" data-path="the-data-generating-process.html"><a href="the-data-generating-process.html#posing-the-problem-the-ideal"><i class="fa fa-check"></i>Posing the Problem: The Ideal</a></li>
+<li class="chapter" data-level="" data-path="research-question.html"><a href="research-question.html"><i class="fa fa-check"></i>Research Question</a></li>
+<li class="chapter" data-level="" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i>Data Description</a><ul>
+<li class="chapter" data-level="" data-path="data-1.html"><a href="data-1.html#how-the-dufb-incentive-is-implemented"><i class="fa fa-check"></i>How the DUFB Incentive is Implemented</a></li>
+<li class="chapter" data-level="" data-path="data-1.html"><a href="data-1.html#purchases-cannot-be-linked-to-individuals-no-loyalty-card-data"><i class="fa fa-check"></i>Purchases Cannot Be Linked to Individuals (No Loyalty Card Data)</a></li>
+<li class="chapter" data-level="" data-path="data-1.html"><a href="data-1.html#dufb-incentive-inconsistency-across-years"><i class="fa fa-check"></i>DUFB Incentive Inconsistency Across Years</a></li>
+<li class="chapter" data-level="" data-path="data-1.html"><a href="data-1.html#limited-dependent-variable"><i class="fa fa-check"></i>Limited Dependent Variable</a></li>
+<li class="chapter" data-level="" data-path="data-1.html"><a href="data-1.html#other-information"><i class="fa fa-check"></i>Other Information</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="store-selection-1.html"><a href="store-selection-1.html"><i class="fa fa-check"></i>Overview of Store Selection and Expansion</a><ul>
 <li class="chapter" data-level="" data-path="store-selection-1.html"><a href="store-selection-1.html#selection-and-expansion-of-double-up-stores"><i class="fa fa-check"></i>Selection and Expansion of Double Up Stores</a></li>
 <li class="chapter" data-level="" data-path="store-selection-1.html"><a href="store-selection-1.html#expansion-on-observables"><i class="fa fa-check"></i>Expansion on Observables</a></li>
 <li class="chapter" data-level="" data-path="store-selection-1.html"><a href="store-selection-1.html#selection-of-control-stores"><i class="fa fa-check"></i>Selection of Control Stores</a></li>
+<li class="chapter" data-level="" data-path="store-selection-1.html"><a href="store-selection-1.html#motivation-for-matching"><i class="fa fa-check"></i>Motivation for Matching</a></li>
+<li class="chapter" data-level="" data-path="store-selection-1.html"><a href="store-selection-1.html#matching-details"><i class="fa fa-check"></i>Matching Details</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i>Overview of Proposed Methods</a><ul>
 <li class="chapter" data-level="" data-path="methods-1.html"><a href="methods-1.html#main-analysis-regression-discontinuity-rd"><i class="fa fa-check"></i>Main Analysis: Regression Discontinuity (RD)</a></li>
@@ -145,17 +183,44 @@
 <p>These data come from a large grocery distributor and retailer serving multiple grocery chains. Three years of data will be made available, 2014 through 2016. To my understanding, this includes months where the DUFB incentive is active (Aug 1 to Dec 31) and inactive (Jan 1 to July 31) across all stores. These data are transaction level data and will include (at least) store number, register, transaction ID, date and time of purchase, payment type, item, dollars, and quantity.</p>
 <p>Double Up implementation was considered for a single grocery chain. The chain has more than 60 stores, 17 of which were selected as “treatment” stores (with Double Up). Of the remaining stores, data is being made available from an addition 15 to serve as “controls”. The quotes here signify that these terms will be used as shorthand, but the terminology is somewhat misleading. The use of “treatment” and “control” could lead one to think store assignment was random. It was not.</p>
 <p>[MISSING real specific details about the data e.g. total transactions observed etc.]</p>
-<p><strong>Data Not Linked to Individuals</strong></p>
+<div id="how-the-dufb-incentive-is-implemented" class="section level3 unnumbered">
+<h3>How the DUFB Incentive is Implemented</h3>
+<p>The DUFB incentive can differ in implementation. Three different implementations have been observed: earn/redeem DUFB points via loyalty card, single-use paper coupon, and immediate discount. The earn/redeem DUFB point system is unique to the retailer that provided these data. For information on the other two DUFB implementations, see <span class="citation">(Margaret Schnuck <a href="#ref-margaret_schnuck_doubling_2016">2016</a>)</span>.</p>
+<p>The DUFB implementation for this particular grocery store chain is a point system. SNAP shoppers can <em>earn</em> points by buying locally grown produce using their SNAP EBT card and their loyalty card. The loyalty card is required because it is used to store and track earned DUFB points. Each dollar spent buying locally grown produce earns a DUFB point. SNAP shoppers are eligible to receive up to $20 dollars worth of DUFB points (20 points) per day. Earned points are not reflected immediately on loyalty cards. They are redeemable the day after.</p>
+<p>Points can be redeemed on <em>any</em> eligible produce (excludes frozen and canned fruits and vegetables). Any form of payment can be used when redeeming points; it is not necessary to use a SNAP EBT card to redeem points.</p>
+<p>There are four important details about this implementation of the DUFB incentive. I already mentioned the first but it is worth reiterating: earned points take a day to be processed on a loyalty card. This forces SNAP shoppers to delay the reward of the DUFB incentive earned by at least a day. While perhaps a technological necessity (it takes time to process and reflect earned points on loyalty card accounts), this delays the transactional utility that could potentially be earned by the SNAP shopper <span class="citation">(Thaler <a href="#ref-thaler_mental_1985">1985</a>)</span>. I expect that delaying the transactional utility reduces the “pleasure” and effectiveness window of the DUFB incentive. SNAP shoppers tend to spend benefits in one large shopping trip soon after receiving monthly benefits. These shopping trips therefore correspond to the single largest opportunity to earn DUFB points. Unless the shoppers returns to the store frequently to buy fresh produce, the “reward” of redeeming points.</p>
+<p>Second, the incentive alternates between earning and redeeming states. A loyalty card with a DUFB point balance of zero is in an “earning” state. However, once DUFB points are earned by buying <em>locally</em> grown fresh produce, the card switches to a “redeeming” state; loyalty cards with a point balance greater than zero will redeem until the point balance is once again zero. This removes the possibility of strategically “banking” earned points to be redeemed all at once (say for a holiday shopping trip). Should I purchase $10 dollars of local produce and earn 10 points, the next time I purchase <em>any</em> produce (even local produce), my purchases will be redeemed from the point balance until the 10 points are gone.</p>
+<p>Third, the points <em>earned</em> are not communicated to the shopper at the moment of sale <span class="citation">(Family Fare <a href="#ref-family_fare_double_2016">2016</a>)</span>. In other words, the fact that shoppers are earning points is <em>not salient</em>. There is no feedback connecting the purchase of fresh healthy produce to the fact that the shopper is earning points. Currently available points (those processed in prior shopping trips) are printed at the bottom of each receipt, and can even be checked on-line or on in-store kiosks. But no feedback or information is shared to the shopper during the current sale. Earning points, at least, ends up being like any other shopping trip. I would argue this is more a con than a pro. Certainly a bell shouldn’t ring when SNAP shoppers earn points. One of the great consequences of moving to an EBT card is that the potential stigma of using food stamps has greatly diminished. But shoppers could benefit from some sort of feedback that is informative without producing a spotlighting effect. For example, shoppers could be told, “You saved $4.50 today and you also earned 5 DUFB points”.</p>
+<p>[<strong>I need to confirm that this does not happen</strong>. Considering the points earned don’t appear on receipt, I do not see how the clerk know to inform the customer. Does it appear on the machine?]</p>
+<p>The fourth, and most important point, is the automatic earning and redeeming of DUFB points. This implies the incentive works only if individuals choose to actively participate in the program. This is distinct to standard experimental procedure where individuals are assigned to the treatment or control group and then choose to participate (or not).</p>
+<div id="what-is-a-participant-for-this-dufb-implementation" class="section level4 unnumbered">
+<h4>What is a “participant” for this DUFB implementation?</h4>
+<p>How a participant responds to assignment is generally referred to as <em>compliance</em> <span class="citation">(Angrist and Pischke <a href="#ref-angrist_mostly_2008">2008</a>)</span>.<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> But in this case, it is the stores, not the individual shoppers, that have been “assigned” to a treatment or control group. Stores, if assigned to the treatment group by the retail chain, are “compliers” by default; the DUFB incentive is implemented on store’s point-of-sale (POS) system. Some stores (4) behaved somewhat like “always-takers”, having asked to participate in DUFB, but most store (13) are “compliers.”<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
+<p>How, then, does one think about SNAP shopper participation in the DUFB program if it is stores that are ultimately assigned to the DUFB program? SNAP shoppers have the option to benefit from the program without ever being “assigned” to any treatment group. A shopper’s active participation in DUFB is therefore driven by another type of self-selection. I imagine use of the DUFB incentive depends on a series latent variables corresponding to individual shoppers, stores, and the retail chain. For example, demographics, price sensitivity, food preferences, health consciousness are all latent variables that could affect shopper DUFB activity. Other latent variables include how effectively the retail chain markets the DUFB program to management of participating stores and how effectively this information is relayed by stores to individual shoppers. Management’s enthusiasm for the program is likewise a latent retail chain and store-level variable.</p>
+<p>Automatically redemption of the DUFB points also complicates identifying individual participation. Automatic redemption of DUFB “points” means I cannot identify which SNAP transactions are responding to the incentive versus “shopping as usual”. That is, I will observe many SNAP transactions earning or redeeming DUFB points for fruits and vegetables that are oblivious to the existence of the incentive. I will also observe individuals who have chosen to actively participate in the program. In aggregate, however, I assume that any increase in the total amount of fruit and vegetables purchases in DUFB stores can be attributed to the incentive. This is where having purchasing data from the non-DUFB stores is important. The non-DUFB stores will help improve estimation by controlling for any changes in fruit and purchases that may occur for reasons other than the DUFB incentive e.g. seasonal or macroeconomic conditions.</p>
+</div>
+</div>
+<div id="purchases-cannot-be-linked-to-individuals-no-loyalty-card-data" class="section level3 unnumbered">
+<h3>Purchases Cannot Be Linked to Individuals (No Loyalty Card Data)</h3>
 <p>One important variable that will not be made available is a variable for loyalty card numbers. The company’s use of loyalty cards across its many chains was an exciting prospect. Previous transaction data from smaller independent grocery chains had no way linking purchases to a single unique identifier over time because these smaller chains did not have advanced point-of-sale systems.</p>
 <p>In earlier conversations with the company, it was understood that loyalty cards would be made available. However, months into working with the company, I was informed that this was no longer possible. Per the company’s legal department, the company cannot share any personal information about their customers. Unfortunately for us, in the loyalty card contract signed by customers, the loyalty card number itself is considered personal information, meaning loyalty card numbers fall under the same legal category as phone numbers and home addresses.</p>
-<p><strong>DUFB Incentive Inconsistency Across Years</strong></p>
-<p>The retail company informed us that the way the DUFB incentive worked in 2016 is distinct from 2014 and 2015. The DFUB incentive in 2016 worked by accruing points for each dollar spent on <em>locally grown</em> fresh produce. (Recall that each point is equal to one dollar.) Points are then redeemed automatically on <em>any</em> fresh produce. However, in 2014 and 2015, the incentive was the <em>opposite</em>. In those two years, the DUFB incentive worked by accruing points on <em>any</em> fresh produce, automatically redeeming points on <em>locally grown</em> fresh produce.</p>
-<p>This is important because <em>locally grown</em> fresh produce is a much smaller subset of the <em>any</em> fresh produce. Therefore, in years 2014 and 2015, shoppers could easily accrue points but had a constrained set of produce on which to redeem points. In any case, estimates of the incentive for the year 2015 cannot be compared to estimates in the year 2016.</p>
-<p><strong>Other Information</strong></p>
-<p><em>Past Experience with Similar Data</em></p>
+</div>
+<div id="dufb-incentive-inconsistency-across-years" class="section level3 unnumbered">
+<h3>DUFB Incentive Inconsistency Across Years</h3>
+<p>The retail company informed us that the way the DUFB incentive worked in 2016 is distinct from 2014 and 2015. The DUFB incentive in 2016 worked by earning points for each dollar spent on <em>locally grown</em> fresh produce. (Recall that each point is equal to one dollar.) Points are then redeemed automatically on <em>any</em> fresh produce. However, in 2014 and 2015, the incentive was the <em>opposite</em>. In those two years, the DUFB incentive worked by earning points on <em>any</em> fresh produce, automatically redeeming points on <em>locally grown</em> fresh produce.</p>
+<p>This is important because <em>locally grown</em> fresh produce is a much smaller subset of the <em>any</em> fresh produce. Therefore, in years 2014 and 2015, shoppers could easily earn points but had a constrained set of produce on which to redeem points. In any case, estimates of the incentive for the year 2015 cannot be compared to estimates in the year 2016.</p>
+</div>
+<div id="limited-dependent-variable" class="section level3 unnumbered">
+<h3>Limited Dependent Variable</h3>
+<p>It is very likely that for any recorded visit to the cashier—what I call a “transaction”—a customer does not purchase fresh fruits or vegetables (FFV). If I split a customer’s items purchased during a transaction into a few general categories (e.g. dairy, candy, meat, etc.) and aggregated expenditure over these categories, I will observe a non-trivial amount of zeros.</p>
+<p><span class="citation">Humphreys (<a href="#ref-humphreys_dealing_2013">2013</a>)</span> and <span class="citation">Carlevaro et al. (<a href="#ref-carlevaro_multiple_2016">2016</a>)</span> both discuss available models for dealing with zeros, a standard Tobit model or a Hurdle model would have been likely candidates. Instead, I will model each store as a random value <span class="math inline">\(Y_j\)</span> that spits out expenditures along a mixed distribution. Specifically, a mix of a discrete distribution and continuous distribution where <span class="math inline">\(P(Y_j = 0) &gt; 0\)</span> (discrete) and <span class="math inline">\(P(Y_j = y) = 0\)</span> for all <span class="math inline">\(y &gt; 0\)</span> (continuous). This will be covered in greater detail in the <a href="methods-1.html#methods-1">Methods Section</a>.</p>
+</div>
+<div id="other-information" class="section level3 unnumbered">
+<h3>Other Information</h3>
+<p><strong>Past Experience with Similar Data</strong></p>
 <p>This is not my first experience working with transaction data. At this point, I have more than 3 years working with transaction data. Furthermore, this is not my first experience with transaction data where (1) DUFB was implemented and (2) transactions were not linked to individuals.</p>
 <p>I performed an analysis in April of 2016 for FFN using 5 months of transaction data from 3 small Detroit-area grocery stores. Figure <a href="data-1.html#fig:trx-cycle">2.1</a> was produced with those data. It was easy to distinguish when SNAP benefits were being used in those data. Likewise, it was easy to tell when transaction made use of the DUFB incentive (either an issuing of DUFB or a redemption). A simple aggregation could determine the total amount of dollars spent per some unit time (<em>day</em> was the smallest possible unit of time). I expected data for my prospectus will be very similar. The empirical models in the next section were developed under these expectations of the data.</p>
-<p><em>SNAP Spending is Cyclical</em></p>
+<p><strong>SNAP Spending is Cyclical</strong></p>
 <p>In some prior work, I’ve observed that SNAP spending is cyclical, peeking in the 2nd week. This is due to the state’s monthly SNAP benefits transfer schedule. Benefits are distributed every odd day of the month between the 3rd and 21st. Each day maps to the digits <code>0</code> through <code>9</code>. SNAP participants receive their benefits once a month on the day corresponding to the last digit of their SNAP ID number. For example, ID numbers that end in <code>0</code> receive their benefits on the 3rd of each month. SNAP EBT benefits are spent quickly. As a result, there are always fewer SNAP purchases during the 4th week of the month. And fewer SNAP benefits means fewer transaction capable of receiving the DUFB incentive. I’m not yet sure what impact this will have on my analysis this time around, but I thought it important and interesting to point out and consider.</p>
 <div class="figure" style="text-align: center"><span id="fig:trx-cycle"></span>
 <img src="figures/trx_counts.png" alt="Example of how SNAP EBT benefits are spent in a predicable, week-to-week, cycle. It is the result of how benefits are distributed (uniformly across the first 3 weeks) and of how most SNAP participants spend their benefits (quickly and soon after being received). The red line is the count of transactions where SNAP EBT benefits were used as tender. Ignore the green line." width="780" />
@@ -164,17 +229,46 @@ FIGURE 2.1: Example of how SNAP EBT benefits are spent in a predicable, week-to-
 </p>
 </div>
 <p>The week-to-week cyclical pattern of SNAP EBT spending can be observed in Figure <a href="data-1.html#fig:trx-cycle">2.1</a>. (Note that these are from a different data source and different store chain, but from the same US state.) At the start of the each month, SNAP EBT transactions (red line) increase until peeking at the second week. The count then declines steadily through the 4th week before once again spiking during the 1st week of the following month. (Ignore the green line; these are DUFB counts from a different data set.)</p>
-<p><em>Concerns</em></p>
+<p><strong>Supply Chain Concerns</strong></p>
 <p>One concern I had was if local supply of produce differed geographically across the state where the stores are located. The company representative told me that should not be a factor because all stores are supplied from the same warehouse. Therefore, in theory, each store should have the same local produce. I plan to visit the stores on a later date to confirm that this is actually the case.</p>
 
+</div>
+</div>
+<h3> References</h3>
+<div id="refs" class="references">
+<div id="ref-margaret_schnuck_doubling_2016">
+<p>Margaret Schnuck. 2016. “Doubling Produce Purchasing Power: Implementing Nutrition Incentive Programs in Grocery Stores.” Fair Food Network.</p>
+</div>
+<div id="ref-thaler_mental_1985">
+<p>Thaler, Richard. 1985. “Mental Accounting and Consumer Choice.” <em>Marketing Science</em> 4 (3): 199–214.</p>
+</div>
+<div id="ref-family_fare_double_2016">
+<p>Family Fare. 2016. “Double Up Food Bucks.” <a href="https://www.shopfamilyfare.com/DUFB" class="uri">https://www.shopfamilyfare.com/DUFB</a>.</p>
+</div>
+<div id="ref-angrist_mostly_2008">
+<p>Angrist, Joshua D., and Jörn-Steffen Pischke. 2008. <em>Mostly Harmless Econometrics: An Empiricist’s Companion</em>. Princeton university press.</p>
+</div>
+<div id="ref-humphreys_dealing_2013">
+<p>Humphreys, Brad R. 2013. “Dealing with Zeros in Economic Data.” <em>Department of Economics, University of Alberta, Alberta</em>.</p>
+</div>
+<div id="ref-carlevaro_multiple_2016">
+<p>Carlevaro, Fabrizio, Universite ' De Genève, Yves Croissant, and Universite ' De La Réunion. 2016. “Multiple Hurdle Tobit Models in R: The Mhurdle Package.”</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>Participants can be further categorized into “compliers”, “never-takers”, “always-takers”, and “defiers”. These categorizations provide useful terminology but are not relevant in the context of the DUFB incentive.<a href="data-1.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>I must note that, while this creates some worries of “self-selection” by stores, I think this bias can be handled by a model that includes a store-level fixed-effect.<a href="data-1.html#fnref5">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="intro-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-data-generating-process.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="research-question.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="store-selection-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
