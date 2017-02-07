@@ -42,6 +42,14 @@ An example expansion on *observables* (using fake data) can be seen in Figure \@
 
 Not conveyed in Figure \@ref(fig:dufb-expansion) is that the 2015 and 2016 expansions also move through stores that happen to be "highly ranked"---that is, have relatively higher SNAP EBT sales.^[All stores within the chain were ranked by SNAP EBT sales as a percentage of total sales.] Also not conveyed is the fact that there is a strong correlation between geography, population density, racial composition, and SNAP EBT sales. The 2015 expansion to the most nearby stores also meant that it was an expansion to stores with high SNAP EBT sales in densely populated, African-American neighborhoods. The 2016 Double Up expansion was more explicit given that set of feasible stores substantially increases as one moves away from each node. Double Up stores were thus specifically selected not just by geographic proximity, but also by SNAP EBT sales ranking and demographic compositions similar to the initial 2014 stores.
 
+**Expansion Data***
+
+Data for about each store was built by merging 4 different sources. The core data came from the grocery retailer directly, which provided a list of stores participating in DUFB from 2014 - 2016. The grocery retailer also provided a list of stores ranked by EBT sales as a fraction of total store sales and the size (square footage) of each store. Demographic and socioeconomic data came from the [Data Science Toolkit API](http://www.datasciencetoolkit.org/) (DSTK) and the [American Communities Survey API](http://www.census.gov/data/developers/data-sets/acs-survey-5-year-data.html) (ACS). The DSTK API provides access to US Census data from 2000 at the *census block* level and the ACS API provides data spanning 2010 - 2014 at the *zip code* level. Lastly, data was extract by mining the [Family Fare](https://www.shopfamilyfare.com/store-locator) website. 
+
+Matching was done with the ACS data. The ACS zip code data was preferred because it provided income and housing data. Zip code level demographics are sufficiently descriptive; stores are evenly distributed across zip codes. Specifically, 58 stores are spread across 58 zip codes and 4 stores split between 2 zip codes (60 zipcodes and 62 stores).^[I must also admit that my spatial and geocoding skills improved drastically in the months following the matching process. At the time, I did not know how determine census blocks from lat/long coordinates, relying on the DSTK API that did the conversion. The downside is that it returned 2010 data. I'm confident I could do it now, but I still think it is not worth the effort given the US Census Data excludes income data.]
+
+Ideally, prior to matching, demographic data from the neighborhoods surrounding the store, who shopped at the store, and how the store was performing, its size, and goods made available would be known. Unfortunately, most of the publicly available data was not store-specific. The only store-specific data came either from the retail parent company directly or from mining the website.
+
 ```{r fig-dufb-expansion-setup, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
 
 if(getOutputFormat() == "latex") pdf_yes = TRUE else pdf_yes = FALSE
@@ -70,6 +78,7 @@ Ideally, all remaining stores would have been available to use as a control grou
 
 Selecting the control stores proceeded in two steps. First, stores that either self-selected or were selected using some unobservable criteria were matched using *Coarsened Exact Matching* (CEM) [@iacus_causal_2011]. Second, stores assigned Double Up were pooled with nearby control stores and then scored using a linear probability model. Each step is explained in detail.
 
+
 *Step 1: Coarsened Exact Matching*
 
 The 6 stores classified as `self-selected` or `unobserved` (stores `12` through `17`; see Table \@ref(tab:store-class)) were compared against all possible control stores for matches. Matching was done across 5 dimensions: race, income, population density, store attributes, store EBT sales. One variable per dimension was selected: percentage of population that is African-American (zip code level); people per square mile (zip code level); median income for people who have received SNAP or similar assistance (zip code level); the number of associates employed in each store; and the percentage of total stores sales attributed to EBT/SNAP.
@@ -81,7 +90,7 @@ This left 12 stores to be allotted to the control group and 3 treatment stores t
 
 *Step 2: Scoring via Linear Probability Model*
 
-Assignment to treatment and control can be perfectly determined since we know and observe the criteria used for assignment: geographic distance from an initial store (node), SNAP EBT sales rank, and demographics---specifically population density and percentage African-American. A scoring function was created by fitting a linear probability model to all stores within 140 kilometers of the two initial pilot stores.
+Assignment to treatment and control can be perfectly determined since we know and observe the criteria used for assignment: geographic distance from an initial store (node), SNAP EBT sales rank, and demographics---specifically population density and percentage African-American.^[It should be noted that the company did not explicitly say population and race were part of the selection criteria. Instead, they said something along the lines of "stores serving a similar population as the original stores."] A scoring function was created by fitting a linear probability model to all stores within 140 kilometers of the two initial pilot stores.
 
 $$
 \begin{aligned}
@@ -110,3 +119,90 @@ g1 <- ggplot2::ggplot(data = dd) +
 
 g1 + geom_vline(aes(xintercept = .57), color = 'blue', linetype = 'dashed')
 ```
+
+### Motivation for Matching {-}
+
+Not all treated stores will be matched to a control. As mentioned, this is due to the nature of how the 17 treated stores were selected. The parent company intentionally selected stores with some of the highest EBT (aka SNAP Electronic Benefit Transfer (EBT) Card) sales that were also within relatively similar geographic locations. This reduced the burden of advertising and implementing DUFB for The parent company. The unfortunate downside of this implementation is that it effectively removed any likely matches for treated stores located in the most Urban areas (e.g. Grand Rapids and Battle Creek).
+
+Here is an example to illustrate why it is infeasible to matching all treated stores and instead expand selection algorithmically on observables. If we calculate the percentage of the population by *zip code* that is African American then split the data into treatment and control groups, we get the following:
+
+```{r ex-pct-black, echo=FALSE, eval=TRUE, message=FALSE}
+load('data/env0')
+
+dt1 <- dufb_ff_sn_df %>%
+  dplyr::left_join(mi_acs %>% dplyr::select(-lat, -long), by = 'postal_code') %>%
+  dplyr::mutate(pct_black = 100*pop_black/pop_total) %>%
+  dplyr::mutate(treated = dufb_2016) %>%
+  dplyr::select(-starts_with('dufb'), -ebt_rank) %>%
+  dplyr::filter(!is.na(pct_black)) %>%
+  data.frame()
+
+x <- mean(dt1$pct_black[dt1$treated == 1]) - mean(dt1$pct_black[dt1$treated == 0])
+sprintf("Difference in Means (Treated - Control) = %f\n", x) %>% cat
+
+cat("\nPopulation, % Black (Treated, Top 10):\n")
+sort(dt1$pct_black[dt1$treated == 1], decreasing = TRUE) %>% head(10)
+
+cat("\nPopulation, % Black (Control, Top 10):\n")
+sort(dt1$pct_black[dt1$treated == 0], decreasing = TRUE) %>% head(10)
+```
+
+What these results tell us is how potentially distinct the populations are within the zip codes containing the treated stores. Sorting population percentages in descending order, no good match exists within the control stores for the top 7 treated stores. One variable is the simplest case; matching only gets more difficult as one brings in more variables to match.
+
+Considering the separation between some of the treated stores and all of the control stores, it was prudent to rethink the store selection and matching strategy.
+
+It must be noted that matching is not a necessary step during every design phase. It is, in large part, a way to hedge against the possibility that merely selecting the next top 15 stores by EBT sales could sour the estimates. Matching a smaller set of treatment stores against a larger pool of controls can often produce estimates less sensitive to even the smallest changes in some model specifications [@imbens_causal_2015]. However, other models and tools (like regression) are in relatively unperturbed by a lack of design-phase matching, but still benefit from having a larger sample size [@angrist_mostly_2008].
+
+### Matching Details {-}
+
+Like most data-dependent endeavors, the most tedious part of matching the stores was obtaining enough variables. Once enough data were obtained, variables were selected on how best they captured data from the following dimensions:
+
+- Demographics (e.g. race)
+- Income/wealth
+- Population density (e.g. urban vs rural)
+- Store attributes
+- Store EBT sales
+
+One may assume that more variables makes matching easier. This is only true insofar as it provides one with a large pool of options. It is still necessary to carefully select how many variables one is using because matching becomes more and more difficult with each added variable used. This is especially true with a small sample size.
+
+The matching covariates that were finally selected are:
+
+- `pct_black` : Percentage of population that is black (zip code level)
+- `dens_pop` : The population density (people per square mile, zip code level)
+- `income_p50_snap_yes` : Median income for people who have received SNAP or similar assistance (zip code level)
+- `store_n_associates` : The number of associates employed in each store.
+- `ebt_sales_pct` : Percentage of total stores sales attributed to EBT/SNAP.
+
+&nbsp;
+
+**Results of Match**
+
+```{r match-results, echo = FALSE, eval=TRUE}
+env0$cem_mat$tab %>% knitr::kable(., caption = "CEM Match Matrix", booktabs = TRUE)
+```
+
+`G0` represents the "control" group and `G1` represents the "treated" group. One can observe that `r env0$cem_mat$tab[2,2]` "treated" stores were matched to `r env0$cem_mat$tab[2,1]` "control" stores. Each of the `r env0$cem_mat$tab[2,2]` treated stores was matched to its closest control store by driving distance.
+
+
+**Covariate Cut-points**
+
+The CEM procedure depends heavily on the "cut-points" selected for each variable. This is akin to setting the cut-off points when turning a continuous variable into a categorical variable. For example, when converting income values from dollars into `low-` `middle-` and `high-income` groups, at least 4 cut-points are required (2 of which are the maximum and minimum). What the other 2 cut-points are will greatly affect the match. This leads to the question, for example, should the cut-points be `25000` and `100000` or perhaps the median and the top 10%?
+
+For the matches produced, the following cut-points were created.
+
+```{r, echo = FALSE, eval = TRUE}
+env0$cem_mat$breaks
+```
+
+Understanding why is best explained using a visualization. Below are graphs of the variables `pct_black` and `income_p50_snap_yes` with their corresponding cut-points. The aim of each cut-point is to balance the creation of reasonably sized partitions while still marking obvious shifts in the underlying distribution.
+
+For example, in the first plot (`pct_black`), there are clearly points where the slope dramatically increases --- and then spikes --- in the percentage of African Americans. But in the second plot, the slope is more gradual, so the partitioning is aimed more at getting relatively balanced groups.
+
+```{r, echo = FALSE, eval = TRUE, screenshot.opts = list(delay = 3, cliprect = 'viewport')}
+env0$plt1
+```
+
+```{r, echo = FALSE, eval = TRUE, screenshot.opts = list(delay = 3, cliprect = 'viewport')}
+env0$plt2
+```
+
