@@ -15,12 +15,10 @@ link-citations: yes
 ---
 
 ```{r setup-all, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
-knitr::opts_chunk$set(cache = FALSE, dpi = 300)
+knitr::opts_chunk$set(cache = FALSE, dpi = 300, comment = "#>")
 ```
 
-```{r, echo=FALSE, eval = TRUE}
-if(getOutputFormat() == "html") knitr::asis_output("#")
-```
+# Dissertation Overview
 
 Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. "Effectiveness" will be defined by the change in total sales and volume of produce sold within 17 grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A difference-in-differences and regression discontinuity design will be used to measure the size of the effect.
 
@@ -30,18 +28,3 @@ Chapter 2 extends the work of @schenck-fontaine_use_2016. Through surveys, @sche
 
 Chapter 3 exploits the random assignment of the Durham Connects program to measure its long term impact on social service applications. Durham Connects (DC) provides free in-home nursing visits to residents of Durham County. It was implemented as an RCT between July 2009 to December 2010. The design treats DC as an information treatment. The DC information treatment (e.g. a nurse contact to ask questions and provide assistance) is expected to lower the learning and barrier costs of low income families with children when applying for social services.
 
-<!-- ## Other Ideas {-}
-
-1. **What is the redemption rate of Double Up coupons?**
-    - Double Up coupons are, in effect, free money that can be used on ANY produce conditional on the prior purchase of Michigan produce
-    - Under the assumption that consumers are rational and utility maximizing, we would predict a relatively high redemption rate; consumers would not leave free money on the table
-    - This is unlikely to be the case but the question is, *just how high (or low) is the redemption rate?* Do most coupons go unredeemed?
-    - This will be a technically difficult problem as we do not have panel data but the data could still be used to attempt to answer this question
-2. **What purchasing behavior distinguishes Double Up participants from non-Double Up participants?**
-    - Households have already self-selected into Double Up and non-Double Up. do their purchasing patterns differ substantially?
-    - Is it possible to identify a Double Up purchase if we remove Michigan Produce?
-    - This will depend a lot on how frequently Michigan produce is purchased without Double Up; otherwise, MI produce purchases will be a perfect predictor of Double Up transaction.
-3. **How does the snap benefit cycle affect purchasing patters.** 
-    - This is an attempt to model the consumption cycle of SNAP participants who receive benefits under the MI benefits schedule. The neoclassical assumption is *consumption smoothing*. The data displays different behavior---something more hyperbolic, with benefits being consumed at a high rate soon after being received. The two models---neoclassical and hyperbolic---will be constructed then calibrated using transaction data from 3 independent stores in MI where we can identify SNAP transactions.
-
- -->
