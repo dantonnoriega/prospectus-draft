@@ -23,6 +23,7 @@
 
 
 
+
 **Extra**: Cash assistance reaches fewer families since the 1996 welfare reform act. SNAP, on the other hand, has become the largest public assistance program in the US, peaking during the worst years of the Great Recession. While SNAP is a cash-like assistance program, it is still not cash. It cannot pay the rent or the bills. And when economic instability forces families to make tough decisions, especially those on the margins of poverty, it is a lack of cash that prompts families to search for help from formal and informal networks.
 
 
