@@ -19,10 +19,10 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage{microtype}
+\usepackage[]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
 \usepackage[unicode=true]{hyperref}
 \hypersetup{
             pdftitle={DRAFT Dissertation Prospectus},
@@ -30,6 +30,7 @@
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
 \usepackage{natbib}
 \bibliographystyle{apalike}
 \usepackage{longtable,booktabs}
@@ -178,7 +179,7 @@
 
 \title{DRAFT Dissertation Prospectus}
 \author{Danton Noriega}
-\date{December 11, 2016}
+\date{February 15, 2017}
 
 \begin{document}
 \maketitle
@@ -191,6 +192,44 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
+\chapter*{Dissertation Overview}\label{dissertation-overview}
+\addcontentsline{toc}{chapter}{Dissertation Overview}
+
+Chapter 1 is an evaluation of the effectiveness of the Double Up Food
+Bucks program. ``Effectiveness'' will be defined by the change in total
+sales and volume of produce sold within 17 grocery stores that implement
+Double Up (treatment group). The control group comprises 15 stores where
+Double Up was not implemented. A difference-in-differences and
+regression discontinuity design will be used to measure the size of the
+effect.
+
+Improving health and food equity of SNAP participants is the broader
+policy concern. The mechanism is a financial incentive---Double Up Food
+Bucks---designed to increase fruit and vegetables consumption. A
+comparison will be made with another financial incentive program called
+the \emph{Healthy Incentives Pilot} (HIP). I will argue how and why an
+evaluation of the Double Up program is an important addition to the
+current literature.
+
+Chapter 2 extends the work of \citet{schenck-fontaine_use_2016}. Through
+surveys, \citet{schenck-fontaine_use_2016} examine how families coping
+with poverty and economic instability supplement their SNAP benefits
+with additional assistance from informal and formal resources. In my
+paper, I dig deeper into how and when families use additional formal
+resources beyond SNAP---such as food banks and emergency cash
+assistance. My aim is to provide a more detailed understanding of these
+role formal networks play in supporting Durham families coping with
+poverty.
+
+Chapter 3 exploits the random assignment of the Durham Connects program
+to measure its long term impact on social service applications. Durham
+Connects (DC) provides free in-home nursing visits to residents of
+Durham County. It was implemented as an RCT between July 2009 to
+December 2010. The design treats DC as an information treatment. The DC
+information treatment (e.g.~a nurse contact to ask questions and provide
+assistance) is expected to lower the learning and barrier costs of low
+income families with children when applying for social services.
+
 \chapter{An Evaluation of the Double Up Food Bucks
 program}\label{chapter-1}
 
@@ -693,8 +732,10 @@ to perform an evaluation of a financial incentive, targeted at SNAP
 participants, using a complete set of data, from multiple stores, across
 multiple years, and collected under non-experimental conditions.
 
-\section*{Research Question}\label{research-question}
-\addcontentsline{toc}{section}{Research Question}
+\section*{Motivation}\label{motivation}
+\addcontentsline{toc}{section}{Motivation}
+
+\textbf{Research Question}
 
 \begin{quote}
 How effective is the DUFB financial incentive at increasing the fresh
@@ -702,187 +743,72 @@ fruits and vegetables purchased by SNAP shoppers within a grocery store
 environment?
 \end{quote}
 
-Answering this question is complicated by (1) how the DUFB incentive is
-implemented and (2) the lack of loyalty card data (this makes it
-impossible to link purchases to individuals). The DUFB incentive is
-applied automatically at the store level. Therefore, the incentive works
-only if individuals choose to actively participate in the program. This
-is distinct to standard experimental procedure where individuals are
-assigned to the treatment or control group and then choose to
-participate (or not).
+\textbf{Hypothesis 1}: I expect a very slight (1 - 2\%) increase in
+fruit and vegetable (FV) expenditures during the months the DUFB
+incentive is active in participating store (Aug - Dec). The effect will
+fade over time. I expect no significant differences in fruit and
+vegetable expenditures during the months the incentive is not in effect
+(Jan - July).
 
-How a participant responds to assignment is referred to as
-\emph{compliance} \citep{angrist_mostly_2008}.\footnote{Participants can
-  be further categorized into ``compliers'', ``never-takers'',
-  ``always-takers'', and ``defiers''. These categorizations provide
-  useful terminology but are not relevant in the context of the DUFB
-  incentive.} But in this case, it is the stores, not the individual
-shoppers, that have been ``assigned'' to a treatment or control group.
-Stores, if assigned to the treatment group by the retail chain, are
-``compliers'' by default; the DUFB incentive is implemented on store's
-point-of-sale (POS) system. Some stores (4) behaved somewhat like
-``always-takers'', having asked to participate in DUFB, but most store
-(13) are ``compliers''.\footnote{I must note that, while this creates
-  some worries of ``self-selection'' by stores, I'm not convinced this
-  bias cannot be handled by a model that includes a store-level
-  fixed-effect.}
+Note that the DUFB incentive is applied automatically to all SNAP
+shoppers earning or redeeming DUFB points (covered in more detail in the
+\protect\hyperlink{data-1}{Data Section}). Therefore, by default, all
+SNAP shoppers at a DUFB store are technically ``participating''.
+However, SNAP shoppers should be considered ``passive'' or ``active''
+participants. ``Active participation'' would characterize shoppers
+responding to the DUFB incentive; ``passive participation'' would
+characterize shoppers who continue to shop as usual, despite
+automatically redeeming points.
 
-How, then, does one think about individual participation in the DUFB
-program? In reality, it is stores that participate in the DUFB program
-while its SNAP shoppers merely have the option to benefit from the
-program. I imagine use the DUFB incentive depends heavily on a series
-latent variables corresponding to individual shoppers, stores, and the
-retail chain.
+From prior implementations of the program, participation rates in
+DUFB-like incentive programs can be low. In this case, I expect SNAP
+shoppers to consist of mostly ``passive'' participants. Combined with
+the fact that SNAP dollars account for less than 5\% of all spending in
+these stores, I don't think there is a very large pool of SNAP
+participants to draw from. As a result, the ``active'' participants, who
+respond to the incentive and purchase more fruits and vegetables, will
+consist of a small fraction of total FV spending. This will be enough to
+minimal shift the distribution of FV spending.
 
-ow does one even identify if an individual is even participating in the
-program given that the DUFB incentive is applied automatically?
+I expect Low ``active'' participation rates to result from generally low
+awareness of the program for this particular grocery chain. This is
+includes both staff and the shoppers themselves. I don't know if the
+corporate office, which selected and implemented the DUFB incentive,
+clearly communicated or advertised the DUFB program to store
+management/staff and customers. I must be clear that this is merely a
+hunch. I don't think there is a large profit motive behind implementing
+this program for the retailer. I think it is an opportunity to pretend
+to be doing some good and to have something which reflects a positive
+corporate image.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Purchases cannot be linked to individuals
-\end{enumerate}
+A survey of store staff and of some customers to test this hunch would
+be great.
 
-I address each of these problems by developing a simple model, assuming
-ideal data and identification, and then dropping those assumptions.
-First, I overview some of the challenges presented by
+\textbf{Hypothesis 2}: If measurable, I expect spending increases to
+occur within the first 3 weeks of each month, when most SNAP benefits
+are distributed and consumed. I also expect week 4 for all stores,
+regardless of DUFB participation, to be relatively similar.
 
-\textbf{Challenges}
+Prior research finds that SNAP shoppers spend their benefits soon after
+receiving them, generally in one large shopping trip
+\citep{wiig_art_2009, damon_first_2013}. The grocery stores are located
+in a state where benefits are disbursed every odd day of the month
+between the 3rd and 21st, spanning the first 3 weeks of each month.
+Therefore, by the 4th week, few unspent dollars will exists. Since the
+DUFB incentive is only triggered by the use of SNAP benefits, SNAP
+shoppers will be unable to make use of DUFB.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  I have no way of distinguishing \emph{responsive} versus
-  \emph{unresponsive} shoppers. I have to assume that a shopper spending
-  more on fruits and vegetables then on prior shopping trips is
-  responding to the incentive.
-\item
-  If I assume shoppers only visit their nearest store, regardless of
-  treatment status, then I will observed shoppers in either a treated or
-  control store, but never both (selection-bias).
-\item
-  I have no information about the shoppers besides what I can glean from
-  purchases; I cannot control for a shopper age or demographics, for
-  example.
-\item
-\end{enumerate}
+I expect that, were we to remove the 4th week of each month from all
+stores, the DUFB effect size will increase. I do not anticipate to see
+shoppers behave in strategic saving behavior of DUFB points (which is
+quite difficult given the automatic accrual and redemption system) nor
+do I think FV spending to increase much without the presence of the
+incentive. More importantly, since I cannot track link purchases to
+individuals (more on this later), it will be impossible to identify
+which transactions are made by SNAP shoppers when they are not using
+their SNAP EBT cards.
 
-\subsection*{The Ideal}\label{the-ideal}
-\addcontentsline{toc}{subsection}{The Ideal}
-
-I would like to measure if the existence of the DUFB incentive increases
-the amount of fruits and vegetables purchased by SNAP shoppers. (From
-this point, ``individual'' or ``person'' or ``shopper'' is the same as
-``an individual shopper who is a SNAP beneficiary''.) In this model, the
-outcome variable \(y_{ij}\) would be the fraction of total SNAP dollars
-person \(i\) spent on fruits and vegetables in some store \(j\). My
-interest is in how \(y_{ij}\) changes in response to the existence of
-the DUFB incentive (the treatment).
-
-The store's technology is directly affected by the DUFB incentive.
-Specifically, the treatment changes the POS system of store \(j\), which
-automatically applies the DUFB incentive to any shopper \(i\) purchasing
-locally grown, eligible produce that \((a)\) is using SNAP benefits and
-\((b)\) is using a loyalty card. To reiterate, DUFB incentive is
-triggered anytime \((a)\) and \((b)\) are true for some shopper \(i\).
-For the DUFB incentive to be ``working'', shopper \(i\) must
-\emph{respond} and \emph{actively} participate in the incentive program.
-On the other hand, an \emph{unresponsive} shopper \emph{passively}
-participates, triggering the DUFB incentive automatically---accruing or
-redeeming points---without a change in shopping behavior.
-
-If person \(i\)'s purchases, \(y_{ij}\), are affected by the existence
-of the DUFB implementation on store \(j\)'s POS system, then I should
-observe an increase in person \(i\) spending following implementation.
-Denote person \(i\) shopping in treated store \(j\), \(D_{ij}=1\) and
-\(0\) otherwise. At the simplest level, I assume each person spends, on
-average, the same value \(\alpha\) plus a random normal shock,
-\(\epsilon_{ij} \sim \mathcal{N}(0, \sigma_{ij}^2)\), that is person-
-and store-specific. I assume there are two types of shoppers,
-\emph{responsive} and \emph{unresponsive}. \(i = r\) denote the shopper
-\emph{responsive} to the incentive and \(i = u\) denotes the
-\emph{unresponsive} shopper. Each shopper responds differently to the
-DUFB incentive. The following simple regression set up accommodates this
-framework.
-
-\[
-  y_{ij} = \alpha + \beta_i D_{ij} + \epsilon_{ij}
-\]
-
-Below is a table for each shoppers expected outcomes.
-
-\begin{longtable}[]{@{}rcc@{}}
-\caption{\label{tab:expected-outcomes} Expected outcomes}\tabularnewline
-\toprule
-\begin{minipage}[b]{0.32\columnwidth}\raggedleft\strut
-\strut
-\end{minipage} & \begin{minipage}[b]{0.32\columnwidth}\centering\strut
-Shopper \(r\)\strut
-\end{minipage} & \begin{minipage}[b]{0.32\columnwidth}\centering\strut
-Shopper \(u\)\strut
-\end{minipage}\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-\begin{minipage}[b]{0.32\columnwidth}\raggedleft\strut
-\strut
-\end{minipage} & \begin{minipage}[b]{0.32\columnwidth}\centering\strut
-Shopper \(r\)\strut
-\end{minipage} & \begin{minipage}[b]{0.32\columnwidth}\centering\strut
-Shopper \(u\)\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.48\columnwidth}\raggedleft\strut
-Store \(j\) with DUFB: \(E[y_{ij} \vert D_{ij}=1]\)\strut
-\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
-\(\alpha + \beta_{r}\)\strut
-\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering\strut
-\(\alpha + \beta_u\)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.48\columnwidth}\raggedleft\strut
-Store \(j\) w/o DUFB: \(E[y_{ij} \vert D_{ij}=0]\)\strut
-\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
-\(\alpha\)\strut
-\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering\strut
-\(\alpha\)\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
-
-Recall that any SNAP shopper satisfying \((a)\) and \((b)\) while making
-a purchase in store \(j\) receives the DUFB incentive. Should a shopper
-of type \(r\) or \(u\) find themselves in a store \emph{without} DUFB,
-then I expect them same average effect \(\alpha\). On the other hand,
-should these shoppers find themselves in a store \emph{with} DUFB, then
-only the responsive shopper \(r\) would be affected by \(\beta_r\) and
-shopper \(u\) by \(\beta_u\).
-
-Assume that type \(u\) shoppers are totally unaffected by the incentive;
-\(\beta_u = 0\). Pooling together all individuals, the regression
-becomes
-
-\[y_{ij} = \alpha + \beta D_{ij} + \epsilon_{ij}\]
-
-where \(\beta_u < \beta < \beta_r\) as long as there are some
-\emph{unresponsive} shoppers, \(n_{u} > 0\), such that
-\(n_{r} + n_{u} = N\).
-
-But of course, I cannot identify which shoppers are of
-
-\[
-y_{ij} = 
-\begin{cases}
-  y_{0ij}~\text{ if }D_{ij} = 0 \\
-  y_{1ij}~\text{ if }D_{ij} = 1
-\end{cases}
-\]
-
-\[y_{ij} = y_{0ij} + (y_{1ij} - y_{0ij})D_{ij}\]
-
-\section*{Data Description}\label{data-1}
+\hypertarget{data-1}{\section*{Data Description}\label{data-1}}
 \addcontentsline{toc}{section}{Data Description}
 
 These data come from a large grocery distributor and retailer serving
@@ -905,7 +831,140 @@ not.
 {[}MISSING real specific details about the data e.g.~total transactions
 observed etc.{]}
 
-\textbf{Data Not Linked to Individuals}
+\subsection*{How the DUFB Incentive is
+Implemented}\label{how-the-dufb-incentive-is-implemented}
+\addcontentsline{toc}{subsection}{How the DUFB Incentive is Implemented}
+
+The DUFB incentive can differ in implementation. Three different
+implementations have been observed: earn/redeem DUFB points via loyalty
+card, single-use paper coupon, and immediate discount. The earn/redeem
+DUFB point system is unique to the retailer that provided these data.
+For information on the other two DUFB implementations, see
+\citep{margaret_schnuck_doubling_2016}.
+
+The DUFB implementation for this particular grocery store chain is a
+point system. SNAP shoppers can \emph{earn} points by buying locally
+grown produce using their SNAP EBT card and their loyalty card. The
+loyalty card is required because it is used to store and track earned
+DUFB points. Each dollar spent buying locally grown produce earns a DUFB
+point. SNAP shoppers are eligible to receive up to \$20 dollars worth of
+DUFB points (20 points) per day. Earned points are not reflected
+immediately on loyalty cards. They are redeemable the day after.
+
+Points can be redeemed on \emph{any} eligible produce (excludes frozen
+and canned fruits and vegetables). Any form of payment can be used when
+redeeming points; it is not necessary to use a SNAP EBT card to redeem
+points.
+
+There are four important details about this implementation of the DUFB
+incentive. I already mentioned the first but it is worth reiterating:
+earned points take a day to be processed on a loyalty card. This forces
+SNAP shoppers to delay the reward of the DUFB incentive earned by at
+least a day. While perhaps a technological necessity (it takes time to
+process and reflect earned points on loyalty card accounts), this delays
+the transactional utility that could potentially be earned by the SNAP
+shopper \citep{thaler_mental_1985}. I expect that delaying the
+transactional utility reduces the ``pleasure'' and effectiveness window
+of the DUFB incentive. SNAP shoppers tend to spend benefits in one large
+shopping trip soon after receiving monthly benefits. These shopping
+trips therefore correspond to the single largest opportunity to earn
+DUFB points. Unless the shoppers returns to the store frequently to buy
+fresh produce, the ``reward'' of redeeming points.
+
+Second, the incentive alternates between earning and redeeming states. A
+loyalty card with a DUFB point balance of zero is in an ``earning''
+state. However, once DUFB points are earned by buying \emph{locally}
+grown fresh produce, the card switches to a ``redeeming'' state; loyalty
+cards with a point balance greater than zero will redeem until the point
+balance is once again zero. This removes the possibility of
+strategically ``banking'' earned points to be redeemed all at once (say
+for a holiday shopping trip). Should I purchase \$10 dollars of local
+produce and earn 10 points, the next time I purchase \emph{any} produce
+(even local produce), my purchases will be redeemed from the point
+balance until the 10 points are gone.
+
+Third, the points \emph{earned} are not communicated to the shopper at
+the moment of sale \citep{family_fare_double_2016}. In other words, the
+fact that shoppers are earning points is \emph{not salient}. There is no
+feedback connecting the purchase of fresh healthy produce to the fact
+that the shopper is earning points. Currently available points (those
+processed in prior shopping trips) are printed at the bottom of each
+receipt, and can even be checked on-line or on in-store kiosks. But no
+feedback or information is shared to the shopper during the current
+sale. Earning points, at least, ends up being like any other shopping
+trip. I would argue this is more a con than a pro. Certainly a bell
+shouldn't ring when SNAP shoppers earn points. One of the great
+consequences of moving to an EBT card is that the potential stigma of
+using food stamps has greatly diminished. But shoppers could benefit
+from some sort of feedback that is informative without producing a
+spotlighting effect. For example, shoppers could be told, ``You saved
+\$4.50 today and you also earned 5 DUFB points''.
+
+{[}\textbf{I need to confirm that this does not happen}. Considering the
+points earned don't appear on receipt, I do not see how the clerk know
+to inform the customer. Does it appear on the machine?{]}
+
+The fourth, and most important point, is the automatic earning and
+redeeming of DUFB points. This implies the incentive works only if
+individuals choose to actively participate in the program. This is
+distinct to standard experimental procedure where individuals are
+assigned to the treatment or control group and then choose to
+participate (or not).
+
+\subsubsection*{\texorpdfstring{What is a ``participant'' for this DUFB
+implementation?}{What is a participant for this DUFB implementation?}}\label{what-is-a-participant-for-this-dufb-implementation}
+\addcontentsline{toc}{subsubsection}{What is a ``participant'' for this
+DUFB implementation?}
+
+How a participant responds to assignment is generally referred to as
+\emph{compliance} \citep{angrist_mostly_2008}.\footnote{Participants can
+  be further categorized into ``compliers'', ``never-takers'',
+  ``always-takers'', and ``defiers''. These categorizations provide
+  useful terminology but are not relevant in the context of the DUFB
+  incentive.} But in this case, it is the stores, not the individual
+shoppers, that have been ``assigned'' to a treatment or control group.
+Stores, if assigned to the treatment group by the retail chain, are
+``compliers'' by default; the DUFB incentive is implemented on store's
+point-of-sale (POS) system. Some stores (4) behaved somewhat like
+``always-takers'', having asked to participate in DUFB, but most store
+(13) are ``compliers''.\footnote{I must note that, while this creates
+  some worries of ``self-selection'' by stores, I think this bias can be
+  handled by a model that includes a store-level fixed-effect.}
+
+How, then, does one think about SNAP shopper participation in the DUFB
+program if it is stores that are ultimately assigned to the DUFB
+program? SNAP shoppers have the option to benefit from the program
+without ever being ``assigned'' to any treatment group. A shopper's
+active participation in DUFB is therefore driven by another type of
+self-selection. I imagine use of the DUFB incentive depends on a series
+latent variables corresponding to individual shoppers, stores, and the
+retail chain. For example, demographics, price sensitivity, food
+preferences, health consciousness are all latent variables that could
+affect shopper DUFB activity. Other latent variables include how
+effectively the retail chain markets the DUFB program to management of
+participating stores and how effectively this information is relayed by
+stores to individual shoppers. Management's enthusiasm for the program
+is likewise a latent retail chain and store-level variable.
+
+Automatically redemption of the DUFB points also complicates identifying
+individual participation. Automatic redemption of DUFB ``points'' means
+I cannot identify which SNAP transactions are responding to the
+incentive versus ``shopping as usual''. That is, I will observe many
+SNAP transactions earning or redeeming DUFB points for fruits and
+vegetables that are oblivious to the existence of the incentive. I will
+also observe individuals who have chosen to actively participate in the
+program. In aggregate, however, I assume that any increase in the total
+amount of fruit and vegetables purchases in DUFB stores can be
+attributed to the incentive. This is where having purchasing data from
+the non-DUFB stores is important. The non-DUFB stores will help improve
+estimation by controlling for any changes in fruit and purchases that
+may occur for reasons other than the DUFB incentive e.g.~seasonal or
+macroeconomic conditions.
+
+\subsection*{Purchases Cannot Be Linked to Individuals (No Loyalty Card
+Data)}\label{purchases-cannot-be-linked-to-individuals-no-loyalty-card-data}
+\addcontentsline{toc}{subsection}{Purchases Cannot Be Linked to
+Individuals (No Loyalty Card Data)}
 
 One important variable that will not be made available is a variable for
 loyalty card numbers. The company's use of loyalty cards across its many
@@ -923,28 +982,49 @@ card contract signed by customers, the loyalty card number itself is
 considered personal information, meaning loyalty card numbers fall under
 the same legal category as phone numbers and home addresses.
 
-\textbf{DUFB Incentive Inconsistency Across Years}
+\subsection*{DUFB Incentive Inconsistency Across
+Years}\label{dufb-incentive-inconsistency-across-years}
+\addcontentsline{toc}{subsection}{DUFB Incentive Inconsistency Across
+Years}
 
 The retail company informed us that the way the DUFB incentive worked in
-2016 is distinct from 2014 and 2015. The DFUB incentive in 2016 worked
-by accruing points for each dollar spent on \emph{locally grown} fresh
+2016 is distinct from 2014 and 2015. The DUFB incentive in 2016 worked
+by earning points for each dollar spent on \emph{locally grown} fresh
 produce. (Recall that each point is equal to one dollar.) Points are
 then redeemed automatically on \emph{any} fresh produce. However, in
 2014 and 2015, the incentive was the \emph{opposite}. In those two
-years, the DUFB incentive worked by accruing points on \emph{any} fresh
+years, the DUFB incentive worked by earning points on \emph{any} fresh
 produce, automatically redeeming points on \emph{locally grown} fresh
 produce.
 
 This is important because \emph{locally grown} fresh produce is a much
 smaller subset of the \emph{any} fresh produce. Therefore, in years 2014
-and 2015, shoppers could easily accrue points but had a constrained set
-of produce on which to redeem points. In any case, estimates of the
+and 2015, shoppers could easily earn points but had a constrained set of
+produce on which to redeem points. In any case, estimates of the
 incentive for the year 2015 cannot be compared to estimates in the year
 2016.
 
-\textbf{Other Information}
+\subsection*{Limited Dependent
+Variable}\label{limited-dependent-variable}
+\addcontentsline{toc}{subsection}{Limited Dependent Variable}
 
-\emph{Past Experience with Similar Data}
+It is very likely that for any recorded visit to the cashier---what I
+call a ``transaction''---a customer does not purchase fresh fruits or
+vegetables (FFV). If I split a customer's items purchased during a
+transaction into a few general categories (e.g.~dairy, candy, meat,
+etc.) and aggregated expenditure over these categories, I will observe a
+non-trivial amount of zeros. More importantly, these are ``true'' zeros
+aka \emph{corner solutions}. That is, these zeros are not substitutes
+for missing data or representing negative values but the result of a
+utility-maximizing choice.
+
+These concerns are covered in greater detail in the
+\protect\hyperlink{methods-1}{Methods Section}.
+
+\subsection*{Other Information}\label{other-information}
+\addcontentsline{toc}{subsection}{Other Information}
+
+\textbf{Past Experience with Similar Data}
 
 This is not my first experience working with transaction data. At this
 point, I have more than 3 years working with transaction data.
@@ -963,7 +1043,7 @@ determine the total amount of dollars spent per some unit time
 my prospectus will be very similar. The empirical models in the next
 section were developed under these expectations of the data.
 
-\emph{SNAP Spending is Cyclical}
+\textbf{SNAP Spending is Cyclical}
 
 In some prior work, I've observed that SNAP spending is cyclical,
 peeking in the 2nd week. This is due to the state's monthly SNAP
@@ -997,7 +1077,7 @@ through the 4th week before once again spiking during the 1st week of
 the following month. (Ignore the green line; these are DUFB counts from
 a different data set.)
 
-\emph{Concerns}
+\textbf{Supply Chain Concerns}
 
 One concern I had was if local supply of produce differed geographically
 across the state where the stores are located. The company
@@ -1128,6 +1208,44 @@ stores were thus specifically selected not just by geographic proximity,
 but also by SNAP EBT sales ranking and demographic compositions similar
 to the initial 2014 stores.
 
+\textbf{Expansion Data}
+
+Data for about each store was built by merging 4 different sources. The
+core data came from the grocery retailer directly, which provided a list
+of stores participating in DUFB from 2014 - 2016. The grocery retailer
+also provided a list of stores ranked by EBT sales as a fraction of
+total store sales and the size (square footage) of each store.
+Demographic and socioeconomic data came from the
+\href{http://www.datasciencetoolkit.org/}{Data Science Toolkit API}
+(DSTK) and the
+\href{http://www.census.gov/data/developers/data-sets/acs-survey-5-year-data.html}{American
+Communities Survey API} (ACS). The DSTK API provides access to US Census
+data from 2000 at the \emph{census block} level and the ACS API provides
+data spanning 2010 - 2014 at the \emph{zip code} level. Lastly, data was
+extract by mining the
+\href{https://www.shopfamilyfare.com/store-locator}{Family Fare}
+website.
+
+Matching was done with the ACS data. The ACS zip code data was preferred
+because it provided income and housing data. Zip code level demographics
+are sufficiently descriptive; stores are evenly distributed across zip
+codes. Specifically, 58 stores are spread across 58 zip codes and 4
+stores split between 2 zip codes (60 zip codes and 62 stores).\footnote{I
+  must also admit that my spatial and geocoding skills improved
+  drastically in the months following the matching process. At the time,
+  I did not know how determine census blocks from lat/long coordinates,
+  relying on the DSTK API that did the conversion. The downside is that
+  it returned 2010 data. I'm confident I could do it now, but I still
+  think it is not worth the effort given the US Census Data excludes
+  income data.}
+
+Ideally, prior to matching, demographic data from the neighborhoods
+surrounding the store, who shopped at the store, and how the store was
+performing, its size, and goods made available would be known.
+Unfortunately, most of the publicly available data was not
+store-specific. The only store-specific data came either from the retail
+parent company directly or from mining the website.
+
 \begin{figure}
 
 {\centering \includegraphics{figures/expansion-v} 
@@ -1185,9 +1303,12 @@ Assignment to treatment and control can be perfectly determined since we
 know and observe the criteria used for assignment: geographic distance
 from an initial store (node), SNAP EBT sales rank, and
 demographics---specifically population density and percentage
-African-American. A scoring function was created by fitting a linear
-probability model to all stores within 140 kilometers of the two initial
-pilot stores.
+African-American.\footnote{It should be noted that the company did not
+  explicitly say population and race were part of the selection
+  criteria. Instead, they said something along the lines of ``stores
+  serving a similar population as the original stores.''} A scoring
+function was created by fitting a linear probability model to all stores
+within 140 kilometers of the two initial pilot stores.
 
 \[
 \begin{aligned}
@@ -1217,19 +1338,350 @@ then allotted to the control group.
 \caption{\label{fig:score-plot}Store Score vs Double Up Assignment}
 \end{figure}
 
-\section*{Overview of Proposed Methods}\label{methods-1}
-\addcontentsline{toc}{section}{Overview of Proposed Methods}
+\subsection*{Motivation for Matching}\label{motivation-for-matching}
+\addcontentsline{toc}{subsection}{Motivation for Matching}
 
-I will perform two separate analyses. This is a consequence of the store
-selection issue outline in the data section. The main analysis will be
-performed on the 9 \emph{assigned} stores and 12 \emph{control}
-stores.\footnote{I'm excluding the 2 pilot store because they are never
-  observed without DUFB.} In attempts to make use of as much data as
-possible, I will also perform a smaller analysis with the 3
-\emph{self-selected} stores matched using CEM. (Please see the
-\protect\hypertarget{data-1}{}{Data} Section and Table
-\ref{tab:store-class}) for more about \emph{assigned} and
-\emph{self-selected} stores.)
+Not all treated stores will be matched to a control. As mentioned, this
+is due to the nature of how the 17 treated stores were selected. The
+parent company intentionally selected stores with some of the highest
+EBT (aka SNAP Electronic Benefit Transfer (EBT) Card) sales that were
+also within relatively similar geographic locations. This reduced the
+burden of advertising and implementing DUFB for The parent company. The
+unfortunate downside of this implementation is that it effectively
+removed any likely matches for treated stores located in the most Urban
+areas (e.g.~Grand Rapids and Battle Creek).
+
+Here is an example to illustrate why it is infeasible to matching all
+treated stores and instead expand selection algorithmically on
+observables. If we calculate the percentage of the population by
+\emph{zip code} that is African American then split the data into
+treatment and control groups, we get the following:
+
+\begin{verbatim}
+#> Difference in Means (Treated - Control) = 7.848600
+\end{verbatim}
+
+\begin{verbatim}
+#> 
+#> Population, % Black (Treated, Top 10):
+\end{verbatim}
+
+\begin{verbatim}
+#>  [1] 26.060929 21.945444 19.790582 18.880000 18.688795 14.693513 11.857163
+#>  [8]  8.531952  5.644237  5.644237
+\end{verbatim}
+
+\begin{verbatim}
+#> 
+#> Population, % Black (Control, Top 10):
+\end{verbatim}
+
+\begin{verbatim}
+#>  [1] 8.575720 8.141256 7.271242 5.057010 4.613969 4.374678 3.256329
+#>  [8] 2.955071 2.676733 2.593660
+\end{verbatim}
+
+What these results tell us is how potentially distinct the populations
+are within the zip codes containing the treated stores. Sorting
+population percentages in descending order, no good match exists within
+the control stores for the top 7 treated stores. One variable is the
+simplest case; matching only gets more difficult as one brings in more
+variables to match.
+
+Considering the separation between some of the treated stores and all of
+the control stores, it was prudent to rethink the store selection and
+matching strategy.
+
+It must be noted that matching is not a necessary step during every
+design phase. It is, in large part, a way to hedge against the
+possibility that merely selecting the next top 15 stores by EBT sales
+could sour the estimates. Matching a smaller set of treatment stores
+against a larger pool of controls can often produce estimates less
+sensitive to even the smallest changes in some model specifications
+\citep{imbens_causal_2015}. However, other models and tools (like
+regression) are in relatively unperturbed by a lack of design-phase
+matching, but still benefit from having a larger sample size
+\citep{angrist_mostly_2008}.
+
+\subsection*{Matching Details}\label{matching-details}
+\addcontentsline{toc}{subsection}{Matching Details}
+
+Like most data-dependent endeavors, the most tedious part of matching
+the stores was obtaining enough variables. Once enough data were
+obtained, variables were selected on how best they captured data from
+the following dimensions:
+
+\begin{itemize}
+\tightlist
+\item
+  Demographics (e.g.~race)
+\item
+  Income/wealth
+\item
+  Population density (e.g.~urban vs rural)
+\item
+  Store attributes
+\item
+  Store EBT sales
+\end{itemize}
+
+One may assume that more variables makes matching easier. This is only
+true insofar as it provides one with a large pool of options. It is
+still necessary to carefully select how many variables one is using
+because matching becomes more and more difficult with each added
+variable used. This is especially true with a small sample size.
+
+The matching covariates that were finally selected are:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{pct\_black} : Percentage of population that is black (zip code
+  level)
+\item
+  \texttt{dens\_pop} : The population density (people per square mile,
+  zip code level)
+\item
+  \texttt{income\_p50\_snap\_yes} : Median income for people who have
+  received SNAP or similar assistance (zip code level)
+\item
+  \texttt{store\_n\_associates} : The number of associates employed in
+  each store.
+\item
+  \texttt{ebt\_sales\_pct} : Percentage of total stores sales attributed
+  to EBT/SNAP.
+\end{itemize}
+
+~
+
+\textbf{Results of Match}
+
+\begin{table}
+
+\caption{\label{tab:match-results}CEM Match Matrix}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & G0 & G1\\
+\midrule
+All & 44 & 17\\
+Matched & 14 & 3\\
+Unmatched & 30 & 14\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\texttt{G0} represents the ``control'' group and \texttt{G1} represents
+the ``treated'' group. One can observe that 3 ``treated'' stores were
+matched to 14 ``control'' stores. Each of the 3 treated stores was
+matched to its closest control store by driving distance.
+
+\textbf{Covariate Cut-points}
+
+The CEM procedure depends heavily on the ``cut-points'' selected for
+each variable. This is akin to setting the cut-off points when turning a
+continuous variable into a categorical variable. For example, when
+converting income values from dollars into \texttt{low-}
+\texttt{middle-} and \texttt{high-income} groups, at least 4 cut-points
+are required (2 of which are the maximum and minimum). What the other 2
+cut-points are will greatly affect the match. This leads to the
+question, for example, should the cut-points be \texttt{25000} and
+\texttt{100000} or perhaps the median and the top 10\%?
+
+For the matches produced, the following cut-points were created.
+
+\begin{verbatim}
+#> $pct_black
+#> [1]  0  2 10 40
+#> 
+#> $dens_pop
+#> [1]    0  200 1000 5000
+#> 
+#> $ebt_sales_pct
+#> [1] 0.00 1.65 3.00 5.00
+#> 
+#> $store_n_associates
+#> [1]  20  40  60  80 130
+#> 
+#> $income_p50_snap_yes
+#> [1] 12000 18000 25000 40000
+\end{verbatim}
+
+Understanding why is best explained using a visualization. Below are
+graphs of the variables \texttt{pct\_black} and
+\texttt{income\_p50\_snap\_yes} with their corresponding cut-points. The
+aim of each cut-point is to balance the creation of reasonably sized
+partitions while still marking obvious shifts in the underlying
+distribution.
+
+For example, in the first plot (\texttt{pct\_black}), there are clearly
+points where the slope dramatically increases --- and then spikes --- in
+the percentage of African Americans. But in the second plot, the slope
+is more gradual, so the partitioning is aimed more at getting relatively
+balanced groups.
+
+\includegraphics{noriega-prospectus-draft_files/figure-latex/unnamed-chunk-7-1.png}
+
+\includegraphics{noriega-prospectus-draft_files/figure-latex/unnamed-chunk-8-1.png}
+
+\hypertarget{methods-1}{\section*{Methods}\label{methods-1}}
+\addcontentsline{toc}{section}{Methods}
+
+\subsection*{Set up}\label{set-up}
+\addcontentsline{toc}{subsection}{Set up}
+
+Recall the research question of interest---whether the DUFB incentive
+increases spending on fresh fruits and vegetables (FFV) within stores
+participating in the program. The outcome variable, in this case, is
+total spending on FFV.
+
+I've considered other possible values for the outcome variable. For
+example, the proportion of dollars spent per transaction or the total
+ounces of FFV purchased. Each added an extra layer of complication.
+Using proportion of expenditure per given transaction would vary wildly,
+particularly with small transactions, and would creating two mass points
+at zero and one (no FFV purchased and only FFV purchased). Total ounces
+depends on the variable and quality of the data. I cannot be sure the
+data received will contain counts or ounces for fresh fruits. Fresh
+fruits generally do not have UPC values. Dollars spent (expenditures) on
+FFV gets to the heart of the question and is the data guaranteed to be
+in the data.
+
+Unfortunately, using the total expenditure of FFV is complicated by 3
+problems.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Purchases not linked to customers.
+\item
+  Non-trivial amount of zeros (corner solutions).
+\item
+  Consumers maximize across multiple options.
+\end{enumerate}
+
+The first complication is a general problem and is not specific to the
+outcome variable. The inability to link purchases to individuals means I
+cannot use Panel Data Methods at the customer level; I will be unable to
+look at how customers behavior changes over-time and cannot control for
+unobserved customer heterogeneity. I'm instead limited to modeling
+pooled cross sections over-time with store-level fixed effects.
+
+The second and third problems are directly related to the preferred
+outcome variable. I anticipate a non-trivial amount of zeros because I
+expect to observed a large fraction of transaction where no FFVs are
+never purchased. Likewise, FFV expenditures are often a part of a basket
+of goods. Just as I anticipate a non-trivial amount of zeros, I also
+anticipate that FFVs are not purchased independently of other goods.
+When spending their money, consumers optimize expenditure across a large
+set of options. This optimization is also complicated by the first
+problem (cannot link) but I will go into more details later.
+
+\subsection*{Literature Reviews}\label{literature-reviews}
+\addcontentsline{toc}{subsection}{Literature Reviews}
+
+Corner solutions for expenditures can occur for various reasons.
+\citet{pudney_modelling_1989} covers three of the most likely mechanisms
+producing ``true'' zeros in cross-sectional data. The first is that the
+data was gathered in too short a period of time for the purchase to
+occur. This problem is far more common in cross-sectional data of
+infrequently purchased goods (i.e.~durable goods like cars or
+refrigerators). The second is due to a supply side factor the customer
+has no control over. For example, there could be a shortage of FFVs or
+none are available. Imagine searching for FFV purchases in collection of
+convenience store data. Many zeros would exists because some convenience
+stores do not sell FFVs. The third zero results from a customer's
+decision as a function of prices, preferences, and income constraints. A
+zero is perhaps observed because FFVs are too expensive and the customer
+can get larger quantities of other, equally or more preferred, foods for
+the same price.
+
+I expect first mechanism could apply to food purchases under specific
+circumstances. If data are left disaggregated or the period of
+observation is shrunk substantially, zeros will exists due to
+infrequency of purchase. For example, customers that make frequent trips
+to the store may not always buy FFVs. A cross-section of data from one
+day may have a non-zero FFV value for the customer but zero the next.
+The third mechanism applies very naturally to the grocery store
+environment (classical utility theory). The second will require further
+verification. I do not expect to find out that there were shortages of
+FFVs in the stores observed, but I could be wrong.
+
+\citet{humphreys_dealing_2013} and \citet{carlevaro_multiple_2016}
+discuss cross sectional models that accommodate corner
+solutions---Tobit, \emph{Two-Part}, and \emph{Double Hurdle} models,
+specifically.\footnote{\citet{wooldridge_econometrics_2010} does not
+  appear to differentiate between ``Two-Part'' models and ``Hurdle''
+  models. I will use it following \citet{humphreys_dealing_2013}
+  language, which does.} The classic ``corner solution'' regression
+model is the Tobit model. Corner solutions are utility maximizing and no
+assumptions are made about the decision not to purchase/consume. In
+contrast to the Tobit model, the decision to participate in consumption
+is explicitly formulated in the Two-Part and Double Hurdle models.
+Participation is the ``first hurdle'', the amount purchased/consumed is
+the ``second hurdle''.
+
+In the Two-Part model, the decision to buy is estimate separately and
+sequentially from how much (amount) to buy; Probit is used to estimate
+the decision-to-buy process and OLS is used to estimate the amount
+purchased. The Double Hurdle model estimates both these decision
+simultaneously via maximum likelihood. The ``full'' Double Hurdle model
+allows for correlation between the error terms in the decision and
+amount/consumption equations \citep{jones_note_1992}. Imposing the
+assumption that unobservable factors between the decision and amount
+decisions are uncorrelated reduces the ``full'' Double Hurdle to the
+``Cragg'' model \citep{cragg_statistical_1971}.
+
+It is unclear to me if Two-Part or Double Hurdle models are necessary
+when considering FFV purchases. This makes more intuitive sense for
+something like cigarette or alcohol consumption (see
+\citet{garcia_alternative_1996}; \citet{aristei_cohort_2008}), where
+zero-expenditure can be the result of abstention or price/income
+constraints. But I'm not sure if it is necessary to explain zero FFV
+expenditures on something besides prices, preferences, and budget.
+
+The real limitation of Tobit and other hurdle models is that the utility
+maximization problem involves only one good.
+
+A more complicated approach to deal with zeros would be to extend the
+discrete-continuous model of \citet{dubin_econometric_1984} to the
+\emph{multiple} discrete-continuous model of \citet{bhat_multiple_2005}
+and (2008). \citet{dubin_econometric_1984} assume that multiple options
+exists but that they are mutually exclusive, perfect substitutes. The
+decision to buy one good means that one cannot be observed buying the
+other. \citet{bhat_multiple_2005} weakens this constraint by allowing
+non-zero consumption across multiple goods.
+
+Another option is to model each store as a random value \(Y_j\) that
+spits out expenditures along a mixed distribution. Specifically, a mix
+of a discrete distribution and continuous distribution where
+\(P(Y_j = 0) > 0\) (discrete) and \(P(Y_j = y) = 0\) for all \(y > 0\)
+(continuous). This drops any economically driven foundations and merely
+provides a way to compare distributions between non-DUFB and DUFB
+stores.
+
+\subsection*{Overview of Proposed
+Methods}\label{overview-of-proposed-methods}
+\addcontentsline{toc}{subsection}{Overview of Proposed Methods}
+
+I will perform two main analyses: Difference-in-Differences (DD) and
+Regression Discontinuity (RD). The DD analysis will make use of as much
+data a possible---17 \emph{treated} stores and the 15 \emph{control}
+stores. I will assume the selection problem outline in the
+\protect\hyperlink{store-selection-1}{Store Selection Section} can be
+controlled using store-level fixed-effects. That is, I will assume the
+DUFB treatment is strictly exogenous conditional on any time-invariant
+(observed and unobserved) store-level characteristics.
+
+This is a consequence of the store selection issue outline in the data
+section. The main analysis will be performed on the 9 \emph{assigned}
+stores and 12 \emph{control} stores.\footnote{I'm excluding the 2 pilot
+  store because they are never observed without DUFB.} In attempts to
+make use of as much data as possible, I will also perform a smaller
+analysis with the 3 \emph{self-selected} stores matched using
+CEM.\footnote{Please see the Section and Table \ref{tab:store-class})
+  for more about \emph{assigned} and \emph{self-selected} stores.}
 
 Difference-in-Differences (DD) and Regression Discontinuity (RD) will
 comprise the main analysis. DD will be the only method for the second
@@ -1834,7 +2286,7 @@ protected server.
 \chapter{Costumer Segmentation of SNAP
 Shoppers}\label{costumer-segmentation-of-snap-shoppers}
 
-\section*{Motivation}\label{motivation}
+\section*{Motivation}\label{motivation-1}
 \addcontentsline{toc}{section}{Motivation}
 
 The motivation for determining customer segmentation of SNAP shoppers
