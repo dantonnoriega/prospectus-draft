@@ -46,7 +46,7 @@ This is important because *locally grown* fresh produce is a much smaller subset
 
 ### Limited Dependent Variable {-}
 
-It is very likely that for any recorded visit to the cashier---what I call a "transaction"---a customer does not purchase fresh fruits or vegetables (FFV). If I split a customer's items purchased during a transaction into a few general categories (e.g. dairy, candy, meat, etc.) and aggregated expenditure over these categories, I will observe a non-trivial amount of zeros. More importantly, these are "true" zeros aka *corner solutions*. That is, these zeros are not substitutes for missing data or representing negative values but the result of a utility-maximizing choice.
+It is very likely that for any recorded visit to the cashier---what I call a "transaction"---a customer does not purchase fresh fruits or vegetables (FV). If I split a customer's items purchased during a transaction into a few general categories (e.g. dairy, candy, meat, etc.) and aggregated expenditure over these categories, I will observe a non-trivial amount of zeros. More importantly, these are "true" zeros aka *corner solutions*. That is, these zeros are not substitutes for missing data or representing negative values but the result of a utility-maximizing choice.
 
 These concerns are covered in greater detail in the [Methods Section](#methods-1).
 
