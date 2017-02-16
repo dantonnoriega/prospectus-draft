@@ -19,23 +19,20 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
+\usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
-\usepackage[unicode=true]{hyperref}
-\hypersetup{
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
             pdftitle={DRAFT Dissertation Prospectus},
             pdfauthor={Danton Noriega},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage[margin=1in]{geometry}
 \usepackage{natbib}
 \bibliographystyle{apalike}
 \usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -64,12 +61,6 @@
 \let\oldsubparagraph\subparagraph
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
-
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
 \usepackage{booktabs}
 \usepackage{lscape}
 \usepackage{longtable}
@@ -1558,7 +1549,7 @@ problems.
 \item
   Non-trivial amount of zeros (corner solutions).
 \item
-  Consumers maximize across multiple options.
+  Consumers maximize across multiple goods.
 \end{enumerate}
 
 The first complication is a general problem and is not specific to the
@@ -1599,7 +1590,7 @@ the same price.
 
 I expect first mechanism could apply to food purchases under specific
 circumstances. If data are left disaggregated or the period of
-observation is shrunk substantially, zeros will exists due to
+observation is shrunk substantially, zeros for FFVs will exists due to
 infrequency of purchase. For example, customers that make frequent trips
 to the store may not always buy FFVs. A cross-section of data from one
 day may have a non-zero FFV value for the customer but zero the next.
@@ -1610,7 +1601,7 @@ FFVs in the stores observed, but I could be wrong.
 
 \citet{humphreys_dealing_2013} and \citet{carlevaro_multiple_2016}
 discuss cross sectional models that accommodate corner
-solutions---Tobit, \emph{Two-Part}, and \emph{Double Hurdle} models,
+solutions---Tobit, \emph{Two-Part}, and \emph{Hurdle} models,
 specifically.\footnote{\citet{wooldridge_econometrics_2010} does not
   appear to differentiate between ``Two-Part'' models and ``Hurdle''
   models. I will use it following \citet{humphreys_dealing_2013}
@@ -1618,7 +1609,7 @@ specifically.\footnote{\citet{wooldridge_econometrics_2010} does not
 model is the Tobit model. Corner solutions are utility maximizing and no
 assumptions are made about the decision not to purchase/consume. In
 contrast to the Tobit model, the decision to participate in consumption
-is explicitly formulated in the Two-Part and Double Hurdle models.
+is explicitly formulated in the Two-Part and Hurdle models.
 Participation is the ``first hurdle'', the amount purchased/consumed is
 the ``second hurdle''.
 
@@ -1633,13 +1624,27 @@ assumption that unobservable factors between the decision and amount
 decisions are uncorrelated reduces the ``full'' Double Hurdle to the
 ``Cragg'' model \citep{cragg_statistical_1971}.
 
-It is unclear to me if Two-Part or Double Hurdle models are necessary
-when considering FFV purchases. This makes more intuitive sense for
-something like cigarette or alcohol consumption (see
-\citet{garcia_alternative_1996}; \citet{aristei_cohort_2008}), where
-zero-expenditure can be the result of abstention or price/income
-constraints. But I'm not sure if it is necessary to explain zero FFV
-expenditures on something besides prices, preferences, and budget.
+It is unclear to me if Two-Part or the Double Hurdle models that
+formalize ``participation'' are necessary when considering FFV
+purchases. This makes more intuitive sense for something like cigarette
+or alcohol consumption (see \citet{garcia_alternative_1996};
+\citet{aristei_cohort_2008}), where zero-expenditure can be the result
+of abstention or price/income constraints. There are, after all,
+consumers who will never consume cigarettes or alcohol, even if free
+(abstention). But I'm not sure if an abstention mechanism is reasonable
+when considering FFV purchases. Do consumers really opt out (or abstain)
+form buying FFVs altogether?
+
+An infrequency of purchase mechanism for FFVs, however, seems more
+reasonable. \citet{deaton_statistical_1984} introduced this mechanism as
+an expansion to the Tobit model. The Deaton Double Hurdle been used to
+model infrequent purchases of butter, pork, and prepared meals
+\citep{yen_modeling_1995, su_microeconometric_1996, newman_double-hurdle_2003}.
+I find it reasonable to expect that for any given daily cross-section of
+data, some of the zeros observed will be due to infrequent purchase of
+FFVs.
+
+\textbf{Multiple Goods}
 
 The real limitation of Tobit and other hurdle models is that the utility
 maximization problem involves only one good.

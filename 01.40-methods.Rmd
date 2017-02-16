@@ -2,11 +2,11 @@
 
 ### Set up {-}
 
-Recall the research question of interest---whether the DUFB incentive increases spending on fresh fruits and vegetables (FFV) within stores participating in the program. The outcome variable, in this case, is total spending on FFV.
+Recall the research question of interest---whether the DUFB incentive increases spending on fresh fruits and vegetables (FV) within stores participating in the program. The outcome variable, in this case, is total spending on FV.
 
-I've considered other possible values for the outcome variable. For example, the proportion of dollars spent per transaction or the total ounces of FFV purchased. Each added an extra layer of complication. Using proportion of expenditure per given transaction would vary wildly, particularly with small transactions, and would creating two mass points at zero and one (no FFV purchased and only FFV purchased). Total ounces depends on the variable and quality of the data. I cannot be sure the data received will contain counts or ounces for fresh fruits. Fresh fruits generally do not have UPC values. Dollars spent (expenditures) on FFV gets to the heart of the question and is the data guaranteed to be in the data.
+I've considered other possible values for the outcome variable. For example, the proportion of dollars spent per transaction or the total ounces of FV purchased. Each added an extra layer of complication. Using proportion of expenditure per given transaction would vary wildly, particularly with small transactions, and would creating two mass points at zero and one (no FV purchased and only FV purchased). Total ounces depends on the variable and quality of the data. I cannot be sure the data received will contain counts or ounces for fresh fruits. Fresh fruits generally do not have UPC values. Dollars spent (expenditures) on FV gets to the heart of the question and is the data guaranteed to be in the data.
 
-Unfortunately, using the total expenditure of FFV is complicated by 3 problems.
+Unfortunately, using the total expenditure of FV is complicated by 3 problems.
 
 1. Purchases not linked to customers.
 2. Non-trivial amount of zeros (corner solutions).
@@ -14,36 +14,38 @@ Unfortunately, using the total expenditure of FFV is complicated by 3 problems.
 
 The first complication is a general problem and is not specific to the outcome variable. The inability to link purchases to individuals means I cannot use Panel Data Methods at the customer level; I will be unable to look at how customers behavior changes over-time and cannot control for unobserved customer heterogeneity. I'm instead limited to modeling pooled cross sections over-time with store-level fixed effects.
 
-The second and third problems are directly related to the preferred outcome variable. I anticipate a non-trivial amount of zeros because I expect to observed a large fraction of transaction where no FFVs are never purchased. Likewise, FFV expenditures are often a part of a basket of goods. Just as I anticipate a non-trivial amount of zeros, I also anticipate that FFVs are not purchased independently of other goods. When spending their money, consumers optimize expenditure across a large set of options. This optimization is also complicated by the first problem (cannot link) but I will go into more details later.
+The second and third problems are directly related to the preferred outcome variable. I anticipate a non-trivial amount of zeros because I expect to observed a large fraction of transaction where no FVs are never purchased. Likewise, FV expenditures are often a part of a basket of goods. Just as I anticipate a non-trivial amount of zeros, I also anticipate that FVs are not purchased independently of other goods. When spending their money, consumers optimize expenditure across a large set of options. This optimization is also complicated by the first problem (cannot link) but I will go into more details later.
 
 
 ### Literature Reviews {-}
 
-Corner solutions for expenditures can occur for various reasons. @pudney_modelling_1989 covers three of the most likely mechanisms producing "true" zeros in cross-sectional data. The first is that the data was gathered in too short a period of time for the purchase to occur. This problem is far more common in cross-sectional data of infrequently purchased goods (i.e. durable goods like cars or refrigerators). The second is due to a supply side factor the customer has no control over. For example, there could be a shortage of FFVs or none are available. Imagine searching for FFV purchases in collection of convenience store data. Many zeros would exists because some convenience stores do not sell FFVs. The third zero results from a customer's decision as a function of prices, preferences, and income constraints. A zero is perhaps observed because FFVs are too expensive and the customer can get larger quantities of other, equally or more preferred, foods for the same price. 
+Corner solutions for expenditures can occur for various reasons. @pudney_modelling_1989 covers three of the most likely mechanisms producing "true" zeros in cross-sectional data. The first is that the data was gathered in too short a period of time for the purchase to occur. This problem is far more common in cross-sectional data of infrequently purchased goods (i.e. durable goods like cars or refrigerators). The second is due to a supply side factor the customer has no control over. For example, there could be a shortage of FVs or none are available. Imagine searching for FV purchases in collection of convenience store data. Many zeros would exists because some convenience stores do not sell FVs. The third zero results from a customer's decision as a function of prices, preferences, and income constraints. A zero is perhaps observed because FVs are too expensive and the customer can get larger quantities of other, equally or more preferred, foods for the same price. 
 
-I expect first mechanism could apply to food purchases under specific circumstances. If data are left disaggregated or the period of observation is shrunk substantially, zeros for FFVs will exists due to infrequency of purchase. For example, customers that make frequent trips to the store may not always buy FFVs. A cross-section of data from one day may have a non-zero FFV value for the customer but zero the next. The third mechanism applies very naturally to the grocery store environment (classical utility theory). The second will require further verification. I do not expect to find out that there were shortages of FFVs in the stores observed, but I could be wrong.
+I expect first mechanism could apply to food purchases under specific circumstances. If data are left disaggregated or the period of observation is shrunk substantially, zeros for FVs will exists due to infrequency of purchase. For example, customers that make frequent trips to the store may not always buy FVs. A cross-section of data from one day may have a non-zero FV value for the customer but zero the next. The third mechanism applies very naturally to the grocery store environment (classical utility theory). The second will require further verification. I do not expect to find out that there were shortages of FVs in the stores observed, but I could be wrong.
 
 @humphreys_dealing_2013 and @carlevaro_multiple_2016 discuss cross sectional models that accommodate corner solutions---Tobit, *Two-Part*, and *Hurdle* models, specifically.^[@wooldridge_econometrics_2010 does not appear to differentiate between "Two-Part" models and "Hurdle" models. I will use it following @humphreys_dealing_2013 language, which does.] The classic "corner solution" regression model is the Tobit model. Corner solutions are utility maximizing and no assumptions are made about the decision not to purchase/consume. In contrast to the Tobit model, the decision to participate in consumption is explicitly formulated in the Two-Part and Hurdle models. Participation is the "first hurdle", the amount purchased/consumed is the "second hurdle". 
 
 In the Two-Part model, the decision to buy is estimate separately and sequentially from how much (amount) to buy; Probit is used to estimate the decision-to-buy process and OLS is used to estimate the amount purchased. The Double Hurdle model estimates both these decision simultaneously via maximum likelihood. The "full" Double Hurdle model allows for correlation between the error terms in the decision and amount/consumption equations [@jones_note_1992]. Imposing the assumption that unobservable factors between the decision and amount decisions are uncorrelated reduces the "full" Double Hurdle to the "Cragg" model [@cragg_statistical_1971].
 
-It is unclear to me if Two-Part or the Double Hurdle models that formalize "participation" are necessary when considering FFV purchases. This makes more intuitive sense for something like cigarette or alcohol consumption (see @garcia_alternative_1996; @aristei_cohort_2008), where zero-expenditure can be the result of abstention or price/income constraints. There are, after all, consumers who will never consume cigarettes or alcohol, even if free (abstention). But I'm not sure if an abstention mechanism is reasonable when considering FFV purchases. Do consumers really opt out (or abstain) form buying FFVs altogether?
+It is unclear to me if Two-Part or the Double Hurdle models that formalize "participation" are necessary when considering FV purchases. This makes more intuitive sense for something like cigarette or alcohol consumption (see @garcia_alternative_1996; @aristei_cohort_2008), where zero-expenditure can be the result of abstention or price/income constraints. There are, after all, consumers who will never consume cigarettes or alcohol, even if free (abstention). But I'm not sure if an abstention mechanism is reasonable when considering FV purchases. Do consumers really opt out (or abstain) form buying FVs altogether?
 
-An infrequency of purchase mechanism for FFVs, however, seems more reasonable. @deaton_statistical_1984 introduced this mechanism as an expansion to the Tobit model. The Deaton Double Hurdle been used to model infrequent purchases of butter, pork, and prepared meals [@yen_modeling_1995; @su_microeconometric_1996; @newman_double-hurdle_2003]. I find it reasonable to expect that for any given daily cross-section of data, some of the zeros observed will be due to infrequent purchase of FFVs.
+An infrequency of purchase mechanism for FVs, however, seems more reasonable. @deaton_statistical_1984 introduced this mechanism as an expansion to the Tobit model. This Double Hurdle has been used to model infrequent purchases of butter, pork, and prepared meals [@yen_modeling_1995; @su_microeconometric_1996; @newman_double-hurdle_2003]. I find it reasonable to expect that, for any given daily cross-section of data, some of the zeros observed will be due to infrequent purchase of FVs.
 
 **Multiple Goods**
 
-The real limitation of Tobit and other hurdle models is that the utility maximization problem involves only one good. 
+The limitation of Tobit and other hurdle models is they assume optimal demand of a single good. Ideally, expenditure on different types of goods better captures the decisions and purchasing behavior of customers within a grocery store. That is, instead of collapsing all expenditure on FVs into one outcome variable, the model would allow for customers to optimize across *multiple* goods of different types, while also allowing corner solutions.
 
-A more complicated approach to deal with zeros would be to extend the discrete-continuous model of @dubin_econometric_1984 to the *multiple* discrete-continuous model of @bhat_multiple_2005 and (2008). @dubin_econometric_1984 assume that multiple options exists but that they are mutually exclusive, perfect substitutes. The decision to buy one good means that one cannot be observed buying the other. @bhat_multiple_2005 weakens this constraint by allowing non-zero consumption across multiple goods.
+@dubin_econometric_1984 construct a *discrete-continuous* model were consumers can select from multiple goods/options but that they are mutually exclusive, perfect substitutes. Selecting one good/option means that one cannot be observed buying/consuming the other. The Kuhn-Tucker based model developed by @wales_estimation_1983, on the other hand, allows non-zero consumption across multiple goods. @kim_modeling_2002 solved the intractability of the @wales_estimation_1983 model and @bhat_multiple_2005 simplified both to be more realistically applicable. 
 
-Another option is to model each store as a random value $Y_j$ that spits out expenditures along a mixed distribution. Specifically, a mix of a discrete distribution and continuous distribution where $P(Y_j = 0) > 0$ (discrete) and $P(Y_j = y) = 0$ for all $y > 0$ (continuous). This drops any economically driven foundations and merely provides a way to compare distributions between non-DUFB and DUFB stores.
+To model expenditures along more than one dimension (fruits and vegetables), I will also implement the *multiple* discrete-continuous model extreme value (MDCEV) model introduced by @bhat_multiple_2005. For any observed trip to the store, zero-expenditure in FV implies non-zero expenditure for some non-FV. Ignoring this seems unwise and I plan, at a minimum, to implement a model optimize along two dimensions---FV and non-FV. 
+
+In the next subsection, I will formally introduce each model I intend to estimate, with increasing levels of complexity.
 
 
 ### Overview of Proposed Methods {-}
 
 
-I will perform two main analyses: Difference-in-Differences (DD) and Regression Discontinuity (RD). The DD analysis will make use of as much data a possible---17 *treated* stores and the 15 *control* stores. I will assume the selection problem outline in the [Store Selection Section](#store-selection-1) can be controlled using store-level fixed-effects. That is, I will assume the DUFB treatment is strictly exogenous conditional on any time-invariant (observed and unobserved) store-level characteristics.
+The Difference-in-Differences (DD) regression framework will be present in each of the models of my main analysis. The DD analysis makes use of as much data a possible---17 *treated* stores and the 15 *control* stores. I will assume the selection problem outline in the [Store Selection Section](#store-selection-1) can be controlled using store-level fixed-effects. That is, I will assume the DUFB treatment is strictly exogenous conditional on any time-invariant (observed and unobserved) store-level characteristics.
 
 This is a consequence of the store selection issue outline in the data section. The main analysis will be performed on the 9 *assigned* stores and 12 *control* stores.^[I'm excluding the 2 pilot store because they are never observed without DUFB.] In attempts to make use of as much data as possible, I will also perform a smaller analysis with the 3 *self-selected* stores matched using CEM.^[Please see the Section and Table \@ref(tab:store-class)) for more about *assigned* and *self-selected* stores.] 
 
@@ -53,7 +55,13 @@ The unit of analysis will be the store, not the individual; the data cannot be l
 
 I propose two outcome variables. The first is the proportion of SNAP EBT dollars being spent or redeemed on fresh produce. If the incentive is working, then I should see in increase in SNAP EBT dollars spending on fresh produce. I'm certain this outcome variable will be available. I'm not so certain about the second outcome variable, the total quantity of fresh produce purchased. This depends on whether weight or quantity is included in the data. This will depend on UPC matching. UPCs will be possible, but matching to UPC databases is not always precise. Should matching be poor, discerning what a product is, its weight, etcetera, will be difficult, making the second outcome variable unreliable.
 
-### Main Analysis: Regression Discontinuity (RD) {-}
+
+
+### Main Analyses: Difference-in-Differences (DD) {-}
+
+
+
+### Secondary Analysis: Regression Discontinuity (RD) {-}
 
 In the [Store Selection](#store-selection-1) section, I discussed the construction of the score function $\bm{s} = \widehat{P(\mathbf{D} = 1 | \bm{X}, \bm{N})}$. Given $i = 1,...,n$ stores, the score of each store can be determined via observable data, $s_i = \widehat{P(D_i = 1|\bm{x}_i, n_i)}$. These scores, when ordered, produced perfect separation between treatment stores and control stores (see Figure \@ref(fig:score-plot)).
 
@@ -89,31 +97,3 @@ $$
 My hope is to produce a graph that looks like the following
 
 [GENERATE EXAMPLE GRAPH. At each point $s_i$, there will be about 150 points drawn in vertical like. This would help visualize the distribution of average-dollars-per-day.]
-
-### Main Analysis: Difference-in-Differences, Model 1 (DD1) {-}
-
-[WRITE MODEL. Below is example of DD model overtime.]
-
-```{r dd1-plot, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=4, fig.cap = "Example DD Model over 12 months in 2016 (DUFB start month 8)"}
-
-DD1()
-
-```
-
-<!-- ### Main Analysis: Difference-in-Differences, Model 2 (DD2) -->
-
-<!-- This model is some -->
-<!-- The proposed model is as follows -->
-
-<!-- $$ -->
-<!-- \begin{aligned} -->
-<!--   y_{ist}  &= \alpha_i + \beta_0 DUFB_{s} + \beta_1 POST_{t} + \delta (DUFB_{s} \cdot POST_{t}) + \sum_{j=1}^4 \theta_{j} I_{j}(t) + \epsilon_{ist} -->
-<!-- \end{aligned} -->
-<!-- $$ -->
-
-<!-- where $y_{ist}$ is the outcome variable for store $i$ in state $s$ during week $t$. $\alpha_i$ captures any time-invariant store-specific effects. $DUFB_{s}$ indicates whether store $i$ has or will be part of the DUFB incentive. $POST_{t}$ indicates if week $t$ for store $i$ lands in a post- or pre-DUFB year. Recall, there are 3 years of data (2014 - 2016) and DUFB implementation is staggered across stores.  $I_{j}(t)$ captures any cyclical effects due to the monthly SNAP benefit transfer schedule. $I_{j}(t) = 1$ if week $t$ is the $j$th week of the month, where $j = 1,2,3,4$. -->
-
-
-### Secondary Analysis: Difference-in-Differences with Matching {-}
-
-Smaller analysis of the 3 stores that self-selected and were matched to 3 other stores. Total N will be 6. Likely that nothing will be significant. But need to be transparent.
