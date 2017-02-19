@@ -130,7 +130,7 @@
 <li class="chapter" data-level="" data-path="methods-1.html"><a href="methods-1.html#set-up"><i class="fa fa-check"></i>Set up</a></li>
 <li class="chapter" data-level="" data-path="methods-1.html"><a href="methods-1.html#literature-reviews"><i class="fa fa-check"></i>Literature Reviews</a></li>
 <li class="chapter" data-level="" data-path="methods-1.html"><a href="methods-1.html#overview-of-regression-frameworks"><i class="fa fa-check"></i>Overview of Regression Frameworks</a></li>
-<li class="chapter" data-level="" data-path="methods-1.html"><a href="methods-1.html#main-analyses-difference-in-differences-dd"><i class="fa fa-check"></i>Main Analyses: Difference-in-Differences (DD)</a></li>
+<li class="chapter" data-level="" data-path="methods-1.html"><a href="methods-1.html#difference-in-differences-dd-pseudo-panel"><i class="fa fa-check"></i>Difference-in-Differences (DD) Pseudo-Panel</a></li>
 <li class="chapter" data-level="" data-path="methods-1.html"><a href="methods-1.html#secondary-analysis-regression-discontinuity-rd"><i class="fa fa-check"></i>Secondary Analysis: Regression Discontinuity (RD)</a></li>
 </ul></li>
 </ul></li>
@@ -199,14 +199,14 @@
 </div>
 <div id="data-description" class="section level3 unnumbered">
 <h3>Data Description</h3>
-<p>These data include records for 5 complete fiscal years, <code>2012 - 2016</code>.<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a> The clean dataset, which removes null values and known errors, contains <code>156349</code> records comprising <code>41302</code> unique individuals. Per year, we observed between <code>25000</code> and <code>34000</code> records affecting between <code>14000</code> and <code>17000</code> individuals.</p>
+<p>These data include records for 5 complete fiscal years, <code>2012 - 2016</code>.<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a> The clean dataset, which removes null values and known errors, contains <code>156349</code> records comprising <code>41302</code> unique individuals. Per year, we observed between <code>25000</code> and <code>34000</code> records affecting between <code>14000</code> and <code>17000</code> individuals.</p>
 <p>Variables include individuals “client ID”, which uniquely identifies each individual; benefit and application identifiers; first and last name; demographic information such street address, age, race, and ethnicity; date of service; type of assistance request/received and the program the assistance is funded under; status of the application (<code>DENIED</code>, <code>COMPLETE</code>, <code>INCOMPLETE</code>, etc.); and amount of assistance received.</p>
 <p>It is important to understand the structure of these data. First, a “record” is a single row of data. Each row is uniquely identified by the application number and the individual. Each application, however, can list multiple individuals. This is because certain aid requires the listing of household members or of children. For example, a child could be listed under an application if a parent applied for emergency TANF Assistance. The amount applied for is repeated across each individual associated with an application even though one person likely requested/received the funds (generally referenced as the “<code>Case Head</code>”“).</p>
 </div>
 <div id="data-challenges" class="section level3 unnumbered">
 <h3>Data Challenges</h3>
 <p>There are challenges to this structure. The first challenge, which can be solved but will be difficult (see <a href="methods-2.html#methods-2">Methods</a>), is that households are not uniquely defined. A single individual could apply for two different types of assistance that will be affecting the same household, yet is only required to list household members in one of the applications. Street address is not unique enough because people move. The current approach is to attempt to identify household heads. These are individuals listed as “Case Heads”. Since there can be more than two “Case Heads”, ties are broken using which case head is observed most often and then, if necessary, by age. Each case head then acts like a traveling household identifier. Any other individuals observed to be on the same application as these case heads is assigned to that case head’s household. It is an imperfect system and I am working to improve upon it.</p>
-<p>The second challenge is I’ve yet determine how the application process works. I acknowledge this is a bit absurd, but I’ve yet to have most of my questions answered. To be more specific, I do not know if the fate of an application is determined during or soon after an individual sits and meets to ask for emergency assistance. For example, is an application denied then and there? Can an application be “approved” but then waits to be “completed.”<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a> This is important because I need to know if application status can evolve over time or if the application status observed is deterministic. I’ve found not evidence that an application ID switches status.</p>
+<p>The second challenge is I’ve yet determine how the application process works. I acknowledge this is a bit absurd, but I’ve yet to have most of my questions answered. To be more specific, I do not know if the fate of an application is determined during or soon after an individual sits and meets to ask for emergency assistance. For example, is an application denied then and there? Can an application be “approved” but then waits to be “completed.”<a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a> This is important because I need to know if application status can evolve over time or if the application status observed is deterministic. I’ve found not evidence that an application ID switches status.</p>
 <p>The last challenge, relating to the previous, is if records are overwritten or if the full history of a record is kept. If all that is observed is the current (or completed) status of an application, then that will affect how these data are analyzed.</p>
 </div>
 <div id="unknowns" class="section level3 unnumbered">
@@ -241,9 +241,9 @@
 </div>
 <div class="footnotes">
 <hr />
-<ol start="13">
-<li id="fn13"><p>DSS uses fiscal year when discussing data. I will do the same.<a href="data-2.html#fnref13">↩</a></p></li>
-<li id="fn14"><p>One of my first questions, which has yet to be answer, is the difference between an approved application and a completed one.<a href="data-2.html#fnref14">↩</a></p></li>
+<ol start="14">
+<li id="fn14"><p>DSS uses fiscal year when discussing data. I will do the same.<a href="data-2.html#fnref14">↩</a></p></li>
+<li id="fn15"><p>One of my first questions, which has yet to be answer, is the difference between an approved application and a completed one.<a href="data-2.html#fnref15">↩</a></p></li>
 </ol>
 </div>
             </section>
