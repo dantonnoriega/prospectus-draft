@@ -10,7 +10,7 @@ Unfortunately, using the total expenditure of FV is complicated by 3 problems.
 
 1. Purchases not linked to customers.
 2. Non-trivial amount of zeros (corner solutions).
-3. Consumers maximize across multiple goods.
+3. Consumers maximize across multiple product types.
 
 The first complication is a general problem and is not specific to the outcome variable. The inability to link purchases to individuals means I cannot use Panel Data Methods at the customer level; I will be unable to look at how customers behavior changes over-time and cannot control for unobserved customer heterogeneity. I'm instead limited to modeling pooled cross sections over-time with store-level fixed effects.
 
@@ -19,7 +19,11 @@ The second and third problems are directly related to the preferred outcome vari
 
 ### Literature Reviews {-}
 
-Corner solutions for expenditures can occur for various reasons. @pudney_modelling_1989 covers three of the most likely mechanisms producing "true" zeros in cross-sectional data. The first is that the data was gathered in too short a period of time for the purchase to occur. This problem is far more common in cross-sectional data of infrequently purchased goods (i.e. durable goods like cars or refrigerators). The second is due to a supply side factor the customer has no control over. For example, there could be a shortage of FVs or none are available. Imagine searching for FV purchases in collection of convenience store data. Many zeros would exists because some convenience stores do not sell FVs. The third zero results from a customer's decision as a function of prices, preferences, and income constraints. A zero is perhaps observed because FVs are too expensive and the customer can get larger quantities of other, equally or more preferred, foods for the same price. 
+There is a vast literature on consumer purchasing behavior aka choice models (see @train_discrete_2009 for an introductory overview). Multiple-discrete choice models, in particular, have become popular given the increased availability of transaction-level (scanner) data [@dube_multiple_2004;@hendel_estimating_1999. Multiple-discrete choice models, however, are too product-specific. It is not important for me to model which brand and quality of bananas or carrots were purchased. What is important to me is how much was spent on bananas, carrots, and other fruits and vegetable types versus other non-FV types. Remember, my outcome variable is expenditure on *total* FV spending. I'm far more concerned about whether or not consumers are observed buying *any* FV than I am with the exact types. That said, expenditure on non-FV is also important. *Therefore, what is needed is a model framework flexible enough to handle a continuous outcome variable with a non-trivial amount of zeros (corner solutions) and multiple types of goods.*
+
+**Continuous Dependent Variables and Corner Solutions**
+
+Corner solutions for expenditures---a continuous variable---can occur for various reasons. @pudney_modelling_1989 covers three of the most likely mechanisms producing "true" zeros in cross-sectional data. The first is that the data was gathered in too short a period of time for the purchase to occur. This problem is far more common in cross-sectional data of infrequently purchased goods (i.e. durable goods like cars or refrigerators). The second is due to a supply side factor the customer has no control over. For example, there could be a shortage of FVs or none are available. Imagine searching for FV purchases in collection of convenience store data. Many zeros would exists because some convenience stores do not sell FVs. The third zero results from a customer's decision as a function of prices, preferences, and income constraints. A zero is perhaps observed because FVs are too expensive and the customer can get larger quantities of other, equally or more preferred, foods for the same price. 
 
 I expect first mechanism could apply to food purchases under specific circumstances. If data are left disaggregated or the period of observation is shrunk substantially, zeros for FVs will exists due to infrequency of purchase. For example, customers that make frequent trips to the store may not always buy FVs. A cross-section of data from one day may have a non-zero FV value for the customer but zero the next. The third mechanism applies very naturally to the grocery store environment (classical utility theory). The second will require further verification. I do not expect to find out that there were shortages of FVs in the stores observed, but I could be wrong.
 
@@ -39,35 +43,43 @@ The limitation of Tobit and other hurdle models is the estimated demand of a sin
 
 For any observed trip to the store, zero-expenditure in FV implies non-zero expenditure for some non-FV. Ignoring this seems unwise and I plan, at a minimum, to implement a model optimize along two dimensions---FV and non-FV. The best model I've found is the *multiple* discrete-continuous model extreme value (MDCEV) model introduced by @bhat_multiple_2005. MDCEV is an extension of the Kuhn-Tucker based model developed by @wales_estimation_1983. MDCEV allows non-zero consumption across multiple goods. @kim_modeling_2002 solved the intractability of the @wales_estimation_1983 model. @bhat_multiple_2005 simplified both to be more realistically applicable.
 
-In the next subsection, I will formally introduce each model I intend to estimate, with increasing levels of complexity.
+In the next subsection, I will formally introduce the different modeling structures I intend to use in my paper. I will start with the Tobit model and end with the more complex MDCEV model. The share goal, across all models, is the best possible measurement of the impact the DUFB incentive has on fruit and vegetable expenditures between participating and non-participating stores.
 
 
-### Overview of Proposed Methods {-}
+### Overview of Regression Frameworks {-}
 
+I want to measure the difference in SNAP EBT dollars being spent or redeemed on fresh produce. If the incentive is working, then I should see in increase in SNAP EBT dollars spending on fresh produce within stores implementing the DUFB incentive. I assume the DUFB incentive, if effective, will have a store-level effect. That is, if a store's implementation of DUFB affects individual behavior, the effect should be measurable along multiple cross-sections of observed transactions. 
 
-The Difference-in-Differences (DD) regression framework will be present in each of the models of my main analysis. The DD analysis makes use of as much data a possible---17 *treated* stores and the 15 *control* stores. I will assume the selection problem outline in the [Store Selection Section](#store-selection-1) can be controlled using store-level fixed-effects. That is, I will assume the DUFB treatment is strictly exogenous conditional on any time-invariant (observed and unobserved) store-level characteristics.
+The Difference-in-Differences (DD) regression is a fitting framework and it will be present in each of the models of my main analysis. A DD analysis makes use of as much data a possible---17 *treated* stores and the 15 *control* stores. I will assume the selection problem outline in the [Store Selection Section](#store-selection-1) can be controlled using store-level fixed-effects. That is, I will assume the DUFB treatment is exogenous conditional on any time-invariant (observed and unobserved) store-level characteristics.
 
-This is a consequence of the store selection issue outline in the data section. The main analysis will be performed on the 9 *assigned* stores and 12 *control* stores.^[I'm excluding the 2 pilot store because they are never observed without DUFB.] In attempts to make use of as much data as possible, I will also perform a smaller analysis with the 3 *self-selected* stores matched using CEM.^[Please see the Section and Table \@ref(tab:store-class)) for more about *assigned* and *self-selected* stores.] 
+A second subsection will explore a Regression Discontinuity (RD) design. This is a consequence of the store selection issue outline in the data section. The RD analysis will be performed on the *11* assigned stores and *12* control stores. In place of fixed effects, I will use the score value calculated previously. In theory, this is a selection on observables problem because I know the procedure used to select DUFB stores. The score value---a linear combination of the observable selection criteria---therefore should serve to control the bias introduced by non-random assignment.
 
-Difference-in-Differences (DD) and Regression Discontinuity (RD) will comprise the main analysis. DD will be the only method for the second smaller analysis. I outline each analysis and its methods in the next section.
+---
 
-The unit of analysis will be the store, not the individual; the data cannot be linked to individuals. I assume the DUFB incentive, if effective, will have a store-level effect. That is, if a store's implementation of DUFB affects individual behavior, the effect should be measurable after aggregating over all observed transactions. My proposed analyses depend on this assumption but I am confident the effect will be measurable.
-
-I propose two outcome variables. The first is the proportion of SNAP EBT dollars being spent or redeemed on fresh produce. If the incentive is working, then I should see in increase in SNAP EBT dollars spending on fresh produce. I'm certain this outcome variable will be available. I'm not so certain about the second outcome variable, the total quantity of fresh produce purchased. This depends on whether weight or quantity is included in the data. This will depend on UPC matching. UPCs will be possible, but matching to UPC databases is not always precise. Should matching be poor, discerning what a product is, its weight, etcetera, will be difficult, making the second outcome variable unreliable.
-
-
+**!!BELOW HERE BE DRAGONS (SUPER WORK IN PROGRESS)!!**
 
 ### Main Analyses: Difference-in-Differences (DD) {-}
+
+Let $y_{ijt}$ be total FV expenditures for transaction $i$ in store $j$ from day $t$. The DD regression is
+
+$$
+y_{ijt} = \gamma_j + \lambda_t + \delta D_{jt} + \bm{x'_{ijt} \beta} + \epsilon_{ijt}
+$$
+
+where $\gamma_j$ are store fixed-effects, $\lambda_t$ capture daily (time) effects, $D_{jt}$ indicates store $j$ participation in DUFB on day $t$, and $\bm{x'_{ijt} \beta}$ is a vector of observable characteristics for each transaction $i$ in store $j$ on day $t$. Idiosyncratic errors are represented by $\epsilon_{ijt}$.
+
+Note that $\gamma_j$ captures the assignment group, as well as all other time-invariant store-level characteristics. The daily effects are included given the amount of data captured at the daily level. I anticipate day-of-the-week and week-of-the-month to matter when analyzing purchasing behavior. $\bm{x'_{ijt}
+
 
 
 
 ### Secondary Analysis: Regression Discontinuity (RD) {-}
 
-In the [Store Selection](#store-selection-1) section, I discussed the construction of the score function $\bm{s} = \widehat{P(\mathbf{D} = 1 | \bm{X}, \bm{N})}$. Given $i = 1,...,n$ stores, the score of each store can be determined via observable data, $s_i = \widehat{P(D_i = 1|\bm{x}_i, n_i)}$. These scores, when ordered, produced perfect separation between treatment stores and control stores (see Figure \@ref(fig:score-plot)).
+In the [Store Selection](#store-selection-1) section, I discussed the construction of the score function $\bm{s} = \widehat{P(\mathbf{D} = 1 | \bm{X}, \bm{N})}$. Given $i = 1,...,n$ stores, the score of each store can be determined via observable data, $s_i = \widehat{P(D_i = 1|\bm{x}_i, n_i)}$. These scores, when ordered, produced perfect separation between treatment stores and control stores (see Figure \@ref(fig:score-plot2)).
 
 An RD design requires a *running variable* where, above some value $c$, the probability of being assigned to the treatment group is $1$. Assume I make the score function $\bm{s}$ my running variable such that $D_i = \bm{1}[s_i \ge c]$.
 
-In my case, assignment $D_i$ is determined by $s_i$ by construction. Recall that $s_i$ is a function estimated on observable covariates. These are the same observable covariates the company used to determine assignment for a subset of stores. I used a linear probability model to estimate the score function and the estimated model perfecty predicted assignment. I then ordered stores by their score value and selected the next 12 unassigned stores.
+In my case, assignment $D_i$ is determined by $s_i$ by construction. Recall that $s_i$ is a function estimated on observable covariates. These are the same observable covariates the company used to determine assignment for a subset of stores. I used a linear probability model to estimate the score function and the estimated model perfectly predicted assignment. I then ordered stores by their score value and selected the next 12 unassigned stores.
 
 This problem is that I do not actually know $c$. I only know that $c \in (0.50, 0.64)$. The light gray band in Figure \@ref(fig:score-plot2) displays the possible values of $c$. The problem, in essence, is that I do not have---and never will have---enough stores, so I'm lacking density around where the separation occurs. 
 
