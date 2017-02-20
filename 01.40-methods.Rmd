@@ -19,14 +19,16 @@ The second and third problems are directly related to the preferred outcome vari
 
 ### Literature Reviews {-}
 
-**Panel Data to Pseudo-Panel Data**
-
-@verbeek_pseudo-panels_2008 summarizes the pioneering work of @deaton_panel_1985 and @moffitt_identification_1993, both of whom contruct "pseudo-panel" data from repeated cross-sections to produce consistent population estimates. The underlying method is to break repeated cross-sections into groups, averaging over observations in each group, to build fixed-effects models that can be consistently estimated using OLS. This is a middle ground between methods for panel data and methods for pooled cross-section. In other words, it is a second-best OLS alternative given I cannot link purchases to invididuals but I can still link purchases to stores.
-
-My fear, however, is that in building a psuedo-panel for consistent OLS estimation, which solves the first problem
+**Pooled Cross-Sectional Methods** 
 
 
-There is a vast literature on consumer purchasing behavior aka choice models (see @train_discrete_2009 for an introductory overview). Multiple-discrete choice models, in particular, have become popular given the increased availability of transaction-level (scanner) data [@dube_multiple_2004;@hendel_estimating_1999]. Multiple-discrete choice models, however, are too product-specific. It is not important for me to model which brand and quality of bananas or carrots were purchased. What is important to me is how much was spent on bananas, carrots, and other fruits and vegetable types versus other non-FV types. Remember, my outcome variable is expenditure on *total* FV spending. I'm far more concerned about whether or not consumers are observed buying *any* FV than I am with the exact types. That said, expenditure on non-FV is also important. *Therefore, what is needed is a model framework flexible enough to handle a continuous outcome variable with a non-trivial amount of zeros (corner solutions) and multiple types of goods.*
+**Pseudo-Panel Data (Not sure about this)**
+
+@verbeek_pseudo-panels_2008 summarizes the pioneering work of @deaton_panel_1985 and @moffitt_identification_1993, both of whom contruct "pseudo-panel" data from repeated cross-sections to produce consistent population estimates. The underlying method is to break repeated cross-sections of observations into time-invariant groups, whereby averaging over observations in each group allows for consistent estimation of fixed-effects models using OLS. This is a middle ground between methods for panel data and methods for pooled cross-section. In other words, it is a second-best OLS alternative given I cannot link purchases to invididuals but I can still link purchases to stores.
+
+My fear, however, is that pooled cross-sectional or pseudo-panel data structure set up for OLS estimation---which solves the first problem---bulldoze through the second and third problems. I think it is prudent to consider consumer choice behavior and the mechanisms that generate zero-expenditures. Numerous demand models exists for cross-sectional data that, with a few assumptions (like each transaction represents a distinct individual), could better estimate the impact of the DUFB incentive than straight OLS.
+
+There is a vast literature on consumer purchasing behavior aka choice models (see @train_discrete_2009 for an introductory overview). Multiple-discrete choice models, in particular, have become popular given the increased availability of transaction-level (scanner) data [@dube_multiple_2004;@hendel_estimating_1999]. Multiple-discrete choice models, however, are too product-specific. It is not important for me to model which brand and quality of bananas or carrots were purchased. What is important to me is how much was spent on bananas, carrots, and other fruits and vegetable types versus other non-FV types. Remember, my outcome variable is expenditure on *total* FV spending. I'm far more concerned about whether or not consumers are observed buying *any* FV than I am with the exact types. That said, expenditure on non-FV is also important. *Therefore, what is needed are model framework flexible enough to handle a continuous outcome variable with a non-trivial amount of zeros (corner solutions) and multiple types of goods.*
 
 **Continuous Outcome Variables and Corner Solutions**
 
@@ -53,20 +55,20 @@ For any observed trip to the store, zero-expenditure in FV implies non-zero expe
 In the next subsection, I will formally introduce the different modeling structures I intend to use in my paper. I will first introduce the basic framework had I expected OLS to be sufficient. I then expand from OLS to Tobit and other Hurdle models before expanding into the more complex MDCEV model. The share goal, across all models, is the best possible measurement of the impact the DUFB incentive has on fruit and vegetable expenditures between participating and non-participating stores.
 
 
-### Overview of Regression Frameworks {-}
+### OLS Frameworks {-}
 
-I want to measure the difference in SNAP EBT dollars being spent or redeemed on fresh produce. If the incentive is working, then I should see in increase in SNAP EBT dollars spending on fresh produce within stores implementing the DUFB incentive. I assume the DUFB incentive, if effective, will have a store-level effect. That is, if a store's implementation of DUFB affects individual behavior, the effect should be measurable along multiple cross-sections of observed transactions. 
+I want to measure the difference in SNAP EBT dollars being spent or redeemed on fresh produce. If the incentive is working, then I should see in increase in SNAP EBT dollars spending on fresh produce within stores implementing the DUFB incentive. I do not think it is enough to assume the DUFB incentive, if effective, will be measureable without considering heterogeneity. That is, if a store's implementation of DUFB affects individual behavior, the effect could be hard to measure if measured across the entire distribution of FV purchases, instead of the subset of SNAP EBT dollars spent.
 
-The Difference-in-Differences (DD) regression is a fitting framework and it will be present in each of the models of my main analysis. A DD analysis makes use of as much data a possible---17 *treated* stores and the 15 *control* stores. I will assume the selection problem outline in the [Store Selection Section](#store-selection-1) can be controlled using store-level fixed-effects. Given I cannot link transaction to individuals, I will instead use the "pseudo-panel" approach [@deaton_panel_1985; @verbeek_pseudo-panels_2008].
+The Difference-in-Differences-in-Differences (DDD) regression is a fitting framework if I expect the SNAP population patroning DUFB stores to be systematically different from the SNAP population patroning the control stores. Differencing along time, treatment assignment group, and the observed SNAP transactions will reasonably account for most of the bias.
 
-A second subsection will explore a Regression Discontinuity (RD) design. This is a consequence of the store selection issue outline in the data section. The RD analysis will be performed on the *11* assigned stores and *12* control stores. In place of fixed effects, I will use the score value calculated previously. In theory, this is a selection on observables problem because I know the procedure used to select DUFB stores. The score value---a linear combination of the observable selection criteria---should therefore serve to control the bias introduced by non-random assignment.
+This is unfortunately complicated given that I cannot link transaction to individuals. I cannot determine which transactions belong to SNAP participants. The only thing I can tell is that a purchase was made with SNAP EBT dollars or that it redeemed DUFB points.  I will use either a "pseudo-panel" of repeated cross-section or stick to cross-sectional methods with time effects [@deaton_panel_1985; @verbeek_pseudo-panels_2008].
 
-### Difference-in-Differences (DD) Pseudo-Panel {-}
+### Difference-in-Differences-in-Differences (DD) Pseudo-Panel {-}
 
 Assume it is possible to observed individual $i$ purchasing goods across $t=1,...,T$ days. Let $y_{it}$ be total FV expenditures for individual $i$ from day $t$. The DD regression is
 
 $$
-y_{it} = \gamma_i + \lambda_t + \delta D_{it} + \bm{x'_{it} \beta} + \epsilon_{it}
+y_{ijt} = \gamma_i + \lambda_t + \delta D_{it} + \bm{x'_{ijt} \beta} + \epsilon_{ijt}
 $$
 
 where $\gamma_i$ are individual fixed-effects, $\lambda_t$ capture daily (time) effects, $D_{it}$ indicates individual $i$'s' participation in DUFB on day $t$, and $\bm{x'_{it}}$ is a vector of observable characteristics about individual $i$'s transaction on day $t$. Idiosyncratic errors are represented by $\epsilon_{it}$ and assumed orthogonal to $\bm{x'_{it}}$ (i.e. $E[x'_{it}u_{it}] = 0$).
