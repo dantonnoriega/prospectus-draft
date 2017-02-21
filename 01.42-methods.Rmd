@@ -1,0 +1,36 @@
+**!!BELOW HERE BE DRAGONS (SUPER WORK IN PROGRESS)!!**
+
+### Secondary Analysis: Regression Discontinuity (RD) {-}
+
+In the [Store Selection](#store-selection-1) section, I discussed the construction of the score function $\bm{s} = \widehat{P(\mathbf{D} = 1 | \bm{X}, \bm{N})}$. Given $i = 1,...,n$ stores, the score of each store can be determined via observable data, $s_i = \widehat{P(D_i = 1|\bm{x}_i, n_i)}$. These scores, when ordered, produced perfect separation between experimental stores and control stores (see Figure \@ref(fig:score-plot2)).
+
+An RD design requires a *running variable* where, above some value $c$, the probability of being assigned to the experimental group is $1$. Assume I make the score function $\bm{s}$ my running variable such that $D_i = \bm{1}[s_i \ge c]$.
+
+In my case, assignment $D_i$ is determined by $s_i$ by construction. Recall that $s_i$ is a function estimated on observable covariates. These are the same observable covariates the company used to determine assignment for a subset of stores. I used a linear probability model to estimate the score function and the estimated model perfectly predicted assignment. I then ordered stores by their score value and selected the next 12 unassigned stores.
+
+This problem is that I do not actually know $c$. I only know that $c \in (0.50, 0.64)$. The light gray band in Figure \@ref(fig:score-plot2) displays the possible values of $c$. The problem, in essence, is that I do not have---and never will have---enough stores, so I'm lacking density around where the separation occurs. 
+
+```{r score-plot2, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=4, fig.cap = "Store Score vs Double Up Assignment with Uncertainty Band (light gray)"}
+
+g1 + geom_rect(aes(xmin = .51, xmax = .63, ymin = -Inf, ymax = Inf), fill = 'lightgray')
+
+```
+
+I propose to estimate the RD design using various values of $c$. The perpetual gap means any model estimate to the left or right of some $c_0 \in (0.50, 0.64)$  will have to be extrapolated up to $c_0$.
+
+**Set-up**
+
+The outcome of variable for each store will be the *average amount spent on locally grown produce in a SNAP transaction per day*. The time frame will be August - December (months $8$ - $12$) of 2016, when the DUFB incentive is place. I decided on using days as the unit of observation to increase the sample amount of data for estimating. I expect there to be enough transactions per day for this to be possible.
+
+Let $y_{i}$ represent the outcome variable where $i=1,...,n$ denotes stores. Let $c$ denote the cutoff; $s_i$ the score computed for store $i$; and $D_i$ the assignment variable. Each draw (or row) of data for store $i$ is a vector $(y_i, s_i, D_i)$ corresponding to a single day. Recall that $y_i$ is a point statistics estimated using a single days worth of transaction data for store $i$. All days will be pooled, creating roughly $30\times5=150$ observations (days) per store.
+
+
+Let $u_i$ be an error term assumed to be $\mathcal{N}(0, \sigma^2)$.
+
+The RD model I propose is as follows
+
+$$y_{i} = \alpha + \rho D_i + \gamma (s_i - c) + \delta D_i(s_i - c) + u_{i}$$
+
+My hope is to produce a graph that looks like the following
+
+[GENERATE EXAMPLE GRAPH. At each point $s_i$, there will be about 150 points drawn in vertical like. This would help visualize the distribution of average-dollars-per-day.]
