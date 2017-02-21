@@ -10,7 +10,7 @@ y_{ijt} &= \alpha_0 + \alpha_1 dE_j + \alpha_2 dS_i  + \alpha_3 dE_j \cdot dS_i 
 \end{aligned}
 $$
 
-where $dE_j$ represents store assignment to experimental group, $dS_i$ represents a SNAP or SNAP related transaction (target group), and $dP_t$ represent the treatment period, August - December. $\lambda_t$ captures daily (time) effects and $\bm{x'}_{ijt}$ is a vector of observable characteristics about transaction $i$ in store $j$ on day $t$. The coefficient of interest is $\delta$.
+where $dE_j$ represents store assignment to experimental group, $dS_i$ represents a SNAP or SNAP related transaction (target group), and $dP_t$ represent the treatment period, August - December. $\lambda_t$ captures daily (time) effects and $\bm{x'}_{ijt}$ is a vector of observable characteristics about transaction $i$ in store $j$ on day $t$. The coefficient of interest is $\delta$. $\epsilon_{ijt}$ are idiosyncratic errors at the transaction level. 
 
 Again, I do not observed individuals, only transactions. Yet I think it reasonable to assume that the structure of daily transaction data more closely resembles that of repeated cross-sections than of panel data. Assuming it was possible to link individuals to purchases and build panel data. The same individual would likely observed *sporadically* within in a given month. That is, were this to be panel from the same $N$ individual shoppers across $T$ total days, many---if not most---of those days would have missing data. There would certainly be shoppers observed multiple times per week, but I expect such shoppers to be rare. I certainly would not expect to have a balanced panel and no shopper would be observed all 365 days.
 
@@ -19,20 +19,20 @@ I therefore find it reasonable to treat each day of observed data as a single in
 The model can be simplified by introducing store effects. These effectively capture experimental assignment and all other time-invariant store-level characteristics. The $dE$ dummy drops out and I can condense the others dummies to only emphasize variation:
 
 $$
-y_{ijt} = \gamma_j + \lambda_t + \phi_0 D_i + \phi_1 D_{ij} + \phi_2 D_{it}+ \phi_3 D_{jt} + \delta D_{ijt} + 
-\bm{x'}_{ijt} \bm{\beta} + 
-\epsilon_{ijt}
+y_{ijt} = \gamma_j + \lambda_t + \phi_0 D_i + \phi_1 D_{ij} + \phi_2 D_{it}+ \phi_3 D_{jt} + \delta_t D_{ijt} + \bm{x'}_{ijt} \bm{\beta} + \epsilon_{ijt}
 $$
 
-where $\gamma_j$ now represents store effects, $dS_i \equiv D_i$, and the remaining dummy variables $D_{ij},~D_{jt},~D_{it},~D_{ijt}$ represent the dimensions along which they vary---$i$ transaction type (SNAP or not), $j$ store experiment group, and $t$ day during DUFB treatment period (August - December).
+where $\gamma_j$ now represents store effects, $dS_i \equiv D_i$, and the remaining dummy variables $D_{ij},~D_{jt},~D_{it},~D_{ijt}$ represent the dimensions along which they vary---$i$ transaction type (SNAP or not), $j$ store experiment group, and $t$ day during DUFB treatment period (August - December). To capture more detail than just the average, $\delta_t$ is allowed to vary by day.
 
 **Unobserved Effects**
 
-I still do not know what transaction characteristic variables will go into $\bm{x'}_{ijt}$. I do know, however, that without panel data, I have no methods for dealing with unobserved individual effects. That is, some unobserved individual effect $c_i$ likely exists such that $e_{ijt} = c_i + u_{ijt}$ where $\exists t \ni E[\bm{x'}_{ijt}c_i] \ne 0$. In short, my estimates will be biased due to an omitted variables problem.
+I still do not know what the transaction characteristic variables will be and hence do not know what variables go into $\bm{x'}_{ijt}$. I do know, however, that without panel data, I have no methods for dealing with unobserved individual effects. That is, some unobserved individual effect $c_i$ likely exists such that $e_{ijt} = c_i + u_{ijt}$ where $\exists t \ni E[\bm{x'}_{ijt}c_i] \ne 0$. In short, my estimates will be biased due to an omitted variables problem.
 
-I'm am still thinking about how I can capture part of the unobserved individual effect $c_i$. I am open to help or suggestion. 
+I'm am still thinking about how I can capture part of the unobserved individual effect $c_i$. I am open to suggestions. 
 
+---
 
+### Tobit and other Hurdle Models {-}
 
 
 ---
