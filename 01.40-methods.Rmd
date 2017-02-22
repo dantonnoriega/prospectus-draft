@@ -1,3 +1,5 @@
+\newpage
+
 ## Methods {#methods-1 -}
 
 ### Set up {-}
@@ -39,7 +41,7 @@ I expect first mechanism could apply to food purchases under specific circumstan
 
 @humphreys_dealing_2013 and @carlevaro_multiple_2016 discuss cross sectional models that accommodate corner solutions---Tobit, *Two-Part*, and *Hurdle* models, specifically.^[@wooldridge_econometric_2010 does not appear to differentiate between "Two-Part" models and "Hurdle" models. I will use it following @humphreys_dealing_2013 language, which does.] The classic "corner solution" regression model is the Tobit model. Corner solutions are utility maximizing and no assumptions are made about the decision not to purchase/consume. In contrast to the Tobit model, the decision to participate in consumption is explicitly formulated in the Two-Part and Hurdle models. Participation is the "first hurdle", the amount purchased/consumed is the "second hurdle". 
 
-In the "Naive" Two-Part model, the decision to buy is estimate separately and sequentially from how much (amount) to buy; Probit is used to estimate the decision-to-buy process and OLS is used to estimate the amount purchased. The Double Hurdle model estimates both these decision simultaneously via maximum likelihood. The "full" Double Hurdle model allows for correlation between the error terms in the decision and amount/consumption equations [@jones_note_1992]. Imposing the assumption that unobservable factors between the decision and amount decisions are uncorrelated reduces the "full" Double Hurdle to the "Cragg" model [@cragg_statistical_1971].
+In the "Naive" Two-Part model, the decision to buy is estimate separately and sequentially from how much (amount) to buy; Probit is used to estimate the decision-to-buy process and OLS is used to estimate the amount purchased. The Double Hurdle model estimates both these decision simultaneously via maximum likelihood. The full Double Hurdle model allows for correlation between the error terms in the decision and amount/consumption equations [@jones_note_1992]. Imposing the assumption that unobservable factors between the decision and amount decisions are uncorrelated reduces the full "Jones" Double Hurdle to the "Cragg" model [@cragg_statistical_1971].
 
 It is unclear to me if Two-Part or the Double Hurdle models that formalize "participation" are necessary when considering FV purchases. This makes more intuitive sense for something like cigarette or alcohol consumption, where zero-expenditure can be the result of abstention or price/income constraints.^[See @garcia_alternative_1996 and @aristei_cohort_2008 for abstention-style hurdles.] There are, after all, consumers who will never consume cigarettes or alcohol, even if free (abstention). But I'm not sure if an abstention mechanism is reasonable when considering FV purchases. Do consumers really opt out (or abstain) form buying FVs altogether?
 

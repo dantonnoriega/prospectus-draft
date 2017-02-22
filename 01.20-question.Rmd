@@ -1,20 +1,19 @@
+\newpage
+
 ## Motivation {-}
 
 **Research Question**
 
 > How effective is the DUFB financial incentive at increasing the fresh fruits and vegetables purchased by SNAP shoppers within a grocery store environment?
 
-**Hypothesis 1**: I expect a very slight (1 - 2%) increase in fruit and vegetable (FV) expenditures during the months the DUFB incentive is active in participating store (Aug - Dec). The effect will fade over time. I expect no significant differences in fruit and vegetable expenditures during the months the incentive is not in effect (Jan - July).
+**Hypothesis 1**: I expect SNAP EBT expenditures on fruits and vegetables (FVs)to increase slight (1 - 2%) during the months the DUFB incentive is active in the experimental stores (Aug - Dec). The expect the effect will fade over time. I expect no significant differences in fruit and vegetable expenditures during the months the incentive is not in effect (Jan - July).
 
 Note that the DUFB incentive is applied automatically to all SNAP shoppers earning or redeeming DUFB points (covered in more detail in the [Data Section](#data-1)). Therefore, by default, all SNAP shoppers at a DUFB store are technically "participating". However, SNAP shoppers should be considered "passive" or "active" participants. "Active participation" would characterize shoppers responding to the DUFB incentive; "passive participation" would characterize shoppers who continue to shop as usual, despite automatically redeeming points.
 
-From prior implementations of the program, participation rates in DUFB-like incentive programs can be low. In this case, I expect SNAP shoppers to consist of mostly "passive" participants. Combined with the fact that SNAP dollars account for less than 5% of all spending in these stores, I don't think there is a very large pool of SNAP participants to draw from. As a result, the "active" participants, who respond to the incentive and purchase more fruits and vegetables, will consist of a small fraction of total FV spending. This will be enough to minimal shift the distribution of FV spending.
+From prior implementations of the program, participation rates in DUFB-like incentive programs can be low. In this case, I expect SNAP shoppers to consist of mostly "passive" participants. Combined with the fact that SNAP dollars account for less than 5% of all spending in these stores, I don't think there is a very large pool of SNAP participants to draw from. As a result, the "active" participants, who respond to the incentive and purchase more fruits and vegetables, will consist of a small fraction of total FV spending. Therefore, to capture this effect, it is necessary to focus purchases made by the targeted group (SNAP households).
 
 
-I expect Low "active" participation rates to result from generally low awareness of the program for this particular grocery chain. This is includes both staff and the shoppers themselves. I don't know if the corporate office, which selected and implemented the DUFB incentive, clearly communicated or advertised the DUFB program to store management/staff and customers. I must be clear that this is merely a hunch. I don't think there is a large profit motive behind implementing this program for the retailer. I think it is an opportunity to pretend to be doing some good and to have something which reflects a positive corporate image.
-
-A survey of store staff and of some customers to test this hunch would be great.
-
+I expect awareness of the DUFB program for this particular grocery chain appears to be low. This is includes both staff and the shoppers themselves. I don't know if the corporate office, which selected and implemented the DUFB incentive, clearly communicated or advertised the DUFB program to store management/staff and customers. As a result, I expect "active" participation rates to be low. I must be clear that this is merely a hunch. I don't think there is a large profit motive behind implementing this program for the retailer. I think it is an opportunity to pretend to be doing some good and to have something which reflects a positive corporate image. A survey of store staff and of some customers to test this hunch would be great.
 
 
 **Hypothesis 2**: If measurable, I expect spending increases to occur within the first 3 weeks of each month, when most SNAP benefits are distributed and consumed. I also expect week 4 for all stores, regardless of DUFB participation, to be relatively similar.

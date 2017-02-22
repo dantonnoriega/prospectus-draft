@@ -1,11 +1,12 @@
+---
+
 ### Difference-in-Difference-in-Differences (DDD) {-}
 
 I observe transaction $i$ in store $j$ across $t=1,...,T$ days. Let $y_{ijt}$ be total FV expenditures for transaction $i$ in store $j$ on day $t$. The DDD regression is
 
 $$
 \begin{aligned}
-y_{ijt} &= \alpha_0 + \alpha_1 dE_j + \alpha_2 dS_i  + \alpha_3 dE_j \cdot dS_i \\
-& \quad + \theta_1 dP_t + \theta_2 dP_t \cdot dE_j + \theta_3 dP_t \cdot dS_i \\
+y_{ijt} &= \alpha_0 + \alpha_1 dE_j + \alpha_2 dS_i  + \alpha_3 dE_j \cdot dS_i \\& \quad + \theta_1 dP_t + \theta_2 dP_t \cdot dE_j + \theta_3 dP_t \cdot dS_i \\
 & \quad + \delta dE_j \cdot dS_i \cdot dP_t + \bm{x'}_{ijt} \bm{\beta} + \lambda_t + \epsilon_{ijt}
 \end{aligned}
 $$
@@ -70,6 +71,7 @@ y   &= I^* \times max(0, y^*) \\
 \end{array}
 \right )}
 \end{aligned}
+(\#eq:dhurdle)
 $$
 
 The @jones_double-hurdle_1989 "Full" Double Hurdle model and the @cragg_statistical_1971 have the same framework. The distinction is that in the Cragg model assumes no correlation between $u$ and $v$ (i.e. $\sigma_{uv} = 0$). The likelihood function for the Cragg model is, in other words, a simplification of the Jones model. Formally, the Jones model is
@@ -96,6 +98,14 @@ L &= \prod_0
 (\#eq:lhurdle)
 $$
 
+Once again, setting the DDD to be $y^*$ is not a problem. The main problem is determining the participation equation $I^*$. What factors variables participation i.e. the decision-to-buy fruits and vegetables? Variables about individual characteristics would certainly be helpful here but that isn't possible. There is clearly some mechanism driving consumers to buy or not buy fruits and vegetables. The likeliest candidate is data on *other* products purchased within a given transaction. The existence of complimentary goods (e.g. olive oil, meats, etc) may increase the likelihood of observing FV purchases within the same trip. The size of the shopping basket likely increases overall chances of FV purchases. Likely day of the week or week of the month, since government benefits and pay schedules may increase the chances of shopping trips in aggregate.
 
+I anticipate estimate both the Jones and Cragg model as a robustness check. But I do not expect $Cov(\sigma_u, \sigma_v) = 0$ given I cannot capture individual effects. Unobserved individual effects likely affect both participation and consumption. In both equations, individual effects are absorbed by the error terms, making them correlated by construction.
+
+I will also estimate a "Naive" Two-Part model, where the participation and consumptions equations are estimate independently from the other (Probit + OLS). Again, just another comparison point. 
+
+**Multiple Discrete-Continuous Extreme Value Models**
+
+ 
 
 
