@@ -6,7 +6,7 @@
 
 > How effective is the DUFB financial incentive at increasing the fresh fruits and vegetables purchased by SNAP shoppers within a grocery store environment?
 
-**Hypothesis 1**: I expect SNAP EBT expenditures on fruits and vegetables (FVs)to increase slight (1 - 2%) during the months the DUFB incentive is active in the experimental stores (Aug - Dec). The expect the effect will fade over time. I expect no significant differences in fruit and vegetable expenditures during the months the incentive is not in effect (Jan - July).
+**Hypothesis 1**: I expect a slight increase (1 - 2%) in SNAP EBT expenditures on fruits and vegetables (FVs) during the months the DUFB incentive is active in the experimental stores (Aug - Dec). I expect the effect will fade over time. I expect no significant differences in fruit and vegetable expenditures during the months the incentive is not in effect (Jan - July).
 
 Note that the DUFB incentive is applied automatically to all SNAP shoppers earning or redeeming DUFB points (covered in more detail in the [Data Section](#data-1)). Therefore, by default, all SNAP shoppers at a DUFB store are technically "participating". However, SNAP shoppers should be considered "passive" or "active" participants. "Active participation" would characterize shoppers responding to the DUFB incentive; "passive participation" would characterize shoppers who continue to shop as usual, despite automatically redeeming points.
 
