@@ -39,23 +39,62 @@ Calculating fruit and vegetable expenditures, $y_{ijt}$, for each transaction wi
 
 **Tobit Model**
 
-The Tobit model is agnostic to the economic mechanism generating corner solutions. It is the safe, basic approach when little else is known other than the decision not to purchase fruits and vegetables is resulting in zero-expenditures. The basic structure is
+The Tobit model is agnostic to the economic mechanism generating corner solutions. It is the    basic approach when little else is known other than the decision not to purchase fruits and vegetables is resulting in zero-expenditures. The basic structure is
 
 $$
 \begin{aligned}
-y^* &= X\beta + \epsilon & \\
-y &= y^*  &\text{if } y^* > 0 \\
-y &= 0   &\text{if } y^* \le 0 \\
+y^* &= x'\beta + u \\
+y &= max(0, y^*)
 \end{aligned}
 $$
 
-Tobit can be generalized beyond requiring homoskedastic error terms but requires normality. This is important because error terms in repeated cross sectional data are assumed independent *not* identically distributed. In other words, heteroskedastic. Other than error term specifications, any additive and linear-in-parameters regression can estimated using Tobit. In other words, I can set $y^*$ equal to equation \@ref(eq:ddd).
+where $y^*$ is a latent variable and $y$ is observed. Tobit can be generalized beyond requiring homoskedastic error terms but requires normality. This is important because error terms in repeated cross sectional data are assumed independent *not* identically distributed. In other words, heteroskedastic. Other than error term specifications, any additive and linear-in-parameters regression can estimated using Tobit. In other words, I can set $y^*$ equal to equation \@ref(eq:ddd).
 
 For details on the likelihood functions, see @amemiya_tobit_1984.
 
 **Hurdle and (Naive) Two-Part Models**
 
-Hurdle models generally have two parts (i.e. "Double")---decision-to-buy (participate) and the amount to purchase (consumption). Let $I^* \in {0,1}$ indicate the decision to purchase fruits and vegetables and $y^*$ be the amount of dollars spent. Formally,
+Hurdle models generally have two parts (i.e. "Double" Hurdle)---a decision-to-buy (participate) and the amount to purchase (consumption) [@jones_double-hurdle_1989]. Let $I^* \in {0,1}$ indicate the decision to purchase fruits and vegetables and $y^*$ be the amount of dollars spent. Both are latent variables. Let $y$ be observed expenditures. Formally,
+
+$$
+\begin{aligned}
+I^* &= z'\gamma + v \\
+y^* &= x'\beta + u  \\
+y   &= I^* \times max(0, y^*) \\
+& \phantom{x}\\
+(u,v) & \sim N(0,\Omega) \\
+\Omega & = {\left ( 
+\begin{array}{cc}
+  \sigma^2_{u} & \sigma_{uv} \\
+  \sigma_{uv} & \sigma^2_{v} 
+\end{array}
+\right )}
+\end{aligned}
+$$
+
+The @jones_double-hurdle_1989 "Full" Double Hurdle model and the @cragg_statistical_1971 have the same framework. The distinction is that in the Cragg model assumes no correlation between $u$ and $v$ (i.e. $\sigma_{uv} = 0$). The likelihood function for the Cragg model is, in other words, a simplification of the Jones model. Formally, the Jones model is
+
+$$
+\begin{aligned}
+L &= \prod_0 
+  \left [
+    1 - \Phi 
+    \left ( 
+      \frac{z'\gamma}{\sigma_v},
+      \frac{x'\beta}{\sigma_u},
+      \rho
+    \right ) 
+  \right ] \times \\
+& \quad ~ \prod_{+} \Phi
+  \left [ 
+      \frac{ \left ( 
+        \frac{z'\gamma}{\sigma_v} + 
+        \rho(y^* - x'\beta) \right )}
+         {\left ( \sqrt{1 - \rho^2} \right ) } \right ]
+\frac{1}{\sigma_u} \phi \left ( \frac{y^* - x'\beta}{\sigma_u} \right )
+\end{aligned}
+(\#eq:lhurdle)
+$$
 
 
 
