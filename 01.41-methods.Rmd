@@ -106,6 +106,40 @@ I will also estimate a "Naive" Two-Part model, where the participation and consu
 
 **Multiple Discrete-Continuous Extreme Value Models**
 
+The @bhat_multiple_2005 Multiple Discrete-Continuous Extreme Value (MDCEV) framework allows for choice along a vector of non-mutually exclusive goods. Non-negative consumption is allowed in across all goods. 
+
+I will attempt to use a later iteration of the MDCEV model from @bhat_multiple_2008. The distinction that interest me is that the Bhat (2008) model allows for price variation across goods and explicitly formulates the Kuhn-Tucker constraints using expenditures. The econometric model is as follows.
+
+Utility from purchasing vector of goods $\bm(x) = (x_1, x_2,...,x_k)$ is defined as
+
+$$
+\begin{aligned}
+\tilde{U} &= \sum_k \frac{\gamma_k}{\alpha^*_k} \psi(z_k, \epsilon_k)
+  \left [ 
+    \left (
+      \frac{y_k}{\gamma_k p_k} + 1
+    \right )^{\alpha_k} - 1
+  \right ] \\
+\psi(z_k, \epsilon_k) &= exp(z'_k\beta + \epsilon_k)
+\\
+\sum_k p_k &= Y
+\end{aligned}
+$$
+
+where $z_k$ is a vector of attribute variables about product $k$ and of the consumer, $y_k$ is expenditure on product/good $k$, $p_k$ is the price, and $Y$ is total expenditure on basket of goods $\bm(x)$. $\epsilon_k$ are idiosyncratic shocks with an extreme-value distribution. Using the first good as a reference group, the KT conditions which solve the Lagrangian above are
+
+$$
+\begin{aligned}
+V_k^* + \sigma \epsilon_k &= V_1^* + \sigma \epsilon_1 \text{ if }
+  y_k^* > 0 (k = 2,3,...,K) \\
+V_k^* + \sigma \epsilon_k &< V_1^* + \sigma \epsilon_1 \text{ if }
+  y_k^* = 0 (k = 2,3,...,K), \text{ where } \\
+ V_k^* &= \sigma z'_k \beta + \sigma (\alpha_k - 1)
+  \text{ln} \left ( \frac{y_k}{\gamma_k p_k} + 1 \right ) - \text{ln} p_k
+\end{aligned}
+$$
+
+
  
 
 
