@@ -2,7 +2,7 @@
 
 ### Difference-in-Difference-in-Differences (DDD) {-}
 
-I observe transaction $i$ in store $j$ across $t=1,...,T$ days. Let $y_{ijt}$ be total FV expenditures for transaction $i$ in store $j$ on day $t$. The DDD regression is
+I observe transaction $i=1,...,L$ in store $j=1,...,N$ across $t=1,...,T$ days. Let $y_{ijt}$ be total FV expenditures for transaction $i$ in store $j$ on day $t$. The DDD regression is
 
 $$
 \begin{aligned}

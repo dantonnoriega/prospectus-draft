@@ -15,7 +15,7 @@ link-citations: yes
 ---
 
 ```{r setup-all, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
-knitr::opts_chunk$set(cache = FALSE, dpi = 300, comment = "#>")
+knitr::opts_chunk$set(cache = FALSE, dpi = 150, comment = "#>")
 ```
 
 # Dissertation Overview {-}
