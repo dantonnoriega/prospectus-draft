@@ -6,5 +6,5 @@ language:
     fig: "FIGURE "
     tab: "TABLE "
 chapter_name: ""
-before_chapter_script: ["R/helpers.R", "R/DD.R"]
+before_chapter_script: ["R/helpers.R", "R/concept-plots.R"]
 output_dir: 'docs'

@@ -6,7 +6,7 @@ These data come from a large grocery distributor and retailer serving multiple g
 
 Double Up implementation was considered for a single grocery chain. The chain has more than 60 stores, 17 of which were selected as "treatment" stores (with Double Up). Of the remaining stores, data is being made available from an addition 15 to serve as "controls". The quotes here signify that these terms will be used as shorthand, but the terminology is somewhat misleading. The use of "treatment" and "control" could lead one to think store assignment was random. It was not.
 
-[MISSING real specific details about the data e.g. total transactions observed etc.]
+[TK MISSING real specific details about the data e.g. total transactions observed etc.]
 
 ### How the DUFB Incentive is Implemented {-}
 
