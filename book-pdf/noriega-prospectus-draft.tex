@@ -179,7 +179,7 @@
 
 \title{DRAFT Dissertation Prospectus}
 \author{Danton Noriega}
-\date{February 27, 2017}
+\date{March 05, 2017}
 
 \begin{document}
 \maketitle
@@ -211,7 +211,16 @@ the \emph{Healthy Incentives Pilot} (HIP). I will argue how and why an
 evaluation of the Double Up program is an important addition to the
 current literature.
 
-Chapter 2 extends the work of \citet{schenck-fontaine_use_2016}. Through
+Chapter 2 exploits the random assignment of the Durham Connects program
+to measure its long term impact on social service applications. Durham
+Connects (DC) provides free in-home nursing visits to residents of
+Durham County. It was implemented as an RCT between July 2009 to
+December 2010. The design treats DC as an information treatment. The DC
+information treatment (e.g.~a nurse contact to ask questions and provide
+assistance) is expected to lower the learning and barrier costs of low
+income families with children when applying for social services.
+
+Chapter 3 extends the work of \citet{schenck-fontaine_use_2016}. Through
 surveys, \citet{schenck-fontaine_use_2016} examine how families coping
 with poverty and economic instability supplement their SNAP benefits
 with additional assistance from informal and formal resources. In my
@@ -221,17 +230,110 @@ assistance. My aim is to provide a more detailed understanding of these
 role formal networks play in supporting Durham families coping with
 poverty.
 
-Chapter 3 exploits the random assignment of the Durham Connects program
-to measure its long term impact on social service applications. Durham
-Connects (DC) provides free in-home nursing visits to residents of
-Durham County. It was implemented as an RCT between July 2009 to
-December 2010. The design treats DC as an information treatment. The DC
-information treatment (e.g.~a nurse contact to ask questions and provide
-assistance) is expected to lower the learning and barrier costs of low
-income families with children when applying for social services.
-
 \chapter{An Evaluation of the Double Up Food Bucks
 program}\label{chapter-1}
+
+\section*{Motivation}\label{motivation}
+\addcontentsline{toc}{section}{Motivation}
+
+\textbf{Research Question}
+
+\begin{quote}
+How effective is the DUFB financial incentive at increasing the fresh
+fruits and vegetables purchased by SNAP shoppers within a grocery store
+environment?
+\end{quote}
+
+\textbf{Hypothesis 1}: I expect a slight increase (1 - 2\%) in SNAP EBT
+expenditures on fruits and vegetables (FVs) during the months the DUFB
+incentive is active in the experimental stores (Aug - Dec). I expect the
+effect will fade over time. I expect no significant differences in fruit
+and vegetable expenditures during the months the incentive is not in
+effect (Jan - July).
+
+Note that the DUFB incentive is applied automatically to all SNAP
+shoppers earning or redeeming DUFB points (covered in more detail in the
+\protect\hyperlink{data-1}{Data Section}). Therefore, by default, all
+SNAP shoppers at a DUFB store are technically ``participating''.
+However, SNAP shoppers should be considered ``passive'' or ``active''
+participants. ``Active participation'' would characterize shoppers
+responding to the DUFB incentive; ``passive participation'' would
+characterize shoppers who continue to shop as usual, despite
+automatically redeeming points.
+
+From prior implementations of the program, participation rates in
+DUFB-like incentive programs can be low. In this case, I expect SNAP
+shoppers to consist of mostly ``passive'' participants. Combined with
+the fact that SNAP dollars account for less than 5\% of all spending in
+these stores, I don't think there is a very large pool of SNAP
+participants to draw from. As a result, the ``active'' participants, who
+respond to the incentive and purchase more fruits and vegetables, will
+consist of a small fraction of total FV spending. Therefore, to capture
+this effect, it is necessary to focus purchases made by the targeted
+group (SNAP households).
+
+I expect awareness of the DUFB program for this particular grocery chain
+appears to be low. This is includes both staff and the shoppers
+themselves. I don't know if the corporate office, which selected and
+implemented the DUFB incentive, clearly communicated or advertised the
+DUFB program to store management/staff and customers. As a result, I
+expect ``active'' participation rates to be low. I must be clear that
+this is merely a hunch. I don't think there is a large profit motive
+behind implementing this program for the retailer. I think it is an
+opportunity to pretend to be doing some good and to have something which
+reflects a positive corporate image. A survey of store staff and of some
+customers to test this hunch would be great.
+
+\textbf{Hypothesis 2}: If measurable, I expect spending increases to
+occur within the first 3 weeks of each month, when most SNAP benefits
+are distributed and consumed. I also expect week 4 for all stores,
+regardless of DUFB participation, to be relatively similar.
+
+Prior research finds that SNAP shoppers spend their benefits soon after
+receiving them, generally in one large shopping trip
+\citep{wiig_art_2009, damon_first_2013}. The grocery stores are located
+in a state where benefits are disbursed every odd day of the month
+between the 3rd and 21st, spanning the first 3 weeks of each month.
+Therefore, by the 4th week, few unspent dollars will exists. Since the
+DUFB incentive is only triggered by the use of SNAP benefits, SNAP
+shoppers will be unable to make use of DUFB.
+
+I expect that, were we to remove the 4th week of each month from all
+stores, the DUFB effect size will increase. I do not anticipate to see
+shoppers behave in strategic saving behavior of DUFB points (which is
+quite difficult given the automatic accrual and redemption system) nor
+do I think FV spending to increase much without the presence of the
+incentive. More importantly, since I cannot track link purchases to
+individuals (more on this later), it will be impossible to identify
+which transactions are made by SNAP shoppers when they are not using
+their SNAP EBT cards.
+
+\section*{Concept in a Plot}\label{concept-in-a-plot}
+\addcontentsline{toc}{section}{Concept in a Plot}
+
+\begin{figure}
+\centering
+\includegraphics{noriega-prospectus-draft_files/figure-latex/plot-dd-1.pdf}
+\caption{\label{fig:plot-dd}Example of Hypothetical Result (Fake Data}
+\end{figure}
+
+What I am hoping to find is displayed in Figure \ref{fig:plot-dd}. Note
+that the data is fake and the time interval is at the monthly level (I
+plan to use daily data). The point of the graph is to emphasis that I
+expect to find a jump in dollars spent on fruits and vegetables in the
+experimental (treated) stores once the DUFB program begins in August.
+While I intend to use a difference-in-difference-in-differences (DDD)
+model as part of my analysis, I display a difference-in-differences (DD)
+to more easily highlight the effect of interest.
+
+Assume that the DD displayed is isolating on the subpopulation of SNAP
+transactions observed. Then the dotted green line beginning at month
+\texttt{8} would represent the gap under the ``parallel trends''
+assumption. The difference between the solid green line and the dotted
+green line represents the increase in dollars spent that I hope to
+identify.
+
+\newpage
 
 \section*{Introduction}\label{intro-1}
 \addcontentsline{toc}{section}{Introduction}
@@ -734,83 +836,6 @@ multiple years, and collected under non-experimental conditions.
 
 \newpage
 
-\section*{Motivation}\label{motivation}
-\addcontentsline{toc}{section}{Motivation}
-
-\textbf{Research Question}
-
-\begin{quote}
-How effective is the DUFB financial incentive at increasing the fresh
-fruits and vegetables purchased by SNAP shoppers within a grocery store
-environment?
-\end{quote}
-
-\textbf{Hypothesis 1}: I expect a slight increase (1 - 2\%) in SNAP EBT
-expenditures on fruits and vegetables (FVs) during the months the DUFB
-incentive is active in the experimental stores (Aug - Dec). I expect the
-effect will fade over time. I expect no significant differences in fruit
-and vegetable expenditures during the months the incentive is not in
-effect (Jan - July).
-
-Note that the DUFB incentive is applied automatically to all SNAP
-shoppers earning or redeeming DUFB points (covered in more detail in the
-\protect\hyperlink{data-1}{Data Section}). Therefore, by default, all
-SNAP shoppers at a DUFB store are technically ``participating''.
-However, SNAP shoppers should be considered ``passive'' or ``active''
-participants. ``Active participation'' would characterize shoppers
-responding to the DUFB incentive; ``passive participation'' would
-characterize shoppers who continue to shop as usual, despite
-automatically redeeming points.
-
-From prior implementations of the program, participation rates in
-DUFB-like incentive programs can be low. In this case, I expect SNAP
-shoppers to consist of mostly ``passive'' participants. Combined with
-the fact that SNAP dollars account for less than 5\% of all spending in
-these stores, I don't think there is a very large pool of SNAP
-participants to draw from. As a result, the ``active'' participants, who
-respond to the incentive and purchase more fruits and vegetables, will
-consist of a small fraction of total FV spending. Therefore, to capture
-this effect, it is necessary to focus purchases made by the targeted
-group (SNAP households).
-
-I expect awareness of the DUFB program for this particular grocery chain
-appears to be low. This is includes both staff and the shoppers
-themselves. I don't know if the corporate office, which selected and
-implemented the DUFB incentive, clearly communicated or advertised the
-DUFB program to store management/staff and customers. As a result, I
-expect ``active'' participation rates to be low. I must be clear that
-this is merely a hunch. I don't think there is a large profit motive
-behind implementing this program for the retailer. I think it is an
-opportunity to pretend to be doing some good and to have something which
-reflects a positive corporate image. A survey of store staff and of some
-customers to test this hunch would be great.
-
-\textbf{Hypothesis 2}: If measurable, I expect spending increases to
-occur within the first 3 weeks of each month, when most SNAP benefits
-are distributed and consumed. I also expect week 4 for all stores,
-regardless of DUFB participation, to be relatively similar.
-
-Prior research finds that SNAP shoppers spend their benefits soon after
-receiving them, generally in one large shopping trip
-\citep{wiig_art_2009, damon_first_2013}. The grocery stores are located
-in a state where benefits are disbursed every odd day of the month
-between the 3rd and 21st, spanning the first 3 weeks of each month.
-Therefore, by the 4th week, few unspent dollars will exists. Since the
-DUFB incentive is only triggered by the use of SNAP benefits, SNAP
-shoppers will be unable to make use of DUFB.
-
-I expect that, were we to remove the 4th week of each month from all
-stores, the DUFB effect size will increase. I do not anticipate to see
-shoppers behave in strategic saving behavior of DUFB points (which is
-quite difficult given the automatic accrual and redemption system) nor
-do I think FV spending to increase much without the presence of the
-incentive. More importantly, since I cannot track link purchases to
-individuals (more on this later), it will be impossible to identify
-which transactions are made by SNAP shoppers when they are not using
-their SNAP EBT cards.
-
-\newpage
-
 \hypertarget{data-1}{\section*{Data Description}\label{data-1}}
 \addcontentsline{toc}{section}{Data Description}
 
@@ -831,8 +856,8 @@ terminology is somewhat misleading. The use of ``treatment'' and
 ``control'' could lead one to think store assignment was random. It was
 not.
 
-{[}MISSING real specific details about the data e.g.~total transactions
-observed etc.{]}
+{[}TK MISSING real specific details about the data e.g.~total
+transactions observed etc.{]}
 
 \subsection*{How the DUFB Incentive is
 Implemented}\label{how-the-dufb-incentive-is-implemented}
@@ -2154,6 +2179,285 @@ fitted values of interested. Estimation wise, this distinction changes
 very little; \(E[y_{jt}|s_{j}, D_{j}]\) effectively fits a mean value to
 each different store. But graphically, what matters in my RD is the
 overlap between distributions before and after the cut-off point.
+
+\chapter{The Durham Connects RCT and Requests for Social
+Services}\label{chapter-2}
+
+\section*{Motivation}\label{motivation-1}
+\addcontentsline{toc}{section}{Motivation}
+
+\textbf{Research Question}
+
+\begin{quote}
+For families that participated in the Durham Connects (DC) RCT program,
+did the intervention (education, resources, and nurse contact) impact
+the future probability of applying for social services?
+\end{quote}
+
+\textbf{Hypothesis}: I expect to observed a larger proportion of
+families that participated in Durham Connects requesting social
+services. My hypothesis is that the information and nurse contact
+provided to DC families decreased the complexity of applying and
+navigating the social safety net. As a result, DC families are observed
+more frequently not because they are, on average, in greater need of
+assistance, but because they have been informed and encouraged to seek
+out available resources.
+
+\section*{Concept in a Plot}\label{concept-in-a-plot-1}
+\addcontentsline{toc}{section}{Concept in a Plot}
+
+\begin{figure}
+\centering
+\includegraphics{noriega-prospectus-draft_files/figure-latex/plot-dc-1.pdf}
+\caption{\label{fig:plot-dc}Example of Hypothetical Result (Fake Data)}
+\end{figure}
+
+Figure \ref{fig:plot-dc} represents what I would ideally observe in the
+data should my hypothesis prove correct. Unit of analysis is aggregated
+counts of observed applications (requests) per person between time
+\texttt{0} and \texttt{T} (\texttt{T} is some fixed unit of time,
+perhaps 1 or 2 years). Time \texttt{0} is the date of birth for the baby
+that is (or is not) assigned to the Durham Connects RCT.
+
+The histogram of green bars represents counts for parents that were
+randomly assigned to DC. Red bars are those assigned to the control.
+Should my hypothesis prove correct, then I would see, in aggregate per
+person, more requests for services families that were assigned to DC.
+
+Note that these distributional comparisons are not the best way to test
+any hypothesis with what is event data. For more details on methods,
+please see the \protect\hyperlink{methods-2}{Methods} section.
+
+\section*{Introduction}\label{introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+Not all individuals that are eligible for social services apply to
+receive them. The proportion of those eligible for a social service that
+are actually receiving the service is known as the ``take-up'' rate.
+Ideally, given complete information about eligibility and the existence
+of social service programs---and zero costs in apply for, or receiving,
+government assistance---the take-up rate would be 100\%. To do otherwise
+would be to ``leave money on the table''---a violation of neoclassical
+economic theory. In the United States and across the globe, however,
+most social service programs never reach a full take-up rate.
+
+Explanations for low take-up rates are numerous. Economists, for
+example, developed models of social stigma to explain an individual's
+decision for not applying for government assistance
+\citep{moffitt_economic_1983}. Stigma is a costs that reduces the total
+utility acquired from receiving government assistance. Stigma and
+available benefits can vary across individuals. Those that acquire
+insufficient net benefits once the costs of stigma are included would
+therefore, reasonably, choose not to apply for government assistance.
+That is, the take-up rates can fall below 100\% within any set of
+eligible individuals when the costs of stigma outweigh those of the
+benefit. Stigma can also be extended to include other standard costs,
+like transaction costs or search costs.
+
+Low take-up rates can also be explained by relaxing standard
+neoclassical assumptions, like complete information. If one instead
+assumes that most individuals have \emph{incomplete} information about
+existing social services programs and corresponding eligibility
+requirements, then lower take-up rates are unsurprising. Eligibility
+requirements, for example, are dynamic. Families and individuals can
+fall in or out of eligibility given a change in policy, leaving families
+with an outdated understanding of requirements. For example, following
+welfare reform in 1996, federal requirements shifted for programs like
+Medicaid, Supplemental Security Income (SSI), and cash assistance
+(renamed to Temporary Assistance for Needy Families or TANF). Welfare
+reform also gave more power to states to determine eligibility
+standards. Dissemination and implementation of these new eligibility
+requirements was not instantaneous and the confusion lead to a reduction
+in take-up rates for some programs \citep{stuber_stigma_2004}. Shifting
+requirements aside, many families that are eligible for social service
+programs can be misinformed or confused. It can be difficult to navigate
+the application process when requesting government assistance.
+Information about programs and their eligibility requirements is diffuse
+and complicated. We do not expect everyone to fully grasp how to
+complete their taxes without assistance or making errors. Likewise, we
+should not expect families coping with poverty to be fully informed
+about benefit levels or the application process of every existing social
+service program.
+
+Behavioral economics offers other compelling reasons for low take-up
+rates. Status quo bias, for example, is a common task-completion
+deterrent \citep{kahneman_anomalies:_1991}. Simple inertia means that
+most people will procrastinate. This can keep any person from completing
+things like applications, making doctors appointments, or even folding
+laundry. Bounded rationality and the human tendency to use heuristics
+for decision making also reduce take-up rates. Often, individuals
+assume, based on some rule-of-thumb, that they must not be eligible. If
+this assumption is never challenged, either by seeking out information
+or having it provided, then they will never discover otherwise.
+Time-inconsistent preferences also present a challenge for take-up
+rates. Hyperbolic discounting implies that humans will favor putting off
+any decision where gains are felt far in the future but losses are felt
+almost immediately. In applying for government assistance, future
+benefits are discounted heavily while the short-term cost of applying
+are not \citep{currie_take-up_2006}.
+
+Perhaps the most simple, albeit depressing, explanation for low take-up
+rates is intentional bureaucracy. Governments purposefully make the
+application process burdensome and confusing to deter applications. The
+take-up rate of TANF, for example, has plummeted since the federal
+government overhauled welfare in 1996 \citep{ribar_how_2014}. TANF gave
+enormous leeway to states on how to distribute TANF dollars with little
+oversight. As a result, over the last 20 years states have shifted away
+from using TANF dollars for its intended purpose of providing cash
+assistance to needy families. On average, 26 percent of TANF dollars go
+towards provided basic cash assistance \citep{schott_how_2015}. This is
+because state and local governments, particularly in the deep south,
+where there is a long history of racial animus towards minorities and
+the ``undeserving'' poor, have made TANF eligibility requirements
+unreasonably strict \citep{keiser_race_2004}. North Carolina, for
+example, added drug testing a requirement to its TANF program known as
+``Work First'' \citep{lynn_bonner_nc_2016}. Adding insult to injury,
+minority families receiving TANF benefits are also more likely to be
+sanctioned by local caseworkers than white families, losing access to an
+already difficult-to-acquire benefit \citep{monnat_color_2010}. All in
+all, take-up rates for some social service programs can be low because
+state and local governments are actively increasing the costs for
+applying and maintaining benefits.\footnote{It is important to note that
+  there is also research showing application complexity always punishes
+  the poor. When applying for federal student aid, which is open to all
+  families, increased complexity burdens poor families the most
+  \citep{dynarski_cost_2006}. This further implies that the poor are
+  also those most likely to benefit from targeting marketing and
+  educational assistance \citep{bertrand_behavioral_2006}.}
+
+Low take-up rates should concern policy makers. The positive impact many
+government programs have on the quality of life of participating
+individuals is well researched. Following passage of the Affordable Care
+Act save lives, state Medicaid expansion increased self-reported health
+status, lowered rates of depression, and reduced financial strain and
+poverty
+\citep{baicker_oregon_2013, sommers_mortality_2012, sommers_poverty-reducing_2013}.
+Families that participate in the Supplemental Nutrition Assistance
+Program (SNAP) increase the nutritional value of their diet and free up
+cash for use on other priorities, like health care
+\citep{bartfeld_snap_2015, sonik_massachusetts_2016, miller_using_2017}.
+Increased use of the Earned Income Tax Credit (EITC) increases cash on
+hand, improves educational outcomes for children, and improves labor
+market out comes for adults
+\citep{grogger_effects_2003, bhargava_why_2012, dahl_impact_2012}.
+Lastly, eligible participants in the Women, Infants, and Children (WIC)
+programs improves child health outcomes, especially for the most
+disadvantage population, compared to eligible non-participants
+\citep{bitler_does_2005}. Therefore, considering the positive impact of
+most government assistance programs, it should be a priority to champion
+any low-cost policy changes that increase take-up rates.
+
+In the next section, I will introduce the Durham Connects (DC) program
+and how I believe it may help increase requests for social service
+programs. Note that increasing requests for social services is not
+equivalent to increasing take-up. A request for service, however, is a
+necessary first step for any eligible participant to receive benefits.
+Increased requests, therefore, serve as a proxy for increased take-up
+rates.
+
+\subsection*{The Durham Connects Randomized Control
+Trial}\label{the-durham-connects-randomized-control-trial}
+\addcontentsline{toc}{subsection}{The Durham Connects Randomized Control
+Trial}
+
+The \href{https://www.durhamconnects.org/about/}{Durham Connects} (DC)
+program is a postnatal nurse home-visiting program designed to be
+universal, short-term, and less intensive than other nurse home-visiting
+programs like Healthy Families America and Nurse-Family Partnership. The
+DC program, in brief, aims to celebrate with new mothers, support and
+connect then with community resources, and then follow-up if necessary.
+
+Before expanding, a randomized control trial (RCT) of the DC program was
+implemented from July 1, 2009 to December 31, 2010 to determine its
+efficacy. The RCT included \texttt{4777} births from two Durham
+hospitals. These two hospitals account for a vast majority of birth in
+Durham County. The randomization procedure assigned all babies born on
+even days to the DC program. Babies born on odd days were assigned to
+the control---the hospital status quo.
+
+Soon after birth, a DC program liaison at the hospital schedules a
+home-visit by a registered nurse with the infants family. During the
+initial home-visit, the nurse assess and rates 12 factor along 4 domains
+of family support: health of the mother and child, the safety of the
+home environment, planning care for the infant, and general wellbeing of
+the parent(s). Each of the 12 factors received a rating between
+\texttt{1} and \texttt{4} from the home-visiting Nurse. Each number
+represented varying levels of need and risk:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{1} - No risk/needs. General supportive guidance provided.
+\item
+  \texttt{2} - Low risk/needs. Concerns can be addressed by education
+  and in-home demonstrations during visit.
+\item
+  \texttt{3} - Moderate or high risk/needs. Family are linked with
+  community resources best suited to support risk areas.
+\item
+  \texttt{4} - Urgent needs. Immediate intervention required.
+\end{itemize}
+
+Follow-up visits are scheduled as necessary. Generally, the more support
+a family needs, the more follow-up visits will occur.
+
+Prior research has exploited the RCT structure of DC. Notably,
+\citet{dodge_implementation_2013} found that the DC nurse home-visiting
+program reduced emergency medical care costs and increase health
+outcomes for both mother and child. Furthermore, the DC program was
+found to be cost-effective, saving an estimated 3 dollars in medical
+costs for every dollar spent on implementation. In short, DC was
+impressively successful at improving the physical health and mental
+health of mother and child.
+
+I'm interested in exploiting the randomized assignment to measure what I
+would consider a secondary effect of the nurse home-visiting program. An
+``essential'' part of the program was establishing a link between DC
+families and Durham Social Services (DSS) to ``facilitate the \ldots{}
+ease of access to and knowledge about eligible services''
+\citep{odonnell_family_2015}. I hypothesize that by providing a trusted
+contact (the nurse), educational resources, and a link to local social
+services, a secondary effect of the DC program was that participants had
+a higher take-up rate than non-participants.
+
+The nurse--patient relationship is critical to the success of the DC
+program. Patients, generally, view nurses favorably, but interactions
+tend to be viewed more positively when they occur outside the
+hospital/clinic environment \citep{jansson_first-time_2002}.
+Participation in community health programs tends to be preferred when is
+organized and conducted by nurses \citep{kneipp_reasons_2009}. Nurses
+that assist in home-visiting program for new mothers, in particular,
+tend to be viewed very positively by their patients---as both a
+professional expert and friend \citep{landy_mothers_2012}.
+
+While initial DC home-visit may be brief in some cases (e.g.~rating is
+\texttt{1}), new mothers requiring the most support and resources are
+visited more than once. ({[}TK Need reference showing that new mothers,
+in particular, are open to help and support{]}.) Nurses are most
+involved with families that receive numerous factors rated \texttt{3} or
+\texttt{4}. In these instances, families are \emph{referred} to Durham
+Social Services for help. That is, DSS is made aware that the family is
+in need of a specific type of support and, with the help of the nurse,
+links up with the family directly. This is distinct to families with
+factors of only \texttt{1} and/or \texttt{2}. For these families, nurses
+only \emph{recommend} community services and resources. The option to
+utilize the resources is then left to the family.
+
+In both cases, however, notice that the nurse is, in one way or another,
+reducing the costs associated with applying for social services. At a
+minimum, the nurse reduces the \emph{search} costs for families by
+provided information for resources. At a maximum, the nurse works
+connect families with DSS directly to determine eligible services. In
+the latter case, the nurse, in partnership with DSS, also lowers the
+\emph{transaction cost} of applying.
+
+I should pause here for a moment to specify what it meant for a family
+to be ``linked with DSS''. It is my understanding that this meant a
+family was put in contact with, or place on the radar of, a specific DSS
+worker assigned specifically to assist DC families (name omitted). The
+degree to which this worker was involved in assisting families apply for
+services will greatly affect take-up rates. I have yet to interview this
+person, but I plan on doing so.
 
 \bibliography{bib/book.bib}
 

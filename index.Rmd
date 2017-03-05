@@ -15,7 +15,7 @@ link-citations: yes
 ---
 
 ```{r setup-all, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
-knitr::opts_chunk$set(cache = FALSE, dpi = 150, comment = "#>")
+knitr::opts_chunk$set(cache = FALSE, warning=FALSE, message=FALSE, error=FALSE, dpi = 150, comment = "#>", fig.width = 7.5, fig.height = 4.5)
 ```
 
 # Dissertation Overview {-}
@@ -24,7 +24,8 @@ Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks prog
 
 Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is a financial incentive---Double Up Food Bucks---designed to increase fruit and vegetables consumption. A comparison will be made with another financial incentive program called the *Healthy Incentives Pilot* (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.
 
-Chapter 2 extends the work of @schenck-fontaine_use_2016. Through surveys, @schenck-fontaine_use_2016 examine how families coping with poverty and economic instability supplement their SNAP benefits with additional assistance from informal and formal resources. In my paper, I dig deeper into how and when families use additional formal resources beyond SNAP---such as food banks and emergency cash assistance. My aim is to provide a more detailed understanding of these role formal networks play in supporting Durham families coping with poverty.
+Chapter 2 exploits the random assignment of the Durham Connects program to measure its long term impact on social service applications. Durham Connects (DC) provides free in-home nursing visits to residents of Durham County. It was implemented as an RCT between July 2009 to December 2010. The design treats DC as an information treatment. The DC information treatment (e.g. a nurse contact to ask questions and provide assistance) is expected to lower the learning and barrier costs of low income families with children when applying for social services.
 
-Chapter 3 exploits the random assignment of the Durham Connects program to measure its long term impact on social service applications. Durham Connects (DC) provides free in-home nursing visits to residents of Durham County. It was implemented as an RCT between July 2009 to December 2010. The design treats DC as an information treatment. The DC information treatment (e.g. a nurse contact to ask questions and provide assistance) is expected to lower the learning and barrier costs of low income families with children when applying for social services.
+Chapter 3 extends the work of @schenck-fontaine_use_2016. Through surveys, @schenck-fontaine_use_2016 examine how families coping with poverty and economic instability supplement their SNAP benefits with additional assistance from informal and formal resources. In my paper, I dig deeper into how and when families use additional formal resources beyond SNAP---such as food banks and emergency cash assistance. My aim is to provide a more detailed understanding of these role formal networks play in supporting Durham families coping with poverty.
+
 

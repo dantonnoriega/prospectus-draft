@@ -1,4 +1,4 @@
-\newpage
+# An Evaluation of the Double Up Food Bucks program {#chapter-1}
 
 ## Motivation {-}
 
@@ -22,3 +22,16 @@ I expect awareness of the DUFB program for this particular grocery chain appears
 Prior research finds that SNAP shoppers spend their benefits soon after receiving them, generally in one large shopping trip [@wiig_art_2009; @damon_first_2013]. The grocery stores are located in a state where benefits are disbursed every odd day of the month between the 3rd and 21st, spanning the first 3 weeks of each month. Therefore, by the 4th week, few unspent dollars will exists. Since the DUFB incentive is only triggered by the use of SNAP benefits, SNAP shoppers will be unable to make use of DUFB.
 
 I expect that, were we to remove the 4th week of each month from all stores, the DUFB effect size will increase. I do not anticipate to see shoppers behave in strategic saving behavior of DUFB points (which is quite difficult given the automatic accrual and redemption system) nor do I think FV spending to increase much without the presence of the incentive. More importantly, since I cannot track link purchases to individuals (more on this later), it will be impossible to identify which transactions are made by SNAP shoppers when they are not using their SNAP EBT cards.
+
+
+## Concept in a Plot {-}
+
+```{r plot-dd, echo = FALSE, fig.cap = "Example of Hypothetical Result (Fake Data"}
+DD()
+```
+
+What I am hoping to find is displayed in Figure \@ref(fig:plot-dd). Note that the data is fake and the time interval is at the monthly level (I plan to use daily data). The point of the graph is to emphasis that I expect to find a jump in dollars spent on fruits and vegetables in the experimental (treated) stores once the DUFB program begins in August. While I intend to use a difference-in-difference-in-differences (DDD) model as part of my analysis, I display a difference-in-differences (DD) to more easily highlight the effect of interest. 
+
+Assume that the DD displayed is isolating on the subpopulation of SNAP transactions observed. Then the dotted green line beginning at month `8` would represent the gap under the "parallel trends" assumption. The difference between the solid green line and the dotted green line represents the increase in dollars spent that I hope to identify.
+
+

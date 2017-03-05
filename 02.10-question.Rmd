@@ -1,0 +1,22 @@
+# The Durham Connects RCT and Requests for Social Services {#chapter-2}
+
+
+## Motivation {-}
+
+**Research Question**
+
+> For families that participated in the Durham Connects (DC) RCT program, did the intervention (education, resources, and nurse contact) impact the future probability of applying for social services?
+
+**Hypothesis**: I expect to observed a larger proportion of families that participated in Durham Connects requesting social services. My hypothesis is that the information and nurse contact provided to DC families decreased the complexity of applying and navigating the social safety net. As a result, DC families are observed more frequently not because they are, on average, in greater need of assistance, but because they have been informed and encouraged to seek out available resources.
+
+## Concept in a Plot {-}
+
+```{r plot-dc, echo = FALSE, fig.cap = "Example of Hypothetical Result (Fake Data)"}
+DC()
+```
+
+Figure \@ref(fig:plot-dc) represents what I would ideally observe in the data should my hypothesis prove correct. Unit of analysis is aggregated counts of observed applications (requests) per person between time `0` and `T` (`T` is some fixed unit of time, perhaps 1 or 2 years). Time `0` is the date of birth for the baby that is (or is not) assigned to the Durham Connects RCT.
+
+The histogram of green bars represents counts for parents that were randomly assigned to DC. Red bars are those assigned to the control. Should my hypothesis prove correct, then I would see, in aggregate per person, more requests for services families that were assigned to DC.
+
+Note that these distributional comparisons are not the best way to test any hypothesis with what is event data. For more details on methods, please see the [Methods](#methods-2) section.
