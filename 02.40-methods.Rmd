@@ -10,15 +10,17 @@ Assume all individuals equally value government benefits and incur the same cost
 
 Individual $i$ with characteristics vector $\bm{x_i}$ will apply for government assistance only if the *net benefit* amount is greater than zero. That is,
 
-$$\begin{gathered}
-  r_i  = \left \{ 
-    \begin{array}{c} 
-      1 \text{ if } NB(\bm{x_i}, c) > 0 \\ 
-      0 \text{ if } NB(\bm{x_i}, c) \le 0 
-    \end{array} \right. \\
-   \\
+$$
+r_i  = \left \{ 
+  \begin{array}{c} 
+    1 \text{ if } NB(\bm{x_i}, c) > 0 \\ 
+    0 \text{ if } NB(\bm{x_i}, c) \le 0 
+  \end{array} \right.
+$$
+
+$$
   NB(\bm{x_i}) = B(\bm{x_i}) - c
-\end{gathered}$$
+$$
 
 where $r_i$ is the decision to apply for benefits; $NB(\bm{x_i}, c)$ is the net benefit; $B(\bm{x_i})$ is the benefit amount as a function of individual characteristics, $\bm{x_i}$; and $c$ is the cost of applying. Eligible individuals have a value $B_i > 0$. Note that for convenience, $B_i \equiv B(\bm{x_i})$ and $NB(\bm{x_i}, c) \equiv NB_i$
 
@@ -31,7 +33,7 @@ such that $NB_{i1} > NB_{i0}$ for all individuals. This implies,
 
 $$P(r_i = 1|d_i = 1) \ge P(r_i=1|d_i = 0)$$
 
-In words, if assignment to DC reduces the costs of applying, then the probability of applying for all individuals must either increase or stay the same. Under this framework, this would imply that there must exists a population of eligible individuals ($B_i > 0$) such that $NB_{i1} > 0$ but $NB_{i0} < 0$. All other individuals are either ineligible ($B_i \le 0$) or their application decision remain unchanged after assignment ($B_i > 0$ but$NB_{i1} > NB_{i0} > 0$ or $NB_{i0} < NB_{i1} \le 0$).
+In words, if assignment to DC reduces the costs of applying, then the probability of applying for all individuals must either increase or stay the same. Under this framework, this would imply that there must exists a population of eligible individuals ($B_i > 0$) such that $NB_{i1} > 0$ but $NB_{i0} < 0$. All other individuals are either ineligible ($B_i \le 0$) or their application decision remain unchanged after assignment ($B_i > 0$ but $NB_{i1} > NB_{i0} > 0$ or $NB_{i0} < NB_{i1} \le 0$).
 
 In reality, the cost of applying is also a function of (both observed and unobserved) individual characteristics. But the model, even with simple costs, still helps to illustrate why I believe the DC program may lead to higher observed counts within the treated group.
 
@@ -55,23 +57,30 @@ I've also thought about creating a dynamic choice model where, from week to week
 
 Assume I've collected data for some fixed interval of time $T$ and know the complete population of RCT individuals, $N$. Any individual observed applying for assistance is tagged $y_i=1$. Those never observed are tagged $y_i=0$. I'm assuming that the treated and control groups are balanced along both observed and unobserved characteristics. The probit model is as follows:
 
-$$\begin{gather}
-w^* = \bm{x'\beta}  + \delta D + u, \quad u \sim N(0, \sigma^2) \\
+$$
+w^* = \bm{x'\beta}  + \delta D + u, \quad u \sim N(0, \sigma^2)
+$$
+
+$$
 P(y=1|\bm{x}, D) = \Phi \left (\frac{\bm{x'\beta}  + \delta D}{\sigma} \right ), \quad
 y = \left \{ 
-  \begin{array} 
-    ~1 \text{ if } w^* > 0 \\ 
-    ~0 \text{ otherwise}
-  \end{array} \right .
-\end{gather}$$
+  \begin{array}{cc} 
+    1 & \text{ if } w^* > 0 \\ 
+    0 & \text{ otherwise}
+  \end{array} 
+  \right .
+$$
 
-$$\star ~ E[u|D] = 0 ~ \star$$
+$$
+\star ~ E[u|D] = 0 ~ \star
+$$
 
 The emphasis on $E[u|D] = 0$ is to reiterate that assignment, $D$, was random, and is therefore *exogenous*. What I care to find out is the difference in probability of observing *any* social service application given $D$. Furthermore, my hypothesis is that it leads to an *increase*, such that
 
 $$
 \begin{aligned}
   E[y|\bm{x}, D=1] - [y|\bm{x}, D=0] &> 0 \\
+  \\
   \Rightarrow E \left [ 
         \Phi \left (\frac{\bm{x'\beta}  + \delta}{\sigma} \right )
       -
@@ -82,7 +91,7 @@ $$
 
 Of course, since $E[u|D] = 0$, the average treatment effect (ATE) is sufficient (and without bias)
 
-### Stratified Cox Proportional Hazard Model
+### Stratified Cox Proportional Hazard Model {-}
 
 TDB.
 

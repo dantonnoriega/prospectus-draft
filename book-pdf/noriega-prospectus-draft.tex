@@ -19,23 +19,20 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
+\usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
-\usepackage[unicode=true]{hyperref}
-\hypersetup{
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
             pdftitle={DRAFT Dissertation Prospectus},
             pdfauthor={Danton Noriega},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage[margin=1in]{geometry}
 \usepackage{natbib}
 \bibliographystyle{apalike}
 \usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -64,12 +61,6 @@
 \let\oldsubparagraph\subparagraph
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
-
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
 \usepackage{booktabs}
 \usepackage{lscape}
 \usepackage{longtable}
@@ -179,7 +170,7 @@
 
 \title{DRAFT Dissertation Prospectus}
 \author{Danton Noriega}
-\date{March 05, 2017}
+\date{March 06, 2017}
 
 \begin{document}
 \maketitle
@@ -2376,13 +2367,14 @@ even days to the DC program. Babies born on odd days were assigned to
 the control---the hospital status quo.
 
 Soon after birth, a DC program liaison at the hospital schedules a
-home-visit by a registered nurse with the infants family. During the
-initial home-visit, the nurse assess and rates 12 factor along 4 domains
-of family support: health of the mother and child, the safety of the
-home environment, planning care for the infant, and general wellbeing of
-the parent(s). Each of the 12 factors received a rating between
-\texttt{1} and \texttt{4} from the home-visiting Nurse. Each number
-represented varying levels of need and risk:
+home-visit by a registered nurse with the infant's family. The initial
+home-visit is generally schedule about 3 weeks following the birth but
+can be sooner. During the initial home-visit, the nurse assess and rates
+12 factor along 4 domains of family support: health of the mother and
+child, the safety of the home environment, planning care for the infant,
+and general wellbeing of the parent(s). Each of the 12 factors received
+a rating between \texttt{1} and \texttt{4} from the home-visiting Nurse.
+Each number represented varying levels of need and risk:
 
 \begin{itemize}
 \tightlist
@@ -2420,11 +2412,16 @@ contact (the nurse), educational resources, and a link to local social
 services, a secondary effect of the DC program was that participants had
 a higher take-up rate than non-participants.
 
-The nurse--patient relationship is critical to the success of the DC
-program. Patients, generally, view nurses favorably, but interactions
-tend to be viewed more positively when they occur outside the
-hospital/clinic environment \citep{jansson_first-time_2002}.
-Participation in community health programs tends to be preferred when is
+The nurse--patient relationship is key to the success of the DC program.
+The days and weeks following a new birth are periods of high need for
+both mother and child\footnote{TK seems obvious but need source; can't
+  find good one}. High need for postnatal/postpartum support means new
+mothers and families are more willing to accept help when
+offered---especially from nurses and nurse-centered programs. Patients,
+generally, view nurses favorably, but interactions tend to be viewed
+more positively when they occur outside the hospital/clinic environment
+\citep{jansson_first-time_2002}. Likewise, perceptions about community
+health programs tends to be more positive when they are known to be
 organized and conducted by nurses \citep{kneipp_reasons_2009}. Nurses
 that assist in home-visiting program for new mothers, in particular,
 tend to be viewed very positively by their patients---as both a
@@ -2432,9 +2429,9 @@ professional expert and friend \citep{landy_mothers_2012}.
 
 While initial DC home-visit may be brief in some cases (e.g.~rating is
 \texttt{1}), new mothers requiring the most support and resources are
-visited more than once. ({[}TK Need reference showing that new mothers,
-in particular, are open to help and support{]}.) Nurses are most
-involved with families that receive numerous factors rated \texttt{3} or
+visited more than once\footnote{TK Need reference showing that new
+  mothers, in particular, are open to help and support}. Nurses are most
+involved with families that receive factors rated \texttt{3} or
 \texttt{4}. In these instances, families are \emph{referred} to Durham
 Social Services for help. That is, DSS is made aware that the family is
 in need of a specific type of support and, with the help of the nurse,
@@ -2451,13 +2448,319 @@ connect families with DSS directly to determine eligible services. In
 the latter case, the nurse, in partnership with DSS, also lowers the
 \emph{transaction cost} of applying.
 
-I should pause here for a moment to specify what it meant for a family
-to be ``linked with DSS''. It is my understanding that this meant a
-family was put in contact with, or place on the radar of, a specific DSS
-worker assigned specifically to assist DC families (name omitted). The
-degree to which this worker was involved in assisting families apply for
-services will greatly affect take-up rates. I have yet to interview this
-person, but I plan on doing so.
+I should pause to specify what it meant for a family to be ``linked with
+DSS''. It is my understanding that this means a family was put in
+contact with, or place ``on the radar'' of, a specific DSS worker
+assigned to assist DC families (name omitted). The degree, and success,
+to which this worker was involved in assisting families apply for
+services would have had a significant impact take-up rates. I have yet
+to interview this person, but I plan on doing so.
+
+\section*{Data}\label{data-2}
+\addcontentsline{toc}{section}{Data}
+
+This paper will depend on two sources of data. The first data source is
+Durham Social Services (DSS). DSS has generously provided administrative
+records to determine what services where applied for and by whom. The
+second data source is the Center for Child and Family Health at Duke
+University (CCFH). CCFH has already collected and corrected the
+short-form birth records of all children born during the RCT. While
+these data are public record, CCFH's data drastically reduces the burden
+of
+
+\subsection*{Administrative Records}\label{administrative-records}
+\addcontentsline{toc}{subsection}{Administrative Records}
+
+Durham Social Services provided the Durham Children's Data Center (DCDC)
+with access to their administrative records. The pertinent data within
+the collection provided is known as the \emph{Scheduler} data. This is a
+database that logs all request for social services assistance from the
+DSS.
+
+I do not yet have explicit permission to write about what is in these
+data. That said, I do not think I'm revealing anything but the obvious
+by noting that the \emph{Scheduler} data contains name, age, service
+requested, and date of request. These 4 variable are sufficient to the
+explain my methodological approach. I have requests multiple years but
+need to verify if I have all of what is available.
+
+\subsection*{Short-form Birth Certificate
+Data}\label{short-form-birth-certificate-data}
+\addcontentsline{toc}{subsection}{Short-form Birth Certificate Data}
+
+Short-form birth certificates are public record. It is possible, for
+example, to request birth records directly from the
+\href{http://vitalrecords.nc.gov/order.htm}{North Carolina Department of
+Health and Human services}. Collecting all recorded births in Durham
+County from the 2 largest hospitals would take a considerable amount of
+time. Fortunately, the CCFH already collected and corrected the
+short-form birth certificate data.
+
+Short-form birth certificate includes sufficient information to identify
+which families were randomly assigned to Durham Connects. It also
+provides enough information to identify parents should they appear other
+administrative records that contain name and date-of-birth.
+Specifically, the child's date-of-birth, the child's name, the mother's
+maiden name, and the father's name (if present on long-form birth
+certificate).
+
+These four pieces of information are enough to search and tag when the
+parent's of a child born during the DC RCT applied for services. The
+child's date of birth is all that is needed to is required to determine
+assignment status.
+
+\subsection*{Matching Strategy}\label{matching-strategy}
+\addcontentsline{toc}{subsection}{Matching Strategy}
+
+An important step will be to link the two datasets. This will likely be
+done by matching on the names of the parents and dates of birth. Fuzzy
+matching procedures for character strings exists in \texttt{R} and
+\texttt{Stata}. I do not think this will too difficult or
+computationally intensive as the set of names that need to be searched
+for is quite small (about \texttt{5000}).
+
+\subsection*{IRB and Permissions}\label{irb-and-permissions}
+\addcontentsline{toc}{subsection}{IRB and Permissions}
+
+Currently, I am in the process of submitting an IRB request to access
+the CCFH's database contain the digitized and curated public short-form
+birth records.
+
+I am also waiting to hear if I have permission from the director of
+Durham Social Services to link these two data sets. I have no reason to
+believe the director will not approve. It is just a matter of having an
+opportunity to sit down and explain the idea and what it entails.
+
+\hypertarget{methods}{\section*{Methods}\label{methods}}
+\addcontentsline{toc}{section}{Methods}
+
+Methods for this paper are greatly simplified by the fact that
+assignment to Durham Connects was \emph{random}. This immediately
+provides an instrument where, by design, the exclusion restriction is
+true (always exogenous) to virtually any outcome variable of interest.
+For this study, I am interested Durham Social Services
+\emph{applications}, which will serve as a proxy for take-up rate.
+Requesting (applying for) government assistance does not guarantee
+receipt of benefits. But it is a necessary step for any eligible
+individual/family to apply.
+
+\subsection*{A Simple Model of Social Service
+Demand}\label{a-simple-model-of-social-service-demand}
+\addcontentsline{toc}{subsection}{A Simple Model of Social Service
+Demand}
+
+A simple economic model helps illustrate how I believe the Durham
+Connects program may help increase take-up.
+
+Assume all individuals equally value government benefits and incur the
+same costs when applying for benefits. Individuals, however, have
+different characteristics. These characteristics determine both
+eligibility and size of benefits. Let's also assume complete
+information, rationality, and that errors when applying are
+non-existent.
+
+Individual \(i\) with characteristics vector \(\bm{x_i}\) will apply for
+government assistance only if the \emph{net benefit} amount is greater
+than zero. That is,
+
+\[
+r_i  = \left \{ 
+  \begin{array}{c} 
+    1 \text{ if } NB(\bm{x_i}, c) > 0 \\ 
+    0 \text{ if } NB(\bm{x_i}, c) \le 0 
+  \end{array} \right.
+\]
+
+\[
+  NB(\bm{x_i}) = B(\bm{x_i}) - c
+\]
+
+where \(r_i\) is the decision to apply for benefits; \(NB(\bm{x_i}, c)\)
+is the net benefit; \(B(\bm{x_i})\) is the benefit amount as a function
+of individual characteristics, \(\bm{x_i}\); and \(c\) is the cost of
+applying. Eligible individuals have a value \(B_i > 0\). Note that for
+convenience, \(B_i \equiv B(\bm{x_i})\) and
+\(NB(\bm{x_i}, c) \equiv NB_i\)
+
+My hypothesis is that the Durham Connects program reduces the cost of
+applying. In this simple model, assume that the DC program drops the
+cost of applying down to some \(\tilde c < c\). Let \(d_i = 1\)
+represent assignment to DC. Before assignment, each individual is
+eligible for net benefits
+
+\[NB_i|_{d_i=1} = NB_{i1} = B_i - \tilde c\]
+\[NB_i|_{d_i=0} = NB_{i0} = B_i - c\]
+
+such that \(NB_{i1} > NB_{i0}\) for all individuals. This implies,
+
+\[P(r_i = 1|d_i = 1) \ge P(r_i=1|d_i = 0)\]
+
+In words, if assignment to DC reduces the costs of applying, then the
+probability of applying for all individuals must either increase or stay
+the same. Under this framework, this would imply that there must exists
+a population of eligible individuals (\(B_i > 0\)) such that
+\(NB_{i1} > 0\) but \(NB_{i0} < 0\). All other individuals are either
+ineligible (\(B_i \le 0\)) or their application decision remain
+unchanged after assignment (\(B_i > 0\) but \(NB_{i1} > NB_{i0} > 0\) or
+\(NB_{i0} < NB_{i1} \le 0\)).
+
+In reality, the cost of applying is also a function of (both observed
+and unobserved) individual characteristics. But the model, even with
+simple costs, still helps to illustrate why I believe the DC program may
+lead to higher observed counts within the treated group.
+
+\subsection*{Analytical Framework}\label{analytical-framework}
+\addcontentsline{toc}{subsection}{Analytical Framework}
+
+I plan to use the local average treatment effects (LATE) framework to
+measure changes in the timing and volume of applications to Durham
+Social Services \citep{angrist_mostly_2008}. I can be quite---but not
+totally---confident that, whatever the measured difference between the
+two subpopulations, it was driven solely by the \emph{compliers}. I say
+``quite'' because there are still some assumption that need to be made
+that would be costly to verify. I'll expand on this later in the
+section.
+
+In this context, \emph{compliers} are assigned to the treatment (Durham
+Connects) and, due to a \emph{recommendation} or \emph{referral} from a
+nurse home-visitor, apply for some eligible social service\footnote{TK a
+  percentage of who those who opted out would be great.}.
+\emph{Never-takers} would be families that, despite any referral or
+recommendation, refuse to apply for social services and
+\emph{always-takers} are families that would have applied for social
+services with or without assistance from Durham Connects.
+\emph{Non-compliers} will be ignored; I find it highly unlikely that a
+family will, given assignment to Durham Connects, choose not to apply
+for social services, even when informed of eligibility.
+
+I also want to distinguish between the \emph{timing} and \emph{volume}
+of applications. That an eligible family chooses to apply for a service
+would affect that family's application \emph{volume}. But also important
+is the \emph{timing} of the application. That a family applies earlier
+than they would have otherwise is important. As mentioned, hyperbolic
+discounting and status quo bias push humans to procrastinate. I could
+count the number of applications submitted within a fixed window (say, 2
+years) between the two groups and find no differences. Lost in this
+comparison, however, would be the \emph{timing} of the applications.
+That is, if the treated group happened to submit the same amount of
+applications as the control group, but did so \emph{sooner} than the
+control, that difference would be missed.
+
+To this end, I propose using two analytical approaches. The first is a
+simple Probit model. For the outcome variable, I determine which
+families with children born during the RCT were observed during some
+fixed period of time. I will then pool all families and regress whether
+or not they were observed on vector of observed characteristics,
+eligibility, assignment group, and other variables, like distance from
+the DSS office.
+
+This first approach is mostly to determine if there is really a
+``there'' there. It is inelegant and ignores some very important aspects
+of the application process. For example, this totally ignores that
+eligibility for social services is dynamic. Most families, for example,
+only receive SNAP benefits for a few months at a time. However, this
+model is useful if I make the assumption that these dynamic shifts
+between the two groups are, on average, the same. That is, I'm assuming
+the two groups are balance in both observable and unobservable
+character, such as eligibility, even over time.
+
+The second model will be a Cox proportional hazard (Cox PH) models for
+recurrent events. These event models explicitly account for time and
+counts. I must admit, though, that these recurrent event models are
+relatively new to me but I understand the basics enough to get how to
+structure the data. (I can certainly see that there is a relationship
+between Poisson regression and any hazard model.) I'm still deciding
+what type of Cox PH model suits this study (see Chapters 7 and 8 of
+\citet{aalen_survival_2008}).
+
+I've also thought about creating a dynamic choice model where, from week
+to week (or month to month), an individuals is either eligible for a
+particular social program. If so, then the individual decides whether or
+not to apply for a specific assistance program. Unfortunately, I do not
+know enough about these dynamic decision models and will need to read up
+on them more before suggesting anything.
+
+\subsection*{Poisson Regression Model with Pooled
+Data}\label{poisson-regression-model-with-pooled-data}
+\addcontentsline{toc}{subsection}{Poisson Regression Model with Pooled
+Data}
+
+Assume I've collected data for some fixed interval of time \(T\) and
+know the complete population of RCT individuals, \(N\). Any individual
+observed applying for assistance is tagged \(y_i=1\). Those never
+observed are tagged \(y_i=0\). I'm assuming that the treated and control
+groups are balanced along both observed and unobserved characteristics.
+The probit model is as follows:
+
+\[
+w^* = \bm{x'\beta}  + \delta D + u, \quad u \sim N(0, \sigma^2)
+\]
+
+\[
+P(y=1|\bm{x}, D) = \Phi \left (\frac{\bm{x'\beta}  + \delta D}{\sigma} \right ), \quad
+y = \left \{ 
+  \begin{array}{cc} 
+    1 & \text{ if } w^* > 0 \\ 
+    0 & \text{ otherwise}
+  \end{array} 
+  \right .
+\]
+
+\[
+\star ~ E[u|D] = 0 ~ \star
+\]
+
+The emphasis on \(E[u|D] = 0\) is to reiterate that assignment, \(D\),
+was random, and is therefore \emph{exogenous}. What I care to find out
+is the difference in probability of observing \emph{any} social service
+application given \(D\). Furthermore, my hypothesis is that it leads to
+an \emph{increase}, such that
+
+\[
+\begin{aligned}
+  E[y|\bm{x}, D=1] - [y|\bm{x}, D=0] &> 0 \\
+  \\
+  \Rightarrow E \left [ 
+        \Phi \left (\frac{\bm{x'\beta}  + \delta}{\sigma} \right )
+      -
+        \Phi \left (\frac{\bm{x'\beta}}{\sigma} \right )
+     \right ]  &> 0
+\end{aligned}
+\]
+
+Of course, since \(E[u|D] = 0\), the average treatment effect (ATE) is
+sufficient (and without bias)
+
+\subsection*{Stratified Cox Proportional Hazard
+Model}\label{stratified-cox-proportional-hazard-model}
+\addcontentsline{toc}{subsection}{Stratified Cox Proportional Hazard
+Model}
+
+TDB.
+
+\section{Next Steps}\label{next-steps}
+
+\begin{itemize}
+\tightlist
+\item
+  Data
+\item
+  {[} {]} Get IRB approval for short-form certificate data
+\item
+  {[} {]} Submit proposal to Michael Becketts for approval to link
+
+  \begin{itemize}
+  \tightlist
+  \item
+    DC data to DSS
+  \item
+    DSS data to other DSS data
+  \end{itemize}
+\item
+  Methods
+\item
+  {[} {]} Research Stratified Cox Proportional Hazard Model
+\end{itemize}
 
 \bibliography{bib/book.bib}
 
