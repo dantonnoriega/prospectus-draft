@@ -1,4 +1,4 @@
-## Data {-}
+## Data {#data-2 -}
 
 This paper will depend on two sources of data. The first data source is Durham Social Services (DSS). DSS has generously provided administrative records to determine what services where applied for and by whom. The second data source is the Center for Child and Family Health at Duke University (CCFH). CCFH has already collected and corrected the short-form birth records of all children born during the RCT. While these data are public record, CCFH's data drastically reduces the burden of 
 
@@ -6,7 +6,7 @@ This paper will depend on two sources of data. The first data source is Durham S
 
 Durham Social Services provided the Durham Children's Data Center (DCDC) with access to their administrative records. The pertinent data within the collection provided is known as the *Scheduler* data. This is a database that logs all request for social services assistance from the DSS.
 
-I do not yet have explicit permission to write about what is in these data. That said, I do not think I'm admitting anything beyond the obvious by noting that the *Scheduler* data contains name, age, service requested, and date of request. These 4 variable are sufficient to the explain my methodological approach.
+I do not yet have explicit permission to write about what is in these data. That said, I do not think I'm revealing anything but the obvious by noting that the *Scheduler* data contains name, age, service requested, and date of request. These 4 variable are sufficient to the explain my methodological approach. I have requests multiple years but need to verify if I have all of what is available.
 
 ### Short-form Birth Certificate Data {-}
 
@@ -16,7 +16,11 @@ Short-form birth certificate includes sufficient information to identify which f
 
 These four pieces of information are enough to search and tag when the parent's of a child born during the DC RCT applied for services. The child's date of birth is all that is needed to is required to determine assignment status.
 
-### IRB and Permissions
+### Matching Strategy {-}
+
+An important step will be to link the two datasets. This will likely be done by matching on the names of the parents and dates of birth. Fuzzy matching procedures for character strings exists in `R` and `Stata`. I do not think this will too difficult or computationally intensive as the set of names that need to be searched for is quite small (about `5000`).
+
+### IRB and Permissions {-}
 
 Currently, I am in the process of submitting an IRB request to access the CCFH's database contain the digitized and curated public short-form birth records.
 

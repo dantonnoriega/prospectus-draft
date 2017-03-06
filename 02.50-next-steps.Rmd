@@ -1,0 +1,9 @@
+## Next Steps
+
+- Data
+  - [ ] Get IRB approval for short-form certificate data
+  - [ ] Submit proposal to Michael Becketts for approval to link
+    - DC data to DSS
+    - DSS data to other DSS data
+- Methods
+  - [ ] Research Stratified Cox Proportional Hazard Model
