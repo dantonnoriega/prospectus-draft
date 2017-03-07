@@ -1,10 +1,9 @@
-\newpage
-
 ---
 
-**!!BELOW HERE BE DRAGONS (SUPER WORK IN PROGRESS)!!**
 
 ### Regression Discontinuity (RD) {-}
+
+**Work in Progress**
 
 I will also perform a secondary Regression Discontinuity (RD) Design analysis.
 
@@ -28,7 +27,7 @@ I propose to estimate the RD design using various values of $c$. The perpetual g
 
 The outcome of variable, as before, is *the total daily amount of dollars spent on fruits and vegetables per store transaction*. I decided on using days as the unit of observation to increase the sample amount of data for estimating. I expect there to be enough transactions per day for this to be possible. The time frame will be August - December (months $8$ - $12$) of 2016, when the DUFB incentive is place. Only SNAP transactions will be considered and transactions will be pooled. Given that stores may vary in sales volume sold, I may divide by total SNAP dollars spent so that the outcome variable is instead a proportion. In total, there will be `11` treated (experimental) stores and `12` control stores.
 
-Let $y_{ijt}$ represent the outcome variable where $i=1,...,K$, $j=1,...,N$ denotes stores across $t=1,...,T$. Let $c$ denote the cutoff; $s_{j}$ the score computed for store $j$; and $D_{j}$ the assignment variable. Each draw (or row) of data for store $j$ is a vector $(y_{jt}, s_{j}, D_{j})$corresponding to a single day. $\lambda_t$ are time effects and $u_{jt}$ is an idiosyncratic store level error term.
+Let $y_{jt}$ represent the outcome variable where $j=1,...,N$ denotes stores across $t=1,...,T$. Let $c$ denote the cutoff; $s_{j}$ the score computed for store $j$; and $D_{j}$ the assignment variable. Each draw (or row) of data for store $j$ is a vector $(y_{jt}, s_{j}, D_{j})$ corresponding to a single day. $\lambda_t$ are time effects and $u_{jt}$ is an idiosyncratic store level error term.
 
 The RD model I propose follows the setup of @lee_regression_2010 (section 4.3):
 

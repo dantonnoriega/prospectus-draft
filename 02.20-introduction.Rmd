@@ -1,4 +1,4 @@
-## Introduction {-}
+## Introduction {#intro-2 -}
 
 Not all individuals that are eligible for social services apply to receive them. The proportion of those eligible for a social service that are actually receiving the service is known as the "take-up" rate. Ideally, given complete information about eligibility and the existence of social service programs---and zero costs in apply for, or receiving, government assistance---the take-up rate would be 100%. To do otherwise would be to "leave money on the table"---a violation of neoclassical economic theory. In the United States and across the globe, however, most social service programs never reach a full take-up rate.
 

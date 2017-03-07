@@ -1,4 +1,4 @@
-## Methods {-}
+## Methods {#methods-2 -}
 
 Methods for this paper are greatly simplified by the fact that assignment to Durham Connects was *random*. This immediately provides an instrument where, by design, the exclusion restriction is true (always exogenous) to virtually any outcome variable of interest. For this study, I am interested Durham Social Services *applications*, which will serve as a proxy for take-up rate. Requesting (applying for) government assistance does not guarantee receipt of benefits. But it is a necessary step for any eligible individual/family to apply.
 

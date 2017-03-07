@@ -7,7 +7,7 @@ documentclass: book
 monofont: "Source Code Pro"
 monofontoptions: "Scale=0.8"
 fontsize: 12pt
-geometry: margin=1in
+geometry: margin=1.2in
 papersize: letterpaper
 bibliography: [bib/book.bib]
 biblio-style: apalike

@@ -1,0 +1,7 @@
+## Methods {- #methods-3}
+
+I propose using an *proportional frailty model* for recurrent events (see Chapter 7; @aalen_survival_2008).^["Frailty" is a fancy event history analysis word for unobserved heterogeneity aka endogeneity.] Is this the best model? I do not know. But more basic models I've research assume that events of interest occur only once [@singer_applied_2003]. I believe it probable that my event of interest---an application for emergency benefits---will occur more than once for some household heads.
+
+I have a lot to learn about survival analysis. I would love to write up a model for this draft, but I would be pretending to understand something I've spent too little time thinking about.
+
+I look forward to learning about how these methods. Until then, this section will remain regrettably sparse.

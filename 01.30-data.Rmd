@@ -1,4 +1,3 @@
-\newpage
 
 ## Data Description {#data-1 -}
 

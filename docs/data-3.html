@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="chapter-1.html">
+<link rel="prev" href="introduction.html">
+<link rel="next" href="methods-3.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -185,23 +185,30 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">DRAFT Dissertation Prospectus</h1>
-<h4 class="author"><em>Danton Noriega</em></h4>
-<h4 class="date"><em>March 06, 2017</em></h4>
+<div id="data-3" class="section level2 unnumbered">
+<h2>Data</h2>
+<p>The main data for this proposed papers comes from Durham Social Services (DSS) in North Carolina. Of the datasets provided by DSS, two pertain to this paper. The first is the SNAP (or FNS) data. The second is request for emergency assistance, known as the Community Access Database (CADB).</p>
+<p>I do not yet have permission to describe either data set in detail. I also do not have permission yet to link these two datasets together, despite being from the same source. I am waiting to receive approval from the Director of DSS. I expect his support but have been told not to show any data details or results.</p>
+<p>The other data I plan to use comes from Urban Ministries of Durham. It is their database of food pantry donations distributed per day. My aim is to show that aggregate demand for food assistance is highest during the 3rd and 4th weeks of any given calendar month. The second half of every month is when a majority of SNAP families would be out, or running low, on benefits.</p>
+<div id="dss-data" class="section level3 unnumbered">
+<h3>DSS Data</h3>
+<p><strong>SNAP/FNS Data</strong></p>
+<p>Without going into much detail, the important thing to note about these data is that they contain names of the household head and dependents, a case numbers to link with other datasets, benefit amounts, and SNAP certification months. The current SNAP data is also incomplete. It is missing many years of data and doesn’t contain a benefit transfer date. I’m working with DSS to fix each of these problems.</p>
+<p>From these data, what I care about most is names, case number, and the SNAP transfer and certificate dates. The case number is what should link the SNAP data to the CADB data. Just in case, I can attempt to fuzzy match by name. I can determine start times for any event study using the benefit transfer and certificate dates. The certificate date helps determine if and when a household—that does not renew—stops receiving benefits.</p>
+<p><strong>CADB</strong></p>
+<p>These data contain all requests made for emergency financial assistance. For this paper, what matter is the applicants case number, name, date of application, and type of assistance requested. As before, the case number and name are to help link between CADB and SNAP. The date of application and assistance type requested is the “event” of interest.</p>
+<p><strong>Approach</strong></p>
+<p>The first step is to identify overlapping years between the two databases, SNAP and CADB. Once determined, the population of interest will be sourced from the SNAP dataset. I will then search and tag any names found in the CADB that overlap.</p>
+<p>Next, I would need to determine continuity of SNAP benefits. This should not be difficult given that the SNAP data has a certification variable. This variable lists the months for which the household is to receive SNAP benefits.</p>
+<p>Once benefit continuity has been determined, I can then structure the data for a hazard model. The specifics of the hazard model are TBD.</p>
 </div>
-<div id="dissertation-overview" class="section level1 unnumbered">
-<h1>Dissertation Overview</h1>
-<p>Chapter 1 is an evaluation of the effectiveness of the Double Up Food Bucks program. “Effectiveness” will be defined by the change in total sales and volume of produce sold within 17 grocery stores that implement Double Up (treatment group). The control group comprises 15 stores where Double Up was not implemented. A difference-in-differences and regression discontinuity design will be used to measure the size of the effect.</p>
-<p>Improving health and food equity of SNAP participants is the broader policy concern. The mechanism is a financial incentive—Double Up Food Bucks—designed to increase fruit and vegetables consumption. A comparison will be made with another financial incentive program called the <em>Healthy Incentives Pilot</em> (HIP). I will argue how and why an evaluation of the Double Up program is an important addition to the current literature.</p>
-<p>Chapter 2 exploits the random assignment of the Durham Connects program to measure its long term impact on social service applications. Durham Connects (DC) provides free in-home nursing visits to residents of Durham County. It was implemented as an RCT between July 2009 to December 2010. The design treats DC as an information treatment. The DC information treatment (e.g. a nurse contact to ask questions and provide assistance) is expected to lower the learning and barrier costs of low income families with children when applying for social services.</p>
-<p>Chapter 3 extends the work of <span class="citation">Schenck-Fontaine, Gassman-Pines, and Hill (<a href="#ref-schenck-fontaine_use_2016">2016</a>)</span>. Through surveys, <span class="citation">Schenck-Fontaine, Gassman-Pines, and Hill (<a href="#ref-schenck-fontaine_use_2016">2016</a>)</span> examine how families coping with poverty and economic instability supplement their SNAP benefits with additional assistance from informal and formal resources. In my paper, I dig deeper into how and when families use additional formal resources beyond SNAP—such as food banks and emergency cash assistance. My aim is to provide a more detailed understanding of these role formal networks play in supporting Durham families coping with poverty.</p>
+<div id="food-pantry-data" class="section level3 unnumbered">
+<h3>Food Pantry Data</h3>
+<p>I have just received these data and have no yet taken a look at the contents. It is a Microsoft Access Database file with, I expect, 2 or 3 years of daily data. I have, however, seen a printout for these data from July 2016. The pattern, given the printout, seems to support my hypothesis.</p>
+<p>One thing to keep in mind is that demand for food can easily be higher than what is actually distributed. UMD doesn’t record who comes in requesting food from the food pantry. Furthermore, donations are capped at 26 families per day. Families are then turned away once the cap is hit. This means that more families could come in asking for food during distribution hours (9 am to 11 am, Monday through Friday), but such demands go unrecorded.</p>
+<p>I should also note that these data are maintained by a single person at UMD. The data is entered, however, by a different person—a volunteer. This volunteer comes in every Tuesday and Thursday morning to manually input the data. There is likely a bit of human error, but as long as a general trend is noticeable, then it should be better than nothing.</p>
+<p>I’m not sure if there is sufficient data here to run a regression that wouldn’t be bested by simply plotting the data. The food pantry data is therefore excluded from my methods section.</p>
 
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-schenck-fontaine_use_2016">
-<p>Schenck-Fontaine, Anika, Anna Gassman-Pines, and Zoelene Hill. 2016. “Use of Informal Safety Nets During the SNAP Benefit Cycle: How African-American Families Cope with Within-Month Economic Instability.” <em>Working Paper</em>.</p>
 </div>
 </div>
             </section>
@@ -209,8 +216,8 @@
           </div>
         </div>
       </div>
-
-<a href="chapter-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methods-3.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

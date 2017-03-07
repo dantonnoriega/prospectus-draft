@@ -1,0 +1,27 @@
+# The SNAP Benefit Cycle and the Demand for Emergency Assistance {#chapter-3}
+
+
+## Motivation {-}
+
+**Research Question** 
+
+> Do requests for emergency assistance increase towards the end of a household's SNAP benefit cycle?
+
+**Hypothesis**: I expect, on average, an increase in demand for formal assistance towards the last 2 weeks of the month following SNAP benefit transfers. That is, I expect to reject the null hypothesis that request for formal assistance from SNAP households are randomly distributed between transfer dates.
+
+Formal assistance refers to any assistance---cash, goods---from a government program, non-profit, or charity. In this paper, however, I focus on *emergency* formal assistance, where households apply for one-time (nonrecurring) assistance. I also include an analysis of aggregated food pantry data. This type of assistance can be recurring but when and how it is utilized by households is also enlightening.
+
+I plan to answer the question above in two ways. The first exploits the random nature of North Carolina's SNAP transfer schedule. Households are assigned a monthly transfer date based on the last digit of the head of household's social security number. Using administrative records, I can determine a households transfer date then check to see if, and when, any household member applied for emergency assistance. I can then build a discrete-time hazard model for each individual where the start time is a household's transfer date and the event of interest is date of application for emergency assistance.
+
+The second approach uses food pantry data. These data cannot capture individual level variation in SNAP transfer dates. It can only capture aggregate trends observed within normal monthly calendar cycles. However, I anticipate that demand for food pantry assistance will increase, in aggregate, during the 4th week of every calendar month, through the 1st. SNAP benefits are transfered from the 1st through 3rd week of each month. Most households will have had access to SNAP benefits for at least 2 weeks by the 4th week of each month. If most SNAP household consume their SNAP benefits quickly, then overlapping demand for additional food assistance will be highest during the 4th week through part of the 1st.
+
+## Concept in a Plot {-}
+
+```{r plot-cycle, echo = FALSE, fig.cap = "Pooled Monthly Request for Emergency Services by Day since Transfer using Fake Data"}
+OFF()
+```
+
+Here, `t=0` lines up with the SNAP transfer date for each household. The green line in Figure \@ref(fig:plot-cycle) represents what I would ideally expect to find when exploring the administrative data. That is, were I to count 12 months of request for emergency services by day-since-transfer, I would expect the counts to be higher in the 3rd and 4th week since transfer. The red line represents the null hypothesis that the SNAP benefit cycle has no impact on demands for cash. 
+
+I suspect, however, that requests for emergency cash assistance will be infrequent. Households also move in and out of receiving SNAP benefits. I also suspect seasonality will have an important impact on requests. All that is to say, my actual analysis of the data will be different. Please see the [Methods](#methods-3) section for details.
+

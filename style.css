@@ -10,7 +10,9 @@
 p.caption {
   color: #777;
   margin-top: 10px;
+  font-size: small;
 }
+
 p code {
   white-space: inherit;
 }
@@ -20,4 +22,8 @@ pre {
 }
 pre code {
   white-space: inherit;
+}
+
+.caption {
+    font-size: small;
 }

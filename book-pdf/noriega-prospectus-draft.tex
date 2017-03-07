@@ -19,20 +19,23 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage{microtype}
+\usepackage[]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
             pdftitle={DRAFT Dissertation Prospectus},
             pdfauthor={Danton Noriega},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1.2in]{geometry}
 \usepackage{natbib}
 \bibliographystyle{apalike}
 \usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -61,6 +64,12 @@
 \let\oldsubparagraph\subparagraph
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
 \usepackage{booktabs}
 \usepackage{lscape}
 \usepackage{longtable}
@@ -68,7 +77,7 @@
 \usepackage{isomath}
 \usepackage{setspace}
 % \doublespacing
-\usepackage[bf,singlelinecheck=off]{caption}
+\usepackage[labelfont=bf, singlelinecheck=off, font={footnotesize}, textfont=sf]{caption}
 \newcommand{\matr}[1]{\mathbf{#1}}
 \newcommand{\blandscape}{\begin{landscape}}
 \newcommand{\elandscape}{\end{landscape}}
@@ -323,8 +332,6 @@ transactions observed. Then the dotted green line beginning at month
 assumption. The difference between the solid green line and the dotted
 green line represents the increase in dollars spent that I hope to
 identify.
-
-\newpage
 
 \section*{Introduction}\label{intro-1}
 \addcontentsline{toc}{section}{Introduction}
@@ -824,8 +831,6 @@ conditions. This paper will be, to the best of my knowledge, the first
 to perform an evaluation of a financial incentive, targeted at SNAP
 participants, using a complete set of data, from multiple stores, across
 multiple years, and collected under non-experimental conditions.
-
-\newpage
 
 \hypertarget{data-1}{\section*{Data Description}\label{data-1}}
 \addcontentsline{toc}{section}{Data Description}
@@ -1543,8 +1548,6 @@ balanced groups.
 
 \includegraphics{noriega-prospectus-draft_files/figure-latex/unnamed-chunk-8-1.png}
 
-\newpage
-
 \hypertarget{methods-1}{\section*{Methods}\label{methods-1}}
 \addcontentsline{toc}{section}{Methods}
 
@@ -2071,15 +2074,13 @@ implement it in R or Python.\footnote{It looks like some folks at the
   company \href{http://www.mobilityanalytics.org}{Mobility Analytics}
   have started, which is very promising.}
 
-\newpage
-
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
-\textbf{!!BELOW HERE BE DRAGONS (SUPER WORK IN PROGRESS)!!}
 
 \subsection*{Regression Discontinuity
 (RD)}\label{regression-discontinuity-rd}
 \addcontentsline{toc}{subsection}{Regression Discontinuity (RD)}
+
+\textbf{Work in Progress}
 
 I will also perform a secondary Regression Discontinuity (RD) Design
 analysis.
@@ -2137,11 +2138,11 @@ SNAP dollars spent so that the outcome variable is instead a proportion.
 In total, there will be \texttt{11} treated (experimental) stores and
 \texttt{12} control stores.
 
-Let \(y_{ijt}\) represent the outcome variable where \(i=1,...,K\),
-\(j=1,...,N\) denotes stores across \(t=1,...,T\). Let \(c\) denote the
-cutoff; \(s_{j}\) the score computed for store \(j\); and \(D_{j}\) the
+Let \(y_{jt}\) represent the outcome variable where \(j=1,...,N\)
+denotes stores across \(t=1,...,T\). Let \(c\) denote the cutoff;
+\(s_{j}\) the score computed for store \(j\); and \(D_{j}\) the
 assignment variable. Each draw (or row) of data for store \(j\) is a
-vector \((y_{jt}, s_{j}, D_{j})\)corresponding to a single day.
+vector \((y_{jt}, s_{j}, D_{j})\) corresponding to a single day.
 \(\lambda_t\) are time effects and \(u_{jt}\) is an idiosyncratic store
 level error term.
 
@@ -2216,10 +2217,12 @@ Should my hypothesis prove correct, then I would see, in aggregate per
 person, more requests for services families that were assigned to DC.
 
 Note that these distributional comparisons are not the best way to test
-any hypothesis with what is event data. For more details on methods,
-please see the \protect\hyperlink{methods-2}{Methods} section.
+any hypothesis with what is event data. I also do not expect to see so
+many applications per person. In fact, what I really care about is if DC
+increase the likelihood of applying at all. But that graph looks far
+less interesting.
 
-\section*{Introduction}\label{introduction}
+\section*{Introduction}\label{intro-2}
 \addcontentsline{toc}{section}{Introduction}
 
 Not all individuals that are eligible for social services apply to
@@ -2531,7 +2534,7 @@ Durham Social Services to link these two data sets. I have no reason to
 believe the director will not approve. It is just a matter of having an
 opportunity to sit down and explain the idea and what it entails.
 
-\hypertarget{methods}{\section*{Methods}\label{methods}}
+\section*{Methods}\label{methods-2}
 \addcontentsline{toc}{section}{Methods}
 
 Methods for this paper are greatly simplified by the fact that
@@ -2738,7 +2741,8 @@ Model}
 
 TDB.
 
-\section{Next Steps}\label{next-steps}
+\section*{Next Steps}\label{next-steps}
+\addcontentsline{toc}{section}{Next Steps}
 
 \begin{itemize}
 \tightlist
@@ -2761,6 +2765,325 @@ TDB.
 \item
   {[} {]} Research Stratified Cox Proportional Hazard Model
 \end{itemize}
+
+\chapter{The SNAP Benefit Cycle and the Demand for Emergency
+Assistance}\label{chapter-3}
+
+\section*{Motivation}\label{motivation-2}
+\addcontentsline{toc}{section}{Motivation}
+
+\textbf{Research Question}
+
+\begin{quote}
+Do requests for emergency assistance increase towards the end of a
+household's SNAP benefit cycle?
+\end{quote}
+
+\textbf{Hypothesis}: I expect, on average, an increase in demand for
+formal assistance towards the last 2 weeks of the month following SNAP
+benefit transfers. That is, I expect to reject the null hypothesis that
+request for formal assistance from SNAP households are randomly
+distributed between transfer dates.
+
+Formal assistance refers to any assistance---cash, goods---from a
+government program, non-profit, or charity. In this paper, however, I
+focus on \emph{emergency} formal assistance, where households apply for
+one-time (nonrecurring) assistance. I also include an analysis of
+aggregated food pantry data. This type of assistance can be recurring
+but when and how it is utilized by households is also enlightening.
+
+I plan to answer the question above in two ways. The first exploits the
+random nature of North Carolina's SNAP transfer schedule. Households are
+assigned a monthly transfer date based on the last digit of the head of
+household's social security number. Using administrative records, I can
+determine a households transfer date then check to see if, and when, any
+household member applied for emergency assistance. I can then build a
+discrete-time hazard model for each individual where the start time is a
+household's transfer date and the event of interest is date of
+application for emergency assistance.
+
+The second approach uses food pantry data. These data cannot capture
+individual level variation in SNAP transfer dates. It can only capture
+aggregate trends observed within normal monthly calendar cycles.
+However, I anticipate that demand for food pantry assistance will
+increase, in aggregate, during the 4th week of every calendar month,
+through the 1st. SNAP benefits are transfered from the 1st through 3rd
+week of each month. Most households will have had access to SNAP
+benefits for at least 2 weeks by the 4th week of each month. If most
+SNAP household consume their SNAP benefits quickly, then overlapping
+demand for additional food assistance will be highest during the 4th
+week through part of the 1st.
+
+\section*{Concept in a Plot}\label{concept-in-a-plot-2}
+\addcontentsline{toc}{section}{Concept in a Plot}
+
+\begin{figure}
+\centering
+\includegraphics{noriega-prospectus-draft_files/figure-latex/plot-cycle-1.pdf}
+\caption{\label{fig:plot-cycle}Pooled Monthly Request for Emergency Services
+by Day since Transfer using Fake Data}
+\end{figure}
+
+Here, \texttt{t=0} lines up with the SNAP transfer date for each
+household. The green line in Figure \ref{fig:plot-cycle} represents what
+I would ideally expect to find when exploring the administrative data.
+That is, were I to count 12 months of request for emergency services by
+day-since-transfer, I would expect the counts to be higher in the 3rd
+and 4th week since transfer. The red line represents the null hypothesis
+that the SNAP benefit cycle has no impact on demands for cash.
+
+I suspect, however, that requests for emergency cash assistance will be
+infrequent. Households also move in and out of receiving SNAP benefits.
+I also suspect seasonality will have an important impact on requests.
+All that is to say, my actual analysis of the data will be different.
+Please see the \protect\hyperlink{methods-3}{Methods} section for
+details.
+
+\section*{Introduction}\label{introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+Cash assistance to needy families fell dramatically after 1996---the
+year welfare reform replaced Aid to Families with Dependent Children
+(AFDC) with Temporary Assistance for Needy Families (TANF). TANF
+profoundly changed how states prioritize and spend government welfare
+dollars. The result has been a gutting of traditional cash assistance
+programs over the last 20 year. Cash assistance used to accounted for
+70\% of AFDC spending. Under TANF, cash assistance accounts for 26\%,
+with ten states spending below 10\% \citep{schott_how_2015}. Fewer and
+fewer dollars now reach families in poverty with each passing year
+\citep{cbpp_chart_2016}.
+
+Decreased access to cash assistance corresponded with increased demand
+for in-kind ``cash-like'' assistance---most notably the Supplemental
+Nutrition Assistance Program (SNAP). SNAP is the most popular cash-like
+assistance available to families coping with poverty. At 45.8 million
+participants in FY2015, is also the largest food assistance program in
+the US \citep{usda_fns_supplemental_2016}. Millions of families not only
+depend on SNAP to provide sustained, predictable access to food, but
+also as a cash-like income supplement. But SNAP benefits are not cash.
+They cannot pay the rent or the bills. And when economic instability
+forces families to make tough decisions, it is a lack of cash that
+prompts families to search for help from formal and informal networks of
+support.
+
+SNAP benefits should act as a buffer, alleviating strained food budgets
+and allowing families to shift cash towards other priorities, like rent,
+utilities, and health care \citep{hoynes_snap_2015}. Theory, however,
+assumes SNAP benefits are treated like cash; that an increase in SNAP
+benefits should induce similar spending behavior as an equivalent
+increase in cash. Or, in economic terms, that the marginal propensity to
+spend SNAP benefits on food should equal the marginal propensity to
+spend cash on food. This assumption is false; SNAP benefits are not
+treated like cash. For example, when the 2009 American Recovery and
+Reinvestment Act temporary increased SNAP benefits by an average of
+\(13.6\%\), for every \(1\$\) dollar of SNAP benefits, \(48\) cents were
+spent on food, compared to only \(5\) cents when given a dollar in cash
+\citep{beatty_expenditure_2015}.
+
+SNAP benefits are also inadequate. They fail to cover monthly food
+expenditures for the majority of cash-strapped families---even when
+families maximize every dollar by consuming cheaper, less healthful
+foods \citep{wiig_art_2009}. This is not to say SNAP benefits don't
+help. On the contrary, they are incredibly important. Many families
+depend on SNAP. It can account for a majority of food expenditure. Some
+families even schedule their lives and budget priorities around the
+timing of their SNAP benefits \citep{edin_snap_2013}.
+
+The inadequacy of SNAP benefits to carry families through the end of the
+month, coupled with hyperbolic discounting, produces what is known as
+the ``SNAP benefit cycle'' \citep{smith_effects_2016}. This negative
+cycle is characterized by high spending within the first 3 days of
+receiving SNAP benefits, followed by a sharp decline
+\citep{goldin_is_2016}. In the days leading up to the next scheduled
+monthly transfer, families often have no benefits left to spend on food
+\citep{wilde_monthly_2000, shapiro_is_2005}. Low on cash and benefits,
+families often sustain themselves by tighten their belts and consuming
+less nutritious foods \citep{todd_revisiting_2015}. The cycle then
+repeats.
+
+The SNAP benefit cycle makes families vulnerable to unexpected negative
+income shocks. When cash is limited, unexpected expenses can be
+devastating. Health emergencies or job loss can strain cash supplies and
+leave families homeless or hungry \citep{curtis_life_2013}. For families
+coping with poverty, informal safety nets (e.g.~family, friends) tend to
+be the first line of defense when cash needs are high and formal safety
+nets like SNAP fall short \citep{schenck-fontaine_use_2016}. However,
+informal safety nets are not always available. Family and friends for
+those coping with poverty often struggle with similar levels of economic
+insecurity. Limited access to cash means families on the most extreme
+margins will turn to other forms of support, like food banks or
+emergency social services for assistance.
+
+Some formal services exists that can provide families with emergency
+cash to pay for necessities like rent, electricity, and food. Food banks
+are an example of formal service that could be considered emergency
+assistance for some families (although not for all, unfortunately).
+Emergency cash assistance also exists to help with rent and utilities
+but access can be quite restricted. Durham County Social Services, for
+example, provides emergency TANF assistance, which is limited to a \$400
+dollars per 365 days. Emergency food cards also exists, but SNAP
+recipients are ineligible.{[}\^{}One of the conditions to receiving a
+food card is that households must sign up for SNAP.{]}
+
+In this paper, I investigate how the SNAP benefit cycle affects demand
+for emergency assistance from formal support networks. I hypothesis that
+demand for emergency assistance is most likely to occur towards the end
+of the benefit cycle. I test my hypothesis by checking household demand
+for emergency cash services and demand from food banks in Durham County,
+North Carolina.
+
+\section*{Data}\label{data-3}
+\addcontentsline{toc}{section}{Data}
+
+The main data for this proposed papers comes from Durham Social Services
+(DSS) in North Carolina. Of the datasets provided by DSS, two pertain to
+this paper. The first is the SNAP (or FNS) data. The second is request
+for emergency assistance, known as the Community Access Database (CADB).
+
+I do not yet have permission to describe either data set in detail. I
+also do not have permission yet to link these two datasets together,
+despite being from the same source. I am waiting to receive approval
+from the Director of DSS. I expect his support but have been told not to
+show any data details or results.
+
+The other data I plan to use comes from Urban Ministries of Durham. It
+is their database of food pantry donations distributed per day. My aim
+is to show that aggregate demand for food assistance is highest during
+the 3rd and 4th weeks of any given calendar month. The second half of
+every month is when a majority of SNAP families would be out, or running
+low, on benefits.
+
+\subsection*{DSS Data}\label{dss-data}
+\addcontentsline{toc}{subsection}{DSS Data}
+
+\textbf{SNAP/FNS Data}
+
+Without going into much detail, the important thing to note about these
+data is that they contain names of the household head and dependents, a
+case numbers to link with other datasets, benefit amounts, and SNAP
+certification months. The current SNAP data is also incomplete. It is
+missing many years of data and doesn't contain a benefit transfer date.
+I'm working with DSS to fix each of these problems.
+
+From these data, what I care about most is names, case number, and the
+SNAP transfer and certificate dates. The case number is what should link
+the SNAP data to the CADB data. Just in case, I can attempt to fuzzy
+match by name. I can determine start times for any event study using the
+benefit transfer and certificate dates. The certificate date helps
+determine if and when a household---that does not renew---stops
+receiving benefits.
+
+\textbf{CADB}
+
+These data contain all requests made for emergency financial assistance.
+For this paper, what matter is the applicants case number, name, date of
+application, and type of assistance requested. As before, the case
+number and name are to help link between CADB and SNAP. The date of
+application and assistance type requested is the ``event'' of interest.
+
+\textbf{Approach}
+
+The first step is to identify overlapping years between the two
+databases, SNAP and CADB. Once determined, the population of interest
+will be sourced from the SNAP dataset. I will then search and tag any
+names found in the CADB that overlap.
+
+Next, I would need to determine continuity of SNAP benefits. This should
+not be difficult given that the SNAP data has a certification variable.
+This variable lists the months for which the household is to receive
+SNAP benefits.
+
+Once benefit continuity has been determined, I can then structure the
+data for a hazard model. The specifics of the hazard model are TBD.
+
+\subsection*{Food Pantry Data}\label{food-pantry-data}
+\addcontentsline{toc}{subsection}{Food Pantry Data}
+
+I have just received these data and have no yet taken a look at the
+contents. It is a Microsoft Access Database file with, I expect, 2 or 3
+years of daily data. I have, however, seen a printout for these data
+from July 2016. The pattern, given the printout, seems to support my
+hypothesis.
+
+One thing to keep in mind is that demand for food can easily be higher
+than what is actually distributed. UMD doesn't record who comes in
+requesting food from the food pantry. Furthermore, donations are capped
+at 26 families per day. Families are then turned away once the cap is
+hit. This means that more families could come in asking for food during
+distribution hours (9 am to 11 am, Monday through Friday), but such
+demands go unrecorded.
+
+I should also note that these data are maintained by a single person at
+UMD. The data is entered, however, by a different person---a volunteer.
+This volunteer comes in every Tuesday and Thursday morning to manually
+input the data. There is likely a bit of human error, but as long as a
+general trend is noticeable, then it should be better than nothing.
+
+I'm not sure if there is sufficient data here to run a regression that
+wouldn't be bested by simply plotting the data. The food pantry data is
+therefore excluded from my methods section.
+
+\hypertarget{methods-3}{\section*{Methods}\label{methods-3}}
+\addcontentsline{toc}{section}{Methods}
+
+I propose using an \emph{proportional frailty model} for recurrent
+events (see Chapter 7; \citet{aalen_survival_2008}).\footnote{``Frailty''
+  is a fancy event history analysis word for unobserved heterogeneity
+  aka endogeneity.} Is this the best model? I do not know. But more
+basic models I've research assume that events of interest occur only
+once \citep{singer_applied_2003}. I believe it probable that my event of
+interest---an application for emergency benefits---will occur more than
+once for some household heads.
+
+I have a lot to learn about survival analysis. I would love to write up
+a model for this draft, but I would be pretending to understand
+something I've spent too little time thinking about.
+
+I look forward to learning about how these methods. Until then, this
+section will remain regrettably sparse.
+
+\section*{Next Steps}\label{next-steps-1}
+\addcontentsline{toc}{section}{Next Steps}
+
+\begin{itemize}
+\tightlist
+\item
+  Data
+
+  \begin{itemize}
+  \tightlist
+  \item
+    {[} {]} Meet with Rebecca at DSS to get transfer dates and missing
+    SNAP data
+  \item
+    {[} {]} Get permission from Michael Becketts to link SNAP and CADB
+    data for my paper
+  \item
+    {[} {]} Explore food pantry data and make exploratory plots
+  \end{itemize}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    {[} {]} Teach myself survival analysis (I found two well reviewed
+    books to study)
+  \end{itemize}
+\end{itemize}
+
+\chapter{Healthy Food Experiments (BECR
+Project)}\label{healthy-food-experiments-becr-project}
+
+I'm working with a BECR Center team that is piloting a few random
+experiments. The aim is to nudge people towards purchasing healthier
+snacks. They are working in partnership with
+\href{http://familyfareconveniencestores.com}{Family Fare Convenience
+Stores} to run the experiments and collect the data.
+
+In exchange for a co-authorship, I am helping will all things data.
+
+I'm listing this to point out that \textbf{I have a back up paper}.
 
 \bibliography{bib/book.bib}
 
