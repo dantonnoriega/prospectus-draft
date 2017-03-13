@@ -1,0 +1,13 @@
+\newpage
+
+## Concept in a Plot {-}
+
+```{r plot-dd, echo = FALSE, fig.cap = "Example of Hypothetical Result (Fake Data"}
+DD()
+```
+
+What I am hoping to find is displayed in Figure \@ref(fig:plot-dd). Note that the data is fake and the time interval is at the monthly level (I plan to use daily data). The point of the graph is to emphasis that I expect to find a jump in dollars spent on fruits and vegetables in the experimental (treated) stores once the DUFB program begins in August. While I intend to use a difference-in-difference-in-differences (DDD) model as part of my analysis, I display a difference-in-differences (DD) to more easily highlight the effect of interest. 
+
+Assume that the DD displayed is isolating on the subpopulation of SNAP transactions observed. Then the dotted green line beginning at month `8` would represent the gap under the "parallel trends" assumption. The difference between the solid green line and the dotted green line represents the increase in dollars spent that I hope to identify.
+
+\newpage
