@@ -20,7 +20,7 @@ knitr::opts_chunk$set(cache = FALSE, warning=FALSE, message=FALSE, error=FALSE, 
 
 # Dissertation Overview {-}
 
-The broader goal of my dissertation is to explore existing policies aimed at improving access to, or the coverage of, government assistance programs. I will do so in three studies. The first measures the impact of a financial incentive that may or may not increase access to fresh produce for SNAP participants. The second investigates if a low-cost, universal nurse home-visiting program can, as a secondary effect, help eligible families receive assistance sooner and/or more frequently. The third aims to continue building the case that in-kind transfer programs, while critical to families coping with poverty, remain insufficient for many families.
+The broader goal of my dissertation is to explore existing policies aimed at improving access to, the coverage of, and the efficacy of, government assistance programs. I will do so in three studies. The first measures the impact of a financial incentive that may or may not increase access to fresh produce for SNAP participants. The second investigates if a low-cost, universal nurse home-visiting program can, as a secondary effect, help eligible families receive assistance sooner and/or more frequently. The third aims to continue building the case that in-kind transfer programs, while critical to families coping with poverty, remain insufficient, leaving families living month to month and vulnerable to emergencies.
 
 ## Chapter Summaries {-}
 
