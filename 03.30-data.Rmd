@@ -2,17 +2,22 @@
 
 The main data for this proposed papers comes from Durham Social Services (DSS) in North Carolina. Of the datasets provided by DSS, two pertain to this paper. The first is the SNAP (or FNS) data. The second is request for emergency assistance, known as the Community Access Database (CADB).
 
-I do not yet have permission to describe either data set in detail. I also do not have permission yet to link these two datasets together, despite being from the same source. I am waiting to receive approval from the Director of DSS. I expect his support but have been told not to show any data details or results.
+At the moment, I do not have permission to describe either data set in detail. I also do not have permission to link these two datasets together, despite being from the same source. I am waiting to receive approval from the Director of DSS. I expect his support but have been told not to show any data details or results.
 
-The other data I plan to use comes from Urban Ministries of Durham. It is their database of food pantry donations distributed per day. My aim is to show that aggregate demand for food assistance is highest during the 3rd and 4th weeks of any given calendar month. The second half of every month is when a majority of SNAP families would be out, or running low, on benefits.
+The other data I plan to use comes from Urban Ministries of Durham. It is their database of food pantry donations distributed per day. I hypothesize that aggregate demand for food assistance is highest during the 3rd and 4th weeks of any given calendar month. The second half of every month is when the largest fraction of SNAP families would be out, or running low, on benefits. I must emphasize that I do not expect the increase to be dramatic. But I do expect to see a cyclical pattern where the peak occurs near week 4.
 
-### DSS Data {-}
+### Durham Social Services Data {-}
 
 **SNAP/FNS Data**
 
-Without going into much detail, the important thing to note about these data is that they contain names of the household head and dependents, a case numbers to link with other datasets, benefit amounts, and SNAP certification months. The current SNAP data is also incomplete. It is missing many years of data and doesn't contain a benefit transfer date. I'm working with DSS to fix each of these problems.
+Without going into too much detail, the important thing to note about these data is that they contain names of the household head and dependents, a case numbers to link with other datasets, benefit amounts, and the SNAP certification period in month. The current SNAP data is also incomplete. It is missing many years of data and doesn't contain a benefit transfer date. I'm working with DSS to fix each of these problems.
 
-From these data, what I care about most is names, case number, and the SNAP transfer and certificate dates. The case number is what should link the SNAP data to the CADB data. Just in case, I can attempt to fuzzy match by name. I can determine start times for any event study using the benefit transfer and certificate dates. The certificate date helps determine if and when a household---that does not renew---stops receiving benefits.
+From these data, what I care about most is names, case number, and the SNAP transfer date, and the certificate periods. The case number is what should link the SNAP data to the CADB data. Just in case, I can attempt to fuzzy match by name. I can determine start times for any event study using the benefit transfer data and the certificate period. The certificate period helps determine if and when a household---that does not renew---stops receiving benefits.
+
+The transfer date variable is incredibly important. In the state of North Carolina, transfer dates are determined by the last digit of people's social security numbers. Social security numbers are mapped to every odd day from the 3rd to the 21st of every month. Those ending in `0` are mapped to the 3rd, `1` to the 5th, and so forth, with `9` mapping to the 21st. Those without social security numbers are mapped to the 3rd, creating a slight bump in probability to an otherwise uniform distribution. This implies that transfer dates are assigned essentially at random.
+
+This randomness is essential towards identifying if events are impacted by the SNAP benefit cycle. If, for example, the transfer date occurred during the 1st of the month for all SNAP participants, then many other calendar-month events---like rent payments, utility payments, or payment schedules---become endogenous to the SNAP benefit cycle. 
+
 
 **CADB**
 
@@ -28,7 +33,7 @@ Once benefit continuity has been determined, I can then structure the data for a
 
 ### Food Pantry Data {-}
 
-I have just received these data and have no yet taken a look at the contents. It is a Microsoft Access Database file with, I expect, 2 or 3 years of daily data. I have, however, seen a printout for these data from July 2016. The pattern, given the printout, seems to support my hypothesis. 
+I have just received these data and have no yet taken a look at the contents. It is a Microsoft Access Database file with, I expect, 2 or 3 years of daily data. I have, however, seen a printout for these data from July 2016. The pattern, given the printout, seems to support my hypothesis above---donations are highest towards the end of the month.
 
 One thing to keep in mind is that demand for food can easily be higher than what is actually distributed. UMD doesn't record who comes in requesting food from the food pantry. Furthermore, donations are capped at 26 families per day. Families are then turned away once the cap is hit. This means that more families could come in asking for food during distribution hours (9 am to 11 am, Monday through Friday), but such demands go unrecorded.
 

@@ -1,3 +1,0 @@
-# methods
-
-@verbeek_pseudo-panels_2008 summarizes the pioneering work of @deaton_panel_1985 and @moffitt_identification_1993, both of whom construct "pseudo-panel" data from repeated cross-sections to produce consistent population estimates. The underlying method is to break repeated cross-sections of observations into time-invariant groups, whereby averaging over observations in each group allows for consistent estimation of fixed-effects models using OLS. This is a middle ground between methods for panel data and methods for pooled cross-section. In other words, it is a second-best OLS alternative given I cannot link purchases to individuals but I can still link purchases to stores.

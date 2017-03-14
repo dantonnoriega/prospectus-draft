@@ -1,28 +1,31 @@
 ## Data {#data-2 -}
 
-This paper will depend on two sources of data. The first data source is Durham Social Services (DSS). DSS has generously provided administrative records to determine what services where applied for and by whom. The second data source is the Center for Child and Family Health at Duke University (CCFH). CCFH has already collected and corrected the short-form birth records of all children born during the RCT. While these data are public record, CCFH's data drastically reduces the burden of 
+This paper will depend on two sources of data. The first data source is Durham Social Services (DSS). DSS has generously provided administrative records to determine what services where applied for and by whom. The second data source is the Center for Child and Family Health at Duke University (CCFH). CCFH has already collected the short-form birth records of all children born during the RCT. While these data are public record, access to CCFH's data would drastically reduces the burden of acquiring these data. 
+
+For example, were I not to use CCFH's data, I would have to requests the short-form birth records, wait to receive them, and then manually input the records data into a spreadsheet (the birth certificate come as digital copies of the paper certificate). That would take an incredibly long time. Furthermore, CCFH was able to verify if the short-form birth records received contained any errors. This is because they have access to their own records collected during the RCT. Six errors were found and corrected. I would not be able to do the same corrections on my own.
 
 ### Administrative Records {-}
 
 Durham Social Services provided the Durham Children's Data Center (DCDC) with access to their administrative records. The pertinent data within the collection provided is known as the *Scheduler* data. This is a database that logs all request for social services assistance from the DSS.
 
-I do not yet have explicit permission to write about what is in these data. That said, I do not think I'm revealing anything but the obvious by noting that the *Scheduler* data contains name, age, service requested, and date of request. These 4 variable are sufficient to the explain my methodological approach. I have requests multiple years but need to verify if I have all of what is available.
+I do not yet have explicit permission to write about what is in these data. That said, I do not think I'm revealing anything obvious by noting that the *Scheduler* data contains name, age, service requested, and date of request. These 4 variable are sufficient to explain my methodological approach. I have access to multiple years of data but still need to verify if I have all that is available.
 
 ### Short-form Birth Certificate Data {-}
 
 Short-form birth certificates are public record. It is possible, for example, to request birth records directly from the [North Carolina Department of Health and Human services](http://vitalrecords.nc.gov/order.htm). Collecting all recorded births in Durham County from the 2 largest hospitals would take a considerable amount of time. Fortunately, the CCFH already collected and corrected the short-form birth certificate data.
 
-Short-form birth certificate includes sufficient information to identify which families were randomly assigned to Durham Connects. It also provides enough information to identify parents should they appear other administrative records that contain name and date-of-birth. Specifically, the child's date-of-birth, the child's name, the mother's maiden name, and the father's name (if present on long-form birth certificate). 
+Short-form birth certificate includes sufficient information to identify which families were randomly assigned to Durham Connects. It also provides enough information to identify parents should they appear in other administrative records that contain name and date-of-birth. Specifically, the child's date-of-birth, the child's name, the mother's maiden name, and the father's name (if present). 
 
-These four pieces of information are enough to search and tag when the parent's of a child born during the DC RCT applied for services. The child's date of birth is all that is needed to is required to determine assignment status.
+These four pieces of information are enough to search and tag when the parents of a child born during the DC RCT applied for services. The child's date of birth is all that is required to determine assignment status.
 
 ### Matching Strategy {-}
 
 An important step will be to link the two datasets. This will likely be done by matching on the names of the parents and dates of birth. Fuzzy matching procedures for character strings exists in `R` and `Stata`. I do not think this will too difficult or computationally intensive as the set of names that need to be searched for is quite small (about `5000`).
 
+
 ### IRB and Permissions {-}
 
 Currently, I am in the process of submitting an IRB request to access the CCFH's database contain the digitized and curated public short-form birth records.
 
-I am also waiting to hear if I have permission from the director of Durham Social Services to link these two data sets. I have no reason to believe the director will not approve. It is just a matter of having an opportunity to sit down and explain the idea and what it entails.
+I am also waiting to hear if I have permission from the director of Durham Social Services to link these two data sets. I have no reason to believe the director will not approve. It is just a matter of having an opportunity to sit down and explain the idea and what it entails. The meeting is anticipated to occur in late March.
 

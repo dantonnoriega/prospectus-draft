@@ -8,6 +8,6 @@ OFF()
 
 Here, `t=0` lines up with the SNAP transfer date for each household. The green line in Figure \@ref(fig:plot-cycle) represents what I would ideally expect to find when exploring the administrative data. That is, were I to count 12 months of request for emergency services by day-since-transfer, I would expect the counts to be higher in the 3rd and 4th week since transfer. The red line represents the null hypothesis that the SNAP benefit cycle has no impact on demands for cash. 
 
-I suspect, however, that requests for emergency cash assistance will be infrequent. Households also move in and out of receiving SNAP benefits. I also suspect seasonality will have an important impact on requests. All that is to say, my actual analysis of the data will be different. Please see the [Methods](#methods-3) section for details.
+I suspect, however, that requests for emergency cash assistance will be infrequent. I also suspect seasonality will have an important impact on requests. For example, emergency assistance for utilities will likely increase during winter months. All that is to say, my actual analysis of the data will be different. Please see the [Methods](#methods-3) section for details.
 
 \newpage

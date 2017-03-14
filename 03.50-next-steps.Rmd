@@ -1,8 +1,13 @@
+\newpage
+
 ## Next Steps {-}
 
-- Data
-    + [ ] Meet with Rebecca at DSS to get transfer dates and missing SNAP data
-    + [ ] Get permission from Michael Becketts to link SNAP and CADB data for my paper
-    + [ ] Explore food pantry data and make exploratory plots
-- Methods
-    + [ ] Teach myself survival analysis (I found two well reviewed books to study)
+Data
+
++ Meet with Rebecca at DSS to get transfer dates and missing SNAP data
++ Get permission from Michael Becketts to link SNAP and CADB data for my paper
++ Explore food pantry data and make exploratory plots
+
+Methods
+
++ Teach myself survival analysis (I found two well reviewed books to study)
