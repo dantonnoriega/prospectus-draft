@@ -4,14 +4,15 @@
 \usepackage{bm}
 \usepackage{isomath}
 \usepackage{setspace}
-% \doublespacing
 \usepackage[labelfont=bf, singlelinecheck=off, font={footnotesize}, textfont=sf]{caption}
+% \doublespacing
 \newcommand{\matr}[1]{\mathbf{#1}}
 \newcommand{\blandscape}{\begin{landscape}}
 \newcommand{\elandscape}{\end{landscape}}
 
-\setromanfont[Mapping=tex-text]{Minion Pro}
-\setsansfont[Mapping=tex-text]{Source Sans Pro}
+%Ligatures=NoCommon very clutch for removing ligatures
+\setromanfont[Mapping=tex-text, Ligatures=NoCommon]{Minion Pro}
+\setsansfont[Mapping=tex-text, Ligatures=NoCommon]{Source Sans Pro}
 \setmonofont[Mapping=tex-text,Scale=0.8]{Source Code Pro}
 
 \usepackage{framed,color}
