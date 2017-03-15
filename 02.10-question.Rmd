@@ -5,13 +5,13 @@
 
 **Research Question**
 
-> Did assignment to the Durham Connects (DC) RCT impact a family's future probability of applying for social services?  That is, for families assigned to DC during the trail period, I want to see if the intervention (nurse home-visit) increase the probability of applying for social services *sooner* or at all.
+> Did assignment to the Durham Connects (DC) RCT impact a family's future probability of applying for social services?  That is, for families assigned to DC during the trail period, I want to see if the intervention (nurse home-visit) increased the probability of applying for social services *sooner* and/or overall.
 
 **Hypothesis**: I expect to observe a larger proportion of families, randomly assigned to the Durham Connects program, requesting social services. This would include social services like the Supplemental Nutrition and Assistance Program (SNAP), Temporary Assistance for Needy Families, Child Care Subsidies, and Medicaid. 
 
 My hypothesis is that the information and nurse contact provided to DC families decreased the complexity of applying and navigating the social safety net. As a result, I expected DC families will be observed applying for social services sooner and/or more frequently, not because they are, on average, in greater need of assistance, but because they have been informed and encouraged to seek out available resources.
 
-The RCT design of the Durham Connects program allows me to make certain assumptions with reasonable confidence. Without these assumption, my research question would be impossible to answer.
+The RCT design of the Durham Connects program allows me to make certain assumptions with reasonable confidence. Without these assumption, my research question would be difficult to answer.
 
 The first assumption is that random assignment resulted in relatively balanced groups. Eligibility for social services is a function of income and demographics, and I'm assuming these are, on average, the same between the treatment and control groups. I have no way to test balance along income, but I can attempt to check balance along race/ethnicity using first and last names.
 

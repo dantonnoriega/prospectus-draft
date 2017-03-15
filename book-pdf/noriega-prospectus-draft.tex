@@ -19,20 +19,23 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage{microtype}
+\usepackage[]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1.2in]{geometry}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
             pdftitle={DRAFT Dissertation Prospectus},
             pdfauthor={Danton Noriega},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1.2in]{geometry}
 \usepackage{natbib}
 \bibliographystyle{apalike}
 \usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -61,6 +64,12 @@
 \let\oldsubparagraph\subparagraph
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
 \usepackage{booktabs}
 \usepackage{lscape}
 \usepackage{longtable}
@@ -2201,8 +2210,8 @@ Services}\label{chapter-2}
 Did assignment to the Durham Connects (DC) RCT impact a family's future
 probability of applying for social services? That is, for families
 assigned to DC during the trail period, I want to see if the
-intervention (nurse home-visit) increase the probability of applying for
-social services \emph{sooner} or at all.
+intervention (nurse home-visit) increased the probability of applying
+for social services \emph{sooner} and/or overall.
 \end{quote}
 
 \textbf{Hypothesis}: I expect to observe a larger proportion of
@@ -2220,7 +2229,7 @@ have been informed and encouraged to seek out available resources.
 
 The RCT design of the Durham Connects program allows me to make certain
 assumptions with reasonable confidence. Without these assumption, my
-research question would be impossible to answer.
+research question would be difficult to answer.
 
 The first assumption is that random assignment resulted in relatively
 balanced groups. Eligibility for social services is a function of income
