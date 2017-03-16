@@ -1,16 +1,16 @@
 ## Overview of Store Selection and Expansion {#store-selection-1 -}
 
-How the 17 "treatment" stores and 15 "control" stores were selected in 2016 is important. First and foremost, selection was *not* random. Stores were either selected by the company (13 of 17) or self-selected into Double Up (4 of 17). Second, the 15 control stores were selected *after* the selection of the 17 treatment stores. Data from all remaining stores was requested but the request was denied; only 15 stores had been approved by the company's management. Finally, and most importantly, the selection criteria for the 17 treatment stores is *observable*. The implications of this will be covered in more detail in the [Methods](#methods) section.
+How the 17 "treatment" stores and 15 "control" stores were selected in 2016 is important. First and foremost, selection was *not* random. Stores were either selected by the company (13 of 17) or self-selected into DUFB (4 of 17). Second, the 15 control stores were selected *after* the selection of the 17 treatment stores. Data from all remaining stores was requested but the request was denied; only 15 stores had been approved by the company's management. Finally, and most importantly, the selection criteria for the 17 treatment stores is *observable*. The implications of this will be covered in more detail in the [Methods](#methods) section.
 
-### Selection and Expansion of Double Up Stores {-}
+### Selection and Expansion of DUFB Stores {-}
 
-The first 2 stores were piloted with Double Up in 2014. Both were in geographically distinct areas (these will be referred to as "`Node 0`" and "`Node 1`"). There was a small expansion adding 3 more stores in 2015. The 3 stores were selected because they were geographically close to the 2 original pilot stores (2 close to `Node 0`, 1 close to `Node 1`). The 5 stores are referred to as the "core". The location of these 5 stores, separated in two clusters, established the geographic constraints that were then used to determine most of the additional stores in 2016.
+The first 2 stores were piloted with DUFB in 2014. Both were in geographically distinct areas (these will be referred to as "`Node 0`" and "`Node 1`"). There was a small expansion adding 3 more stores in 2015. The 3 stores were selected because they were geographically close to the 2 original pilot stores (2 close to `Node 0`, 1 close to `Node 1`). The 5 stores are referred to as the "core". The location of these 5 stores, separated in two clusters, established the geographic constraints that were then used to determine most of the additional stores in 2016.
 
-Double Up was expanded to 12 more stores in 2016, totaling 17. Of those 12, 6 were selected due to their proximity to the 5 core stores, their SNAP EBT^[Electronic Benefit Transfer.] sales figures, and similarity in surrounding demographics (high population density, more African-American). In other words, 9 of the 17 stores---excluding the initial 2 pilot stores—--were selected on a set of *observable* characteristics. The remaining 6 stores were not.
+DUFB was expanded to 12 more stores in 2016, totaling 17. Of those 12, 6 were selected due to their proximity to the 5 core stores, their SNAP EBT^[Electronic Benefit Transfer.] sales figures, and similarity in surrounding demographics (high population density, more African-American). In other words, 9 of the 17 stores---excluding the initial 2 pilot stores—--were selected on a set of *observable* characteristics. The remaining 6 stores were not.
 
-Of the remaining 6 stores, 4 asked if they could be included in the program. These stores *self-selected* into Double Up, making these stores fundamentally distinct. They were considered, and then included, only because they fell within the "Top 50". The final 2 stores were selected by the company for "strategic business decision". The best interpretation of this is that the company thought that Double Up would provide a competitive edge to the 2 included stores given some internal calculus. How the company came to this decision is *unknown* and therefore *unobserved*.
+Of the remaining 6 stores, 4 asked if they could be included in the program. These stores *self-selected* into DUFB, making these stores fundamentally distinct. They were considered, and then included, only because they fell within the "Top 50". The final 2 stores were selected by the company for "strategic business decision". The best interpretation of this is that the company thought that DUFB would provide a competitive edge to the 2 included stores given some internal calculus. How the company came to this decision is *unknown* and therefore *unobserved*.
 
-Table \@ref(tab:store-class) helps understand the year by year expansion of Double Up. Stores are classified as either `assigned`, `self-selected`, or `unobserved`. To be `assigned` means a stores participation in Double Up was determined (assigned) by the company; `self-selected` means the store asked the company to participate; `unobserved` means that the company selected the store to participate in Double Up but for unknown and unobserved reasons. Numbers were assigned to each store for easy reference but otherwise have no meaningful interpretation.
+Table \@ref(tab:store-class) helps understand the year by year expansion of DUFB. Stores are classified as either `assigned`, `self-selected`, or `unobserved`. To be `assigned` means a stores participation in DUFB was determined (assigned) by the company; `self-selected` means the store asked the company to participate; `unobserved` means that the company selected the store to participate in DUFB but for unknown and unobserved reasons. Numbers were assigned to each store for easy reference but otherwise have no meaningful interpretation.
 
 
 ```{r store-class, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
@@ -40,13 +40,13 @@ tbl
 
 An example expansion on *observables* (using fake data) can be seen in Figure \@ref(fig:dufb-expansion). In the top frame, one can see two blue dots. These blue dots simulate the first two pilot stores in 2014. The left blue dot is `Node 0` and the right blue dot is `Node 1`. The gray zones represent areas of higher population density. Dark gray is considered *urban*, defined as having a population density of 1500 persons or more per square mile. The light gray are small towns and cities, more densely populated than very rural areas, but could not be considered *urban*. The expansion in 2015 (middle frame) proceeds to the stores closest to the original pilot stores. The expansion continues to 6 more stores in 2016 (bottom frame) away from the nodes but also along areas of higher population density.
 
-Not conveyed in Figure \@ref(fig:dufb-expansion) is that the 2015 and 2016 expansions also move through stores that happen to be "highly ranked"---that is, have relatively higher SNAP EBT sales.^[All stores within the chain were ranked by SNAP EBT sales as a percentage of total sales.] Also not conveyed is the fact that there is a strong correlation between geography, population density, racial composition, and SNAP EBT sales. The 2015 expansion to the most nearby stores also meant that it was an expansion to stores with high SNAP EBT sales in densely populated, African-American neighborhoods. The 2016 Double Up expansion was more explicit given that set of feasible stores substantially increases as one moves away from each node. Double Up stores were thus specifically selected not just by geographic proximity, but also by SNAP EBT sales ranking and demographic compositions similar to the initial 2014 stores.
+Not conveyed in Figure \@ref(fig:dufb-expansion) is that the 2015 and 2016 expansions also move through stores that happen to be "highly ranked"---that is, have relatively higher SNAP EBT sales.^[All stores within the chain were ranked by SNAP EBT sales as a percentage of total sales.] Also not conveyed is the fact that there is a strong correlation between geography, population density, racial composition, and SNAP EBT sales. The 2015 expansion to the most nearby stores also meant that it was an expansion to stores with high SNAP EBT sales in densely populated, African-American neighborhoods. The 2016 DUFB expansion was more explicit given that set of feasible stores substantially increases as one moves away from each node. DUFB stores were thus specifically selected not just by geographic proximity, but also by SNAP EBT sales ranking and demographic compositions similar to the initial 2014 stores.
 
 **Expansion Data**
 
-Data for about each store was built by merging 4 different sources. The core data came from the grocery retailer directly, which provided a list of stores participating in DUFB from 2014 - 2016. The grocery retailer also provided a list of stores ranked by EBT sales as a fraction of total store sales and the size (square footage) of each store. Demographic and socioeconomic data came from the [Data Science Toolkit API](http://www.datasciencetoolkit.org/) (DSTK) and the [American Communities Survey API](http://www.census.gov/data/developers/data-sets/acs-survey-5-year-data.html) (ACS). The DSTK API provides access to US Census data from 2000 at the *census block* level and the ACS API provides data spanning 2010 - 2014 at the *zip code* level. Lastly, data was extract by mining the [Family Fare](https://www.shopfamilyfare.com/store-locator) website. 
+Data for about each store was built by merging 4 different sources. The core data came from the grocery retailer directly, which provided a list of stores participating in DUFB from 2014 - 2016. The grocery retailer also provided a list of stores ranked by EBT sales as a fraction of total store sales and the size (square footage) of each store. Demographic and socioeconomic data came from the [Data Science Toolkit API](http://www.datasciencetoolkit.org/) (DSTK) and the [American Communities Survey API](http://www.census.gov/data/developers/data-sets/acs-survey-5-year-data.html) (ACS). The DSTK API provides access to US Census data from 2000 at the *census block* level and the ACS API provides data spanning 2010 - 2014 at the *zip code* level. Lastly, data was extract by mining the [Family Fare](https://www.shopfamilyfare.com/store-locator) website.
 
-Matching was done with the ACS data. The ACS zip code data was preferred because it provided income and housing data. Zip code level demographics are sufficiently descriptive; stores are evenly distributed across zip codes. Specifically, 58 stores are spread across 58 zip codes and 4 stores split between 2 zip codes (60 zip codes and 62 stores).^[I must also admit that my spatial and geocoding skills improved drastically in the months following the matching process. At the time, I did not know how determine census blocks from lat/long coordinates, relying on the DSTK API that did the conversion. The downside is that it returned 2010 data. I'm confident I could do it now, but I still think it is not worth the effort given the US Census Data excludes income data.]
+Matching was done with the ACS data. The ACS zip code data was preferred because it provided income and housing data. Zip code level demographics are sufficiently descriptive; stores are evenly distributed across zip codes. Specifically, 58 stores are spread across 58 zip codes and 4 stores split between 2 zip codes (60 zip codes and 62 stores).^[I must also admit that my spatial and geocoding skills improved drastically in the months following the matching process. At the time, I did not know how determine census blocks from lat/long coordinates, relying on the DSTK API that did the conversion. The downside is that it returned 2010 data. I'm confident I could do it now, but I still think it's not worth the effort given the US Census Data excludes income data.]
 
 Ideally, prior to matching, demographic data from the neighborhoods surrounding the store, who shopped at the store, and how the store was performing, its size, and goods made available would be known. Unfortunately, most of the publicly available data was not store-specific. The only store-specific data came either from the retail parent company directly or from mining the website.
 
@@ -59,7 +59,7 @@ raw <- function(x) knitr::asis_output(x)
 
 a <- list()
 
-a[[1]] <- ("```{r dufb-expansion, fig.cap = 'Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with Double Up, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame.', fig.align='center', echo=FALSE}")
+a[[1]] <- ("```{r dufb-expansion, fig.cap = 'Example expansion over time from 2014 to 2016 (top to bottom) using fake data. Blue dots denote stores with DUFB, pink dots denote without. Gray sectors denote higher population density. The initial nodes can be seen in the top (2014) frame.', fig.align='center', echo=FALSE}")
 a[[2]] <- ("knitr::include_graphics('figures/expansion-v.pdf')")
 if(!pdf_yes) a[[2]] <- gsub('pdf', 'png', a[[2]])
 a[[3]] <- ("```")
@@ -76,14 +76,14 @@ raw(paste(knitr::knit(text = paste(out), quiet = TRUE)))
 
 Ideally, all remaining stores would have been available to use as a control group but the company only approved that data be released for 15 stores. This left the added---and incredibly important---step of selecting the control stores since the company approved, but did not explicitly select, the 15 stores.
 
-Selecting the control stores proceeded in two steps. First, stores that either self-selected or were selected using some unobservable criteria were matched using *Coarsened Exact Matching* (CEM) [@iacus_causal_2011]. Second, stores assigned Double Up were pooled with nearby control stores and then scored using a linear probability model. Each step is explained in detail.
+Selecting the control stores proceeded in two steps. First, stores that either self-selected or were selected using some unobservable criteria were matched using *Coarsened Exact Matching* (CEM) [@iacus_causal_2011]. Second, stores assigned DUFB were pooled with nearby control stores and then scored using a linear probability model. Each step is explained in detail.
 
 
 *Step 1: Coarsened Exact Matching*
 
 The 6 stores classified as `self-selected` or `unobserved` (stores `12` through `17`; see Table \@ref(tab:store-class)) were compared against all possible control stores for matches. Matching was done across 5 dimensions: race, income, population density, store attributes, store EBT sales. One variable per dimension was selected: percentage of population that is African-American (zip code level); people per square mile (zip code level); median income for people who have received SNAP or similar assistance (zip code level); the number of associates employed in each store; and the percentage of total stores sales attributed to EBT/SNAP.
 
-Of the 6 stores (stores `12` - `17`), only 3 produced viable matches. However, each of the 3 matched stores had matched to more than one control stores. The closest stores, by driving distance, were selected as the tie-breaker for each matched store. Stores were sufficiently far apart, with very sparsely populated areas between, that "spill-over" was considered unlikely. That is, it is considered unlikely that a shopper near a store without Double Up would opt to drive 30 or more minutes to shop at the store *with* Double Up.
+Of the 6 stores (stores `12` - `17`), only 3 produced viable matches. However, each of the 3 matched stores had matched to more than one control stores. The closest stores, by driving distance, were selected as the tie-breaker for each matched store. Stores were sufficiently far apart, with very sparsely populated areas between, that "spill-over" was considered unlikely. That is, it is considered unlikely that a shopper near a store without DUFB would opt to drive 30 or more minutes to shop at the store *with* DUFB.
 
 This left 12 stores to be allotted to the control group and 3 treatment stores to be effectively discarded.
 
@@ -99,11 +99,11 @@ $$
 \end{aligned}
 $$
 
-$\bm{s}$ are the fitted values of the estimated linear probability model; $\mathbf{D} \in \{0,1 \}$ is a $n \times 1$ vector of store assignments to Double Up; $\mathbf{X}$ is an $n \times k$ matrix of normalized observable covariates that determine assignment; $\mathbf{N} \in \{0, 1 \}$ is an $n \times 1$ dummy vector denoting the closest pilot store aka "Node", where $0$ is `Node 0` and $1$ is `Node 1`. $\odot$ represents element-wise multiplication aka "Hadamard product".
+$\bm{s}$ are the fitted values of the estimated linear probability model; $\mathbf{D} \in \{0,1 \}$ is a $n \times 1$ vector of store assignments to DUFB; $\mathbf{X}$ is an $n \times k$ matrix of normalized observable covariates that determine assignment; $\mathbf{N} \in \{0, 1 \}$ is an $n \times 1$ dummy vector denoting the closest pilot store aka "Node", where $0$ is `Node 0` and $1$ is `Node 1`. $\odot$ represents element-wise multiplication aka "Hadamard product".
 
-Stores were sorted by the fitted values of the model, $\bm{s}$. There is perfect separation between Double Up stores and those without (see Figure \@ref(fig:score-plot)). Therefore, the top 11 stores by score value are all Double Up stores. The next 12 stores by score value are then allotted to the control group.
+Stores were sorted by the fitted values of the model, $\bm{s}$. There is perfect separation between DUFB stores and those without (see Figure \@ref(fig:score-plot)). Therefore, the top 11 stores by score value are all DUFB stores. The next 12 stores by score value are then allotted to the control group.
 
-```{r score-plot, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=4, fig.cap = "Store Score vs Double Up Assignment"}
+```{r score-plot, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=4, fig.cap = "Store Score vs DUFB Assignment"}
 # d <- score_controls(metric='drive')
 # saveRDS(d, 'data/score-metric-driving.rds')
 d <- readRDS('data/score-metric-driving.rds')
@@ -111,10 +111,10 @@ dd <- d %>%
   dplyr::slice(1:23) %>%
   dplyr::mutate(assignment = 1 - control) %>%
   dplyr::select(score, assignment) %>%
-  dplyr::mutate(`Double Up` = dplyr::if_else(assignment == 1, 'Yes', 'No'))
+  dplyr::mutate(`DUFB` = dplyr::if_else(assignment == 1, 'Yes', 'No'))
 
-g1 <- ggplot2::ggplot(data = dd) + 
-    ggplot2::geom_point(aes(x = score, y = assignment, colour = `Double Up`), size = 3) +
+g1 <- ggplot2::ggplot(data = dd) +
+    ggplot2::geom_point(aes(x = score, y = assignment, colour = `DUFB`), size = 3) +
     theme_clean()
 
 g1 + geom_vline(aes(xintercept = .57), color = 'blue', linetype = 'dashed')
@@ -205,4 +205,3 @@ env0$plt1
 ```{r, echo = FALSE, eval = TRUE, screenshot.opts = list(delay = 3, cliprect = 'viewport')}
 env0$plt2
 ```
-

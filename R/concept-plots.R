@@ -38,9 +38,9 @@ DD <- function() {
 
 DC <- function() {
   set.seed(1985)
-  y1 <- purrr::map_dbl(1 + rnorm(300, 1,2), round) %>%
+  y1 <- purrr::map_dbl(1 + rnorm(300, 0,2), round) %>%
     data_frame(Apps = ., DC = "No")
-  y2 <- purrr::map_dbl(1 + rnorm(300, 2,2), round) %>%
+  y2 <- purrr::map_dbl(1 + rnorm(300, 1,2), round) %>%
     data_frame(Apps = ., DC = "Yes")
   d <- bind_rows(y1, y2) %>%
       dplyr::mutate(Apps = replace(Apps, Apps < 0, NA))

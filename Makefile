@@ -11,4 +11,4 @@ pdf: $(RMD_FILES)
 	rmtrash ./book-pdf ;\
 	cp ~/Dropbox/Scrivener/ZoteroLib.bib bib/book.bib ;\
 	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book', output_dir='book-pdf')" ;\
-	open book-pdf/noriega-prospectus-draft.pdf
+	open book-pdf/noriega-prospectus.pdf

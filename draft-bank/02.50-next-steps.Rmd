@@ -6,7 +6,7 @@ Data
 
 - Get IRB approval for short-form certificate data
 - Get approval from Michael Becketts to link datasets
-    
+
 Methods
 
 - Research Stratified Cox Proportional Hazard Model

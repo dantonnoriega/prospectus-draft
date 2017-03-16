@@ -3,7 +3,7 @@
 
 ## Motivation {-}
 
-**Research Question** 
+**Research Question**
 
 > Do requests for local-government emergency assistance increase towards the end of a household's SNAP benefit cycle?
 

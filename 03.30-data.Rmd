@@ -1,6 +1,6 @@
 ## Data {- #data-3}
 
-The main data for this proposed papers comes from Durham Social Services (DSS) in North Carolina. Of the datasets provided by DSS, two pertain to this paper. The first is the SNAP (or FNS) data. The second is request for emergency assistance, known as the Community Access Database (CADB).
+The main data for this proposed paper comes from Durham Social Services (DSS) in North Carolina. Of the datasets provided by DSS, two pertain to this paper. The first is the SNAP (or FNS) data. The second is request for emergency assistance, known as the Community Access Database (CADB).
 
 At the moment, I do not have permission to describe either data set in detail. I also do not have permission to link these two datasets together, despite being from the same source. I am waiting to receive approval from the Director of DSS. I expect his support but have been told not to show any data details or results.
 
@@ -16,26 +16,26 @@ From these data, what I care about most is names, case number, and the SNAP tran
 
 The transfer date variable is incredibly important. In the state of North Carolina, transfer dates are determined by the last digit of people's social security numbers. Social security numbers are mapped to every odd day from the 3rd to the 21st of every month. Those ending in `0` are mapped to the 3rd, `1` to the 5th, and so forth, with `9` mapping to the 21st. Those without social security numbers are mapped to the 3rd, creating a slight bump in probability to an otherwise uniform distribution. This implies that transfer dates are assigned essentially at random.
 
-This randomness is essential towards identifying if events are impacted by the SNAP benefit cycle. If, for example, the transfer date occurred during the 1st of the month for all SNAP participants, then many other calendar-month events---like rent payments, utility payments, or payment schedules---become endogenous to the SNAP benefit cycle. 
+This randomness is essential towards identifying if events are impacted by the SNAP benefit cycle. If, for example, the transfer date occurred during the 1st of the month for all SNAP participants, then many other calendar-month events---like rent payments, utility payments, or payment schedules---become endogenous to the SNAP benefit cycle.
 
 
 **CADB**
 
-These data contain all requests made for emergency financial assistance. For this paper, what matter is the applicants case number, name, date of application, and type of assistance requested. As before, the case number and name are to help link between CADB and SNAP. The date of application and assistance type requested is the "event" of interest.
+These data contain all requests made for emergency financial assistance. For this paper, what matters is the applicants case number, name, date of application, and type of assistance requested. As before, the case number and name are to help link between CADB and SNAP. The date of application and assistance type requested is the "event" of interest.
 
 **Approach**
 
-The first step is to identify overlapping years between the two databases, SNAP and CADB. Once determined, the population of interest will be sourced from the SNAP dataset. I will then search and tag any names found in the CADB that overlap. 
+The first step is to identify overlapping years between the two databases, SNAP and CADB. Once determined, the population of interest will be sourced from the SNAP dataset. I will then search and tag any names found in the CADB that overlap.
 
-Next, I would need to determine continuity of SNAP benefits. This should not be difficult given that the SNAP data has a certification variable. This variable lists the months for which the household is to receive SNAP benefits. 
+Next, I would need to determine continuity of SNAP benefits. This should not be difficult given that the SNAP data has a certification variable. This variable lists the months for which the household is to receive SNAP benefits.
 
-Once benefit continuity has been determined, I can then structure the data for a hazard model. The specifics of the hazard model are TBD.
+Once benefit continuity has been determined, I can then structure the data for a hazard model. The specifics of the hazard model are to be determined.
 
 ### Food Pantry Data {-}
 
-I have just received these data and have no yet taken a look at the contents. It is a Microsoft Access Database file with, I expect, 2 or 3 years of daily data. I have, however, seen a printout for these data from July 2016. The pattern, given the printout, seems to support my hypothesis above---donations are highest towards the end of the month.
+I recently received these data and have no yet taken a look at the contents. It is a Microsoft Access Database file with, I expect, 2 or 3 years of daily data. I have, however, seen a printout for these data from July 2016. The pattern, given the printout, seems to support my hypothesis above---donations are highest towards the end of the month.
 
-One thing to keep in mind is that demand for food can easily be higher than what is actually distributed. UMD doesn't record who comes in requesting food from the food pantry. Furthermore, donations are capped at 26 families per day. Families are then turned away once the cap is hit. This means that more families could come in asking for food during distribution hours (9 am to 11 am, Monday through Friday), but such demands go unrecorded.
+One thing to keep in mind is that demand for food can be higher than what is actually distributed. UMD doesn't record who comes in requesting food from the food pantry. Furthermore, donations are capped at 26 families per day. Families are then turned away once the cap is hit. This means that more families could come in asking for food during distribution hours (9 am to 11 am, Monday through Friday), but such demands go unrecorded.
 
 I should also note that these data are maintained by a single person at UMD. The data is entered, however, by a different person---a volunteer. This volunteer comes in every Tuesday and Thursday morning to manually input the data. There is likely a bit of human error, but as long as a general trend is noticeable, then it should be better than nothing.
 

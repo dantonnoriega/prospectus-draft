@@ -1,11 +1,6 @@
----
-
-
 ### Regression Discontinuity (RD) {-}
 
-**Work in Progress**
-
-I will also perform a secondary Regression Discontinuity (RD) Design analysis.
+I also plan to perform a secondary Regression Discontinuity (RD) Design analysis.
 
 In the [Store Selection](#store-selection-1) section, I discussed the construction of the score function $\bm{s} = \widehat{P(\mathbf{D} = 1 | \bm{X}, \bm{N})}$. The score of each store can be determined via observable data, $s_{j} = \widehat{P(D_{j} = 1|\bm{x}_{j}, n_{j})}$. These scores, when ordered, produced perfect separation between experimental stores and control stores (see Figure \@ref(fig:score-plot2)).
 
@@ -13,7 +8,7 @@ An RD design requires a *running variable* where, above some value $c$, the prob
 
 In my case, assignment $D_{j}$ is determined by $s_{j}$ by construction. Recall that $s_{j}$ is a function estimated on observable covariates. These are the same observable covariates the company used to determine assignment for a subset of stores. I used a linear probability model to estimate the score function and the estimated model perfectly predicted assignment. I then ordered stores by their score value and selected the next 12 unassigned stores.
 
-This problem is that I do not actually know $c$. I only know that $c \in (0.50, 0.64)$. The light gray band in Figure \@ref(fig:score-plot2) displays the possible values of $c$. The problem, in essence, is that I do not have---and never will have---enough stores, so I'm lacking density around where the separation occurs. 
+This problem is that I do not actually know $c$. I only know that $c \in (0.50, 0.64)$. The light gray band in Figure \@ref(fig:score-plot2) displays the possible values of $c$. The problem, in essence, is that I do not have---and never will have---enough stores, so I'm lacking density around where the separation occurs.
 
 ```{r score-plot2, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE, fig.height=4, fig.cap = "Store Score vs Double Up Assignment with Uncertainty Band (light gray)"}
 
@@ -25,7 +20,7 @@ I propose to estimate the RD design using various values of $c$. The perpetual g
 
 **Set-up**
 
-The outcome of variable, as before, is *the total daily amount of dollars spent on fruits and vegetables per store transaction*. I decided on using days as the unit of observation to increase the sample amount of data for estimating. I expect there to be enough transactions per day for this to be possible. The time frame will be August - December (months $8$ - $12$) of 2016, when the DUFB incentive is place. Only SNAP transactions will be considered and transactions will be pooled. Given that stores may vary in sales volume sold, I may divide by total SNAP dollars spent so that the outcome variable is instead a proportion. In total, there will be `11` treated (experimental) stores and `12` control stores.
+The outcome of variable, as before, is *the total daily amount of dollars spent on fruits and vegetables per store transaction*. I decided on using days as the unit of observation to increase the amount of data for estimation. I expect there to be enough transactions per day for this to be possible. The time frame will be August - December (months $8$ - $12$) of 2016, when the DUFB incentive is place. Only SNAP transactions will be considered and transactions will be pooled. Given that stores may vary in sales volume sold, I may divide by total SNAP dollars spent and use proportions. In total, there will be `11` treated (experimental) stores and `12` control stores.
 
 Let $y_{jt}$ represent the outcome variable where $j=1,...,N$ denotes stores across $t=1,...,T$. Let $c$ denote the cutoff; $s_{j}$ the score computed for store $j$; and $D_{j}$ the assignment variable. Each draw (or row) of data for store $j$ is a vector $(y_{jt}, s_{j}, D_{j})$ corresponding to a single day. $\lambda_t$ are time effects and $u_{jt}$ is an idiosyncratic store level error term.
 
@@ -35,17 +30,6 @@ $$y_{jt} = \alpha + \lambda_t + \rho D_{j} + \gamma (s_{j} - c) + \delta D_{j}(s
 
 **Expected Results**
 
-Plotting RD data and observing a visual gap is standard. The first thing I would do is plot the outcome variable of interest---total daily (fraction of) SNAP dollars spent on fruits and vegetables--against the running variable $s_j$. A total of $N \times T$ (23 $\times$ `r sum(as.vector(diff(seq(as.Date("2016-08-01"), as.Date("2017-01-01"), by = "month"))))`) data points exists; each value of $s_j,~j=1,...,23$ will contain $T=153$ points. 
+Plotting RD data and observing a visual gap is standard. The first thing I would do is plot the outcome variable of interest---total daily (fraction of) SNAP dollars spent on fruits and vegetables---against the running variable $s_j$. A total of $N \times T$ (23 $\times$ `r sum(as.vector(diff(seq(as.Date("2016-08-01"), as.Date("2017-01-01"), by = "month"))))`) data points exists; each value of $s_j,~j=1,...,23$ will contain $T=153$ points.
 
-The graph produced will have more gaps compared to conventional RD graphs. In more conventional RD graphs, each point represents a single value for a single person (e.g. score on an exam), producing more points along the running variable axis. I do not have enough stores to produce enough $s_j$ values for this to be possible. Instead, this RD design plots multiple points per stores, creating a distribution such that the mean (or median) value (with some confidence interval) becomes the fitted values of interested. Estimation wise, this distinction changes very little; $E[y_{jt}|s_{j}, D_{j}]$ effectively fits a mean value to each different store. But graphically, what matters in my RD is the overlap between distributions before and after the cut-off point.
-
-
-
-
-
-
-
-
-
-
-
+The graph produced will have more gaps compared to conventional RD graphs. In more conventional RD graphs, each point represents a single value for a single person (e.g. score on an exam), producing more points along the running variable axis. I do not have enough stores to produce enough $s_j$ values for this to be possible. Instead, this RD design plots multiple points per stores, creating a distribution such that the mean (or median) value (with some confidence interval) becomes the fitted values of interest. Estimation wise, this distinction changes little; $E[y_{jt}|s_{j}, D_{j}]$ effectively fits a mean value to each different store. But graphically, what matters in my RD is the overlap between distributions before and after the cut-off point.

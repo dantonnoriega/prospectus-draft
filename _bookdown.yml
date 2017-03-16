@@ -1,4 +1,4 @@
-book_filename: noriega-prospectus-draft
+book_filename: noriega-prospectus
 repo: https://github.com/ultinomics/prospectus-draft/
 clean: [packages.bib, bookdown.bbl]
 language:

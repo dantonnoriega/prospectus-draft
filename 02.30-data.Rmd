@@ -1,8 +1,8 @@
 ## Data {#data-2 -}
 
-This paper will depend on two sources of data. The first data source is Durham Social Services (DSS). DSS has generously provided administrative records to determine what services where applied for and by whom. The second data source is the Center for Child and Family Health at Duke University (CCFH). CCFH has already collected the short-form birth records of all children born during the RCT. While these data are public record, access to CCFH's data would drastically reduces the burden of acquiring these data. 
+This paper will depend on two sources of data. The first data source is Durham Social Services (DSS). DSS has provided administrative records to determine what services where applied for and by whom. The second data source is the Center for Child and Family Health at Duke University (CCFH). CCFH has already collected the short-form birth records of all children born during the RCT. While these data are public record, access to CCFH's data would drastically reduces the burden of acquiring these data.
 
-For example, were I not to use CCFH's data, I would have to requests the short-form birth records, wait to receive them, and then manually input the records data into a spreadsheet (the birth certificate come as digital copies of the paper certificate). That would take an incredibly long time. Furthermore, CCFH was able to verify if the short-form birth records received contained any errors. This is because they have access to their own records collected during the RCT. Six errors were found and corrected. I would not be able to do the same corrections on my own.
+For example, were I not to use CCFH's data, I would have to requests the short-form birth records, wait to receive them, and then manually input the records data into a spreadsheet (the birth certificate come as digital copies of the paper certificate). That would take an incredibly long time. Furthermore, CCFH was able to verify if the short-form birth records received contained any errors. This is because they have access to their own records collected during the RCT. CCFH found and corrected six errors. I would not be able to do the same corrections on my own.
 
 ### Administrative Records {-}
 
@@ -14,7 +14,7 @@ I do not yet have explicit permission to write about what is in these data. That
 
 Short-form birth certificates are public record. It is possible, for example, to request birth records directly from the [North Carolina Department of Health and Human services](http://vitalrecords.nc.gov/order.htm). Collecting all recorded births in Durham County from the 2 largest hospitals would take a considerable amount of time. Fortunately, the CCFH already collected and corrected the short-form birth certificate data.
 
-Short-form birth certificate includes sufficient information to identify which families were randomly assigned to Durham Connects. It also provides enough information to identify parents should they appear in other administrative records that contain name and date-of-birth. Specifically, the child's date-of-birth, the child's name, the mother's maiden name, and the father's name (if present). 
+Short-form birth certificate includes sufficient information to identify which families were randomly assigned to Durham Connects. It also provides enough information to identify parents should they appear in other administrative records that contain name and date-of-birth. Specifically, the child's date-of-birth, the child's name, the mother's maiden name, and the father's name (if present).
 
 These four pieces of information are enough to search and tag when the parents of a child born during the DC RCT applied for services. The child's date of birth is all that is required to determine assignment status.
 
@@ -28,4 +28,3 @@ An important step will be to link the two datasets. This will likely be done by 
 Currently, I am in the process of submitting an IRB request to access the CCFH's database contain the digitized and curated public short-form birth records.
 
 I am also waiting to hear if I have permission from the director of Durham Social Services to link these two data sets. I have no reason to believe the director will not approve. It is just a matter of having an opportunity to sit down and explain the idea and what it entails. The meeting is anticipated to occur in late March.
-

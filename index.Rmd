@@ -1,5 +1,5 @@
 ---
-title: "DRAFT Dissertation Prospectus"
+title: "Prospectus"
 author: "Danton Noriega"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 knit: "bookdown::render_book"
