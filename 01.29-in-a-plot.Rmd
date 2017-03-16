@@ -2,7 +2,7 @@
 
 ## Concept in a Plot {-}
 
-```{r plot-dd, echo = FALSE, fig.cap = "Example of Hypothetical Result (Fake Data"}
+```{r plot-dd, echo = FALSE, fig.cap = "Example of a Hypothetical Result (Fake Data)"}
 DD()
 ```
 

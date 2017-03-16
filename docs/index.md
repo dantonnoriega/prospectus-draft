@@ -1,4 +1,4 @@
-# Dissertation Prospectus
+# Prospectus
 Danton Noriega  
 `r format(Sys.Date(), "%B %d, %Y")`  
 
@@ -95,7 +95,7 @@ Despite some limitations and technical problems---underreporting on the 24-hour 
 
 HIP also provides a framework for understanding how a financial incentive, expanded dramatically in one geographic area, could improve TFV consumption. But, as noted in the final HIP report, one of the most prominent retailers in Hampden County chose not to participate (page 61, @bartlett_evaluation_2014). Its third-party processor decided it was too difficult and too costly to implement the financial incentive on its point-of-sale technology. This strategic behavior by the retailer, which had a significant presence in Hampden County, impacted where participants could use the incentive.
 
-Most financial incentive programs work at the local level, expanding non-randomly. We should anticipate certain retailers (firms) to behave strategically when participating in any of these incentive programs. Likewise, we should anticipate voluntary (non-random) self-selection by SNAP beneficiaries into these financial incentives programs. To this end, more research is needed to understand the impact of incentive programs under *real-world* conditions. HIP provided evidence that incentive programs can work, but barring state-wide or nation-wide adoption of point-of-sale financial incentives, we should expect growth of the program to occur strategically and endogenously.
+Most financial incentive programs work at the local level, expanding non-randomly. We should anticipate certain retailers (firms) to behave strategically when participating in any of these incentive programs. Likewise, we should anticipate voluntary (non-random) self-selection by SNAP beneficiaries into these financial incentives programs. To this end, more research is needed to understand the impact of incentive programs under *real-world* conditions. HIP provided evidence that an incentive program can work, but barring state-wide or nation-wide adoption of point-of-sale financial incentives, we should expect the growth of any program to occur strategically and endogenously.
 
 An example of such a financial incentive program for SNAP participants is the Double Up Food Bucks program (DUFB or Double Up). The non-random expansion and impact of this financial incentives program will remain the focus of this paper
 
@@ -145,8 +145,8 @@ Currently, no research exists evaluating DUFB, or similar incentive programs, us
 ## Concept in a Plot {-}
 
 <div class="figure">
-<img src="noriega-prospectus-draft_files/figure-html/plot-dd-1.png" alt="Example of Hypothetical Result (Fake Data"  />
-<p class="caption">(\#fig:plot-dd)Example of Hypothetical Result (Fake Data</p>
+<img src="noriega-prospectus_files/figure-html/plot-dd-1.png" alt="Example of a Hypothetical Result (Fake Data)"  />
+<p class="caption">(\#fig:plot-dd)Example of a Hypothetical Result (Fake Data)</p>
 </div>
 
 Displayed in Figure \@ref(fig:plot-dd) reflects what I'm hoping to find. Note that the data is fake and the time interval is by month (I plan to use daily data). The point of the graph is to emphasis that I expect to find a jump in dollars spent on fruits and vegetables in the DUFB (treated) stores once the DUFB program begins in August. While I intend to use a difference-in-difference-in-differences (DDD) model as part of my analysis, I display a difference-in-differences (DD) to highlight the effect of interest.
@@ -326,7 +326,7 @@ $\bm{s}$ are the fitted values of the estimated linear probability model; $\math
 Stores were sorted by the fitted values of the model, $\bm{s}$. There is perfect separation between DUFB stores and those without (see Figure \@ref(fig:score-plot)). Therefore, the top 11 stores by score value are all DUFB stores. The next 12 stores by score value are then allotted to the control group.
 
 <div class="figure">
-<img src="noriega-prospectus-draft_files/figure-html/score-plot-1.png" alt="Store Score vs DUFB Assignment"  />
+<img src="noriega-prospectus_files/figure-html/score-plot-1.png" alt="Store Score vs DUFB Assignment"  />
 <p class="caption">(\#fig:score-plot)Store Score vs DUFB Assignment</p>
 </div>
 
@@ -674,7 +674,7 @@ In my case, assignment $D_{j}$ is determined by $s_{j}$ by construction. Recall 
 This problem is that I do not actually know $c$. I only know that $c \in (0.50, 0.64)$. The light gray band in Figure \@ref(fig:score-plot2) displays the possible values of $c$. The problem, in essence, is that I do not have---and never will have---enough stores, so I'm lacking density around where the separation occurs.
 
 <div class="figure">
-<img src="noriega-prospectus-draft_files/figure-html/score-plot2-1.png" alt="Store Score vs Double Up Assignment with Uncertainty Band (light gray)"  />
+<img src="noriega-prospectus_files/figure-html/score-plot2-1.png" alt="Store Score vs Double Up Assignment with Uncertainty Band (light gray)"  />
 <p class="caption">(\#fig:score-plot2)Store Score vs Double Up Assignment with Uncertainty Band (light gray)</p>
 </div>
 
@@ -780,7 +780,7 @@ I should pause to specify what it meant for a family to be "connected with DSS".
 ## Concept in a Plot {-}
 
 <div class="figure">
-<img src="noriega-prospectus-draft_files/figure-html/plot-dc-1.png" alt="Example of Hypothetical Result (Fake Data)"  />
+<img src="noriega-prospectus_files/figure-html/plot-dc-1.png" alt="Example of Hypothetical Result (Fake Data)"  />
 <p class="caption">(\#fig:plot-dc)Example of Hypothetical Result (Fake Data)</p>
 </div>
 
@@ -931,7 +931,7 @@ TDB.
 <!--chapter:end:02.40-methods.Rmd-->
 
 
-# The SNAP Benefit Cycle and the Demand for Emergency Assistance {#chapter-3}
+# Demand for Emergency Assistance and the SNAP Benefit Cycle {#chapter-3}
 
 
 ## Motivation {-}
@@ -1023,7 +1023,7 @@ I'm not sure if there is sufficient data here to run a regression that wouldn't 
 ## Concept in a Plot {-}
 
 <div class="figure">
-<img src="noriega-prospectus-draft_files/figure-html/plot-cycle-1.png" alt="Pooled Monthly Request for Emergency Services by Day since Transfer using Fake Data"  />
+<img src="noriega-prospectus_files/figure-html/plot-cycle-1.png" alt="Pooled Monthly Request for Emergency Services by Day since Transfer using Fake Data"  />
 <p class="caption">(\#fig:plot-cycle)Pooled Monthly Request for Emergency Services by Day since Transfer using Fake Data</p>
 </div>
 
