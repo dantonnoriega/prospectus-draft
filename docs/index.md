@@ -1047,11 +1047,6 @@ I look forward to learning about how these methods. Until then, this section wil
 <!--chapter:end:03.40-methods.Rmd-->
 
 
-# References {#references}
-
-<!--chapter:end:04.0-references.Rmd-->
-
-
 # Healthy Food Experiments (BECR Project)
 
 I'm working with a BECR Center team that is piloting a few random experiments. The aim is to nudge people towards purchasing healthier snacks. They are working in partnership with [Family Fare Convenience Stores](http://familyfareconveniencestores.com) to run the experiments and collect the data.
@@ -1062,4 +1057,9 @@ I'm listing this to point out that **I have a back up paper**.
 
 
 <!--chapter:end:04.10-question.Rmd-->
+
+
+# References {#references}
+
+<!--chapter:end:99.99-references.Rmd-->
 
