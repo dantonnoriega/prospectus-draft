@@ -19,20 +19,23 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage{microtype}
+\usepackage[]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1.2in]{geometry}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
             pdftitle={Prospectus},
             pdfauthor={Danton Noriega},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1.2in]{geometry}
 \usepackage{natbib}
 \bibliographystyle{apalike}
 \usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -61,6 +64,12 @@
 \let\oldsubparagraph\subparagraph
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
 \usepackage{booktabs}
 \usepackage{lscape}
 \usepackage{longtable}
@@ -171,7 +180,7 @@
 
 \title{Prospectus}
 \author{Danton Noriega}
-\date{March 16, 2017}
+\date{March 21, 2017}
 
 \begin{document}
 \maketitle
@@ -277,19 +286,6 @@ comparing all FV purchases between treatment and control stores would
 fail to find any distributional differences. Instead, to measure the
 impact of the incentive, I will have to focus on, and compare, purchases
 made by the targeted group (SNAP households) in both types of stores.
-
-I don't know if the corporate office, which selected and implemented the
-DUFB incentive, properly communicated or advertised the DUFB program to
-store management/staff and customers. This likely resulted in low
-awareness of the DUFB program amongst store staff and shoppers. Low
-participation may correlate highly with low awareness. Meaning, low
-participation may not be a failure of DUFB program as an incentive
-mechanism, but a failure of corporate advertising and ``buy-in''. I must
-be clear that this is merely a hunch. I don't think there is a large
-profit motive behind implementing this program for the retailer. I think
-this was an opportunity to pretend to be doing some good and to have
-something which reflects a positive corporate image. A survey of store
-staff and of some customers to test this hunch would be great.
 
 \textbf{Hypothesis 2}: If measurable, I expect spending increases to
 occur within the first 3 weeks of each calendar month, when most SNAP
@@ -1122,6 +1118,16 @@ representative told me that should not be a factor because all stores
 are supplied from the same warehouse. Therefore, in theory, each store
 should have the same local produce. I plan to visit the stores on a
 later date to confirm that this is actually the case.
+
+\textbf{Low Program Awareness Concerns}
+
+An ongoing challenge will be capturing marketing penetration of the DUFB
+program. For example, if I observe few DUFB purchase (low
+participation), is this because the DUFB program is not working or
+because store staff and shoppers are unaware of the DUFB program? That
+is, low participation may not be a failure of DUFB program as an
+incentive mechanism, but of low awareness. A survey of store staff and
+of some customers to test program awareness would help.
 
 \hypertarget{store-selection-1}{\section*{Overview of Store Selection
 and Expansion}\label{store-selection-1}}

@@ -77,3 +77,7 @@ The week-to-week cyclical pattern of SNAP EBT spending can be observed in Figure
 **Supply Chain Concerns**
 
 One concern I had was if local supply of produce differed geographically across the state where the stores are located. The company representative told me that should not be a factor because all stores are supplied from the same warehouse. Therefore, in theory, each store should have the same local produce. I plan to visit the stores on a later date to confirm that this is actually the case.
+
+**Low Program Awareness Concerns**
+
+An ongoing challenge will be capturing marketing penetration of the DUFB program. For example, if I observe few DUFB purchase (low participation), is this because the DUFB program is not working or because store staff and shoppers are unaware of the DUFB program? That is, low participation may not be a failure of DUFB program as an incentive mechanism, but of low awareness. A survey of store staff and of some customers to test program awareness would help.
